@@ -50,8 +50,8 @@ function TurnLivre({
           "(max-width: 1000px) and (orientation: portrait) "
         ).matches;
 
-        const widtha = isMobilePortrait ? "9" : "1430";
-        const heightb = isMobilePortrait ? "24" : "1250";
+        const widtha = isMobilePortrait ? "10" : "1430";
+        const heightb = isMobilePortrait ? "5" : "1250";
 
         setFlipBookConfig({
           size: "stretch",
@@ -368,8 +368,20 @@ function TurnLivre({
           </div>
         )}
         {/* FIN Index / Menu */}
-
+        <button onClick={prevButtonClick} id="west">
+        <span>⬅️</span> <span>West</span>
+      </button>
         <div>
+          
+      <div className="north">
+        <button onClick={() => setMenuVisible(!menuVisible)}>
+          {menuVisible ? (
+            "North "
+          ) : (
+            <img src={northstar} className="northstar" />
+          )}
+        </button>
+      </div>
           {renderedDivs && (
             <div className={containerclass} style={flipBookStyle}>
               {ThePages && lengthdivs && flipBookConfig && flipBookStyle && (
@@ -463,51 +475,33 @@ function TurnLivre({
                       />
                     </div>
                  
-                </HTMLFlipBook>
+                    </HTMLFlipBook>
               )}
             </div>
           )}
         </div>
-      </div>
-      {menuVisibleBackground && (
-        <div
-          className="southpicture"
-          onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}
-        >
-          <img src={south} />
-        </div>
-      )}
-      <div className="setbackground">
-        {menuVisibleBackground && <SetBackground number={number} id={id} />}
-      </div>
-
-      {!menuVisibleBackground && (
-        <div className="south">
-          <div onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
-            south
-          </div>
-        </div>
-      )}
-
-<button onClick={prevButtonClick} id="west">
-        <span>⬅️</span> <span>West</span>
-      </button>
-
-      <div className="north">
-        <button onClick={() => setMenuVisible(!menuVisible)}>
-          {menuVisible ? (
-            "North "
-          ) : (
-            <img src={northstar} className="northstar" />
-          )}
-        </button>
-      </div>
-      <button onClick={nextButtonClick} id="est">
+        <button onClick={nextButtonClick} id="est">
         <span>Est</span> <span>➡️</span>
       </button>
-     
+      </div>
+      {menuVisibleBackground && 
+      <div className="southpicture"  onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
+      <img src={south} /> 
+        </div>
+}
+ <div className="setbackground">
+ {menuVisibleBackground && <SetBackground 
+    number={number} id={id} 
+  />}   
+      </div> 
+
+   {!menuVisibleBackground &&   <div className="south">
+          <div onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
+       south 
+          </div>
+        </div> }
+    
     </>
   );
 }
-
 export default TurnLivre;

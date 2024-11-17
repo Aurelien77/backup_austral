@@ -10,10 +10,10 @@
 
   .flexaudioelement {
     display: flex;
-    /*    border: 2px solid red; */
+    /*   border: 2px solid red;  */
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
 
     @include audio_mobile_portrait_width;
     padding: 2px;
@@ -24,13 +24,16 @@
     flex-grow: 1;
     justify-content: center;
     align-items: center;
+    /* border: 2px solid rgb(62, 25, 195); */
+    width: 100%; 
   }
 
   .audiocenter audio {
     display: block;
     /*    border: 2px solid green; */
-
+  /*   border: 2px solid rgb(28, 206, 5);  */
     border-radius: 5%;
     margin: 0.1vw;
+    width: 100%;
   }
 }

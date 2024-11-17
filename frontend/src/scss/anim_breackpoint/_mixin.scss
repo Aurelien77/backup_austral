@@ -10,11 +10,34 @@
  }
 }
 
+@mixin flipbook-container-book{
+  @media only screen and (max-width:900px)  and  (orientation:portrait)   {
+    margin-top: -15vw;
+
+
+ }
+}
+
 @mixin mobilepagehorizontale{
   @media only screen and (max-width:900px)  and  (orientation:portrait)   {
-    width: 41vw;
-    height: 37vw;
+    width: 35vw;
+    height: 31vw;
 
+
+
+ }
+}
+
+@mixin mobilepagehorizontalecontainer {
+  @media only screen and (max-width:900px)  and  (orientation:portrait)  {
+    margin-top: 0vw;
+
+ }
+}
+@mixin mobilepagehorizontaleland{
+  @media only screen and (max-width:900px)  and  (orientation:landscape)   {
+    width: 37vw;
+    height: 33vw;
 
  }
 }
@@ -141,7 +164,8 @@ width: 5w;
     justify-content: center; 
     align-items: center; 
 font-size: 0.4rem;
-
+position: fixed;
+right: 5px;
 white-space: normal; 
 word-wrap: break-word; 
 overflow-wrap: break-word; 
@@ -166,6 +190,8 @@ text-align: center;
 @mixin west{
   @media only screen and (max-width:1500px)  and (orientation: portrait)  {
     display: flex;
+    position: fixed;
+left: 5px;
     justify-content: center; 
     align-items: center; 
     font-size: 0.4rem;
@@ -199,24 +225,42 @@ text-align: center;
  }
 }
 @mixin thetitlesportrait{
-  @media only screen   and (orientation:portrait) and (max-width:1000px)    {
-  position: fixed;
-  column-count: 2;
-  left: 50%;
-  bottom: 20%;
-  transform: translateX(-50%, -50%);
-  width: 90%;
+  @media only screen   and (orientation:portrait) and (max-width:900px)    {
+    position: fixed;
+    column-count: 2;
+    left: 50%;
+    bottom: 10px;
+
+    column-rule: 2px solid #ccc; 
+    width: 80vw
  }
 }
 
+@mixin bouton-horver{
+  @media only screen    and (max-width:1000px)    {
+    position: fixed;
+   border: 1px solid green;
+   border-radius: 10%;
+    left: 36%;
+font-size: 0.7rem;
+ margin-top: 5px;
+ background-color: #ccc;
+font-weight: bold;
+ }
+}
+
+
+
 @mixin thetitlesportrait-max{
   @media only screen   and (orientation:portrait) and (min-width:1001px)    {
- 
+
   position: fixed;
-  column-count: 2;
+  column-count: 4;
   left: 50%;
   bottom: 57.5%;
   transform: translateX(-50%, -50%);
+  column-rule: 2px solid #ccc; 
+  width: 80vw
  }
 }
 @mixin boutonlogin{

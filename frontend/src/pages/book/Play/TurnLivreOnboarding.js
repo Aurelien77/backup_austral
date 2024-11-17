@@ -13,16 +13,26 @@ import SetBackground from "../../../component/SetBackground";
 function TurnLivreOnboarding({ onPageChange,CurrentPageFlipAudio,  }) {
   const [menuVisible, setMenuVisible] = useState(true);
   const bookRef = useRef();
-  const [flipBookConfig, setFlipBookConfig] = useState({});
+
   const [id, setId] = useState(1);
-
-
+  
+  const [orientationPicture, setorientationPicture] = useState();
   const [MAJ, setMaj] = useState(false);
   const [ThePages, setThePages] = useState([]);
   const [deckstate2, setDeckstate2] = useState([]);
   const [deckstate3, setDeckstate3] = useState([]);
   const [deckstate4, setDeckstate4] = useState([]);
   const [  menuVisibleBackground , setmenuVisibleBackground ] = useState(false);
+ /* / ! \ Pour modification horizontales => _________________________________*/
+
+ const [containerclass, setcontainerclass] = useState(
+  "flipbook-container-book"
+);
+  const [flipBookConfig, setFlipBookConfig] = useState({});
+  const [numberdatabook,  setnumberdatabook] = useState();
+ 
+
+  const [flipBookStyle, setFlipBookStyle] = useState({});
 
  
   // Détermine si l'appareil est mobile
@@ -30,20 +40,15 @@ function TurnLivreOnboarding({ onPageChange,CurrentPageFlipAudio,  }) {
     "(max-width: 768px) and (orientation: portrait)"
   ).matches;
 
-  // Définir les styles conditionnels
-  const flipBookStyle = {
-    width: isMobilePortrait ? "80vw" : "50vw",
-    height: isMobilePortrait ? "110vw" : "39vw",
-  };
-
+ 
 
 
   useEffect(() => {
     // Fonction pour calculer la configuration du FlipBook
     function getFlipBookConfig() {
-      const width = isMobilePortrait ? "9" : "750";
-      const height = isMobilePortrait ? "12" : "1130";
-
+      const width = isMobilePortrait ? "10" : "750";
+      const height = isMobilePortrait ? "5" : "1130";
+      console.log(flipBookConfig, "----=> FlipBookConfig")
       return {
         size: "stretch",
         width,
@@ -115,7 +120,7 @@ useEffect(() => {
   useEffect(() => {
     let myBookData = localStorage.getItem("mybook");
     let myIdData = localStorage.getItem("myid");
-  
+  setnumberdatabook(myBookData )
     if (!myBookData) {
       let myBookData = 1; 
       
@@ -318,33 +323,79 @@ for (let i = 0; i < ThePages.length; i += 2) {
 }
 
 useEffect(() => {
-  const updateFlipBookConfig = () => {
-    const isMobilePortrait = window.matchMedia(
-      "(max-width: 768px) and (orientation: portrait)"
-    ).matches;
 
-    const width = isMobilePortrait ? "9" : "750";
-    const height = isMobilePortrait ? "12" : "1130";
-
-    setFlipBookConfig({
-      size: "stretch",
-      width,
-      height,
-      drawShadow: true,
-    });
-  };
-
-  // Appeler une fois au chargement
-  updateFlipBookConfig();
-
-  // Ajoute l'écouteur d'événement pour le redimensionnement
-  window.addEventListener("resize", updateFlipBookConfig);
+  if (numberdatabook > 100) {
+    setcontainerclass("containerhorizontale");
+    setorientationPicture("containerhorizontale");
   
-  // Nettoyage de l'écouteur
-  return () => {
-    window.removeEventListener("resize", updateFlipBookConfig);
-  };
-}, []);
+    const updateFlipBookConfig = () => {
+      const isMobilePortrait = window.matchMedia(
+        "(max-width: 1000px) and (orientation: portrait) "
+      ).matches;
+
+      const widtha = isMobilePortrait ? "10" : "1430";
+      const heightb = isMobilePortrait ? "9" : "1250";
+
+      setFlipBookConfig({
+        size: "stretch",
+        width: widtha,
+        height: heightb,
+        drawShadow: true,
+      });
+
+      const widthstyle = isMobilePortrait ? "70vw" : "70vw";
+      const heightstyle = isMobilePortrait ? "35vw" : "35vw";
+
+      setFlipBookStyle({
+        width: widthstyle,
+        height: heightstyle,
+      });
+    };
+
+    updateFlipBookConfig();
+
+    window.addEventListener("resize", updateFlipBookConfig);
+
+    // Nettoyage de l'écouteur
+    return () => {
+      window.removeEventListener("resize", updateFlipBookConfig);
+    };
+  } else {
+    const updateFlipBookConfig = () => {
+      const isMobilePortrait = window.matchMedia(
+        "(max-width: 768px) and (orientation: portrait)"
+      ).matches;
+
+      const widtha = isMobilePortrait ? "9" : "750";
+      const heighta = isMobilePortrait ? "12" : "1130";
+      setorientationPicture("container");
+      setFlipBookConfig({
+        size: "stretch",
+        width: widtha,
+        height: heighta,
+        drawShadow: true,
+      });
+
+      const widthstyle = isMobilePortrait ? "80vw" : "50vw";
+      const heightstyle = isMobilePortrait ? "110vw" : "39vw";
+
+      setFlipBookStyle({
+        width: widthstyle,
+        height: heightstyle,
+      });
+    };
+
+    // Appeler une fois au chargement
+    updateFlipBookConfig();
+    // Ajoute l'écouteur d'événement pour le redimensionnement
+    window.addEventListener("resize", updateFlipBookConfig);
+
+    // Nettoyage de l'écouteur
+    return () => {
+      window.removeEventListener("resize", updateFlipBookConfig);
+    };
+  }
+}, [numberdatabook]);
 
 
   return (
@@ -375,8 +426,8 @@ useEffect(() => {
 
         <div>
           {renderedDivs && (
-            <div className="flipbook-container" style={flipBookStyle}>
-              {ThePages && lengthdivs && (
+               <div className={containerclass} style={flipBookStyle}>
+                           {ThePages && lengthdivs && flipBookConfig && flipBookStyle && (
                 <HTMLFlipBook
                   {...flipBookConfig}
                   ref={bookRef}
@@ -384,7 +435,7 @@ useEffect(() => {
                   onFlip={(e) => onPageChange(e.data)}
                 >
                   <div className="firstpage"></div>
-                  <div className="page shadow" data-density="hard">
+                  <div className="shadow" data-density="hard">
                   <ViewCardCreate
                 setMaj={setMaj}
                 view = {deckstate4}
@@ -392,10 +443,10 @@ useEffect(() => {
                 InputOnPlay={true}
                     maj={MAJ}
                     textonpage={"Couverture"}
-                    classNamepictureonpage={"deck"}
+                    classNamepictureonpage={orientationPicture}
                />
                   </div>
-                  <div className="page shadow">
+                  <div className="shadow">
                   <ViewCardCreate
                 setMaj={setMaj}
                 view = {deckstate3}
@@ -403,10 +454,10 @@ useEffect(() => {
                 InputOnPlay={true}
                     maj={MAJ}
                     textonpage={"Affichage dos"}
-                    classNamepictureonpage={"deck"}
+                    classNamepictureonpage={orientationPicture}
                />
                   </div>
-                  <div className="page shadow">
+                  <div className="shadow">
                   <ViewCardCreate
                 setMaj={setMaj}
                 view = {deckstate3}
@@ -414,7 +465,7 @@ useEffect(() => {
                 InputOnPlay={true}
                     maj={MAJ}
                     textonpage={"Affichage dos"}
-                    classNamepictureonpage={"deck"}
+                    classNamepictureonpage={orientationPicture}
                />
                   </div>
                   {renderedDivs}
@@ -426,10 +477,10 @@ useEffect(() => {
                 InputOnPlay={true}
                     maj={MAJ}
                     textonpage={"Affichage dos"}
-                    classNamepictureonpage={"deck"}
+                    classNamepictureonpage={orientationPicture}
                />
                   </div>
-                  <div className="page shadow">
+                  <div className="shadow">
                   <ViewCardCreate
                 setMaj={setMaj}
                 view = {deckstate3}
@@ -437,10 +488,10 @@ useEffect(() => {
                 InputOnPlay={true}
                     maj={MAJ}
                     textonpage={"Affichage dos"}
-                    classNamepictureonpage={"deck"}
+                    classNamepictureonpage={orientationPicture}
                />
                   </div>
-                  <div className="page shadow">
+                  <div className="shadow">
                   <ViewCardCreate
                 setMaj={setMaj}
                 view = {deckstate2}
@@ -448,7 +499,7 @@ useEffect(() => {
                 InputOnPlay={true}
                     maj={MAJ}
                     textonpage={"Affichage dos"}
-                    classNamepictureonpage={"Affichage Fond"}
+                    classNamepictureonpage={orientationPicture}
                />
                   </div>
                 </HTMLFlipBook>

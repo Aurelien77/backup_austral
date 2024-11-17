@@ -1,6 +1,6 @@
 // Middle page css book
 .pagecontaineraccueil {
-  @include menu_page_mobile_portrait_phone;
+
   @include menu_page_mobile_landscape;
   display: flex;
   align-content: center;
@@ -33,7 +33,7 @@
     align-items: center;
     /*  animation: scale 15s ease-in-out backwards; */
 
-
+@include flipbook-container-book;
     & img {
       border-radius: 1%;
       width: 25vw;
@@ -64,12 +64,13 @@
   display: flex;
   align-items: center;
   /*  animation: scale 15s ease-in-out backwards; */
-
+@include mobilepagehorizontalecontainer;
 
   & img {
     border-radius: 1%;
     width: 35vw;
     height: 30.7vw;
     @include mobilepagehorizontale;
+    @include mobilepagehorizontaleland;
   }
 }

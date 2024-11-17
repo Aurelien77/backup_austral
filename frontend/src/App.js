@@ -55,11 +55,10 @@ useEffect(() => {
         console.error("Erreur lors de la récupération du fond 'Book':", error);
       });
   }
-   if (listBackground.startsWith("http")) {
+  if (listBackground && listBackground.startsWith("http")) {
     setBackgroundImage(`url(${listBackground})`);
-   
-    
-  }
+}
+
 
   if (listBackground === "option3") {
     setBackgroundImage(`url(${backgroundbase2})`);

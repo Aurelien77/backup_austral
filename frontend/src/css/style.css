@@ -595,12 +595,6 @@ section .ajust_image img {
   justify-items: center;
   margin-top: 5%;
 }
-@media only screen and (max-width: 800px) and (orientation: portrait) {
-  .pagecontaineraccueil {
-    margin-top: -17%;
-    margin-left: 0%;
-  }
-}
 @media only screen and (max-width: 1300px) and (orientation: landscape) {
   .pagecontaineraccueil {
     margin-top: 1.5%;
@@ -627,6 +621,11 @@ section .ajust_image img {
   align-items: center;
   /*  animation: scale 15s ease-in-out backwards; */
 }
+@media only screen and (max-width: 900px) and (orientation: portrait) {
+  .pagecontaineraccueil .flipbook-container-book {
+    margin-top: -15vw;
+  }
+}
 .pagecontaineraccueil .flipbook-container-book img {
   border-radius: 1%;
   width: 25vw;
@@ -648,6 +647,11 @@ section .ajust_image img {
   align-items: center;
   /*  animation: scale 15s ease-in-out backwards; */
 }
+@media only screen and (max-width: 900px) and (orientation: portrait) {
+  .containerhorizontale {
+    margin-top: 0vw;
+  }
+}
 .containerhorizontale img {
   border-radius: 1%;
   width: 35vw;
@@ -655,49 +659,15 @@ section .ajust_image img {
 }
 @media only screen and (max-width: 900px) and (orientation: portrait) {
   .containerhorizontale img {
-    width: 41vw;
-    height: 37vw;
+    width: 35vw;
+    height: 31vw;
   }
 }
-
-.containeraudio {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .containeraudio {
-    /*  width: 80vw; */
-    margin-top: -28%;
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+  .containerhorizontale img {
+    width: 37vw;
+    height: 33vw;
   }
-}
-.containeraudio .flexaudioelement {
-  display: flex;
-  /*    border: 2px solid red; */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 2px;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .containeraudio .flexaudioelement {
-    width: 100%;
-  }
-}
-.containeraudio .audiocenter {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-}
-.containeraudio .audiocenter audio {
-  display: block;
-  /*    border: 2px solid green; */
-  border-radius: 5%;
-  margin: 0.1vw;
 }
 
 .fiche .createPostPage {
@@ -1057,6 +1027,50 @@ section .ajust_image img {
   color: white;
 }
 
+.containeraudio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .containeraudio {
+    /*  width: 80vw; */
+    margin-top: -28%;
+  }
+}
+.containeraudio .flexaudioelement {
+  display: flex;
+  /*   border: 2px solid red;  */
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding: 2px;
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .containeraudio .flexaudioelement {
+    width: 100%;
+  }
+}
+.containeraudio .audiocenter {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid rgb(62, 25, 195); */
+  width: 100%;
+}
+.containeraudio .audiocenter audio {
+  display: block;
+  /*    border: 2px solid green; */
+  /*   border: 2px solid rgb(28, 206, 5);  */
+  border-radius: 5%;
+  margin: 0.1vw;
+  width: 100%;
+}
+
 .deck {
   font-size: 2rem;
 }
@@ -1076,6 +1090,18 @@ section .ajust_image img {
   z-index: 2;
   position: absolute;
   top: 0vw;
+}
+@media only screen and (max-width: 1000px) {
+  .bouton-horver {
+    position: fixed;
+    border: 1px solid green;
+    border-radius: 10%;
+    left: 36%;
+    font-size: 0.7rem;
+    margin-top: 5px;
+    background-color: #ccc;
+    font-weight: bold;
+  }
 }
 
 .title_book {
@@ -1285,6 +1311,8 @@ section .ajust_image img {
     justify-content: center;
     align-items: center;
     font-size: 0.4rem;
+    position: fixed;
+    right: 5px;
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -1352,6 +1380,8 @@ section .ajust_image img {
 @media only screen and (max-width: 1500px) and (orientation: portrait) {
   #west {
     display: flex;
+    position: fixed;
+    left: 5px;
     justify-content: center;
     align-items: center;
     font-size: 0.4rem;
@@ -1460,14 +1490,14 @@ section .ajust_image img {
   background-repeat: no-repeat;
   background-position: center;
 }
-@media only screen and (orientation: portrait) and (max-width: 1000px) {
+@media only screen and (orientation: portrait) and (max-width: 900px) {
   .thetitles {
     position: fixed;
     column-count: 2;
     left: 50%;
-    bottom: 20%;
-    transform: translateX(-50%, -50%);
-    width: 90%;
+    bottom: 10px;
+    column-rule: 2px solid #ccc;
+    width: 80vw;
   }
 }
 @media only screen and (orientation: landscape) {
@@ -1483,10 +1513,12 @@ section .ajust_image img {
 @media only screen and (orientation: portrait) and (min-width: 1001px) {
   .thetitles {
     position: fixed;
-    column-count: 2;
+    column-count: 4;
     left: 50%;
     bottom: 57.5%;
     transform: translateX(-50%, -50%);
+    column-rule: 2px solid #ccc;
+    width: 80vw;
   }
 }
 .thetitles button {
