@@ -1,0 +1,30 @@
+{
+  "development": {     
+    "username": "root",
+    "password": "root",
+    "database": "test_austral",
+    "host": "127.0.0.1",
+    "dialect": "mysql"              
+  },
+  "test": {
+    "username": "root",
+    "password": "root",
+    "database": "test_austral",
+    "host": "127.0.0.1",
+    "dialect": "mysql"   
+  },
+  "production": {
+    "username": "root",
+    "password": "root",
+    "database": "test_austral",
+    "host": "127.0.0.1",
+    "dialect": "mysql"   
+  },
+
+  "pool": {
+    "max": "dbConfig.pool.max",
+    "min": "dbConfig.pool.min",
+    "acquire": "dbConfig.pool.acquire",
+    "idle": "dbConfig.pool.idle"
+  }
+}

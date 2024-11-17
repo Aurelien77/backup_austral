@@ -1,0 +1,75 @@
+// Middle page css book
+.pagecontaineraccueil {
+  @include menu_page_mobile_portrait_phone;
+  @include menu_page_mobile_landscape;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 5%;
+
+
+
+  //position book inside the container
+  & .flipbook-container {
+    display: flex;
+    align-items: center;
+    /*  animation: scale 15s ease-in-out backwards; */
+
+
+    & img {
+      border-radius: 1%;
+      width: 25vw;
+      height: 37.7vw;
+      @include mobilepage;
+    }
+  }
+
+
+
+  & .flipbook-container-book {
+    display: flex;
+    align-items: center;
+    /*  animation: scale 15s ease-in-out backwards; */
+
+
+    & img {
+      border-radius: 1%;
+      width: 25vw;
+      height: 37.7vw;
+      @include mobilepage;
+    }
+
+
+
+
+
+    & #couverture {
+      height: 2.5vh;
+
+
+      background-color: #489cd8;
+    }
+
+  }
+
+
+
+
+
+}
+
+.containerhorizontale {
+  display: flex;
+  align-items: center;
+  /*  animation: scale 15s ease-in-out backwards; */
+
+
+  & img {
+    border-radius: 1%;
+    width: 35vw;
+    height: 30.7vw;
+    @include mobilepagehorizontale;
+  }
+}

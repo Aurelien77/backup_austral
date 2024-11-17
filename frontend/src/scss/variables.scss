@@ -1,0 +1,33 @@
+$smartphone: 699px;   //ancienement 700 puis 830 
+
+$ipadmax:700px; 
+
+$ipadmin: 1001px;
+
+$ipadmaxmenu:1500px; //pour typo menu
+
+
+
+$ecraninfini : 10000px;
+
+ //ecran smartphone :  700  ecran ipad =>  1700    ecran large  =>  3900 
+
+$ecranlarge : 3000px;  //au minimum dès qu'il atteind 3900 px il passe sur écran large
+   
+$redimcarteecranmoyens : 1000px;  //au minimum dès qu'il atteind 18800 px il n'est plus actif
+
+//min et max ipad site tirage 
+
+$ipadmaxcarte:3000px; $ipadmincarte: 00px;   //ancienement 3000 puis 1700
+
+// max smartphone 
+$smartphonechoix: 699px;
+
+
+//Breackpoint menu choix smartphone 
+
+$smartphonechoix: 1000px;
+
+//Breackpoint imagecroix
+
+$smartphonecroix: 1000px;
