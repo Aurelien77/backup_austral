@@ -11,34 +11,20 @@
 
 
 
-  //position book inside the container
-  & .flipbook-container {
-    display: flex;
-    align-items: center;
-    /*  animation: scale 15s ease-in-out backwards; */
-
-
-    & img {
-      border-radius: 1%;
-      width: 25vw;
-      height: 37.7vw;
-      @include mobilepage;
-    }
-  }
-
-
 
   & .flipbook-container-book {
-    display: flex;
-    align-items: center;
-    /*  animation: scale 15s ease-in-out backwards; */
+   display: flex;
+  align-items: center;
+  justify-content: center;
 
 @include flipbook-container-book;
     & img {
       border-radius: 1%;
       width: 25vw;
-      height: 37.7vw;
+      height: 32.45vw;
       @include mobilepage;
+     
+    
     }
 
 
@@ -63,6 +49,7 @@
 .containerhorizontale {
   display: flex;
   align-items: center;
+
   /*  animation: scale 15s ease-in-out backwards; */
 @include mobilepagehorizontalecontainer;
 

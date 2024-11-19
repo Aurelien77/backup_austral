@@ -43,11 +43,11 @@ function TurnLivreOnboarding({ onPageChange,CurrentPageFlipAudio,  }) {
  
 
 
-  useEffect(() => {
-    // Fonction pour calculer la configuration du FlipBook
+/*   useEffect(() => {
+   
     function getFlipBookConfig() {
       const width = isMobilePortrait ? "10" : "750";
-      const height = isMobilePortrait ? "5" : "1130";
+      const height = isMobilePortrait ? "5" : "1030";
       console.log(flipBookConfig, "----=> FlipBookConfig")
       return {
         size: "stretch",
@@ -61,7 +61,7 @@ function TurnLivreOnboarding({ onPageChange,CurrentPageFlipAudio,  }) {
     const config = getFlipBookConfig();
     setFlipBookConfig(config);
   }, [isMobilePortrait]);
-
+ */
   const openPageFromIndex = (index) => {
     console.log("Opening page from index:", index);
     if (bookRef.current) {
@@ -253,7 +253,7 @@ axios
   if (lengthdivs > 0) {
     renderedDivs = new Array(lengthdivs).fill(null).map((_, i) => (
       <div key={i}>
-        <div className={"page shadow"}>{divs[i]}</div>
+        <div className={"shadow"}>{divs[i]}</div>
       </div>
     ));
   }
@@ -361,13 +361,17 @@ useEffect(() => {
       window.removeEventListener("resize", updateFlipBookConfig);
     };
   } else {
+
+/* ------------------------------------------------------------- */
+    //Configure la taille du flipbook vertical
+
     const updateFlipBookConfig = () => {
       const isMobilePortrait = window.matchMedia(
         "(max-width: 768px) and (orientation: portrait)"
       ).matches;
 
-      const widtha = isMobilePortrait ? "9" : "750";
-      const heighta = isMobilePortrait ? "12" : "1130";
+      const widtha = isMobilePortrait ? "9" : "745";
+      const heighta = isMobilePortrait ? "12" : "965";
       setorientationPicture("container");
       setFlipBookConfig({
         size: "stretch",
@@ -377,8 +381,8 @@ useEffect(() => {
       });
 
       const widthstyle = isMobilePortrait ? "80vw" : "50vw";
-      const heightstyle = isMobilePortrait ? "110vw" : "39vw";
-
+      const heightstyle = isMobilePortrait ? "110vw" : "32vw";
+console.log(flipBookStyle, "flipBookStyleflipBookStyle")
       setFlipBookStyle({
         width: widthstyle,
         height: heightstyle,
@@ -468,7 +472,12 @@ useEffect(() => {
                     classNamepictureonpage={orientationPicture}
                />
                   </div>
+{/* //---------------------------------------------------------------------------------*/}
                   {renderedDivs}
+
+{/* //---------------------------------------------------------------------------------*/}
+
+
                   <div className="page shadow">
                   <ViewCardCreate
                 setMaj={setMaj}
