@@ -60,12 +60,11 @@ z-index: 2;
 .container {
   width: 100%;
 
-  overflow-y: hidden;
 
 
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+
 
   opacity: 1;
 
@@ -1099,11 +1098,11 @@ height: 99%;
 
 .creationbook {
   display: flex;
-
+overflow-x: auto;
   flex-direction: column;
   justify-content: top;
   align-items: center;
-  height: 95vh;
+  height: 100%;
   width: 100%;
 }
 

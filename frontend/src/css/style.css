@@ -1114,10 +1114,8 @@ section .ajust_image img {
 
 .container {
   width: 100%;
-  overflow-y: hidden;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   opacity: 1;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("");
   background-color: #030356;
@@ -2128,10 +2126,11 @@ section .ajust_image img {
 
 .creationbook {
   display: flex;
+  overflow-x: auto;
   flex-direction: column;
   justify-content: top;
   align-items: center;
-  height: 95vh;
+  height: 100%;
   width: 100%;
 }
 

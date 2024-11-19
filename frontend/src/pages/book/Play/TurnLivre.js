@@ -78,14 +78,19 @@ function TurnLivre({
         window.removeEventListener("resize", updateFlipBookConfig);
       };
     } else {
+
+      
+/* ------------------------------------------------------------- */
+    //Configure la taille du flipbook vertical
+
       const updateFlipBookConfig = () => {
         const isMobilePortrait = window.matchMedia(
           "(max-width: 768px) and (orientation: portrait)"
         ).matches;
 
-        const widtha = isMobilePortrait ? "9" : "750";
-        const heighta = isMobilePortrait ? "12" : "1130";
-
+   
+        const widtha = isMobilePortrait ? "9" : "745";
+        const heighta = isMobilePortrait ? "12" : "965";
         setFlipBookConfig({
           size: "stretch",
           width: widtha,
