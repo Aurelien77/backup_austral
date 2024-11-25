@@ -3,7 +3,7 @@ import HTMLFlipBook from "react-pageflip";
 import axios from "axios";
 import { AuthContext } from "../../../helpers/AuthContext";
 import { apiUrl } from "../../../config";
-import ViewPageCreate from "./ViewBookPageRead";
+import ViewPageRead from "./ViewBookPageRead";
 import PictureBookPage from "../../../component/PictureBookPage";
 import northstar from "../../../logos/Star_icon-icons.com_75206.ico";
 import south from "../../../logos/terre.gif";
@@ -17,20 +17,19 @@ function TurnLivre({
 }) {
   const [menuVisible, setMenuVisible] = useState(true);
   const bookRef = useRef();
-
+  const [id, setId] = useState(1);
   const [isMobilePortrait, setIsMobilePortrait] = useState(
     window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches
   );
 
-  const [id, setId] = useState(1);
-  const [book, setBook] = useState();
+ 
+
   const [MAJ, setMaj] = useState(false);
   const [ThePages, setThePages] = useState([]);
   const [deckstate2, setDeckstate2] = useState([]);
   const [deckstate3, setDeckstate3] = useState([]);
   const [deckstate4, setDeckstate4] = useState([]);
-  const { authState } = useContext(AuthContext);
-  const [majmodifpost, setMajModifPost] = useState(true);
+
   const [menuVisibleBackground, setmenuVisibleBackground] = useState(false);
   const [containerclass, setcontainerclass] = useState(
     "flipbook-container-book"
@@ -39,8 +38,6 @@ function TurnLivre({
   const [flipBookConfig, setFlipBookConfig] = useState({});
 
   const [flipBookStyle, setFlipBookStyle] = useState({});
-
-  /* / ! \ Pour modification horizontales => _________________________________*/
 
   useEffect(() => {
     if (orientationPicture === "cartehorizontale") {
@@ -78,17 +75,14 @@ function TurnLivre({
         window.removeEventListener("resize", updateFlipBookConfig);
       };
     } else {
-
-      
-/* ------------------------------------------------------------- */
-    //Configure la taille du flipbook vertical
+      /* ------------------------------------------------------------- */
+      //Configure la taille du flipbook vertical
 
       const updateFlipBookConfig = () => {
         const isMobilePortrait = window.matchMedia(
           "(max-width: 768px) and (orientation: portrait)"
         ).matches;
 
-   
         const widtha = isMobilePortrait ? "9" : "745";
         const heighta = isMobilePortrait ? "12" : "965";
         setFlipBookConfig({
@@ -133,7 +127,7 @@ function TurnLivre({
       console.error("bookRef.current is not defined.");
     }
   };
-  /* -------------------------------------------------------------------------- */
+
 
   const openPageFromIndexforaudio = (index) => {
     setTimeout(() => {
@@ -169,24 +163,41 @@ function TurnLivre({
     }
   };
 
-  //ID localstorage
+  //Axios GET * ------------------------------------------------------------ */
   useEffect(() => {
-    const myBookData = localStorage.getItem("mybook");
-    const myIdData = localStorage.getItem("myid");
+    //--------------------------------------
 
-    if (myBookData) {
-      setBook(JSON.parse(myBookData));
-    } else {
-      localStorage.setItem("mybook", JSON.stringify(number));
-      setBook(1);
-    }
+    axios
+      .get(`${apiUrl}/postimages/lirebackground/${id}/${number}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        setDeckstate2(response.data);
+      });
 
-    if (myIdData) {
-      setId(JSON.parse(myIdData));
-    } else {
-      localStorage.setItem("myid", JSON.stringify(number));
-      setId(1);
-    }
+    axios
+      .get(`${apiUrl}/postimages/lireimagesdos/${id}/${number}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        setDeckstate3(response.data);
+      });
+    axios
+      .get(`${apiUrl}/postimages/lireimagespresentation/${id}/${number}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        setDeckstate4(response.data);
+      });
+
+    axios
+      .get(`${apiUrl}/postimages/liredeck/${id}/${number}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        setThePages(response.data);
+      });
+    //------------------------------------  /* Key clavier ---------------------- */
     const handleKeyPress = (event) => {
       if (event.key === " " || event.key === "ArrowLeft") {
         prevButtonClick();
@@ -198,65 +209,8 @@ function TurnLivre({
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
-
-  /* Info API --------------------- */
-  useEffect(() => {
-    axios
-      .get(`${apiUrl}/postimages/lirebackground/${id}/${number}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setDeckstate2(response.data);
-      });
-  }, [majmodifpost, MAJ, authState]);
-
-  useEffect(() => {
-    axios
-      .get(`${apiUrl}/postimages/lireimagesdos/${id}/${number}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-     
-          setDeckstate3(response.data);
-       
-      });
-  }, [MAJ, authState]);
-
-  useEffect(() => {
-    axios
-      .get(`${apiUrl}/postimages/lireimagespresentation/${id}/${number}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setDeckstate4(response.data);
-      });
-  }, [MAJ, authState]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${apiUrl}/postimages/liredeck/${id}/${number}`,
-          {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          }
-        );
-
-        if (Array.isArray(response.data)) {
-          setThePages(response.data);
-        } else {
-          console.error("Data received is not an array:", response.data);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [authState.id, number, id, MAJ, authState, book]);
-
-  /* ------------------------------------------------------------ */
-
+  }, [id, number]);
+/* ------------------------------------------------------------ */
   const titleToIndexMap = {};
 
   ThePages.forEach((page, index) => {
@@ -283,20 +237,6 @@ function TurnLivre({
       </div>
     ));
   }
-  /* Key clavier ---------------------- */
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.key === " " || event.key === "ArrowLeft") {
-        prevButtonClick();
-      } else if (event.key === "Enter" || event.key === "ArrowRight") {
-        nextButtonClick();
-      }
-    };
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
 
   const goToCoverPage = () => {
     openPageFromIndex(-4);
@@ -374,19 +314,18 @@ function TurnLivre({
         )}
         {/* FIN Index / Menu */}
         <button onClick={prevButtonClick} id="west">
-        <span>⬅️</span> <span>West</span>
-      </button>
-        <div>
-          
-      <div className="north">
-        <button onClick={() => setMenuVisible(!menuVisible)}>
-          {menuVisible ? (
-            "North "
-          ) : (
-            <img src={northstar} className="northstar" />
-          )}
+          <span>⬅️</span> <span>West</span>
         </button>
-      </div>
+        <div>
+          <div className="north">
+            <button onClick={() => setMenuVisible(!menuVisible)}>
+              {menuVisible ? (
+                "North "
+              ) : (
+                <img src={northstar} className="northstar" />
+              )}
+            </button>
+          </div>
           {renderedDivs && (
             <div className={containerclass} style={flipBookStyle}>
               {ThePages && lengthdivs && flipBookConfig && flipBookStyle && (
@@ -396,44 +335,39 @@ function TurnLivre({
                   onFlip={(e) => onPageChange(e.data)}
                 >
                   <div className="firstpage"></div>
-                 
-                    <div className="shadow" data-density="hard">
-                      <ViewPageCreate
-                        setMaj={setMaj}
-                        view={deckstate4}
-                        InputOnPlay={true}
-                        maj={MAJ}
-                        textonpage={"Couverture"}
-                        classNamepictureonpage={orientationPicture}
-                      />
-                    </div>
-                
-                 
-                   <div className="shadow">
-                      <ViewPageCreate
-                        setMaj={setMaj}
-                        view={deckstate3}
-                        deck={book}
-                        InputOnPlay={true}
-                        maj={MAJ}
-                        textonpage={"Affichage dos"}
-                        classNamepictureonpage={orientationPicture}
-                      />
-                    </div>
-                
-                  
-                    <div className="shadow">
-                      <ViewPageCreate
-                        setMaj={setMaj}
-                        view={deckstate3}
-                        deck={book}
-                        InputOnPlay={true}
-                        maj={MAJ}
-                        textonpage={"page"}
-                        classNamepictureonpage={orientationPicture}
-                      />
-                    </div>
-                
+
+                  <div className="shadow" data-density="hard">
+                    <ViewPageRead
+                      setMaj={setMaj}
+                      view={deckstate4}
+                      InputOnPlay={true}
+                      maj={MAJ}
+                      textonpage={"Couverture"}
+                      classNamepictureonpage={orientationPicture}
+                    />
+                  </div>
+
+                  <div className="shadow">
+                    <ViewPageRead
+                      setMaj={setMaj}
+                      view={deckstate3}
+                      InputOnPlay={true}
+                      maj={MAJ}
+                      textonpage={"Affichage dos"}
+                      classNamepictureonpage={orientationPicture}
+                    />
+                  </div>
+
+                  <div className="shadow">
+                    <ViewPageRead
+                      setMaj={setMaj}
+                      view={deckstate3}
+                      InputOnPlay={true}
+                      maj={MAJ}
+                      textonpage={"page"}
+                      classNamepictureonpage={orientationPicture}
+                    />
+                  </div>
 
                   {/*        Rendu des pages principales du livre  */}
 
@@ -441,71 +375,66 @@ function TurnLivre({
 
                   {/*        fin Rendu des pages principales  */}
 
-                  
-                    <div className="shadow">
-                      <ViewPageCreate
-                        setMaj={setMaj}
-                        view={deckstate3}
-                        deck={book}
-                        InputOnPlay={true}
-                        maj={MAJ}
-                        textonpage={"page"}
-                        classNamepictureonpage={orientationPicture}
-                      />
-                    </div>
-                 
-                 
-                    <div className="shadow">
-                      <ViewPageCreate
-                        setMaj={setMaj}
-                        view={deckstate3}
-                        deck={book}
-                        InputOnPlay={true}
-                        maj={MAJ}
-                        textonpage={"dos arriere"}
-                        classNamepictureonpage={orientationPicture}
-                      />
-                    </div>
-                
-                 
-                    <div className="shadow">
-                      <ViewPageCreate
-                        setMaj={setMaj}
-                        view={deckstate2}
-                        deck={book}
-                        InputOnPlay={true}
-                        maj={MAJ}
-                        textonpage={"Arriere"}
-                        classNamepictureonpage={"Affichage Fond"}
-                      />
-                    </div>
-                 
-                    </HTMLFlipBook>
+                  <div className="shadow">
+                    <ViewPageRead
+                      setMaj={setMaj}
+                      view={deckstate3}
+                      InputOnPlay={true}
+                      maj={MAJ}
+                      textonpage={"page"}
+                      classNamepictureonpage={orientationPicture}
+                    />
+                  </div>
+
+                  <div className="shadow">
+                    <ViewPageRead
+                      setMaj={setMaj}
+                      view={deckstate3}
+                      InputOnPlay={true}
+                      maj={MAJ}
+                      textonpage={"dos arriere"}
+                      classNamepictureonpage={orientationPicture}
+                    />
+                  </div>
+
+                  <div className="shadow">
+                    <ViewPageRead
+                      setMaj={setMaj}
+                      view={deckstate2}
+                      InputOnPlay={true}
+                      maj={MAJ}
+                      textonpage={"Arriere"}
+                      classNamepictureonpage={"Affichage Fond"}
+                    />
+                  </div>
+                </HTMLFlipBook>
               )}
             </div>
           )}
         </div>
         <button onClick={nextButtonClick} id="est">
-        <span>Est</span> <span>➡️</span>
-      </button>
+          <span>Est</span> <span>➡️</span>
+        </button>
       </div>
-      {menuVisibleBackground && 
-      <div className="southpicture"  onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
-      <img src={south} /> 
+      {menuVisibleBackground && (
+        <div
+          className="southpicture"
+          onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}
+        >
+          <img src={south} />
         </div>
-}
- <div className="setbackground">
- {menuVisibleBackground && <SetBackground 
-    number={number} id={id} 
-  />}   
-      </div> 
+      )}
+      <div className="setbackground">
+        {menuVisibleBackground && <SetBackground number={number} id={id} />}
+      </div>
 
-   {!menuVisibleBackground &&   <div className="south">
+      {!menuVisibleBackground && (
+        <div className="south">
           <div onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
-       south 
+            south
           </div>
-        </div> }
-    
+        </div>
+      )}
     </>
   );
 }

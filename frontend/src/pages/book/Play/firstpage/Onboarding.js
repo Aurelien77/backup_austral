@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TurnLivreOnboarding from "../TurnLivreOnboarding";
 import TurnLivreOnboardingAudio from "../../../../component/Audio/TurnLivreOnboardingaudio";
 
@@ -13,9 +13,8 @@ const Onboarding = () => {
 
   return (
     <>
-      <div className="imageaccueil">
+      <div>
         <TurnLivreOnboarding
-           
           onPageChange={handlePageChange}
           CurrentPageFlipAudio={currentPageFlipAudio}
           orientationPicture={orientationPicture}

@@ -2,11 +2,22 @@
 @import "../component/Loader/loader";
 @import "./base";
 @import "../UI/UI.scss";
-@import "./anim_breackpoint/mixin";
+@import "./mixin";
 @import "./livre";
 
 @import "./Fiche";
 @import "./audio";
+
+.firstpage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+
 .deck {
   font-size: 2rem;
 
@@ -70,38 +81,16 @@ z-index: 2;
 
 
 
-  background: radial-gradient(circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)),
-    url("");
 
 
 
   background-color: #030356;
 
-  /* Animation */
-  /*   animation-name: pulseplane;
-  animation-duration: 10s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-delay: 0.5s;
-  background: radial-gradient(
-    circle,
-    rgba(108, 131, 233, 0.2),
-    rgba(95, 219, 247, 0.5),
-    rgba(24, 107, 184, 0.4),
-    rgba(78, 141, 230, 0.7),
-    rgba(3, 3, 86, 0.7)
-  ),
-  url(""); */
+ 
 
   animation-name: pulseplane;
   animation-duration: 10s;
-  /* animation-timing-function: linear;
-animation-fill-mode: forwards; */
+
   animation-delay: 0.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
@@ -686,7 +675,7 @@ animation-fill-mode: forwards; */
   flex-direction: row;
   flex-wrap: wrap;
 
-  @include calqueschoix;
+
 
   & .carte {
     display: flex;
@@ -774,7 +763,7 @@ animation-fill-mode: forwards; */
 
 .containerlogin {
   @include login;
-  @include loginPhone;
+
   width: 72%;
   height: 75%;
   position: fixed;

@@ -49,7 +49,8 @@ function Accueil() {
         )}
 
         <div className="screen-center"></div>
-        <Onboarding />
+        <div><Onboarding /></div>
+        
 
         {login && (
           <div>
