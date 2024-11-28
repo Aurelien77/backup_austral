@@ -14,6 +14,7 @@ function TurnLivre({
   onPageChange,
   CurrentPageFlipAudio,
   orientationPicture,
+
 }) {
   const [menuVisible, setMenuVisible] = useState(true);
   const bookRef = useRef();
@@ -22,14 +23,15 @@ function TurnLivre({
     window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches
   );
 
- 
+  const [forbackgroundid, setforbackgroundid] = useState();
+  const [fornumberbackground, setfornumberbackground] = useState();
 
   const [MAJ, setMaj] = useState(false);
   const [ThePages, setThePages] = useState([]);
   const [deckstate2, setDeckstate2] = useState([]);
   const [deckstate3, setDeckstate3] = useState([]);
   const [deckstate4, setDeckstate4] = useState([]);
-
+  const [numberbook, setnumberbook] = useState();
   const [menuVisibleBackground, setmenuVisibleBackground] = useState(false);
   const [containerclass, setcontainerclass] = useState(
     "flipbook-container-book"
@@ -38,80 +40,77 @@ function TurnLivre({
   const [flipBookConfig, setFlipBookConfig] = useState({});
 
   const [flipBookStyle, setFlipBookStyle] = useState({});
+  const [bookpaysage, setbookpaysage] = useState();
+useEffect(() => {
+  const defaultOrientation = "container"; // Orientation par défaut
+  const orientation = orientationPicture || defaultOrientation;
 
-  useEffect(() => {
-    if (orientationPicture === "cartehorizontale") {
-      setcontainerclass("containerhorizontale");
-      const updateFlipBookConfig = () => {
-        const isMobilePortrait = window.matchMedia(
-          "(max-width: 1000px) and (orientation: portrait) "
-        ).matches;
+  if (orientation === "cartehorizontale") {
+    // Gestion spécifique à carte horizontale
+    setcontainerclass("containerhorizontale");
 
-        const widtha = isMobilePortrait ? "10" : "1430";
-        const heightb = isMobilePortrait ? "5" : "1250";
+    const updateFlipBookConfig = () => {
+      const isMobilePortrait = window.matchMedia(
+        "(max-width: 1000px) and (orientation: portrait)"
+      ).matches;
 
-        setFlipBookConfig({
-          size: "stretch",
-          width: widtha,
-          height: heightb,
-          drawShadow: true,
-        });
+      const widtha = isMobilePortrait ? "10" : "1430";
+      const heightb = isMobilePortrait ? "5" : "1250";
 
-        const widthstyle = isMobilePortrait ? "70vw" : "70vw";
-        const heightstyle = isMobilePortrait ? "35vw" : "35vw";
+      setFlipBookConfig({
+        size: "stretch",
+        width: widtha,
+        height: heightb,
+        drawShadow: true,
+      });
 
-        setFlipBookStyle({
-          width: widthstyle,
-          height: heightstyle,
-        });
-      };
+      const widthstyle = isMobilePortrait ? "70vw" : "70vw";
+      const heightstyle = isMobilePortrait ? "35vw" : "35vw";
 
-      updateFlipBookConfig();
+      setFlipBookStyle({
+        width: widthstyle,
+        height: heightstyle,
+      });
+    };
 
-      window.addEventListener("resize", updateFlipBookConfig);
+    updateFlipBookConfig();
+    window.addEventListener("resize", updateFlipBookConfig);
 
-      // Nettoyage de l'écouteur
-      return () => {
-        window.removeEventListener("resize", updateFlipBookConfig);
-      };
-    } else {
-      /* ------------------------------------------------------------- */
-      //Configure la taille du flipbook vertical
+    return () => window.removeEventListener("resize", updateFlipBookConfig);
+  } else {
+    // Configuration verticale par défaut
+    const updateFlipBookConfig = () => {
+      const isMobilePortrait = window.matchMedia(
+        "(max-width: 768px) and (orientation: portrait)"
+      ).matches;
 
-      const updateFlipBookConfig = () => {
-        const isMobilePortrait = window.matchMedia(
-          "(max-width: 768px) and (orientation: portrait)"
-        ).matches;
+      const widtha = isMobilePortrait ? "9" : "745";
+      const heighta = isMobilePortrait ? "12" : "965";
 
-        const widtha = isMobilePortrait ? "9" : "745";
-        const heighta = isMobilePortrait ? "12" : "965";
-        setFlipBookConfig({
-          size: "stretch",
-          width: widtha,
-          height: heighta,
-          drawShadow: true,
-        });
+      setFlipBookConfig({
+        size: "stretch",
+        width: widtha,
+        height: heighta,
+        drawShadow: true,
+      });
 
-        const widthstyle = isMobilePortrait ? "80vw" : "50vw";
-        const heightstyle = isMobilePortrait ? "110vw" : "39vw";
+      const widthstyle = isMobilePortrait ? "80vw" : "50vw";
+      const heightstyle = isMobilePortrait ? "110vw" : "39vw";
 
-        setFlipBookStyle({
-          width: widthstyle,
-          height: heightstyle,
-        });
-      };
+      setFlipBookStyle({
+        width: widthstyle,
+        height: heightstyle,
+      });
+    };
 
-      // Appeler une fois au chargement
-      updateFlipBookConfig();
-      // Ajoute l'écouteur d'événement pour le redimensionnement
-      window.addEventListener("resize", updateFlipBookConfig);
+    updateFlipBookConfig();
+    window.addEventListener("resize", updateFlipBookConfig);
 
-      // Nettoyage de l'écouteur
-      return () => {
-        window.removeEventListener("resize", updateFlipBookConfig);
-      };
-    }
-  }, []);
+    return () => window.removeEventListener("resize", updateFlipBookConfig);
+  }
+}, [orientationPicture, number, numberbook]);
+
+  
 
   /* -------------------------------------------------------------------------- */
   const openPageFromIndex = (index) => {
@@ -165,39 +164,104 @@ function TurnLivre({
 
   //Axios GET * ------------------------------------------------------------ */
   useEffect(() => {
-    //--------------------------------------
+    // Déterminer la valeur de numberbook et id
+    let numberbook;
+    if (number) {
+      // Si la prop `number` est fournie
+      numberbook = number;
 
-    axios
-      .get(`${apiUrl}/postimages/lirebackground/${id}/${number}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setDeckstate2(response.data);
+      setfornumberbackground(numberbook)
+    } else {
+      // Sinon, récupérer depuis le local storage
+      const myBookData = localStorage.getItem("mybook");
+
+      numberbook = myBookData ? parseInt(myBookData, 10) : 1; // Défaut à 1 si pas trouvé
+
+      setfornumberbackground(numberbook)
+    }
+
+    const myIdData = localStorage.getItem("myid");
+    //Explicitement un nombre decimal = base 10 
+    const currentId = myIdData ? parseInt(myIdData, 10) : id;
+
+    if(currentId === myIdData ){
+      setforbackgroundid(currentId)
+
+    }
+    else(     setforbackgroundid(id)   )
+  
+   if(numberbook > 100){ setbookpaysage(true)}
+   else{
+
+    setbookpaysage(false)
+   }
+  
+    // Effectuer les appels Axios
+    const fetchData = async () => {
+      try {
+        const [backgroundResponse, dosResponse, presentationResponse, deckResponse] = await Promise.all([
+          axios.get(`${apiUrl}/postimages/lirebackground/${currentId}/${numberbook}`, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }),
+          axios.get(`${apiUrl}/postimages/lireimagesdos/${currentId}/${numberbook}`, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }),
+          axios.get(`${apiUrl}/postimages/lireimagespresentation/${currentId}/${numberbook}`, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }),
+          axios.get(`${apiUrl}/postimages/liredeck/${currentId}/${numberbook}`, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }),
+        ]);
+  
+        setDeckstate2(backgroundResponse.data);
+        setDeckstate3(dosResponse.data);
+        setDeckstate4(presentationResponse.data);
+        setThePages(deckResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+
+/* _________________________________________________________=> */
+
+   // Si aucune prop n'est passée et que numberbook > 100
+   if (!number && numberbook > 100) {
+    setcontainerclass("containerhorizontale");
+  
+
+    const updateFlipBookConfig = () => {
+      const isMobilePortrait = window.matchMedia(
+        "(max-width: 1000px) and (orientation: portrait)"
+      ).matches;
+
+      const widtha = isMobilePortrait ? "10" : "1430";
+      const heightb = isMobilePortrait ? "9" : "1250";
+
+      setFlipBookConfig({
+        size: "stretch",
+        width: widtha,
+        height: heightb,
+        drawShadow: true,
       });
 
-    axios
-      .get(`${apiUrl}/postimages/lireimagesdos/${id}/${number}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setDeckstate3(response.data);
-      });
-    axios
-      .get(`${apiUrl}/postimages/lireimagespresentation/${id}/${number}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setDeckstate4(response.data);
-      });
+      const widthstyle = isMobilePortrait ? "70vw" : "70vw";
+      const heightstyle = isMobilePortrait ? "35vw" : "35vw";
 
-    axios
-      .get(`${apiUrl}/postimages/liredeck/${id}/${number}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        setThePages(response.data);
+      setFlipBookStyle({
+        width: widthstyle,
+        height: heightstyle,
       });
-    //------------------------------------  /* Key clavier ---------------------- */
+    };
+
+    updateFlipBookConfig();
+    window.addEventListener("resize", updateFlipBookConfig);
+
+    return () => window.removeEventListener("resize", updateFlipBookConfig);
+  } 
+    // Gestion des raccourcis clavier
     const handleKeyPress = (event) => {
       if (event.key === " " || event.key === "ArrowLeft") {
         prevButtonClick();
@@ -206,10 +270,12 @@ function TurnLivre({
       }
     };
     window.addEventListener("keydown", handleKeyPress);
+  
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, [id, number]);
+  }, [id, number]); // Dépendances : `id` et `number`
+  
 /* ------------------------------------------------------------ */
   const titleToIndexMap = {};
 
@@ -298,7 +364,7 @@ function TurnLivre({
   useEffect(() => {
     window.addEventListener("resize", updateFlipBookStyle);
     return () => window.removeEventListener("resize", updateFlipBookStyle);
-  }, []);
+  }, [flipBookStyle]);
 
   return (
     <>
@@ -425,7 +491,7 @@ function TurnLivre({
         </div>
       )}
       <div className="setbackground">
-        {menuVisibleBackground && <SetBackground number={number} id={id} />}
+        {menuVisibleBackground && <SetBackground number={fornumberbackground} id={forbackgroundid} />}
       </div>
 
       {!menuVisibleBackground && (
