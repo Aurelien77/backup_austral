@@ -6,6 +6,7 @@ import { apiUrl } from "../../../config";
 import ViewPageRead from "./ViewBookPageRead";
 import PictureBookPage from "../../../component/PictureBookPage";
 import northstar from "../../../logos/Star_icon-icons.com_75206.ico";
+import north from "../../../logos/north.png";
 import south from "../../../logos/terre.gif";
 import SetBackground from "../../../component/SetBackground";
 
@@ -16,7 +17,7 @@ function TurnLivre({
   orientationPicture,
 
 }) {
-  const [menuVisible, setMenuVisible] = useState(true);
+  const [menuVisible, setMenuVisible] = useState(false);
   const bookRef = useRef();
   const [id, setId] = useState(1);
   const [isMobilePortrait, setIsMobilePortrait] = useState(
@@ -84,8 +85,8 @@ useEffect(() => {
         "(max-width: 768px) and (orientation: portrait)"
       ).matches;
 
-      const widtha = isMobilePortrait ? "9" : "745";
-      const heighta = isMobilePortrait ? "12" : "965";
+      const widtha = isMobilePortrait ? "9" : "1755";
+      const heighta = isMobilePortrait ? "12" : "2400";
 
       setFlipBookConfig({
         size: "stretch",
@@ -94,7 +95,7 @@ useEffect(() => {
         drawShadow: true,
       });
 
-      const widthstyle = isMobilePortrait ? "80vw" : "50vw";
+      const widthstyle = isMobilePortrait ? "80vw" : "63vw";
       const heightstyle = isMobilePortrait ? "110vw" : "39vw";
 
       setFlipBookStyle({
@@ -379,14 +380,14 @@ useEffect(() => {
           </div>
         )}
         {/* FIN Index / Menu */}
-        <button onClick={prevButtonClick} id="west">
-          <span>⬅️</span> <span>West</span>
-        </button>
+{/*         <button onClick={prevButtonClick} id="west">
+          <span>⬅️</span> <span>West</span> 
+        </button> */}
         <div>
           <div className="north">
             <button onClick={() => setMenuVisible(!menuVisible)}>
               {menuVisible ? (
-                "North "
+                 <img src={north} className="northstar" />
               ) : (
                 <img src={northstar} className="northstar" />
               )}
@@ -478,9 +479,9 @@ useEffect(() => {
             </div>
           )}
         </div>
-        <button onClick={nextButtonClick} id="est">
+ {/*        <button onClick={nextButtonClick} id="est">
           <span>Est</span> <span>➡️</span>
-        </button>
+        </button> */}
       </div>
       {menuVisibleBackground && (
         <div
@@ -497,7 +498,7 @@ useEffect(() => {
       {!menuVisibleBackground && (
         <div className="south">
           <div onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
-            south
+          <img  src="https://img.icons8.com/external-outline-design-circle/66/external-background-camping-outline-design-circle.png" alt="external-background-camping-outline-design-circle"/>
           </div>
         </div>
       )}

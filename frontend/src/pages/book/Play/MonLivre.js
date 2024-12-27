@@ -28,6 +28,7 @@ const MonLivre = (props) => {
             orientationPicture={orientationPicture}
          
           />
+          
           <TurnLivreAudio
             number={number}
             pageNumber={currentPage}

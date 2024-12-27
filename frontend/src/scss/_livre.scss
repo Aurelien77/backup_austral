@@ -1,7 +1,7 @@
 // Middle page css book
 .pagecontaineraccueil {
 
-  @include menu_page_mobile_landscape;
+  @include menu_page_mobile_landscape; 
   display: flex;
   align-content: center;
   align-items: center;
@@ -17,11 +17,11 @@
   align-items: center;
   justify-content: center;
  
-@include flipbook-container-book;
+
     & img {
       border-radius: 1%;
-      width: 25vw;
-      height: 32.45vw;
+      width: 31.5vw;
+      height: 43.2vw;
       @include mobilepage;
      
     

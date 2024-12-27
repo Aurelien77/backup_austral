@@ -167,12 +167,21 @@ $phone-max-width: 1000px;
     height: 52.5vw;
   }
 }
-
-@mixin flipbook-container-book {
-  @media only screen and (max-width: $phone-max-width) and (orientation: portrait) {
-    margin-top: -15vw;
+@mixin north_orientation_landscape-mobile {
+  @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
+    top: 20%;
+    left: 95%;
   }
 }
+
+@mixin south_orientation_landscape-mobile {
+  @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
+    top: 10%;
+    left: 95%;
+  }
+}
+
+
 
 @mixin mobilepagehorizontalecontainer {
   @media only screen and (max-width: $phone-max-width) and (orientation: portrait) {

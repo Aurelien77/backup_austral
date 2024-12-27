@@ -612,15 +612,10 @@ section .ajust_image img {
   align-items: center;
   justify-content: center;
 }
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .pagecontaineraccueil .flipbook-container-book {
-    margin-top: -15vw;
-  }
-}
 .pagecontaineraccueil .flipbook-container-book img {
   border-radius: 1%;
-  width: 25vw;
-  height: 32.45vw;
+  width: 31.5vw;
+  height: 43.2vw;
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   .pagecontaineraccueil .flipbook-container-book img {
@@ -1046,6 +1041,7 @@ section .ajust_image img {
   align-items: center;
   /* border: 2px solid rgb(62, 25, 195); */
   width: 100%;
+  margin-top: 3vw;
 }
 .containeraudio .audiocenter audio {
   display: block;
@@ -1084,6 +1080,23 @@ section .ajust_image img {
   z-index: 2;
   position: absolute;
   top: 0vw;
+  color: white;
+  -webkit-text-stroke: #070616 0.2px;
+  text-shadow: 2px 2px 5px rgb(8, 8, 8);
+  box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vw;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0d11e9;
 }
 @media only screen and (max-width: 1000px) {
   .bouton-horver {
@@ -1096,6 +1109,14 @@ section .ajust_image img {
     background-color: #ccc;
     font-weight: bold;
   }
+}
+.bouton-horver:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: #000 -10px 1px 10px;
+  color: black;
+  -webkit-text-stroke: #070616 0px;
+  text-shadow: 2px 2px 5px rgb(8, 8, 8);
 }
 
 .title_book {
@@ -1198,9 +1219,23 @@ section .ajust_image img {
   z-index: 0;
   left: 47.5%;
   position: absolute;
+  margin-top: 0.2vw;
   top: 0%;
   width: fit-content;
   border-radius: 15%;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   animation-name: content2;
   animation-duration: 10s;
   /* Durée de l'animation */
@@ -1208,27 +1243,67 @@ section .ajust_image img {
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
 }
-@media only screen and (max-width: 1500px) and (orientation: landscape) {
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
   .north {
-    top: 0%;
+    top: 20%;
+    left: 95%;
   }
-  .north button {
-    font-size: 0.5rem;
-  }
+}
+.north img {
+  height: 2vw;
+  width: 2vw;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+.north img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 .north button {
   width: 100%;
+  background: none;
+  border: none;
 }
 
 .south {
-  z-index: 9999;
-  left: 46.5%;
+  animation-name: content2;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+  animation-delay: 0.5s;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 0.2vw;
+  background-color: none;
+  z-index: 1;
+  left: 50%;
   position: absolute;
-  bottom: 0%;
-  box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
-  background-color: #90dcfa;
-  border-radius: 20%;
-  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
+  top: 0%;
+  margin-left: 0.5vw;
+}
+.south:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.south img {
+  width: 2vw;
+  height: 2vw;
+}
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+  .south {
+    top: 10%;
+    left: 95%;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .south {
@@ -1262,164 +1337,115 @@ section .ajust_image img {
   height: 100%;
 }
 
-#est {
+/* #est {
+  @include est;
   height: 2.5vw;
   width: 5vw;
   margin-left: 2%;
   right: 5%;
   z-index: 1001;
+
   box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
   background-color: #90dcfa;
   border-radius: 20%;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
+
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
+
   text-overflow: ellipsis;
-}
-@media only screen and (max-width: 1500px) {
-  #est {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.4rem;
-    position: fixed;
-    right: 5px;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: center;
+
+  &:hover {
+    background-color: #e8f7f7;
   }
-}
-#est:hover {
-  background-color: #e8f7f7;
 }
 
 #estlivre {
+  @include estlivre;
   height: 2.5vw;
   width: 5vw;
   margin-left: 2%;
   right: 5%;
   z-index: 1001;
+
   box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
   background-color: #90dcfa;
   border-radius: 20%;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
+
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
+
   text-overflow: ellipsis;
-}
-@media only screen and (max-width: 1500px) {
-  #estlivre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.4rem;
-    position: absolute;
-    right: 1vw;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: center;
+
+  &:hover {
+    background-color: #e8f7f7;
   }
-}
-#estlivre:hover {
-  background-color: #e8f7f7;
 }
 
 #west {
+  @include west;
+  @include west_paysage;
+
   margin-right: 2%;
   height: 2.5vw;
   width: 5vw;
   left: 5%;
+
   z-index: 1001;
+
   box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
   background-color: #90dcfa;
   border-radius: 20%;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
+
   text-overflow: ellipsis;
-}
-@media only screen and (max-width: 1500px) and (orientation: portrait) {
-  #west {
-    display: flex;
-    position: fixed;
-    left: 5px;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.4rem;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: center;
+
+  &:hover {
+    background-color: #e8f7f7;
   }
-}
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
-  #west {
-    right: 0;
-    left: none;
-    top: 50%;
-  }
-}
-#west:hover {
-  background-color: #e8f7f7;
 }
 
 #westlivre {
+  @include westlivre;
+  @include west_paysage;
+
   margin-right: 2%;
   height: 2.5vw;
   width: 5vw;
   left: 5%;
+
   z-index: 1001;
+
   box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
   background-color: #90dcfa;
   border-radius: 20%;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
+
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
-  text-overflow: ellipsis;
-}
-@media only screen and (max-width: 1500px) and (orientation: portrait) {
-  #westlivre {
-    position: absolute;
-    left: 1vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.4rem;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: center;
-  }
-}
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
-  #westlivre {
-    right: 0;
-    left: none;
-    top: 50%;
-  }
-}
-#westlivre:hover {
-  background-color: #e8f7f7;
-}
 
+  text-overflow: ellipsis;
+
+  &:hover {
+    background-color: #e8f7f7;
+  }
+}
+ */
 .imageaccueil {
   z-index: 5;
   animation: scaleBook;
@@ -1610,14 +1636,38 @@ section .ajust_image img {
 
 .boutonlogin::before {
   content: "🌀";
-  /* Emoji de base */
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .boutonlogin:hover::before {
   content: "🌐";
-  /* Emoji au survol */
-  color: inherit;
-  /* Conserve la couleur d'origine */
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .boutonlogin2 {
@@ -1657,32 +1707,38 @@ section .ajust_image img {
 }
 
 .boutonlogin2::before {
-  content: "🌀";
+  content: "🍏";
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   /* Emoji de base */
   cursor: pointer;
 }
 
-.boutonlogin2:hover::before {
-  content: "꩜";
-  /* Emoji au survol */
-  color: inherit;
-  /* Conserve la couleur d'origine */
-  cursor: pointer;
-}
-
 #bouton-cacher-log {
+  position: absolute;
   width: 3vw;
   height: 2vw;
   z-index: 100;
-  position: absolute;
   border: 0;
   top: 0;
-  right: 17vw;
+  right: 14vw;
   margin-top: 0px;
   text-shadow: 0.2px 0.2px 0.5px #000, 3px 3px 5px blue;
   background: none;
   /* Ajout du contenu avant le bouton */
-  /* Changement d'emoji au survol */
   /* Effet de déplacement au survol */
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
@@ -1695,10 +1751,24 @@ section .ajust_image img {
   }
 }
 #bouton-cacher-log::before {
+  width: 3vw;
+  height: 3vw;
   content: "🌀";
   /* Emoji de base */
   font-size: 3rem;
   cursor: pointer;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   #bouton-cacher-log::before {
@@ -1709,13 +1779,24 @@ section .ajust_image img {
 }
 #bouton-cacher-log:hover::before {
   content: "🌐";
-  /* Emoji au survol */
   color: inherit;
-  /* Conserve la couleur d'origine */
   cursor: pointer;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #bouton-cacher-log:hover {
-  transform: translateX(-15%);
+  transform: scale(1.1);
+  margin-top: 0.2vw;
 }
 
 #decobutton {
@@ -1803,7 +1884,7 @@ section .ajust_image img {
 }
 .calquesdeschoix .carte img {
   width: 13rem;
-  height: 19rem;
+  height: 16rem;
   background-color: #121314;
   border-bottom: 5px solid rgb(201, 182, 182);
   border-right: 5px solid rgb(201, 182, 182);
@@ -2372,8 +2453,7 @@ section .ajust_image img {
   position: absolute;
   top: 0.3%;
   left: 19vw;
-  height: 2vh;
-  width: 1vh;
+  height: 1.5vw;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
@@ -2464,15 +2544,15 @@ section .ajust_image img {
   z-index: 3;
   position: absolute;
   top: 0.5vw;
-  right: 32vw;
+  left: 2vw;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 1px 1px rgb(33, 13, 150), -0.5em 0 0.4em black;
   border: 0px solid rgb(20, 66, 202);
   border-radius: 50%;
-  height: 4.5vw;
-  width: 4.5vw;
+  height: 2.5vw;
+  width: 2.5vw;
   font-size: 1rem;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -2498,7 +2578,7 @@ section .ajust_image img {
   z-index: 100;
   /* Augmente si nécessaire */
   position: absolute;
-  top: 0.5vw;
+  top: 0.2vw;
   right: 20vw;
   font-size: 0.7rem;
   display: flex;

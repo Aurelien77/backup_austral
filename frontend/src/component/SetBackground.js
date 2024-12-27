@@ -12,7 +12,6 @@ function SetBackground({ id, number }) {
   const [urlbackground, setUrlBackground] = useState(backgroundbase); // Arrière-plan actuel
   const { setAuthState } = useContext(AuthContext);
 
-  console.log(urlbackground, "=> urlbackgroundurlbackground");
 
   // Récupérer l'option sélectionnée depuis le changement de liste
   const handleSelectChange = (event) => {
@@ -74,7 +73,7 @@ function SetBackground({ id, number }) {
 
     // Sauvegarder l'option sélectionnée dans le localStorage
   }, [selectedOptionlist, id, number]); // Dépend de l'option et des identifiants
-console.log(selectedOptionlist,"selectedOptionlist---------------")
+
   // Liste des fonds personnalisés
   useEffect(() => {
     const storedUrlsFromLocalStorage = localStorage.getItem("storedUrls");

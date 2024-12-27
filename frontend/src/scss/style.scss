@@ -42,6 +42,31 @@ z-index: 2;
   position: absolute;
   top:0vw;
   @include bouton-horver;
+  color: white;
+  -webkit-text-stroke: #070616 0.2px; 
+  text-shadow: 2px 2px 5px rgb(8, 8, 8); 
+box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
+border: #0d98e9 1px solid;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1vw;
+font-size: 1rem;
+line-height: 1;
+background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+background-color: #0d11e9;
+&:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: #000 -10px 1px 10px;
+  color:black;
+  -webkit-text-stroke: #070616 0px; 
+  text-shadow: 2px 2px 5px rgb(8, 8, 8); 
+}
 }
 .title_book {
   z-index: 9999;
@@ -153,18 +178,44 @@ z-index: 2;
 
 .northstar {
   @include menu_page_mobile_landscape_north_star;
+  
   width: 25px;
   height: 25px;
 }
 
 .north {
+  @include north_orientation_landscape-mobile;
   z-index: 0;
   left: 47.5%;
   position: absolute;
+  margin-top: 0.2vw;
   top: 0%;
   width: fit-content;
   border-radius: 15%;
-  @include north;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+& img {
+
+  height: 2vw;
+  width: 2vw;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  &:hover{
+
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+}
   animation-name: content2;
   animation-duration: 10s;
   /* Durée de l'animation */
@@ -174,20 +225,58 @@ z-index: 2;
 
   & button {
     width: 100%;
+   background: none;
+   border: none;
   }
 }
 
 .south {
-  z-index: 9999;
-  left: 46.5%;
+  animation-name: content2;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+  animation-delay: 0.5s;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(3, 3, 86, 0.7)),
+    url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 0.2vw;
+  &:hover{
+
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  & img {
+    width: 2vw;
+    height: 2vw;
+
+
+  }
+
+background-color: none;
+  @include south_orientation_landscape-mobile;
+  z-index: 1;
+  left: 50%;
   position: absolute;
   @include south;
-  bottom: 0%;
-  box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
-  background-color: #90dcfa;
-  border-radius: 20%;
-  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
+  top: 0%;
 
+margin-left: 0.5vw;
   &:hover {
     cursor: pointer;
   }
@@ -215,7 +304,7 @@ z-index: 2;
   }
 }
 
-#est {
+/* #est {
   @include est;
   height: 2.5vw;
   width: 5vw;
@@ -229,7 +318,7 @@ z-index: 2;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
+
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
@@ -255,7 +344,7 @@ z-index: 2;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
+
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
@@ -284,7 +373,6 @@ z-index: 2;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
@@ -313,7 +401,7 @@ z-index: 2;
   text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
   animation-name: scaleBook;
   animation-duration: 10s;
-  /* Durée de l'animation */
+ 
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
@@ -324,7 +412,7 @@ z-index: 2;
     background-color: #e8f7f7;
   }
 }
-
+ */
 
 
 .imageaccueil {
@@ -511,14 +599,40 @@ z-index: 2;
 
 .boutonlogin::before {
   content: "🌀";
-  /* Emoji de base */
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
 .boutonlogin:hover::before {
   content: "🌐";
-  /* Emoji au survol */
-  color: inherit;
-  /* Conserve la couleur d'origine */
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .boutonlogin2 {
@@ -556,54 +670,93 @@ z-index: 2;
 }
 
 .boutonlogin2::before {
-  content: "🌀";
+  content: "🍏";
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   /* Emoji de base */
 
   cursor: pointer;
 }
 
-.boutonlogin2:hover::before {
-  content: "꩜";
-  /* Emoji au survol */
-  color: inherit;
-  /* Conserve la couleur d'origine */
-  cursor: pointer;
-}
+
+
+
 
 #bouton-cacher-log {
   @include bouton-cacher-log;
+  position: absolute;
   width: 3vw;
   height: 2vw;
   z-index: 100;
-  position: absolute;
+
   border: 0;
   top: 0;
-  right: 17vw;
+  right: 14vw;
   margin-top: 0px;
   text-shadow: 0.2px 0.2px 0.5px #000, 3px 3px 5px blue;
   background: none;
 
   /* Ajout du contenu avant le bouton */
   &::before {
+    width: 3vw;
+    height: 3vw;
     @include bouton-cacher-log-before;
     content: "🌀";
     /* Emoji de base */
     font-size: 3rem;
     cursor: pointer;
+    box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   }
 
-  /* Changement d'emoji au survol */
   &:hover::before {
     content: "🌐";
-    /* Emoji au survol */
+ 
     color: inherit;
-    /* Conserve la couleur d'origine */
+
     cursor: pointer;
+    box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   }
 
   /* Effet de déplacement au survol */
   &:hover {
-    transform: translateX(-15%);
+  transform: scale(1.1);
+  margin-top: 0.2vw;
   }
 }
 
@@ -709,7 +862,7 @@ z-index: 2;
 
     & img {
       width: 13rem;
-      height: 19rem;
+      height: 16rem;
 
       background-color: #121314;
       border-bottom: 5px solid rgb(201, 182, 182);
@@ -1404,8 +1557,8 @@ overflow-x: auto;
     position: absolute;
     top: 0.3%;
     left: 19vw;
-    height: 2vh;
-    width: 1vh;
+    height: 1.5vw;
+   
     box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
     border: #0d98e9 1px solid;
     border-radius: 50%;
@@ -1508,15 +1661,15 @@ overflow-x: auto;
     z-index: 3;
     position: absolute;
     top: 0.5vw;
-    right: 32vw;
+   left: 2vw;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 1px 1px rgb(33, 13, 150), -0.5em 0 0.4em black;
     border: 0px solid rgb(20, 66, 202);
     border-radius: 50%;
-    height: 4.5vw;
-    width: 4.5vw;
+    height: 2.5vw;
+    width: 2.5vw;
     font-size: 1rem;
     animation-duration: 1s;
     animation-timing-function: linear;
@@ -1546,7 +1699,7 @@ overflow-x: auto;
     z-index: 100;
     /* Augmente si nécessaire */
     position: absolute;
-    top: 0.5vw;
+    top: 0.2vw;
     right: 20vw;
     font-size: 0.7rem;
     display: flex;

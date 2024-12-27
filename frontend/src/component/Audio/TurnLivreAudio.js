@@ -7,7 +7,7 @@ import Audio from "./Audio";
 
 
 function TurnLivreAudio({ number, pageNumber, onPageChange, setCurrentPageFlipAudio }) {
-    const [menuVisible, setMenuVisible] = useState(true);
+   /*  const [menuVisible, setMenuVisible] = useState(true); */
     const bookRef = useRef();
     const [currentAudioIndex, setCurrentAudioIndex] = useState(null);
     const [currentFlipPage, setCurrentFlipPage] = useState(0);
@@ -139,10 +139,9 @@ function TurnLivreAudio({ number, pageNumber, onPageChange, setCurrentPageFlipAu
     }, [pageNumber, currentFlipPage]);
 
     return (
-      <>
-        {/* Début du Flipbook */}
+      <div className="containeraudio">
         {renderedDivs && (
-          <div>
+      <div className="flexaudioelement">
             {ThePages && lengthdivs && (
               <HTMLFlipBook
                 {...getFlipBookConfig(isMobile)}
@@ -167,7 +166,7 @@ function TurnLivreAudio({ number, pageNumber, onPageChange, setCurrentPageFlipAu
             )}
           </div>
         )}
-      </>
+      </div>
     );
   }
   

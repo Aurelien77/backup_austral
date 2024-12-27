@@ -78,7 +78,7 @@ function Cartes() {
     <div className="calquesdeschoix">
       {/* Bouton pour basculer entre l'affichage horizontal et vertical */}
       <button onClick={toggleDisplay} className="bouton-horver">
-        {showHorizontal ? "Afficher Horizontal" : "Afficher Vertical"}
+        {showHorizontal ? "Horizontal" : "Vertical"}
       </button>
 
       {/* Affichage des livres */}
