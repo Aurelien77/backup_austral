@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import TurnLivreOnboardingAudio from "../../../../component/Audio/TurnLivreOnboardingaudio";
 import TurnLivre from "../TurnLivre";
 
-const Onboarding = () => {
+const Onboarding = ({setmenuVisibleHome, menuVisibleHome}) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageFlipAudio, setCurrentPageFlipAudio] = useState(1);
@@ -19,6 +19,9 @@ const Onboarding = () => {
              onPageChange={handlePageChange}
              CurrentPageFlipAudio={currentPageFlipAudio}
              orientationPicture={orientationPicture}
+             setmenuVisibleHome={setmenuVisibleHome}
+             menuVisibleHome={menuVisibleHome}
+
         />
       
 

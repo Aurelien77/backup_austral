@@ -8,6 +8,7 @@ import PictureBookPage from "../../../component/PictureBookPage";
 import northstar from "../../../logos/Star_icon-icons.com_75206.ico";
 import north from "../../../logos/north.png";
 import south from "../../../logos/terre.gif";
+import south2 from "../../../logos/south.png";
 import SetBackground from "../../../component/SetBackground";
 
 function TurnLivre({
@@ -15,6 +16,8 @@ function TurnLivre({
   onPageChange,
   CurrentPageFlipAudio,
   orientationPicture,
+  menuVisibleHome,
+  setmenuVisibleHome
 
 }) {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -26,7 +29,7 @@ function TurnLivre({
 
   const [forbackgroundid, setforbackgroundid] = useState();
   const [fornumberbackground, setfornumberbackground] = useState();
-
+ 
   const [MAJ, setMaj] = useState(false);
   const [ThePages, setThePages] = useState([]);
   const [deckstate2, setDeckstate2] = useState([]);
@@ -85,15 +88,23 @@ useEffect(() => {
         "(max-width: 768px) and (orientation: portrait)"
       ).matches;
 
+     
+   /*  "745"  */
+  /*  "1165" */
+      
       const widtha = isMobilePortrait ? "9" : "1755";
       const heighta = isMobilePortrait ? "12" : "2400";
 
       setFlipBookConfig({
         size: "stretch",
+        autoSize: true,
         width: widtha,
         height: heighta,
         drawShadow: true,
+        orientation: AuthContext,
       });
+   /*  "50"  */
+  /*  "39" */
 
       const widthstyle = isMobilePortrait ? "80vw" : "63vw";
       const heightstyle = isMobilePortrait ? "110vw" : "39vw";
@@ -103,7 +114,8 @@ useEffect(() => {
         height: heightstyle,
       });
     };
-
+console.log(flipBookConfig, "console.log(flipBookConfig)");
+console.log(flipBookStyle ,"console.log(flipBookStyle )");
     updateFlipBookConfig();
     window.addEventListener("resize", updateFlipBookConfig);
 
@@ -275,7 +287,7 @@ useEffect(() => {
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, [id, number]); // Dépendances : `id` et `number`
+  }, [id, number]); 
   
 /* ------------------------------------------------------------ */
   const titleToIndexMap = {};
@@ -349,8 +361,8 @@ useEffect(() => {
     }
   }
 
-  // Fonction de mise à jour du style en fonction de l'orientation
-  const updateFlipBookStyle = () => {
+
+/*   const updateFlipBookStyle = () => {
     const isPortrait = window.matchMedia(
       "(max-width: 768px) and (orientation: portrait)"
     ).matches;
@@ -361,11 +373,10 @@ useEffect(() => {
     });
   };
 
-  // useEffect pour écouter les changements de taille de la fenêtre
   useEffect(() => {
     window.addEventListener("resize", updateFlipBookStyle);
     return () => window.removeEventListener("resize", updateFlipBookStyle);
-  }, [flipBookStyle]);
+  }, [flipBookStyle]); */
 
   return (
     <>
@@ -379,12 +390,17 @@ useEffect(() => {
             {titleWithGrouping}
           </div>
         )}
-        {/* FIN Index / Menu */}
-{/*         <button onClick={prevButtonClick} id="west">
-          <span>⬅️</span> <span>West</span> 
-        </button> */}
-        <div>
-          <div className="north">
+   <div className="homevisible">
+            <button onClick={() => setmenuVisibleHome(!menuVisibleHome)}>
+              {menuVisibleHome ? (
+                 "💧"
+              ) : (
+                "🫧"
+              )}
+            </button>
+          </div>
+       
+       { menuVisibleHome &&  <> <div className="north">
             <button onClick={() => setMenuVisible(!menuVisible)}>
               {menuVisible ? (
                  <img src={north} className="northstar" />
@@ -393,6 +409,17 @@ useEffect(() => {
               )}
             </button>
           </div>
+        <div className="south">
+<button onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
+              {menuVisibleBackground ? (
+                 <img src={south} className="south" />
+              ) : (
+                <img src={south2}  className="south" />
+              )}
+            </button>
+          
+        </div> </> }
+      
           {renderedDivs && (
             <div className={containerclass} style={flipBookStyle}>
               {ThePages && lengthdivs && flipBookConfig && flipBookStyle && (
@@ -478,30 +505,18 @@ useEffect(() => {
               )}
             </div>
           )}
-        </div>
+      
  {/*        <button onClick={nextButtonClick} id="est">
           <span>Est</span> <span>➡️</span>
         </button> */}
       </div>
-      {menuVisibleBackground && (
-        <div
-          className="southpicture"
-          onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}
-        >
-          <img src={south} />
-        </div>
-      )}
-      <div className="setbackground">
+     
+
+     
+
+<div className="setbackground">
         {menuVisibleBackground && <SetBackground number={fornumberbackground} id={forbackgroundid} />}
       </div>
-
-      {!menuVisibleBackground && (
-        <div className="south">
-          <div onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
-          <img  src="https://img.icons8.com/external-outline-design-circle/66/external-background-camping-outline-design-circle.png" alt="external-background-camping-outline-design-circle"/>
-          </div>
-        </div>
-      )}
     </>
   );
 }

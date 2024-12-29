@@ -586,15 +586,15 @@
 
 @keyframes wave {
   0% {
-    transform: scale(1.05) translate(10px, 0px);
+    right: 2%;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
-    transform: scale(1.1) translate(-10px, 10px);
-    filter: blur(2px) hue-rotate(15deg);
+    right: 25%;
+    filter: blur(0.5px) hue-rotate(15deg);
   }
   100% {
-    transform: scale(1.05) translate(10px, 0px);
+    right: 50%;
     filter: blur(0px) hue-rotate(0deg);
   }
 }

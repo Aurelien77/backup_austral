@@ -9,7 +9,7 @@ function Accueil() {
   const [enr, setenr] = useState(false);
   const [LoginVisible, setLoginVisible] = useState(true);
 
-
+ const [menuVisibleHome, setmenuVisibleHome] = useState(false);
 
 
 
@@ -21,7 +21,7 @@ function Accueil() {
   };
 
   return (
-    <>{!authState.status && (
+    <>{!authState.status && menuVisibleHome && (
           <div onClick={handleClick}>
             {LoginVisible ? (
               <span className="boutonlogin"></span>
@@ -34,7 +34,10 @@ function Accueil() {
         <div className="screen-center"></div>
 
         <>
-        <div><Onboarding /></div>
+        <div><Onboarding 
+        menuVisibleHome={menuVisibleHome}
+        setmenuVisibleHome={setmenuVisibleHome}
+        /></div>
         </>
 <>
         {login && (
