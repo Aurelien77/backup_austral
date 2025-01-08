@@ -146,13 +146,13 @@ $phone-max-width: 1000px;
 
 /* --------------------------------------Audio */
 
-@mixin audio_mobile_portrait {
+/* @mixin audio_mobile_portrait {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    /*  width: 80vw; */
+  
     margin-top: -28%;
   }
 }
-
+ */
 @mixin audio_mobile_portrait_width {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     width: 100%;
@@ -167,25 +167,36 @@ $phone-max-width: 1000px;
     height: 52.5vw;
   }
 }
+
+
 @mixin north_orientation_landscape-mobile {
   @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
-    top: 20%;
-    left: 95%;
+    width:4vw;
+    height: 4vw;
+    top: 35%;
+
   }
 }
 
 @mixin south_orientation_landscape-mobile {
   @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
     top: 10%;
-    left: 95%;
+    left: 90%;
+    top: 65%;
   }
 }
 
 
 
-@mixin mobilepagehorizontalecontainer {
-  @media only screen and (max-width: $phone-max-width) and (orientation: portrait) {
-    margin-top: 0vw;
+@mixin mobilepagehorizontalecontainerlandscape {
+  @media only screen and (max-width: 1000px) and (orientation: landscape) {
+    margin-top: -2vw;
+  }
+}
+
+@mixin mobilepagehorizontalecontainerportrait {
+  @media only screen and (max-width: 1000px) and (orientation: portrait) {
+    margin-top: 10vw;
   }
 }
 
@@ -265,12 +276,29 @@ $phone-max-width: 1000px;
 //
 
 // Mobile device / Orientation paysage ---------------------------------------------------
-
+@mixin mobilepagelandscape {
+  @media only screen and (max-width: 1000px)and (orientation: landscape) {
+    height:35vw;
+       width: 28vw;
+  }
+}
 @mixin menu_page_mobile_portrait {
   @media only screen and (max-width: 1300px) and (orientation: portrait) {
     margin-top: 2%;
-    height: 100vh;
-    overflow-y: auto; 
+   
+  }
+}
+
+@mixin audiocenter_mobile_landscape{
+  @media only screen and (max-width: 1300px) and (orientation: landscape){
+    position: inherit;
+  }}
+
+
+@mixin menu_page_mobile_landscape {
+  @media only screen and (max-width: 1300px) and (orientation: landscape) {
+    margin-top: 3.5%;
+   
   }
 }
 

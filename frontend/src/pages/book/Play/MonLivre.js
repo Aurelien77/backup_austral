@@ -5,7 +5,10 @@ import { useState } from "react";
 import TurnLivre from "./TurnLivre";
 import TurnLivreAudio from "../../../component/Audio/TurnLivreAudio";
 const MonLivre = (props) => {
-  const { number, orientationPicture, setorientationPicture } = props.location.state;
+
+  const [menuVisibleHome, setmenuVisibleHome] = useState(false);
+
+  const { number, orientationPicture} = props.location.state;
   const [Deckstatefond, SetDeckstatefond] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +29,8 @@ const MonLivre = (props) => {
             onPageChange={handlePageChange}
             CurrentPageFlipAudio={currentPageFlipAudio}
             orientationPicture={orientationPicture}
-         
+            setmenuVisibleHome={setmenuVisibleHome}
+            menuVisibleHome={menuVisibleHome}
           />
           
           <TurnLivreAudio

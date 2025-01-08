@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 
 const Audio = forwardRef(({ audioname, onEnded, onPlay }, ref) => {
-  // Styles pour forcer l'affichage des contrôles audio
+
   const audioStyle = {
-    width: '40vw',
+    width: '100%',
     height: '30px',  
     appearance: 'none',  // Désactiver le style par défaut sur certains navigateurs
   };

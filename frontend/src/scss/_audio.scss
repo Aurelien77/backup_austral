@@ -1,5 +1,5 @@
 .containeraudio {
-  @include audio_mobile_portrait;
+ /*  @include audio_mobile_portrait; */
 
   display: flex;
   justify-content: center;
@@ -20,21 +20,21 @@
   }
 
   .audiocenter {
+    @include audiocenter_mobile_landscape;
     display: flex;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
-    /* border: 2px solid rgb(62, 25, 195); */
+
     width: 100%; 
     margin-top: 3vw;
   }
 
   .audiocenter audio {
     display: block;
-    /*    border: 2px solid green; */
-  /*   border: 2px solid rgb(28, 206, 5);  */
+
     border-radius: 5%;
-    margin: 0.1vw;
+   
     width: 100%;
   }
 }

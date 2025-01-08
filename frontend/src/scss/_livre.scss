@@ -2,7 +2,7 @@
 
 
 .pagecontaineraccueil {
-
+@include menu_page_mobile_landscape;
   @include menu_page_mobile_portrait; 
   display: flex;
   align-content: center;
@@ -18,14 +18,14 @@
    display: flex;
   align-items: center;
   justify-content: center;
- z-index: 1000;
+
 
     & img {
       border-radius: 1%;
       width: 31.5vw;
       height: 43.2vw;
       @include mobilepage;
- 
+@include mobilepagelandscape;
       z-index: 1001;
     }
 
@@ -52,8 +52,8 @@
   display: flex;
   align-items: center;
 
-@include mobilepagehorizontalecontainer;
-
+@include mobilepagehorizontalecontainerlandscape;
+@include mobilepagehorizontalecontainerportrait;
   & img {
     border-radius: 1%;
     width: 35vw;

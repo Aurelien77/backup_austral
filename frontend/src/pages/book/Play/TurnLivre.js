@@ -48,7 +48,7 @@ function TurnLivre({
 useEffect(() => {
   const defaultOrientation = "container"; // Orientation par défaut
   const orientation = orientationPicture || defaultOrientation;
-
+// / ! \  Modificaiton si cartehorizontale
   if (orientation === "cartehorizontale") {
     // Gestion spécifique à carte horizontale
     setcontainerclass("containerhorizontale");
@@ -85,15 +85,17 @@ useEffect(() => {
     // Configuration verticale par défaut
     const updateFlipBookConfig = () => {
       const isMobilePortrait = window.matchMedia(
-        "(max-width: 768px) and (orientation: portrait)"
+        "(max-width: 1000px) and (orientation: portrait)"
       ).matches;
 
-     
+      const isMobilelandscape = window.matchMedia(
+        "(max-width: 1000px) and (orientation: landscape)"
+      ).matches;
    /*  "745"  */
   /*  "1165" */
       
-      const widtha = isMobilePortrait ? "9" : "1755";
-      const heighta = isMobilePortrait ? "12" : "2400";
+      const widtha = isMobilePortrait ? "9" : isMobilelandscape ? "7.2" :  "1755";
+      const heighta = isMobilePortrait ? "12" : isMobilelandscape ? "8.85" :  "2400";
 
       setFlipBookConfig({
         size: "stretch",
@@ -106,8 +108,8 @@ useEffect(() => {
    /*  "50"  */
   /*  "39" */
 
-      const widthstyle = isMobilePortrait ? "80vw" : "63vw";
-      const heightstyle = isMobilePortrait ? "110vw" : "39vw";
+      const widthstyle = isMobilePortrait ? "80vw" :  isMobilelandscape ? "56vw" : "63vw";
+      const heightstyle = isMobilePortrait ? "110vw" :  isMobilelandscape ? "30vw" : "39vw";
 
       setFlipBookStyle({
         width: widthstyle,
@@ -412,9 +414,9 @@ console.log(flipBookStyle ,"console.log(flipBookStyle )");
         <div className="south">
 <button onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
               {menuVisibleBackground ? (
-                 <img src={south} className="south" />
+                 <img src={south}  />
               ) : (
-                <img src={south2}  className="south" />
+                <img src={south2}  />
               )}
             </button>
           
