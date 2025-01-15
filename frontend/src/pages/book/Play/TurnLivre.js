@@ -23,9 +23,7 @@ function TurnLivre({
   const [menuVisible, setMenuVisible] = useState(false);
   const bookRef = useRef();
   const [id, setId] = useState(1);
-  const [isMobilePortrait, setIsMobilePortrait] = useState(
-    window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches
-  );
+  const { authState } = useContext(AuthContext); 
 
   const [forbackgroundid, setforbackgroundid] = useState();
   const [fornumberbackground, setfornumberbackground] = useState();
@@ -364,21 +362,6 @@ console.log(flipBookStyle ,"console.log(flipBookStyle )");
   }
 
 
-/*   const updateFlipBookStyle = () => {
-    const isPortrait = window.matchMedia(
-      "(max-width: 768px) and (orientation: portrait)"
-    ).matches;
-    setIsMobilePortrait(isPortrait);
-    setFlipBookStyle({
-      width: isPortrait ? "80vw" : "50vw",
-      height: isPortrait ? "110vw" : "39vw",
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateFlipBookStyle);
-    return () => window.removeEventListener("resize", updateFlipBookStyle);
-  }, [flipBookStyle]); */
 
   return (
     <>
@@ -412,7 +395,29 @@ console.log(flipBookStyle ,"console.log(flipBookStyle )");
             </button>
           </div>
         <div className="south">
-<button onClick={() => setmenuVisibleBackground(!menuVisibleBackground)}>
+<button onClick={() => 
+  
+  
+{ 
+ const back = localStorage.getItem("listbackground")
+  if(!back){
+   
+      localStorage.setItem("listbackground", authState.urlcontextbackground);
+    
+  }
+
+ 
+  
+  
+  setmenuVisibleBackground(!menuVisibleBackground)
+
+
+}
+  
+  
+  
+  
+  }>
               {menuVisibleBackground ? (
                  <img src={south}  />
               ) : (

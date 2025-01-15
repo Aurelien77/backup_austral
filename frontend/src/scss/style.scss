@@ -7,9 +7,11 @@
 
 @import "./Fiche";
 @import "./audio";
+
 .homevisible button {
+  z-index:5;
   position: absolute;
-  top:65px;
+  top: 65px;
   right: 10px;
   width: 3vw;
   height: 3vw;
@@ -21,16 +23,26 @@
   justify-content: center;
   color: black;
   font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(
+    circle,
+    rgba(108, 131, 233, 0.2),
+    rgba(95, 219, 247, 0.5),
+    rgba(24, 107, 184, 0.4),
+    rgba(78, 141, 230, 0.7),
+    rgba(3, 3, 86, 0.7)
+  );
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   &:hover {
-cursor: pointer;
+    cursor: pointer;
     transform: scale(1.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #0d98e9;
   }
 }
+
 .firstpage {
   width: 100%;
   height: 100%;
@@ -39,7 +51,6 @@ cursor: pointer;
   align-items: center;
   display: none;
 }
-
 
 .deck {
   font-size: 2rem;
@@ -59,38 +70,57 @@ cursor: pointer;
   }
 }
 
-
-.bouton-horver{
-z-index: 2;
+.bouton-horver {
+  z-index: 2;
   position: absolute;
-  top:0vw;
+  top: 0vw;
   @include bouton-horver;
   color: white;
-  -webkit-text-stroke: #070616 0.2px; 
-  text-shadow: 2px 2px 5px rgb(8, 8, 8); 
-box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
-border: #0d98e9 1px solid;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 1vw;
-font-size: 1rem;
-line-height: 1;
-background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
-background-color: #0d11e9;
-&:hover{
-  transform: scale(1.1);
-  cursor: pointer;
-  box-shadow: #000 -10px 1px 10px;
-  color:black;
-  -webkit-text-stroke: #070616 0px; 
-  text-shadow: 2px 2px 5px rgb(8, 8, 8); 
+  -webkit-text-stroke: white 0.3px;
+
+  text-shadow: 2px 2px 5px rgb(18, 3, 103);
+  box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #3e09c3 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vw;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(
+      circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(3, 3, 86, 0.7)
+    ),
+    url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0d11e9;
+
+  &:hover {
+    background: radial-gradient(
+        circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(3, 3, 86, 0.7)
+      ),
+      url("../logos/world.svg");
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: #ebeded -1px 1px 10px;
+    background-color: #0c5ce7;
+    -webkit-text-stroke: #38e2f8 0.1px;
+    text-shadow: 2px 2px 5px rgb(9, 9, 9);
+  }
 }
-}
+
 .title_book {
   z-index: 9999;
   font-size: 2rem;
@@ -100,7 +130,6 @@ background-color: #0d11e9;
 }
 
 .test {
-
   color: red;
   font-size: 2rem;
 }
@@ -118,39 +147,21 @@ background-color: #0d11e9;
 
 .container {
   width: 100%;
-
-
-
   margin: 0;
   padding: 0;
-
-
   opacity: 1;
-
-
-
-
-
-
   background-color: #030356;
-
- 
-
-  animation-name: pulseplane;
+  /* animation-name: pulseplane;
   animation-duration: 10s;
-
   animation-delay: 0.5s;
   animation-timing-function: linear;
-  animation-fill-mode: forwards;
-
+  animation-fill-mode: forwards; */
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 }
-
-
 
 #boutoncouv {
   position: absolute;
@@ -171,13 +182,8 @@ background-color: #0d11e9;
   opacity: 0.8;
 }
 
-
 .label_creation_book {
   font-size: 1rem;
-}
-
-.ok {
-  background-color: red;
 }
 
 #annuler {
@@ -201,70 +207,75 @@ background-color: #0d11e9;
 
 .northstar {
   @include menu_page_mobile_landscape_north_star;
-  
+
   width: 25px;
   height: 25px;
 }
 
 .north {
-  & button{
+  & button {
     all: unset;
-
   }
+  display: flex;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation-name: Title;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+
   @include north_orientation_landscape-mobile;
-  z-index: 0;
-  right: 2.5%;
+  top: 2px;
+  right: 15px;
   position: absolute;
-  margin-top: 0.2vw;
-  top: 15%;
-width: 3vw;
-height: 3vw;
+  text-align: center;
+  align-items: center;
+ animation:  bouton_title 1s forwards;
+  width: 3vw;
+  height: 3vw;
   border-radius: 15%;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
 
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-& img {
+  background: radial-gradient(
+    circle,
+    rgba(108, 131, 233, 0.2),
+    rgba(95, 219, 247, 0.5),
+    rgba(24, 107, 184, 0.4),
+    rgba(78, 141, 230, 0.7),
+    rgba(3, 3, 86, 0.7)
+  );
 
-  height: 2vw;
-  width: 2vw;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-  &:hover{
+  & img {
+    height: 2vw;
+    width: 2vw;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
 
-    transform: scale(1.2);
-    cursor: pointer;
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
   }
-}
-  animation-name: content2;
-  animation-duration: 10s;
-  /* Durée de l'animation */
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
+
+ 
 
   & button {
     width: 100%;
-   background: none;
-   border: none;
+    background: none;
+    border: none;
   }
 }
 
 .south {
-  & button{
+  & button {
     all: unset;
-
   }
+
   z-index: 1;
   animation-name: content2;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
@@ -275,38 +286,48 @@ height: 3vw;
   align-items: center;
   justify-content: center;
 
-  background: radial-gradient(circle,
+  background: radial-gradient(
+    circle,
+    rgba(4, 223, 247, 0.5),
+    rgba(32, 221, 242, 0.4),
+    rgba(26, 233, 247, 0.7)
+  );
 
-      rgba(4, 223, 247, 0.5),
-      rgba(32, 221, 242, 0.4),
 
-      rgba(26, 233, 247, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-top: 0.2vw;
-  &:hover{
-
+  &:hover {
     transform: scale(1.05);
     cursor: pointer;
   }
-  & img {
-    width: 100%;
-    height: 100%;
-z-index: 1;
 
+text-align: center;
+  & img {
+    width: 80%;
+    height: 80%;
+  border: 0.5px solid rgb(12, 39, 196);
+    z-index: 1;
+    border-radius: 50%;
+    margin-top: 5px;
+    box-shadow: 5px 2px 10px 1px black;
+    &:hover {
+background-color: #1cda22;
+      transform: scale(0.98);
+      box-shadow: 2px 2px 3px 1px black;
+    }
   }
 
-background-color: none;
+
+  background-color: rgb(49, 13, 195);
+animation: bouton_background  2s  forwards;
   @include south_orientation_landscape-mobile;
   z-index: 1;
-right: 2.5%;
+  right: 10px;
   position: absolute;
-width: 5vw;
-height: 5vw;
-  top: 30%;
+  width: 2.9vw;
+  height: 2.9vw;
+  top: 130px;
 
-margin-left: 0.5vw;
+
+
   &:hover {
     cursor: pointer;
   }
@@ -317,20 +338,21 @@ margin-left: 0.5vw;
   left: 46.5%;
   position: absolute;
   bottom: 0;
-  
+
   animation-name: content2;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
 
-  display: inline-block; 
-  width: 5vw; 
-  height: 5vw; 
-  cursor: pointer; 
-  &  img {
-    width: 100%; 
-    height: 100%; 
+  display: inline-block;
+  width: 5vw;
+  height: 5vw;
+  cursor: pointer;
+
+  & img {
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -444,7 +466,6 @@ margin-left: 0.5vw;
 }
  */
 
-
 .imageaccueil {
   z-index: 5;
   animation: scaleBook;
@@ -492,12 +513,14 @@ margin-left: 0.5vw;
 
   color: black;
 
-  background: radial-gradient(circle,
+  background: radial-gradient(
+      circle,
       rgba(108, 131, 233, 0.2),
       rgba(95, 219, 247, 0.5),
       rgba(24, 107, 184, 0.4),
       rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)),
+      rgba(3, 3, 86, 0.7)
+    ),
     url("");
   background-size: contain;
   background-repeat: no-repeat;
@@ -510,12 +533,14 @@ margin-left: 0.5vw;
   & button {
     @include thetitlespaysagebuton;
     width: 100%;
-    background: radial-gradient(circle,
-        rgba(108, 131, 233, 0.2),
-        rgba(95, 219, 247, 0.5),
-        rgba(24, 107, 184, 0.4),
-        rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7));
+    background: radial-gradient(
+      circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(3, 3, 86, 0.7)
+    );
     background-color: rgba(0, 0, 0, 0);
     background-position-x: 0%, 0%;
     background-position-y: 0%, 0%;
@@ -529,12 +554,14 @@ margin-left: 0.5vw;
     margin: 2.5px;
 
     &:hover {
-      background: linear-gradient(circle,
-          rgba(108, 131, 233, 0.2),
-          rgba(95, 219, 247, 0.5),
-          rgba(24, 107, 184, 0.4),
-          rgba(78, 141, 230, 0.7),
-          rgba(3, 3, 86, 0.7));
+      background: linear-gradient(
+        circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(3, 3, 86, 0.7)
+      );
 
       box-shadow: rgba(13, 13, 14, 0.7) 0px 7px 9px 0px;
     }
@@ -594,24 +621,21 @@ margin-left: 0.5vw;
 .boutonlogin {
   @include boutonlogin;
   position: absolute;
-  right: 50%;
-  top: 2px;
- 
+  right:50px;
+  top:65px;
+
   z-index: 5;
   color: #8bd2fb;
-  /* Couleur de l'emoji initiale */
-  /*   box-shadow: 1px 1px rgb(11, 171, 230), -0.01em 0 0.01em rgb(7, 141, 189); */
-  animation-name: wave;
-  animation-duration: 4s;
-  /* Durée de l'animation */
+
+  animation-name: bouton_login;
+  animation-duration: 1s;
+
   animation-timing-function: linear;
   animation-fill-mode: backwards;
-  animation-delay: 0.5s;
+  /* animation-delay: 0.5s; */
 
   opacity: 1;
 
-
-  
   font-size: 4rem;
   /* Taille de l'emoji */
   width: 4.5vw;
@@ -620,12 +644,12 @@ margin-left: 0.5vw;
 
   &:hover {
     cursor: pointer;
-    /* box-shadow: 1px 1px rgb(11, 171, 230), -0.05em 0 0.05em rgb(240, 229, 20); */
+    
   }
 }
 
 .boutonlogin::before {
-  content: "🌀";
+  content: "";
   width: 3vw;
   height: 3vw;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
@@ -636,27 +660,40 @@ margin-left: 0.5vw;
   justify-content: center;
   color: black;
   font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(
+    circle,
+    rgba(108, 131, 233, 0.2),
+    rgba(95, 219, 247, 0.5),
+    rgba(24, 107, 184, 0.4),
+    rgba(78, 141, 230, 0.7),
+    rgba(3, 3, 86, 0.7)
+  );
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 .boutonlogin:hover::before {
-  content: "🌐";
+  content: "🌀";
   width: 3vw;
   height: 3vw;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  box-shadow: 1px 1px rgb(99, 237, 230), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: black;
-  font-size: 1rem;
-
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  font-size: 2rem;
+  animation: infinite_rotate 10s linear infinite;
+  background: radial-gradient(
+    circle,
+    rgba(108, 131, 233, 0.2),
+    rgba(95, 219, 247, 0.5),
+    rgba(24, 107, 184, 0.4),
+    rgba(78, 141, 230, 0.7),
+    rgba(92, 92, 253, 0.7)
+  );
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -667,11 +704,10 @@ margin-left: 0.5vw;
 
   position: absolute;
   top: 2px;
-  right: 50%;
- 
+  right: 20px;
+  top: 2px;
+
   z-index: 10000;
-
-
 
   display: flex;
   line-height: 1;
@@ -682,8 +718,6 @@ margin-left: 0.5vw;
   width: 3.5vw;
   height: 3.5vw;
   border-radius: 50%;
-
-
 }
 
 .boutonlogin2::before {
@@ -699,22 +733,16 @@ margin-left: 0.5vw;
   justify-content: center;
   color: black;
   font-size: 1rem;
-right: 50%;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
- 
+  right:50px;
+  top:65px;
+;
+  
   cursor: pointer;
 
   &:hover {
     box-shadow: 1px 1px rgb(11, 171, 230), -0.05em 0 0.05em rgb(240, 229, 20);
   }
 }
-
-
-
-
 
 #bouton-cacher-log {
   @include bouton-cacher-log;
@@ -740,44 +768,31 @@ right: 50%;
     font-size: 3rem;
     cursor: pointer;
     box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
+    border: #0d98e9 1px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 1rem;
 
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+    background: radial-gradient(
+        circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(3, 3, 86, 0.7)
+      ),
+      url("../logos/world.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
-  &:hover::before {
-    content: "🌐";
- 
-    color: inherit;
-
-    cursor: pointer;
-    box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  }
-
-  /* Effet de déplacement au survol */
   &:hover {
-  transform: scale(1.1);
-  margin-top: 0.2vw;
+    transform: scale(1.1);
+    margin-top: 0.2vw;
   }
 }
 
@@ -849,8 +864,6 @@ right: 50%;
   flex-direction: row;
   flex-wrap: wrap;
 
-
-
   & .carte {
     display: flex;
     flex-direction: column;
@@ -859,17 +872,18 @@ right: 50%;
     padding: 2%;
     font-family: "Times New Roman", Times, serif;
 
-
     border-radius: 20% 0% 20% 20%;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(circle,
+    background: radial-gradient(
+        circle,
         rgba(121, 236, 244, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(23, 138, 204, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(161, 227, 235, 0.7)),
+        rgba(161, 227, 235, 0.7)
+      ),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
@@ -892,6 +906,7 @@ right: 50%;
       box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
     }
   }
+
   & .cartehorizontale {
     display: flex;
     flex-direction: column;
@@ -900,17 +915,18 @@ right: 50%;
     padding: 2%;
     font-family: "Times New Roman", Times, serif;
 
-
     border-radius: 20% 0% 20% 20%;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(circle,
+    background: radial-gradient(
+        circle,
         rgba(121, 236, 244, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(23, 138, 204, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(161, 227, 235, 0.7)),
+        rgba(161, 227, 235, 0.7)
+      ),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
@@ -957,11 +973,13 @@ right: 50%;
 
   color: black;
 
-  background: radial-gradient(circle,
+  background: radial-gradient(
+      circle,
       rgba(108, 131, 233, 0.9),
       rgba(95, 219, 247, 0.5),
       rgba(78, 141, 230, 1),
-      rgba(3, 3, 86, 1)),
+      rgba(3, 3, 86, 1)
+    ),
     url("");
   background-size: contain;
   background-repeat: no-repeat;
@@ -1046,9 +1064,11 @@ right: 50%;
       bottom: 0%;
       right: 35%;
       border: 2px solid rgb(109, 207, 24);
-      background: radial-gradient(circle,
-          rgba(24, 107, 184, 0.4),
-          rgba(3, 3, 86, 0.7));
+      background: radial-gradient(
+        circle,
+        rgba(24, 107, 184, 0.4),
+        rgba(3, 3, 86, 0.7)
+      );
       width: 30%;
       display: inline;
       margin-top: 5vw;
@@ -1117,7 +1137,7 @@ right: 50%;
 
 .shadow {
   border-left: 0.1px solid rgb(160, 157, 157);
-height: 99%;
+  height: 99%;
   box-shadow: 7px 10px 3px 1px rgb(39, 38, 38);
 }
 
@@ -1150,19 +1170,20 @@ height: 99%;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(circle,
+    background: radial-gradient(
+        circle,
         rgba(121, 236, 244, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(23, 138, 204, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(161, 227, 235, 0.7)),
+        rgba(161, 227, 235, 0.7)
+      ),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 
     & .titre {
-
       font-size: 1rem;
       margin-bottom: 2%;
       background-color: rgb(248, 246, 242);
@@ -1177,15 +1198,11 @@ height: 99%;
       align-items: center;
 
       & input {
-
-
-
         box-shadow: 2px 2px black, -0.2em -0.2em 0.9em white;
         border: 0.1px solid #2069dd;
       }
 
       & textarea {
-
         width: 100%;
         height: 2rem;
         box-shadow: 2px 2px black, -0.2em -0.2em 0.9em white;
@@ -1196,9 +1213,7 @@ height: 99%;
         display: flex;
         flex-direction: column;
 
-
         & .titre_checkbox {
-
           font-size: 1rem;
 
           & input {
@@ -1209,8 +1224,6 @@ height: 99%;
         }
       }
     }
-
-
 
     @include smartphone-ajustement_formulaire;
 
@@ -1257,11 +1270,9 @@ height: 99%;
   @include smartphone-deck;
 }
 
-
-
 .creationbook {
   display: flex;
-overflow-x: auto;
+  overflow-x: auto;
   flex-direction: column;
   justify-content: top;
   align-items: center;
@@ -1276,8 +1287,6 @@ overflow-x: auto;
 
   flex-direction: column;
   align-items: center;
-
-
 
   & .fromdicalques {
     z-index: 2;
@@ -1295,12 +1304,14 @@ overflow-x: auto;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(circle,
+    background: radial-gradient(
+        circle,
         rgba(121, 236, 244, 1),
         rgba(95, 219, 247, 0.9),
         rgba(23, 138, 204, 1),
         rgba(78, 141, 230, 0.8),
-        rgba(161, 227, 235, 0.5)),
+        rgba(161, 227, 235, 0.5)
+      ),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
@@ -1320,12 +1331,14 @@ overflow-x: auto;
   padding: 2rem;
   border-radius: 10% 0% 10% 5%;
   margin: 0.2rem;
-  background: radial-gradient(circle,
-      rgba(12, 45, 153, 0.2),
-      rgba(46, 166, 221, 0.5),
-      rgba(122, 177, 229, 0.4),
-      rgba(47, 232, 204, 0.7),
-      rgba(35, 199, 240, 0.7));
+  background: radial-gradient(
+    circle,
+    rgba(12, 45, 153, 0.2),
+    rgba(46, 166, 221, 0.5),
+    rgba(122, 177, 229, 0.4),
+    rgba(47, 232, 204, 0.7),
+    rgba(35, 199, 240, 0.7)
+  );
 
   & .alignement {
     animation: content2 3s;
@@ -1447,6 +1460,7 @@ overflow-x: auto;
     list-style-type: decimal;
   }
 }
+
 .imagedeckfond {
   width: 100%;
   display: flex;
@@ -1472,10 +1486,8 @@ overflow-x: auto;
   }
 }
 
-
 .navbarre {
   margin-top: 10vw;
-
 }
 
 .barredenavigation {
@@ -1498,13 +1510,14 @@ overflow-x: auto;
     /* Agrandit le bouton au survol */
     background-color: #03507d;
     box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-    background: radial-gradient(circle,
-        rgba(108, 131, 233, 0.2),
-        rgba(95, 219, 247, 0.5),
-        rgba(24, 107, 184, 0.4),
-        rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7)),
-      url("../logos/world.svg");
+    background: radial-gradient(
+      circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(3, 3, 86, 0.7)
+    );
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1579,7 +1592,7 @@ overflow-x: auto;
     top: 0.3%;
     left: 19vw;
     height: 1.5vw;
-   
+
     box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
     border: #0d98e9 1px solid;
     border-radius: 50%;
@@ -1589,13 +1602,14 @@ overflow-x: auto;
     color: black;
     font-size: 1rem;
     line-height: 1;
-    background: radial-gradient(circle,
-        rgba(108, 131, 233, 0.2),
-        rgba(95, 219, 247, 0.5),
-        rgba(24, 107, 184, 0.4),
-        rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7)),
-      url("../logos/world.svg");
+    background: radial-gradient(
+      circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(3, 3, 86, 0.7)
+    );
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1664,13 +1678,14 @@ overflow-x: auto;
 
     &:hover {
       box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-      background: radial-gradient(circle,
-          rgba(108, 131, 233, 0.2),
-          rgba(95, 219, 247, 0.5),
-          rgba(24, 107, 184, 0.4),
-          rgba(78, 141, 230, 0.7),
-          rgba(3, 3, 86, 0.7)),
-        url("../logos/world.svg");
+      background: radial-gradient(
+        circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(3, 3, 86, 0.7)
+      );
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -1682,7 +1697,7 @@ overflow-x: auto;
     z-index: 3;
     position: absolute;
     top: 0.5vw;
-   left: 2vw;
+    left: 2vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1698,13 +1713,14 @@ overflow-x: auto;
     animation-delay: 3.5s;
     animation: deco 5s forwards;
     color-scheme: white;
-    background: radial-gradient(circle,
-        rgba(108, 131, 233, 0.2),
-        rgba(178, 177, 206, 0.5),
-        rgba(24, 107, 184, 0.4),
-        rgba(26, 161, 224, 0.7),
-        rgba(3, 3, 86, 0.7)),
-      url("../logos/world.svg");
+    background: radial-gradient(
+      circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(178, 177, 206, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(26, 161, 224, 0.7),
+      rgba(3, 3, 86, 0.7)
+    );
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

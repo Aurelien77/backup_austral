@@ -32,13 +32,13 @@ function SetBackground({ id, number }) {
     const fetchBackground = async () => {
       try {
         // Gérer l'option 1 (Plan)
-        if (selectedOptionlist === "option1") {
+        if (selectedOptionlist === "option2") {
           setUrlBackground(backgroundbase);
           localStorage.setItem("listbackground", backgroundbase); // Mise à jour du fond d'écran
         }
 
         // Gérer l'option 2 (Book) de manière asynchrone
-        if (selectedOptionlist === "option2") {
+        if (selectedOptionlist === "option1") {
           const response = await axios.get(
             `${apiUrl}/postimages/lirefond/${id}/${number}`,
             {
@@ -94,7 +94,9 @@ function SetBackground({ id, number }) {
   const handleCustomUrlChange = (event) => {
     setCustomUrl(event.target.value);
     if (event.target.value.trim() !== "") {
-      setUrlBackground(event.target.value); // Mise à jour de l'arrière-plan temporairement
+      setUrlBackground(event.target.value);
+      localStorage.setItem("listbackground", event.target.value);
+     
     }
   };
 
@@ -125,8 +127,8 @@ function SetBackground({ id, number }) {
         value={selectedOptionlist} // Utiliser selectedOptionlist pour gérer l'affichage
         onChange={handleSelectChange}
       >
-        <option value="option1" className="school">Plan</option>
-        <option value="option2" className="book">Book</option>
+        <option value="option1" className="school">Book</option>
+        <option value="option2" className="book">Plan</option>
         <option value="option3" className="night">Night</option>
 
         {storedUrls.map((url, index) => (

@@ -190,7 +190,7 @@ $phone-max-width: 1000px;
 
 @mixin mobilepagehorizontalecontainerlandscape {
   @media only screen and (max-width: 1000px) and (orientation: landscape) {
-    margin-top: -2vw;
+    margin-top: -5vw;
   }
 }
 

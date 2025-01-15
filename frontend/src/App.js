@@ -17,64 +17,13 @@ import FicheAdmin from "./Users/FicheAdmin";
 import Livres from "./pages/Livres";
 import MonLivre from "./pages/book/Play/MonLivre";
 import CreationBook from "./pages/book/Creation/CreationBook";
-import backgroundbase from "./logos/world.svg";
-import backgroundbase2 from "./logos/space.jpg";
+
 import { apiUrl } from "./config";
+
 
 const history = createBrowserHistory();
 
 function App() {
-
-  const [isHidden, setIsHidden] = useState(false);
-
-
- 
-  const [backgroundImage, setBackgroundImage] = useState(backgroundbase);
-  
-  const listBackground = localStorage.getItem("listbackground");
-
-// use effect pour ecupere background 
-useEffect(() => {
-
-  
-  if (listBackground === "option2") {
-
-    let myBookData = localStorage.getItem("mybook");
-    let myIdData = localStorage.getItem("myid");
-    axios
-      .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        if (response.data && response.data[0]) {
-          setBackgroundImage(`url(${response.data[0].lien})`);
-          console.log(response.data[0].lien, "response.data[0].lienresponse.data[0].lien")// Appliquer directement l'URL récupérée
-        }
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération du fond 'Book':", error);
-      });
-  }
-  if (listBackground && listBackground.startsWith("http")) {
-    setBackgroundImage(`url(${listBackground})`);
-}
-
-
-  if (listBackground === "option3") {
-    setBackgroundImage(`url(${backgroundbase2})`);
-   
-    
-  }
-
-
-
-}, [listBackground, backgroundImage]);
-
-
-
-
-
-
   const [authState, setAuthState] = useState({
     username: "",
     id: 0,
@@ -88,6 +37,56 @@ useEffect(() => {
     create: true,
     urlcontextbackground: "",
   });
+
+  const [isHidden, setIsHidden] = useState(false);
+
+
+ 
+  const [backgroundImage, setBackgroundImage] = useState();
+
+  const listBackground = localStorage.getItem("listbackground");
+
+// use effect pour recuperr le background 
+useEffect(() => {
+  if (!listBackground) {
+
+    let myBookData = localStorage.getItem("mybook");
+    let myIdData = localStorage.getItem("myid");
+    axios
+      .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        if (response.data && response.data[0]) {
+          setBackgroundImage(`url(${response.data[0].lien})`);
+          setAuthState((prevState) => ({
+            ...prevState,
+            urlcontextbackground: `${response.data[0].lien}`,
+          }));
+          
+        }
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération du fond 'Book':", error);
+      });
+
+  }
+
+
+if (listBackground) {
+  setBackgroundImage(`url(${listBackground})`);
+}
+
+
+
+
+}, [listBackground, backgroundImage ]);
+
+
+
+
+
+
 
 
 
@@ -142,9 +141,13 @@ useEffect(() => {
   // Déterminer l'image de fond à utiliser
 
   useEffect(() => {
-    const backgroundUrl = authState.urlcontextbackground || backgroundbase;
+    const backgroundUrl = authState.urlcontextbackground;
     setBackgroundImage(`url(${backgroundUrl})`);
   }, [authState.urlcontextbackground]);
+
+
+
+
     // -------------------Logout
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -223,7 +226,7 @@ useEffect(() => {
       className="container"
       style={{
         backgroundImage: backgroundImage,
-        backgroundSize: "100vw",
+         backgroundSize: " cover", 
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
 

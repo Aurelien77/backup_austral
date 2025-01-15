@@ -98,367 +98,59 @@ li {
     background-size: cover;
   }
 }
-@keyframes scale {
-  0% {
-    scale: 1;
-    opacity: 1;
-    background-position: 100% 100%;
-  }
-  25% {
-    scale: 1.1;
-    opacity: 1;
-    background-position: 100% 100%;
-  }
-  35% {
-    scale: 1.2;
-    opacity: 1;
-    background-position: 120% 100%;
-  }
-  50% {
-    scale: 1.2;
-    opacity: 1;
-    background-position: 100% 100%;
-  }
-  75% {
-    scale: 1;
-    opacity: 1;
-    background-position: 110% 100%;
-  }
-  100% {
-    scale: 1;
-    opacity: 1;
-    background-position: 100% 100%;
-  }
-}
-@keyframes scaleBook {
-  0% {
-    scale: 0;
-    opacity: 0;
-    bottom: 100vw;
-  }
-  35% {
-    scale: 0.1;
-    opacity: 0;
-    right: 29.5vw;
-    bottom: 100vw;
-  }
-  75% {
-    scale: 0.8;
-    opacity: 1;
-    bottom: 100vw;
-  }
-  /*   75% {
-      scale: 0.8;
-      opacity: 1;
-    } */
-  100% {
-    scale: 1;
-    opacity: 1;
-  }
-}
-@keyframes scale-center {
-  25% {
-    width: 25%;
-  }
-  35% {
-    width: 28vw;
-  }
-  50% {
-    width: 35vw;
-  }
-  75% {
-    width: 50%;
-  }
-  100% {
-    width: 75%;
-    z-index: 1;
-  }
-}
-@keyframes rotate {
-  0% {
+@keyframes infinite_rotate {
+  from {
     transform: rotate(0deg);
-    opacity: 0.7;
+    border: rgb(50, 17, 216) 0.1px solid;
   }
-  50% {
-    transform: rotate(180deg);
-    opacity: 1;
-  }
-  100% {
+  to {
     transform: rotate(360deg);
-    opacity: 0.7;
+    border: rgb(50, 17, 216) 0.5px solid;
   }
 }
-@keyframes smartphone-verticale-left {
-  25% {
-    left: 33.5vw;
-  }
-  35% {
-    left: 33.5vw;
-  }
-  50% {
-    left: 28.5vw;
-  }
-  75% {
-    left: 18.5vw;
-  }
-  100% {
-    left: 8.5vw;
-  }
-}
-@keyframes smartphone-verticale-right {
-  25% {
-    right: 33.5vw;
-  }
-  35% {
-    right: 33.5vw;
-  }
-  50% {
-    right: 28.5vw;
-  }
-  75% {
-    right: 18.5vw;
-  }
-  100% {
-    right: 8.5vw;
-  }
-}
-@keyframes pulse {
-  25% {
-    opacity: 0.4;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes pulse2 {
-  25% {
-    opacity: 0.4;
-    transform: scale(0.5);
-    /* Scale à 1.5 à 25% de l'animation */
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes deco {
+@keyframes bouton_login {
   0% {
-    opacity: 0;
-    transform: scale(0.5);
-    /* Scale à 1.5 à 25% de l'animation */
-  }
-  90% {
-    opacity: 0;
-    transform: scale(0.5);
-    /* Scale à 1.5 à 25% de l'animation */
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes content2 {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes content3 {
-  0% {
-    transform: translateX(-50px) rotate(0deg);
-    right: 1.5vw;
-  }
-  25% {
-    transform: translateX(-25px) rotate(90deg);
-    right: 5.5vw;
-  }
-  50% {
-    transform: translateX(0px) rotate(180deg);
-    right: 10.5vw;
-  }
-  75% {
-    transform: translateX(-25px) rotate(270deg);
-    right: 5.5vw;
-  }
-  100% {
-    transform: translateX(-50px) rotate(360deg);
-    right: 1.5vw;
-  }
-}
-@keyframes identiti {
-  0% {
-    transform: translateX(-25px) rotate(0deg);
-  }
-  25% {
-    transform: translateX(-5px) rotate(90deg);
-  }
-  50% {
-    transform: translateX(0px) rotate(180deg);
-  }
-  75% {
-    transform: translateX(-5px) rotate(270deg);
-    right: 5.5vw;
-  }
-  100% {
-    transform: translateX(-25px) rotate(360deg);
-    right: 20vw;
-  }
-}
-@keyframes pulse3 {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes progressiftitle {
-  0% {
-    display: none;
-    opacity: 0;
-  }
-  95% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fly-right-one {
-  0% {
-    transform: translateY(100vh) translateX(0vw) scale(2);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(100vh) translateX(0vw) scale(2);
-    opacity: 0;
-    width: 200vw;
-    height: 200vw;
-  }
-  100% {
-    transform: translateY(0%) translateX(0%) scale(2);
-    opacity: 0;
-  }
-}
-@keyframes fly-right-two {
-  0% {
-    transform: translateY(0vh) translateX(-9vw) scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(0vh) translateX(-3vw) scale(0.7);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-50%) translateX(-50%) scale(1);
-    opacity: 1;
-  }
-}
-@keyframes fly-menu {
-  0% {
-    transform: translateY(0vh) translateX(-2vw) scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(0vh) translateX(-3vw) scale(0.7);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0vh) translateX(0vw) scale(1);
-    opacity: 1;
-  }
-}
-@keyframes progressif {
-  0% {
-    opacity: 0.1;
-  }
-  20% {
-    opacity: 0.2;
-  }
-  40% {
-    opacity: 0.4;
-  }
-  60% {
-    opacity: 0.6;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes invisible {
-  0% {
-    visibility: visible;
-  }
-  100% {
-    visibility: hidden;
-  }
-}
-@keyframes fly-cycle {
-  100% {
-    background-position: -900px 0;
-  }
-}
-@keyframes fly-right-one {
-  0% {
-    transform: scale(0) translateX(0vw);
-  }
-  10% {
-    transform: translateY(0) translateX(-1vw) scale(0);
-  }
-  20% {
-    transform: translateY(0) translateX(0vw) scale(0);
-  }
-  30% {
-    transform: translateY(0) translateX(0vw) scale(0);
-  }
-  40% {
-    transform: translateY(0) translateX(0vw) scale(0);
-  }
-  50% {
-    transform: translateY(0) translateX(1vw) scale(0);
-  }
-  60% {
-    transform: translateY(0) translateX(0vw) scale(0);
-  }
-  100% {
-    transform: translateY(0) translateX(0vw) scale(0);
-  }
-}
-@keyframes move-background {
-  from {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-  }
-  to {
-    -webkit-transform: translate3d(1000px, 0px, 0px);
-  }
-}
-@-webkit-keyframes move-background {
-  from {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-  }
-  to {
-    -webkit-transform: translate3d(1000px, 0px, 0px);
-  }
-}
-@keyframes wave {
-  0% {
-    right: 2%;
+    top: 65px;
+    right: 5px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
-    right: 25%;
     filter: blur(0.5px) hue-rotate(15deg);
   }
   100% {
-    right: 50%;
+    right: 50px;
+    top: 65px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+}
+@keyframes bouton_background {
+  0% {
+    top: 90px;
+    right: 10px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+    right: 10px;
+    filter: blur(0.1px) hue-rotate(15deg);
+  }
+  100% {
+    top: 130px;
+    right: 10px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+}
+@keyframes bouton_title {
+  0% {
+    top: 65px;
+    right: 5px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+    filter: blur(0.5px) hue-rotate(15deg);
+  }
+  100% {
+    right: 15px;
+    top: 2px;
     filter: blur(0px) hue-rotate(0deg);
   }
 }
@@ -653,7 +345,7 @@ section .ajust_image img {
 }
 @media only screen and (max-width: 1000px) and (orientation: landscape) {
   .containerhorizontale {
-    margin-top: -2vw;
+    margin-top: -5vw;
   }
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
@@ -1072,6 +764,7 @@ section .ajust_image img {
 }
 
 .homevisible button {
+  z-index: 5;
   position: absolute;
   top: 65px;
   right: 10px;
@@ -1085,7 +778,7 @@ section .ajust_image img {
   justify-content: center;
   color: black;
   font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -1093,6 +786,8 @@ section .ajust_image img {
 .homevisible button:hover {
   cursor: pointer;
   transform: scale(1.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: #0d98e9;
 }
 
 .firstpage {
@@ -1124,10 +819,10 @@ section .ajust_image img {
   position: absolute;
   top: 0vw;
   color: white;
-  -webkit-text-stroke: #070616 0.2px;
-  text-shadow: 2px 2px 5px rgb(8, 8, 8);
+  -webkit-text-stroke: white 0.3px;
+  text-shadow: 2px 2px 5px rgb(18, 3, 103);
   box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
+  border: #3e09c3 1px solid;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1154,12 +849,13 @@ section .ajust_image img {
   }
 }
 .bouton-horver:hover {
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
   transform: scale(1.1);
   cursor: pointer;
-  box-shadow: #000 -10px 1px 10px;
-  color: black;
-  -webkit-text-stroke: #070616 0px;
-  text-shadow: 2px 2px 5px rgb(8, 8, 8);
+  box-shadow: #ebeded -1px 1px 10px;
+  background-color: #0c5ce7;
+  -webkit-text-stroke: #38e2f8 0.1px;
+  text-shadow: 2px 2px 5px rgb(9, 9, 9);
 }
 
 .title_book {
@@ -1192,11 +888,11 @@ section .ajust_image img {
   padding: 0;
   opacity: 1;
   background-color: #030356;
-  animation-name: pulseplane;
+  /* animation-name: pulseplane;
   animation-duration: 10s;
   animation-delay: 0.5s;
   animation-timing-function: linear;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
   position: fixed;
   top: 0;
   right: 0;
@@ -1224,10 +920,6 @@ section .ajust_image img {
 
 .label_creation_book {
   font-size: 1rem;
-}
-
-.ok {
-  background-color: red;
 }
 
 #annuler {
@@ -1259,31 +951,27 @@ section .ajust_image img {
 }
 
 .north {
-  z-index: 0;
-  right: 2.5%;
+  display: flex;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation-name: Title;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+  top: 2px;
+  right: 15px;
   position: absolute;
-  margin-top: 0.2vw;
-  top: 15%;
+  text-align: center;
+  align-items: center;
+  animation: bouton_title 1s forwards;
   width: 3vw;
   height: 3vw;
   border-radius: 15%;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  animation-name: content2;
-  animation-duration: 10s;
-  /* Durée de l'animation */
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
 }
 .north button {
   all: unset;
@@ -1313,7 +1001,7 @@ section .ajust_image img {
 .south {
   z-index: 1;
   animation-name: content2;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
@@ -1324,18 +1012,15 @@ section .ajust_image img {
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle, rgba(4, 223, 247, 0.5), rgba(32, 221, 242, 0.4), rgba(26, 233, 247, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-top: 0.2vw;
-  background-color: none;
+  text-align: center;
+  background-color: rgb(49, 13, 195);
+  animation: bouton_background 2s forwards;
   z-index: 1;
-  right: 2.5%;
+  right: 10px;
   position: absolute;
-  width: 5vw;
-  height: 5vw;
-  top: 30%;
-  margin-left: 0.5vw;
+  width: 2.9vw;
+  height: 2.9vw;
+  top: 130px;
 }
 .south button {
   all: unset;
@@ -1345,9 +1030,18 @@ section .ajust_image img {
   cursor: pointer;
 }
 .south img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
+  border: 0.5px solid rgb(12, 39, 196);
   z-index: 1;
+  border-radius: 50%;
+  margin-top: 5px;
+  box-shadow: 5px 2px 10px 1px black;
+}
+.south img:hover {
+  background-color: #1cda22;
+  transform: scale(0.98);
+  box-shadow: 2px 2px 3px 1px black;
 }
 @media only screen and (max-width: 1000px) and (orientation: landscape) {
   .south {
@@ -1366,7 +1060,7 @@ section .ajust_image img {
   position: absolute;
   bottom: 0;
   animation-name: content2;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
@@ -1639,18 +1333,15 @@ section .ajust_image img {
 
 .boutonlogin {
   position: absolute;
-  right: 50%;
-  top: 2px;
+  right: 50px;
+  top: 65px;
   z-index: 5;
   color: #8bd2fb;
-  /* Couleur de l'emoji initiale */
-  /*   box-shadow: 1px 1px rgb(11, 171, 230), -0.01em 0 0.01em rgb(7, 141, 189); */
-  animation-name: wave;
-  animation-duration: 4s;
-  /* Durée de l'animation */
+  animation-name: bouton_login;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
-  animation-delay: 0.5s;
+  /* animation-delay: 0.5s; */
   opacity: 1;
   font-size: 4rem;
   /* Taille de l'emoji */
@@ -1667,11 +1358,10 @@ section .ajust_image img {
 }
 .boutonlogin:hover {
   cursor: pointer;
-  /* box-shadow: 1px 1px rgb(11, 171, 230), -0.05em 0 0.05em rgb(240, 229, 20); */
 }
 
 .boutonlogin::before {
-  content: "🌀";
+  content: "";
   width: 3vw;
   height: 3vw;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
@@ -1682,25 +1372,26 @@ section .ajust_image img {
   justify-content: center;
   color: black;
   font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .boutonlogin:hover::before {
-  content: "🌐";
+  content: "🌀";
   width: 3vw;
   height: 3vw;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  box-shadow: 1px 1px rgb(99, 237, 230), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: black;
-  font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  font-size: 2rem;
+  animation: infinite_rotate 10s linear infinite;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(92, 92, 253, 0.7));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -1709,7 +1400,8 @@ section .ajust_image img {
 .boutonlogin2 {
   position: absolute;
   top: 2px;
-  right: 50%;
+  right: 20px;
+  top: 2px;
   z-index: 10000;
   display: flex;
   line-height: 1;
@@ -1742,11 +1434,8 @@ section .ajust_image img {
   justify-content: center;
   color: black;
   font-size: 1rem;
-  right: 50%;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  right: 50px;
+  top: 65px;
   cursor: pointer;
 }
 .boutonlogin2::before:hover {
@@ -1765,7 +1454,6 @@ section .ajust_image img {
   text-shadow: 0.2px 0.2px 0.5px #000, 3px 3px 5px blue;
   background: none;
   /* Ajout du contenu avant le bouton */
-  /* Effet de déplacement au survol */
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   #bouton-cacher-log {
@@ -1802,23 +1490,6 @@ section .ajust_image img {
     top: 0.5vw;
     font-size: 2rem;
   }
-}
-#bouton-cacher-log:hover::before {
-  content: "🌐";
-  color: inherit;
-  cursor: pointer;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 #bouton-cacher-log:hover {
   transform: scale(1.1);
@@ -2398,7 +2069,7 @@ section .ajust_image img {
   /* Agrandit le bouton au survol */
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2489,7 +2160,7 @@ section .ajust_image img {
   color: black;
   font-size: 1rem;
   line-height: 1;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2561,7 +2232,7 @@ section .ajust_image img {
 }
 .nav .thunder2-button:hover {
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2585,7 +2256,7 @@ section .ajust_image img {
   animation-delay: 3.5s;
   animation: deco 5s forwards;
   color-scheme: white;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(178, 177, 206, 0.5), rgba(24, 107, 184, 0.4), rgba(26, 161, 224, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(178, 177, 206, 0.5), rgba(24, 107, 184, 0.4), rgba(26, 161, 224, 0.7), rgba(3, 3, 86, 0.7));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
