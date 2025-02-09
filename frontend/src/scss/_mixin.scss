@@ -56,10 +56,12 @@ $phone-max-width: 1000px;
 
 /* --------------------------------------OPTIONS DIRECTIONS  */
 
-@mixin menu_page_mobile_landscape_north_star {
-  @media only screen and (max-width: 1300px) and (orientation: landscape) {
-    width: 12.5px;
-    height: 12.5px;
+
+
+@mixin menu_page_mobile_north_star {
+  @media only screen and (max-width: 1300px) and (orientation: portrait) {
+;
+    left: 45vw;
   }
 }
 
@@ -169,7 +171,7 @@ $phone-max-width: 1000px;
 }
 
 @mixin homevisible  {
-  @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
+  @media only screen and (max-width: $phone-max-width)  {
     width:6vw;
     height: 6vw;
    
@@ -177,20 +179,15 @@ $phone-max-width: 1000px;
   }
 }
 
-@mixin loginbefore {
-  @media only screen and (max-width: 2200px) and (orientation: portrait) {
-    width: 4vw;
-    height: 4vw;
-   
 
-  }
-}
 
 @mixin north_orientation_portrait-mobile {
   @media only screen and (max-width: 1200px) and (orientation:  portrait) {
     top: 5px;
-    right: 155px;
+  left: 30vw;
+
     animation:  bouton_portrait_title 1s forwards;
+
    
   }
 }
@@ -198,6 +195,15 @@ $phone-max-width: 1000px;
   @media only screen and (max-width: 1200px) and (orientation:  portrait) {
     animation-name: bouton_background_portrait;
 
+  }
+}
+@mixin bookbackground {
+  @media only screen and (max-width: 1200px) and (orientation:  portrait) {
+position: absolute;
+left: 10vw;
+   width: 80vw;
+z-index: 100;
+border-radius: 20% 0% 20% 0%;
   }
 }
 
@@ -342,17 +348,39 @@ $phone-max-width: 1000px;
 
 // Mobile device /
 //Resize login bouton for mobile device ---------------------------------------------------
-@mixin boutonlogin_portrait {
-  @media only screen and (max-width: 1300px) and (orientation: portrait)  {
+
+@mixin boutonlogin_portrait-log {
+  @media only screen and (max-width: 1200px) and (orientation: portrait)  {
+    // Attention derniere position donnée par BEFORE
+
+
     animation-name: boutonlogin_portrait;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-fill-mode: backwards;
-    right:60px;
+    animation-fill-mode: forwards;
+    left:60vw;
     top: 5px;
  
   }
 }
+
+@mixin boutonlogin_portrait {
+  @media only screen and (max-width: 1300px) and (orientation: portrait)  {
+    // Attention derniere position donnée par l'animation
+    animation-name: boutonlogin_portrait;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+   animation-fill-mode: forwards;
+  left: 60vw;
+    top: 5px;
+ 
+  }
+}
+@mixin pwdchange {
+  @media only screen and (max-width: 1300px)  {
+
+ 
+  }
+}
+
 
 @mixin bouton-hover {
   @media only screen and (max-width: 1000px) {

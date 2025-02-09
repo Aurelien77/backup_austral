@@ -26,20 +26,32 @@ function Booknumber() {
     }
   }, [authState.id]);
 
-  // Fonction pour récupérer le titre du livre sélectionné
   const getSelectedBookTitle = () => {
-    if (selectedBook && books.length > 0) { // Vérifier que books n'est pas vide
-      const bookIndex = parseInt(selectedBook) - 1; // L'index du livre dans la liste est égal à son numéro moins 1
+    if (selectedBook && books.length > 0) {
+      const bookIndex = parseInt(selectedBook) - 1;
       const book = books[bookIndex];
-      
+  
       if (book) {
         const bookTitle = book.title ? book.title : "Sans titre";
-        return `${bookTitle} - Votre livre n° ${selectedBook} - id n° ${book.numberofdeck}`;
+        return (
+          <>
+             <br />
+        
+            {bookTitle} 
+            
+            <br />
+            <br />
+          Livre n° {selectedBook}
+         
+          {/*   - id n° {book.numberofdeck} */}
+          </>
+        );
       }
     }
-    return "Pas de livre choisi"; // Si aucun livre sélectionné ou si books est vide
+    return "Pas de livre choisi";
   };
 
+  
   // Fonction de sélection du livre
   const handleBookSelection = (event) => {
     const bookIndex = parseInt(event.target.value) - 1;
@@ -57,17 +69,21 @@ function Booknumber() {
   };
 
   return (
-    <>
+    <> 
+    
+    
+  
       <div className="livrenumber"> {/* Afficher le livre sélectionné */}
-        <p>Le livre afficher en première page est : {getSelectedBookTitle()}</p>
+        <p><span className='bookfiche'>-Le livre de la page d'accueil- </span>
+        <div className='description'>{getSelectedBookTitle()}</div></p>
       </div>
 
       {/* Liste déroulante pour choisir le livre */}
       <select onChange={handleBookSelection}>
-        <option value="">Choisir le livre que vous voudrez voir apparaitre sur l'écran d'accueil</option>
+       
         {books.map((book, index) => (
           <option key={book.id} value={index + 1}>
-            {book.title ? book.title : "Sans titre"} - Livre {index + 1}
+            {book.title ? book.title : "Sans titre"} 
           </option>
         ))}
       </select>

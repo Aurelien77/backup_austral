@@ -6,7 +6,7 @@ import { apiUrl } from "../../../config";
 import ViewPageRead from "./ViewBookPageRead";
 import PictureBookPage from "../../../component/PictureBookPage";
 import northstar from "../../../logos/Star_icon-icons.com_75206.ico";
-import north from "../../../logos/north.png";
+import north from "../../../logos/world.svg";
 import south from "../../../logos/terre.gif";
 import south2 from "../../../logos/south.png";
 import SetBackground from "../../../component/SetBackground";
@@ -380,23 +380,25 @@ useEffect(() => {
             </button>
           </div>
        
-       { menuVisibleHome &&  <> <div className="north">
+       { menuVisibleHome &&  <> 
+       
+       <div className="north">
             <button onClick={() => setMenuVisible(!menuVisible)}>
               {menuVisible ? (
-                 <img src={north} className="northstar" />
+                 <img src={north} className="northstar"  />
               ) : (
-                <img src={northstar} className="northstar" />
+                <div c><img src={northstar} /> <div className="fonds">Menu</div> </div>  
               )}
             </button>
           </div>
-        <div className="south">
+        <div className="south">  
 <button onClick={() => 
   
   
 { 
  const back = localStorage.getItem("listbackground")
   if(!back){
-   
+ 
       localStorage.setItem("listbackground", authState.urlcontextbackground);
     
   }
@@ -414,9 +416,11 @@ useEffect(() => {
   
   }>
               {menuVisibleBackground ? (
-                 <img src={south}  />
+               <img src={south}  />
               ) : (
-                <img src={south2}  />
+                
+
+                <div><img src={south2}  /> <div className="fonds">Fonds</div> </div> 
               )}
             </button>
           

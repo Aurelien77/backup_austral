@@ -5,6 +5,7 @@ import Navbarre from "../../../component/Navbarre";
 import Pages from "./PagesCreationBook";
 import axios from "axios";
 import { apiUrl } from "../../../config";
+import LoadingPlanet from "../../../component/Loader/LoadingPlanet";
 
 function CreationBook() {
   const [selectedDeck, setSelectedDeck] = useState(1);
@@ -15,7 +16,7 @@ function CreationBook() {
   const [lastDecks, setLastDecks] = useState({ vertical: 0, horizontal: 0 });
   const [idactif, setIdactif] = useState(null); // State for active audio ID
   const { authState } = useContext(AuthContext);
-
+  const [loader, setloader] = useState(false);
   // Gérer le clic sur un deck
   const handleDeckClick = (deckNumber) => {
     setSelectedDeck(deckNumber);
@@ -41,9 +42,26 @@ function CreationBook() {
     }
   };
 
+
+
+
   useEffect(() => {
+
+
+setloader(false)
+
+  }, [deckRange]);
+
+
+
+
+  useEffect(() => {
+   
     const fetchTitle = async () => {
       try {
+
+        setloader(true);
+
         const fetchedCartes = [];
         let verticalLast = 0;
         let horizontalLast = 0;
@@ -81,9 +99,11 @@ function CreationBook() {
           setDeckRange([1, verticalLast]);
           setBaseButtonText("Horizontale");
           setSelectedDeck(1);
+       
         }
 
       } catch (err) {
+        setloader(true)
         console.error("Failed to fetch cartes:", err);
       }
     };
@@ -142,6 +162,13 @@ function CreationBook() {
           orientation={baseButtonText}
         />
       </div>
+
+    { loader && 
+    <>
+    <LoadingPlanet />
+    <div id="blackgroundload"></div>
+    </>
+    }
     </>
   );
 }

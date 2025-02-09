@@ -7,7 +7,14 @@
 
 @import "./Fiche";
 @import "./audio";
+.fonds {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #8bd2fb;
+  position: absolute;
+margin-top:5px;
 
+
+}
 .noinformation {
 
 background-color: #000;
@@ -22,6 +29,7 @@ padding: 10px;
 box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
 }
 #blackground {
+
   position: absolute;
   z-index: 1;
   top: 0;
@@ -36,6 +44,22 @@ box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   background-size: 110vw; 
   
   animation: pulseplanelogin 5s ease-in backwards;
+}
+#blackgroundload {
+
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  
+  width: 100vw;
+  height: 100vh; 
+
+background-color: #000;
+   
+  background-size: 110vw; 
+  
+  animation: pulseplanelogin  20s ease-in backwards;
 }
 #blackbackground {
 
@@ -98,18 +122,21 @@ height: 3vw;
 
 
 .boutonlogin {
-  @include boutonlogin_portrait;
+  @include boutonlogin_portrait-log;
+  width: 3vw;
+  height: 3vw;
   position: absolute;
   right: 10px;
   top: 300px;
-  z-index: 5;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
   animation-duration: 1s;
   animation-timing-function: linear;
-  animation-fill-mode: backwards;
+
   opacity: 1;
   border-radius: 50%;
+
   &:hover {
     cursor: pointer;
 
@@ -120,41 +147,34 @@ height: 3vw;
   content: "";
   width:3vw;
     height: 3vw;
-   
-@include loginbefore;
+    @include boutonlogin_portrait-log;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
+ 
+
+
   background: radial-gradient(circle,
       rgba(108, 131, 233, 0.2),
       rgba(95, 219, 247, 0.5),
       rgba(24, 107, 184, 0.4),
       rgba(78, 141, 230, 0.7),
       rgba(3, 3, 86, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+
 }
 
 .boutonlogin:hover::before {
+
   content: "🌀";
   
-@include loginbefore;
+
 
   width: 3vw;
   height: 3vw;
   box-shadow: 1px 1px rgb(99, 237, 230), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
+  
   font-size: 2rem;
   animation: infinite_rotate 10s linear infinite;
   background: radial-gradient(circle,
@@ -163,9 +183,10 @@ height: 3vw;
       rgba(24, 107, 184, 0.4),
       rgba(78, 141, 230, 0.7),
       rgba(92, 92, 253, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  
+
+
+
 }
 
 
@@ -173,7 +194,7 @@ height: 3vw;
   @include boutonlogin_portrait;
   
 
-  @include loginbefore;
+
   content: "🍏";
   position: absolute;
   width: 3vw;
@@ -281,19 +302,42 @@ height: 3vw;
   -webkit-text-stroke: #0e72d5 0.5px 1px;
 }
 
-.test {
-  color: red;
-  font-size: 2rem;
-}
 
 .selectbackground {
+  @include bookbackground;
   text-align: center;
+
+    box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
+
+    -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
+   
+    font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 2rem;
+    padding: 20px;
+
+    border-radius: 20% 0% 20% 0%;
+
+    font-size: 25px;
+
+    background: radial-gradient(circle,
+        rgba(121, 236, 244, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(23, 138, 204, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(161, 227, 235, 0.7)),
+      url("");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+
 }
 
 .setbackground {
   position: absolute;
-  right: 0;
-  top: 50%;
+  right: 40%;
+  top: 2px;
   margin-right: 10px;
   @include bouton_setbackground;
 }
@@ -304,11 +348,6 @@ height: 3vw;
   padding: 0;
   opacity: 1;
   background-color: #030356;
-  /* animation-name: pulseplane;
-  animation-duration: 10s;
-  animation-delay: 0.5s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; */
   position: fixed;
   top: 0;
   right: 0;
@@ -359,15 +398,23 @@ height: 3vw;
 }
 
 .northstar {
-  @include menu_page_mobile_landscape_north_star;
+
 
   width: 25px;
   height: 25px;
 }
 
 .north {
+
   & button {
     all: unset;
+
+    & img {
+
+
+      height: 2vw;
+      width: 2.3vw;
+    }
   }
 
   display: flex;
@@ -459,7 +506,7 @@ height: 3vw;
     border: 0.5px solid rgb(12, 39, 196);
     z-index: 1;
     border-radius: 50%;
-    margin-top: 5px;
+
     box-shadow: 5px 2px 10px 1px black;
 
     &:hover {

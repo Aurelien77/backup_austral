@@ -92,13 +92,14 @@ li {
   0% {
     background-size: 100vw;
     background-color: #030356;
+    opacity: 1;
   }
   5% {
     background-size: 100vw;
   }
   25% {
     background-size: 100vw;
-    background-color: #11b267;
+    background-color: #070f9f;
   }
   35% {
     background-size: 100vw;
@@ -110,6 +111,7 @@ li {
   }
   100% {
     background-size: 110vw;
+    opacity: 0.5;
   }
 }
 @keyframes pulseplane {
@@ -202,6 +204,7 @@ li {
 @keyframes bouton_login {
   0% {
     top: 5px;
+    right: 5px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
@@ -209,6 +212,7 @@ li {
   }
   100% {
     top: 300px;
+    right: 5px;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
@@ -221,7 +225,8 @@ li {
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-    top: 5px;
+    width: 6vw;
+    height: 6vw;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
@@ -249,10 +254,10 @@ li {
   }
   100% {
     top: 5px;
-    right: 170px;
+    left: 10px;
     filter: blur(0px) hue-rotate(0deg);
-    width: 4vw;
-    height: 4vw;
+    width: 6vw;
+    height: 6vw;
   }
 }
 @keyframes bouton_background {
@@ -296,8 +301,8 @@ li {
     filter: blur(0.5px) hue-rotate(15deg);
   }
   100% {
-    width: 4vw;
-    height: 4vw;
+    width: 6vw;
+    height: 6vw;
     top: 5px;
     right: 114px;
     filter: blur(0px) hue-rotate(0deg);
@@ -527,6 +532,92 @@ section .ajust_image img {
   border-radius: 10%;
 }
 
+.changemdp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  margin: 0;
+  padding: 3vw;
+  border-radius: 10% 0% 10% 0%;
+  background-color: red;
+  border: 1px solid black;
+  word-wrap: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  outline: none;
+  gap: 2vw;
+  color: #f7fdfd;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.7rem;
+  text-shadow: 2px 2px 5px rgb(2, 0, 10);
+  box-shadow: 0.5px 0.5px rgb(54, 160, 236), 0.2em 0 0.2em rgb(7, 25, 219);
+}
+.changemdp input {
+  width: 95%;
+  height: 2vw;
+}
+
+.changemdp button {
+  width: 95%;
+  height: 2vw;
+  border-radius: 20%;
+  box-shadow: 0.5px 0.5px rgb(54, 160, 236), 0.2em 0 0.2em rgb(7, 25, 219);
+}
+
+.changemdp button:hover {
+  transform: scale(1.1);
+  background-color: #28ec6d;
+  text-shadow: 2px 2px 5px rgb(10, 140, 88);
+  cursor: pointer;
+}
+
+.passwordchange {
+  position: absolute;
+  top: 5vw;
+  left: 4vw;
+  border-radius: 10% 0% 10% 0%;
+  background-color: red;
+  border: 1px solid black;
+  padding: 0.4vw;
+  color: #f7fdfd;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.7rem;
+  text-shadow: 2px 2px 5px rgb(2, 0, 10);
+  box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
+}
+.passwordchange:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: rgb(68, 230, 35);
+}
+
+.bookfiche {
+  white-space: nowrap;
+  /* Évite les coupures de mots */
+  overflow: hidden;
+  /* Masque le débordement */
+  text-overflow: ellipsis;
+  /* Ajoute "..." si le texte est trop long */
+  max-width: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.7rem;
+  text-shadow: 2px 2px 5px rgb(2, 0, 10);
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  text-shadow: 2px 2px 5px rgb(18, 3, 103);
+  background-color: #2069dd;
+  border-radius: 20%;
+  padding: 10px;
+  margin-top: 3vw;
+  text-align: center;
+}
+
 .Booknumber {
   display: flex;
   align-items: center;
@@ -543,7 +634,8 @@ section .ajust_image img {
   /* Option survolée */
 }
 .Booknumber .livrenumber {
-  width: 100%;
+  box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -557,10 +649,17 @@ section .ajust_image img {
   padding: 1vw;
 }
 .Booknumber .livrenumber input {
+  width: auto;
   margin-top: 10vw;
   background-color: #83050e;
 }
 .Booknumber select {
+  text-align: center;
+  word-wrap: normal;
+  white-space: nowrap;
+  outline: none;
+  text-overflow: ellipsis;
+  width: auto;
   font-size: 1.2rem;
   padding: 0.5rem;
   border: 2px solid #122441;
@@ -910,6 +1009,13 @@ section .ajust_image img {
   width: 100%;
 }
 
+.fonds {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: #8bd2fb;
+  position: absolute;
+  margin-top: 5px;
+}
+
 .noinformation {
   background-color: #000;
   color: white;
@@ -933,6 +1039,18 @@ section .ajust_image img {
   background: url("../logos/world.svg") no-repeat center center;
   background-size: 110vw;
   animation: pulseplanelogin 5s ease-in backwards;
+}
+
+#blackgroundload {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-size: 110vw;
+  animation: pulseplanelogin 20s ease-in backwards;
 }
 
 #blackbackground {
@@ -964,7 +1082,7 @@ section .ajust_image img {
   /* Removed background-size and background-repeat */
   background-position: center;
 }
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
+@media only screen and (max-width: 1000px) {
   .homevisible button {
     width: 6vw;
     height: 6vw;
@@ -984,25 +1102,24 @@ section .ajust_image img {
 }
 
 .boutonlogin {
+  width: 3vw;
+  height: 3vw;
   position: absolute;
   right: 10px;
   top: 300px;
-  z-index: 5;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
   animation-duration: 1s;
   animation-timing-function: linear;
-  animation-fill-mode: backwards;
   opacity: 1;
   border-radius: 50%;
 }
-@media only screen and (max-width: 1300px) and (orientation: portrait) {
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
   .boutonlogin {
     animation-name: boutonlogin_portrait;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-fill-mode: backwards;
-    right: 60px;
+    animation-fill-mode: forwards;
+    left: 60vw;
     top: 5px;
   }
 }
@@ -1018,19 +1135,14 @@ section .ajust_image img {
   border: #0d98e9 1px solid;
   border-radius: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
-@media only screen and (max-width: 2200px) and (orientation: portrait) {
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
   .boutonlogin::before {
-    width: 4vw;
-    height: 4vw;
+    animation-name: boutonlogin_portrait;
+    animation-fill-mode: forwards;
+    left: 60vw;
+    top: 5px;
   }
 }
 
@@ -1040,23 +1152,9 @@ section .ajust_image img {
   height: 3vw;
   box-shadow: 1px 1px rgb(99, 237, 230), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
   font-size: 2rem;
   animation: infinite_rotate 10s linear infinite;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(92, 92, 253, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-@media only screen and (max-width: 2200px) and (orientation: portrait) {
-  .boutonlogin:hover::before {
-    width: 4vw;
-    height: 4vw;
-  }
 }
 
 .boutonlogin2::before {
@@ -1081,15 +1179,9 @@ section .ajust_image img {
     animation-name: boutonlogin_portrait;
     animation-duration: 1s;
     animation-timing-function: linear;
-    animation-fill-mode: backwards;
-    right: 60px;
+    animation-fill-mode: forwards;
+    left: 60vw;
     top: 5px;
-  }
-}
-@media only screen and (max-width: 2200px) and (orientation: portrait) {
-  .boutonlogin2::before {
-    width: 4vw;
-    height: 4vw;
   }
 }
 .boutonlogin2::before:hover {
@@ -1173,19 +1265,34 @@ section .ajust_image img {
   -webkit-text-stroke: #0e72d5 0.5px 1px;
 }
 
-.test {
-  color: red;
-  font-size: 2rem;
-}
-
 .selectbackground {
   text-align: center;
+  box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
+  -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  padding: 20px;
+  border-radius: 20% 0% 20% 0%;
+  font-size: 25px;
+  background: radial-gradient(circle, rgba(121, 236, 244, 0.2), rgba(95, 219, 247, 0.5), rgba(23, 138, 204, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
+  .selectbackground {
+    position: absolute;
+    left: 10vw;
+    width: 80vw;
+    z-index: 100;
+    border-radius: 20% 0% 20% 0%;
+  }
 }
 
 .setbackground {
   position: absolute;
-  right: 0;
-  top: 50%;
+  right: 40%;
+  top: 2px;
   margin-right: 10px;
 }
 @media only screen and (max-width: 1200px) and (orientation: portrait) {
@@ -1203,11 +1310,6 @@ section .ajust_image img {
   padding: 0;
   opacity: 1;
   background-color: #030356;
-  /* animation-name: pulseplane;
-  animation-duration: 10s;
-  animation-delay: 0.5s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards; */
   position: fixed;
   top: 0;
   right: 0;
@@ -1258,12 +1360,6 @@ section .ajust_image img {
   width: 25px;
   height: 25px;
 }
-@media only screen and (max-width: 1300px) and (orientation: landscape) {
-  .northstar {
-    width: 12.5px;
-    height: 12.5px;
-  }
-}
 
 .north {
   display: flex;
@@ -1291,10 +1387,14 @@ section .ajust_image img {
 .north button {
   all: unset;
 }
+.north button img {
+  height: 2vw;
+  width: 2.3vw;
+}
 @media only screen and (max-width: 1200px) and (orientation: portrait) {
   .north {
     top: 5px;
-    right: 155px;
+    left: 30vw;
     animation: bouton_portrait_title 1s forwards;
   }
 }
@@ -1361,7 +1461,6 @@ section .ajust_image img {
   border: 0.5px solid rgb(12, 39, 196);
   z-index: 1;
   border-radius: 50%;
-  margin-top: 5px;
   box-shadow: 5px 2px 10px 1px black;
 }
 .south img:hover {

@@ -105,7 +105,13 @@ function Cartes() {
         </div>
       ))}
 
-     { loader &&  <LoadingPlanet />}
+     { loader && <>
+      <LoadingPlanet />
+      <div id="blackgroundload"></div>
+     </>
+     
+      
+      }
     </div>
 
 

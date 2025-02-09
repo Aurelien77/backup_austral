@@ -8,11 +8,14 @@ import { apiUrl } from "../config.js";
 function SetBackground({ id, number }) {
   const [selectedOptionlist, setSelectedOptionlist] = useState(""); // Option sélectionnée de la liste
   const [customUrl, setCustomUrl] = useState(""); // Valeur de l'URL personnalisée
-  const [storedUrls, setStoredUrls] = useState([]); // Liste des URL sauvegardées
+  const [storedUrls, setStoredUrls] = useState([]);
+  
+ 
+  // Liste des URL sauvegardées
   const [urlbackground, setUrlBackground] = useState(backgroundbase); // Arrière-plan actuel
   const { setAuthState } = useContext(AuthContext);
 
-
+  const [back] = useState(urlbackground);
   // Récupérer l'option sélectionnée depuis le changement de liste
   const handleSelectChange = (event) => {
     const newValue = event.target.value;

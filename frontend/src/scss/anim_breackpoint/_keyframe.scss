@@ -4,7 +4,7 @@
   0% {
     background-size: 100vw; 
     background-color: #030356;
-
+opacity: 1;
   }
   5% {
 
@@ -14,7 +14,7 @@
 
   25% {
     background-size: 100vw; 
-    background-color: #11b267;
+    background-color: #070f9f;
   
  
   }
@@ -42,10 +42,9 @@
   }
   100% {
     background-size: 110vw; 
-   
-  }
+   opacity: 0.5;
 }
-
+}
 @keyframes pulseplane {
   0% {
   
@@ -170,7 +169,7 @@ background-color: rgb(234, 107, 33);
 @keyframes bouton_login {
   0% {
     top:5px;
-  
+  right: 5px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
@@ -180,7 +179,7 @@ background-color: rgb(234, 107, 33);
   100% {
     
   top:300px;
-
+right: 5px;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
@@ -197,10 +196,15 @@ right:0px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-    top: 5px;
+  
+    width: 6vw;
+    height: 6vw;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
+
+
+
 @keyframes loginboutonhover {
   0% {
 right:0px;
@@ -232,11 +236,10 @@ right:0px;
   }
   100% {
     top: 5px;
-    right: 170px;
+    left: 10px;
     filter: blur(0px) hue-rotate(0deg);
-    
-  width: 4vw;
-  height: 4vw;
+    width: 6vw;
+    height: 6vw;
   }
 }
 
@@ -292,11 +295,11 @@ right:0px;
   }
   100% {  
     
-    width: 4vw;
-    height: 4vw;
+    width: 6vw;
+    height: 6vw;
     top: 5px;
     right: 114px;
-    filter: blur(0px) hue-rotate(0deg);
+    filter: blur(0px) hue-rotate(0deg);    
   }
 }
 

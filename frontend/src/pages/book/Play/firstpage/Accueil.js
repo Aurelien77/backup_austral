@@ -24,9 +24,9 @@ function Accueil() {
     <>{!authState.status && menuVisibleHome && (
           <div onClick={handleClick}>
             {LoginVisible ? (
-              <span className="boutonlogin"></span>
+              <span className="boutonlogin">Login</span>
             ) : (
-              <span className="boutonlogin2"></span>
+              <span className="boutonlogin2">Login</span>
             )}
           </div>
         )}

@@ -28,7 +28,93 @@
 
 
 }
+
+.changemdp {
+  @include pwdchange;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: 40vw;
+  margin: 0; 
+  padding: 3vw;
+  
+  border-radius: 10% 0% 10% 0%;
+  background-color: red;
+  border: 1px solid black;
+
+  word-wrap: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  outline: none;
+  gap: 2vw;
+  color: #f7fdfd;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.7rem;
+  text-shadow: 2px 2px 5px rgb(2, 0, 10);
+  box-shadow: 0.5px 0.5px  rgb(54, 160, 236), 0.2em 0 0.2em rgb(7, 25, 219)
+
+
+}
+.changemdp input {
+  width: 95%;
+  height: 2vw;
+}
+.changemdp button {
+  width: 95%;
+  height: 2vw;
+  border-radius: 20%;
+  box-shadow: 0.5px 0.5px  rgb(54, 160, 236), 0.2em 0 0.2em rgb(7, 25, 219)
+
+}
+.changemdp button:hover{
+transform: scale(1.1);
+background-color: #28ec6d;
+text-shadow: 2px 2px 5px rgb(10, 140, 88);
+cursor: pointer;
+}
+
+.passwordchange {
+  position: absolute;
+  top: 5vw;
+  left: 4vw;
+  border-radius: 10% 0% 10% 0%;
+background-color: red;
+border: 1px solid black;
+padding: 0.4vw;
+color: #f7fdfd;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: 1.7rem;
+text-shadow: 2px 2px 5px rgb(2, 0, 10);
+box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
+&:hover{
+cursor: pointer;
+transform: scale(1.1);
+background-color: rgb(68, 230, 35);
+}
+}
+.bookfiche {
+  white-space: nowrap; /* Évite les coupures de mots */
+  overflow: hidden; /* Masque le débordement */
+  text-overflow: ellipsis; /* Ajoute "..." si le texte est trop long */
+  max-width: 100%;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: 1.7rem;
+text-shadow: 2px 2px 5px rgb(2, 0, 10);
+}
+.description {
+display: flex;
+justify-content: center;
+  text-shadow: 2px 2px 5px rgb(18, 3, 103);
+background-color: #2069dd;
+border-radius: 20%;
+padding: 10px;
+margin-top: 3vw;
+text-align: center;
+}
 .Booknumber {
+
   display: flex;
   align-items: center;
   align-content: center;
@@ -41,7 +127,8 @@
   margin-top: 2vw; 
 
   .livrenumber {
-    width: 100%;
+    box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,6 +142,8 @@
     padding: 1vw;
     
     & input {
+      
+      width: auto;
       margin-top: 10vw;
       background-color: #83050e;
     }
@@ -62,6 +151,13 @@
 
   /* Styles pour la liste déroulante */
   select {
+    
+    text-align: center;
+    word-wrap: normal;
+    white-space: nowrap;
+    outline:  none;
+    text-overflow: ellipsis;
+    width: auto;
     font-size: 1.2rem;
     padding: 0.5rem;
     border: 2px solid #122441; /* Bordure de la liste déroulante */
@@ -70,6 +166,7 @@
     color: #122441;
     outline: none;
     margin-top: 1rem;
+
     cursor: pointer;
   }
 
