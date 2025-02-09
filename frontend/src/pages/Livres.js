@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import { apiUrl } from "../config";
+import LoadingPlanet from "../component/Loader/LoadingPlanet";
 
 function Cartes() {
   const { authState, setAuthState } = useContext(AuthContext);
@@ -10,6 +11,7 @@ function Cartes() {
   const [showHorizontal, setShowHorizontal] = useState(true); // État pour savoir quel mode afficher
   const history = useHistory();
   const [orientationPicture, setorientationPicture] = useState("carte");
+    const [loader, setloader] = useState(false);
   useEffect(() => {
     // Rediriger l'utilisateur vers la page de connexion s'il n'est pas authentifié
     if (!localStorage.getItem("accessToken")) {
@@ -20,6 +22,7 @@ function Cartes() {
   useEffect(() => {
     const fetchCartes = async () => {
       try {
+        setloader(true)
         const fetchedCartes = [];
         const startNum = showHorizontal ? 1 : 101;
         const endNum = showHorizontal ? 100 : 200;
@@ -34,11 +37,14 @@ function Cartes() {
 
           if (response.data && response.data.length > 0) {
             fetchedCartes.push(response.data[0]);
+          
           }
         }
-        console.log("Fetched Cartes:", fetchedCartes); // Vérifiez les données ici
+      
         setCartes(fetchedCartes);
+        setloader(false)
       } catch (err) {
+        setloader(true)
         console.error("Échec de la récupération des livres :", err);
       }
     };
@@ -77,7 +83,7 @@ function Cartes() {
   return (
     <div className="calquesdeschoix">
       {/* Bouton pour basculer entre l'affichage horizontal et vertical */}
-      <button onClick={toggleDisplay} className="bouton-horver">
+      <button onClick={toggleDisplay} className="bouton-hover">
         {showHorizontal ? "Horizontal" : "Vertical"}
       </button>
 
@@ -98,7 +104,11 @@ function Cartes() {
           )}
         </div>
       ))}
+
+     { loader &&  <LoadingPlanet />}
     </div>
+
+
   );
 }
 

@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
 
-
+@include container-mobile;
     & img {
       border-radius: 1%;
       width: 31.5vw;

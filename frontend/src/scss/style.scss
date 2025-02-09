@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300");
-@import "../component/Loader/loader";
+@import "./loader";
 @import "./base";
 @import "../UI/UI.scss";
 @import "./mixin";
@@ -8,11 +8,174 @@
 @import "./Fiche";
 @import "./audio";
 
-.homevisible button {
-  z-index:5;
+.noinformation {
+
+background-color: #000;
+color: white;
+width: 20%;
+position: absolute;
+left: 39%;
+text-align: center;
+border-radius: 10px 0px 10px 0px;
+border: 0.1px solid red;
+padding: 10px;
+box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+}
+#blackground {
   position: absolute;
-  top: 65px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  
+  width: 100vw;
+  height: 100vh; 
+
+  background: url("../logos/world.svg") no-repeat center center;
+
+   
+  background-size: 110vw; 
+  
+  animation: pulseplanelogin 5s ease-in backwards;
+}
+#blackbackground {
+
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle,
+  rgba(108, 131, 233, 0.2),
+  rgba(95, 219, 247, 0.5),
+  rgba(24, 107, 184, 0.4),
+  rgba(78, 141, 230, 0.7),
+  rgba(3, 3, 86, 0.7));
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.homevisible button {
+@include homevisible;
+  z-index: 5;
+  position: absolute;
+  top: 5px;
   right: 10px;
+width: 3vw;
+height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(3, 3, 86, 0.7));
+  /* Removed background-size and background-repeat */
+  background-position: center;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #0d98e9;
+  }
+
+  &:active {
+
+
+    animation-duration: 1s;
+    animation: bouton;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+  }
+}
+
+
+.boutonlogin {
+  @include boutonlogin_portrait;
+  position: absolute;
+  right: 10px;
+  top: 300px;
+  z-index: 5;
+  color: #8bd2fb;
+  animation-name: bouton_login;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+  opacity: 1;
+  border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+
+  }
+}
+
+.boutonlogin::before {
+  content: "";
+  width:3vw;
+    height: 3vw;
+   
+@include loginbefore;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(3, 3, 86, 0.7));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.boutonlogin:hover::before {
+  content: "🌀";
+  
+@include loginbefore;
+
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(99, 237, 230), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 2rem;
+  animation: infinite_rotate 10s linear infinite;
+  background: radial-gradient(circle,
+      rgba(108, 131, 233, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(24, 107, 184, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(92, 92, 253, 0.7));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.boutonlogin2::before {
+  @include boutonlogin_portrait;
+  
+
+  @include loginbefore;
+  content: "🍏";
+  position: absolute;
   width: 3vw;
   height: 3vw;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
@@ -23,25 +186,18 @@
   justify-content: center;
   color: black;
   font-size: 1rem;
-  background: radial-gradient(
-    circle,
-    rgba(108, 131, 233, 0.2),
-    rgba(95, 219, 247, 0.5),
-    rgba(24, 107, 184, 0.4),
-    rgba(78, 141, 230, 0.7),
-    rgba(3, 3, 86, 0.7)
-  );
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  right: 8px;
+  top: 300px;
+
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    background-color: #0d98e9;
+    box-shadow: 1px 1px rgb(11, 171, 230), -0.05em 0 0.05em rgb(240, 229, 20);
+    transform: rotate(360deg);
   }
 }
+
+
 
 .firstpage {
   width: 100%;
@@ -70,11 +226,11 @@
   }
 }
 
-.bouton-horver {
+.bouton-hover {
   z-index: 2;
   position: absolute;
   top: 0vw;
-  @include bouton-horver;
+  @include bouton-hover;
   color: white;
   -webkit-text-stroke: white 0.3px;
 
@@ -88,14 +244,12 @@
   padding: 1vw;
   font-size: 1rem;
   line-height: 1;
-  background: radial-gradient(
-      circle,
+  background: radial-gradient(circle,
       rgba(108, 131, 233, 0.2),
       rgba(95, 219, 247, 0.5),
       rgba(24, 107, 184, 0.4),
       rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    ),
+      rgba(3, 3, 86, 0.7)),
     url("../logos/world.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -103,14 +257,12 @@
   background-color: #0d11e9;
 
   &:hover {
-    background: radial-gradient(
-        circle,
+    background: radial-gradient(circle,
         rgba(108, 131, 233, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(24, 107, 184, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7)
-      ),
+        rgba(3, 3, 86, 0.7)),
       url("../logos/world.svg");
     transform: scale(1.1);
     cursor: pointer;
@@ -141,8 +293,9 @@
 .setbackground {
   position: absolute;
   right: 0;
-  top: 10vw;
+  top: 50%;
   margin-right: 10px;
+  @include bouton_setbackground;
 }
 
 .container {
@@ -216,6 +369,7 @@
   & button {
     all: unset;
   }
+
   display: flex;
   background-size: contain;
   background-repeat: no-repeat;
@@ -224,29 +378,28 @@
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
-
+  @include north_orientation_portrait-mobile;
   @include north_orientation_landscape-mobile;
-  top: 2px;
+  top: 60px;
   right: 15px;
   position: absolute;
   text-align: center;
   align-items: center;
- animation:  bouton_title 1s forwards;
+  animation: bouton_title 1s forwards;
   width: 3vw;
   height: 3vw;
   border-radius: 15%;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  box-shadow: 1px 1px rgb(9, 196, 58),
+  -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
+  background: radial-gradient(circle,
     rgba(108, 131, 233, 0.2),
     rgba(95, 219, 247, 0.5),
     rgba(24, 107, 184, 0.4),
     rgba(78, 141, 230, 0.7),
-    rgba(3, 3, 86, 0.7)
-  );
+    rgba(3, 3, 86, 0.7));
 
   & img {
     height: 2vw;
@@ -259,7 +412,7 @@
     }
   }
 
- 
+
 
   & button {
     width: 100%;
@@ -273,25 +426,26 @@
     all: unset;
   }
 
+  @include south_orientation_portrait-mobile;
+  text-align: center;
   z-index: 1;
   animation-name: content2;
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
-  box-shadow: 1px 1px rgb(68, 224, 235), -0.5em 0 0.4em rgb(13, 13, 13);
+  box-shadow: 1px 1px rgb(68, 224, 235),
+  -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: radial-gradient(
-    circle,
+  background: radial-gradient(circle,
     rgba(4, 223, 247, 0.5),
     rgba(32, 221, 242, 0.4),
-    rgba(26, 233, 247, 0.7)
-  );
+    rgba(26, 233, 247, 0.7));
 
 
   &:hover {
@@ -299,26 +453,26 @@
     cursor: pointer;
   }
 
-text-align: center;
   & img {
     width: 80%;
     height: 80%;
-  border: 0.5px solid rgb(12, 39, 196);
+    border: 0.5px solid rgb(12, 39, 196);
     z-index: 1;
     border-radius: 50%;
     margin-top: 5px;
     box-shadow: 5px 2px 10px 1px black;
+
     &:hover {
-background-color: #1cda22;
+      background-color: #1cda22;
       transform: scale(0.98);
       box-shadow: 2px 2px 3px 1px black;
     }
   }
 
 
-  background-color: rgb(49, 13, 195);
-animation: bouton_background  2s  forwards;
-  @include south_orientation_landscape-mobile;
+
+  animation: bouton_background 2s forwards;
+
   z-index: 1;
   right: 10px;
   position: absolute;
@@ -328,9 +482,7 @@ animation: bouton_background  2s  forwards;
 
 
 
-  &:hover {
-    cursor: pointer;
-  }
+
 }
 
 .southpicture {
@@ -356,115 +508,7 @@ animation: bouton_background  2s  forwards;
   }
 }
 
-/* #est {
-  @include est;
-  height: 2.5vw;
-  width: 5vw;
-  margin-left: 2%;
-  right: 5%;
-  z-index: 1001;
 
-  box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
-  background-color: #90dcfa;
-  border-radius: 20%;
-  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
-  animation-name: scaleBook;
-  animation-duration: 10s;
-
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
-
-  text-overflow: ellipsis;
-
-  &:hover {
-    background-color: #e8f7f7;
-  }
-}
-
-#estlivre {
-  @include estlivre;
-  height: 2.5vw;
-  width: 5vw;
-  margin-left: 2%;
-  right: 5%;
-  z-index: 1001;
-
-  box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
-  background-color: #90dcfa;
-  border-radius: 20%;
-  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
-  animation-name: scaleBook;
-  animation-duration: 10s;
-
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
-
-  text-overflow: ellipsis;
-
-  &:hover {
-    background-color: #e8f7f7;
-  }
-}
-
-#west {
-  @include west;
-  @include west_paysage;
-
-  margin-right: 2%;
-  height: 2.5vw;
-  width: 5vw;
-  left: 5%;
-
-  z-index: 1001;
-
-  box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
-  background-color: #90dcfa;
-  border-radius: 20%;
-  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
-  animation-name: scaleBook;
-  animation-duration: 10s;
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
-
-  text-overflow: ellipsis;
-
-  &:hover {
-    background-color: #e8f7f7;
-  }
-}
-
-#westlivre {
-  @include westlivre;
-  @include west_paysage;
-
-  margin-right: 2%;
-  height: 2.5vw;
-  width: 5vw;
-  left: 5%;
-
-  z-index: 1001;
-
-  box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
-  background-color: #90dcfa;
-  border-radius: 20%;
-  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
-  animation-name: scaleBook;
-  animation-duration: 10s;
- 
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
-
-  text-overflow: ellipsis;
-
-  &:hover {
-    background-color: #e8f7f7;
-  }
-}
- */
 
 .imageaccueil {
   z-index: 5;
@@ -492,35 +536,25 @@ animation: bouton_background  2s  forwards;
 }
 
 .thetitles {
-  /* animation: progressiftitle 1s linear forwards; */
+
   overflow-y: auto;
   z-index: 1000;
   flex-direction: column;
-
   padding: 1%;
-
-  /*   column-count: 1; */
-
   column-gap: 10px;
-  /* Espace entre les colonnes */
-
   transform: translate(-50%, -50%);
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border-right: #0d98e9 1px solid;
   border-bottom: #0d98e9 1px solid;
   border-radius: 15%;
   margin-left: 0.2%;
-
   color: black;
-
-  background: radial-gradient(
-      circle,
+  background: radial-gradient(circle,
       rgba(108, 131, 233, 0.2),
       rgba(95, 219, 247, 0.5),
       rgba(24, 107, 184, 0.4),
       rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    ),
+      rgba(3, 3, 86, 0.7)),
     url("");
   background-size: contain;
   background-repeat: no-repeat;
@@ -533,14 +567,12 @@ animation: bouton_background  2s  forwards;
   & button {
     @include thetitlespaysagebuton;
     width: 100%;
-    background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    );
+    background: radial-gradient(circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(3, 3, 86, 0.7));
     background-color: rgba(0, 0, 0, 0);
     background-position-x: 0%, 0%;
     background-position-y: 0%, 0%;
@@ -554,14 +586,12 @@ animation: bouton_background  2s  forwards;
     margin: 2.5px;
 
     &:hover {
-      background: linear-gradient(
-        circle,
-        rgba(108, 131, 233, 0.2),
-        rgba(95, 219, 247, 0.5),
-        rgba(24, 107, 184, 0.4),
-        rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7)
-      );
+      background: linear-gradient(circle,
+          rgba(108, 131, 233, 0.2),
+          rgba(95, 219, 247, 0.5),
+          rgba(24, 107, 184, 0.4),
+          rgba(78, 141, 230, 0.7),
+          rgba(3, 3, 86, 0.7));
 
       box-shadow: rgba(13, 13, 14, 0.7) 0px 7px 9px 0px;
     }
@@ -618,132 +648,6 @@ animation: bouton_background  2s  forwards;
   }
 }
 
-.boutonlogin {
-  @include boutonlogin;
-  position: absolute;
-  right:50px;
-  top:65px;
-
-  z-index: 5;
-  color: #8bd2fb;
-
-  animation-name: bouton_login;
-  animation-duration: 1s;
-
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  /* animation-delay: 0.5s; */
-
-  opacity: 1;
-
-  font-size: 4rem;
-  /* Taille de l'emoji */
-  width: 4.5vw;
-  height: 4.5vw;
-  border-radius: 50%;
-
-  &:hover {
-    cursor: pointer;
-    
-  }
-}
-
-.boutonlogin::before {
-  content: "";
-  width: 3vw;
-  height: 3vw;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  background: radial-gradient(
-    circle,
-    rgba(108, 131, 233, 0.2),
-    rgba(95, 219, 247, 0.5),
-    rgba(24, 107, 184, 0.4),
-    rgba(78, 141, 230, 0.7),
-    rgba(3, 3, 86, 0.7)
-  );
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.boutonlogin:hover::before {
-  content: "🌀";
-  width: 3vw;
-  height: 3vw;
-  box-shadow: 1px 1px rgb(99, 237, 230), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 2rem;
-  animation: infinite_rotate 10s linear infinite;
-  background: radial-gradient(
-    circle,
-    rgba(108, 131, 233, 0.2),
-    rgba(95, 219, 247, 0.5),
-    rgba(24, 107, 184, 0.4),
-    rgba(78, 141, 230, 0.7),
-    rgba(92, 92, 253, 0.7)
-  );
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.boutonlogin2 {
-  @include boutonlogin;
-
-  position: absolute;
-  top: 2px;
-  right: 20px;
-  top: 2px;
-
-  z-index: 10000;
-
-  display: flex;
-  line-height: 1;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  /* Taille de l'emoji */
-  width: 3.5vw;
-  height: 3.5vw;
-  border-radius: 50%;
-}
-
-.boutonlogin2::before {
-  content: "🍏";
-  position: absolute;
-  width: 3vw;
-  height: 3vw;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  right:50px;
-  top:65px;
-;
-  
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 1px 1px rgb(11, 171, 230), -0.05em 0 0.05em rgb(240, 229, 20);
-  }
-}
-
 #bouton-cacher-log {
   @include bouton-cacher-log;
   position: absolute;
@@ -776,14 +680,12 @@ animation: bouton_background  2s  forwards;
     color: black;
     font-size: 1rem;
 
-    background: radial-gradient(
-        circle,
+    background: radial-gradient(circle,
         rgba(108, 131, 233, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(24, 107, 184, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7)
-      ),
+        rgba(3, 3, 86, 0.7)),
       url("../logos/world.svg");
     background-size: contain;
     background-repeat: no-repeat;
@@ -876,14 +778,12 @@ animation: bouton_background  2s  forwards;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(
-        circle,
+    background: radial-gradient(circle,
         rgba(121, 236, 244, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(23, 138, 204, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(161, 227, 235, 0.7)
-      ),
+        rgba(161, 227, 235, 0.7)),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
@@ -919,14 +819,12 @@ animation: bouton_background  2s  forwards;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(
-        circle,
+    background: radial-gradient(circle,
         rgba(121, 236, 244, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(23, 138, 204, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(161, 227, 235, 0.7)
-      ),
+        rgba(161, 227, 235, 0.7)),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
@@ -952,12 +850,14 @@ animation: bouton_background  2s  forwards;
 }
 
 .containerlogin {
-  @include login;
 
+  
+  @include login;
+@include loginpaysage;
   width: 72%;
-  height: 75%;
+  height: 47vw;
   position: fixed;
-  top: 45.5%;
+  top: 23.5vw;
   left: 49.1%;
   transform: translate(-50%, -50%);
   border-radius: 10%;
@@ -973,13 +873,11 @@ animation: bouton_background  2s  forwards;
 
   color: black;
 
-  background: radial-gradient(
-      circle,
+  background: radial-gradient(circle,
       rgba(108, 131, 233, 0.9),
       rgba(95, 219, 247, 0.5),
       rgba(78, 141, 230, 1),
-      rgba(3, 3, 86, 1)
-    ),
+      rgba(3, 3, 86, 1)),
     url("");
   background-size: contain;
   background-repeat: no-repeat;
@@ -988,35 +886,81 @@ animation: bouton_background  2s  forwards;
   margin: 1%;
   text-align: center;
 
+
   #pseudo {
-    border-radius: 10%;
+  
     z-index: 9999;
     position: fixed;
-    left: 0;
-    top: 40%;
-    margin: 3%;
+    left: 4%;
+    top: 50%;
+
     width: 10vw;
     height: 2vw;
     text-align: center;
-    box-shadow: 1px 1px rgb(33, 13, 150), -0.5em 0 0.4em black;
-    background-color: white;
-    /* Exemple d'ajout d'une couleur de fond */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 2px solid rgb(32, 188, 216);
+    padding: 20px;
+    width: 20vw;
+    box-shadow: 2px 2px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
+    border-radius: 20% 0% 20% 0%;
+
+
+  -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
+  text-shadow: 1.8px 0.2px 1px rgb(242, 242, 242);
+  font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 2rem;
+
+    background: radial-gradient(circle,
+
+        rgba(95, 219, 247, 0.5),
+        rgba(23, 138, 204, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(161, 227, 235, 0.5)
+        ),
+      url("");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  
   }
 
   & #password {
     border-radius: 10%;
     z-index: 9999;
     position: fixed;
-    right: 0;
-    top: 40%;
-    margin: 3%;
+    right: 4%;
+    top: 50%;
+
     height: 2vw;
     width: 10vw;
     text-align: center;
-    box-shadow: 1px 1px rgb(33, 13, 150), -0.5em 0 0.4em black;
+    border: 2px solid rgb(32, 188, 216);
+
+    width: 20vw;
+    box-shadow: 2px 2px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
+
+    -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
+    text-shadow: 1.8px 0.2px 1px rgb(242, 242, 242);
+    font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+    padding: 20px;
+
+    border-radius: 20% 0% 20% 0%;
+    background-color: white;
+    font-size: 25px;
+
+    background: radial-gradient(circle,
+        rgba(121, 236, 244, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(23, 138, 204, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(161, 227, 235, 0.7)),
+      url("");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   & button {
@@ -1050,9 +994,15 @@ animation: bouton_background  2s  forwards;
       border: none;
 
       &:hover {
-        width: 92%;
+
+        animation: loginboutonhover 5s ease-in backwards;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+        height: 110%;
+        width: 91%;
+        border-radius: 50%;
+        border: 4px solid rgb(27, 194, 18);
         transform: scale(1.1);
-        /* Agrandit le bouton au survol */
         color: transparent;
         box-shadow: 0 4px 15px 5px rgba(246, 243, 243, 0.2);
       }
@@ -1064,11 +1014,9 @@ animation: bouton_background  2s  forwards;
       bottom: 0%;
       right: 35%;
       border: 2px solid rgb(109, 207, 24);
-      background: radial-gradient(
-        circle,
-        rgba(24, 107, 184, 0.4),
-        rgba(3, 3, 86, 0.7)
-      );
+      background: radial-gradient(circle,
+          rgba(24, 107, 184, 0.4),
+          rgba(3, 3, 86, 0.7));
       width: 30%;
       display: inline;
       margin-top: 5vw;
@@ -1170,14 +1118,12 @@ animation: bouton_background  2s  forwards;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(
-        circle,
+    background: radial-gradient(circle,
         rgba(121, 236, 244, 0.2),
         rgba(95, 219, 247, 0.5),
         rgba(23, 138, 204, 0.4),
         rgba(78, 141, 230, 0.7),
-        rgba(161, 227, 235, 0.7)
-      ),
+        rgba(161, 227, 235, 0.7)),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
@@ -1304,14 +1250,12 @@ animation: bouton_background  2s  forwards;
     background-color: white;
     font-size: 25px;
 
-    background: radial-gradient(
-        circle,
+    background: radial-gradient(circle,
         rgba(121, 236, 244, 1),
         rgba(95, 219, 247, 0.9),
         rgba(23, 138, 204, 1),
         rgba(78, 141, 230, 0.8),
-        rgba(161, 227, 235, 0.5)
-      ),
+        rgba(161, 227, 235, 0.5)),
       url("");
     background-size: contain;
     background-repeat: no-repeat;
@@ -1331,14 +1275,12 @@ animation: bouton_background  2s  forwards;
   padding: 2rem;
   border-radius: 10% 0% 10% 5%;
   margin: 0.2rem;
-  background: radial-gradient(
-    circle,
-    rgba(12, 45, 153, 0.2),
-    rgba(46, 166, 221, 0.5),
-    rgba(122, 177, 229, 0.4),
-    rgba(47, 232, 204, 0.7),
-    rgba(35, 199, 240, 0.7)
-  );
+  background: radial-gradient(circle,
+      rgba(12, 45, 153, 0.2),
+      rgba(46, 166, 221, 0.5),
+      rgba(122, 177, 229, 0.4),
+      rgba(47, 232, 204, 0.7),
+      rgba(35, 199, 240, 0.7));
 
   & .alignement {
     animation: content2 3s;
@@ -1510,14 +1452,12 @@ animation: bouton_background  2s  forwards;
     /* Agrandit le bouton au survol */
     background-color: #03507d;
     box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-    background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    );
+    background: radial-gradient(circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(3, 3, 86, 0.7));
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1602,14 +1542,12 @@ animation: bouton_background  2s  forwards;
     color: black;
     font-size: 1rem;
     line-height: 1;
-    background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    );
+    background: radial-gradient(circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(95, 219, 247, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(78, 141, 230, 0.7),
+        rgba(3, 3, 86, 0.7));
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1678,14 +1616,12 @@ animation: bouton_background  2s  forwards;
 
     &:hover {
       box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-      background: radial-gradient(
-        circle,
-        rgba(108, 131, 233, 0.2),
-        rgba(95, 219, 247, 0.5),
-        rgba(24, 107, 184, 0.4),
-        rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7)
-      );
+      background: radial-gradient(circle,
+          rgba(108, 131, 233, 0.2),
+          rgba(95, 219, 247, 0.5),
+          rgba(24, 107, 184, 0.4),
+          rgba(78, 141, 230, 0.7),
+          rgba(3, 3, 86, 0.7));
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -1713,14 +1649,12 @@ animation: bouton_background  2s  forwards;
     animation-delay: 3.5s;
     animation: deco 5s forwards;
     color-scheme: white;
-    background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(178, 177, 206, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(26, 161, 224, 0.7),
-      rgba(3, 3, 86, 0.7)
-    );
+    background: radial-gradient(circle,
+        rgba(108, 131, 233, 0.2),
+        rgba(178, 177, 206, 0.5),
+        rgba(24, 107, 184, 0.4),
+        rgba(26, 161, 224, 0.7),
+        rgba(3, 3, 86, 0.7));
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

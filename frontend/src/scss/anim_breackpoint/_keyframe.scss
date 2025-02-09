@@ -1,16 +1,9 @@
-@keyframes pulseplane {
+
+
+@keyframes pulseplanelogin {
   0% {
     background-size: 100vw; 
     background-color: #030356;
-/*     background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    ),
-    url(""); */
 
   }
   5% {
@@ -21,7 +14,7 @@
 
   25% {
     background-size: 100vw; 
-    
+    background-color: #11b267;
   
  
   }
@@ -29,7 +22,6 @@
   35% {
     background-size: 100vw; 
   
-
     opacity: 1;
    
   }
@@ -38,21 +30,114 @@
 
   50% {
     background-size: 110vw; 
-  
+    background-color: #3030dd;
    
    
   }
 
   75% {
     
-    background-size: 120vw;
+  
   
   }
   100% {
-    background-size: cover;
+    background-size: 110vw; 
    
   }
 }
+
+@keyframes pulseplane {
+  0% {
+  
+   
+
+  }
+  5% {
+
+   
+transform: scale(1.2);font-weight: bold;
+  }
+
+  25% {
+   
+  
+ 
+  }
+
+  35% {
+    
+    transform: scale(1);
+  }
+
+
+
+  50% {
+color: #11b267;
+   
+   
+  }
+
+  75% {
+    transform: scale(1.2); 
+  
+  
+  }
+  100% {
+   
+    transform: scale(1);
+  }
+}
+@keyframes rotate-earth {
+  from {
+    transform:  rotate(0deg);
+  }
+  to {
+    transform:  rotate(-360deg);
+  }
+}
+
+@keyframes rotatePlanet {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+    width: 15vw;
+    height: 15vw;
+  }
+  to {
+    transform: rotate(-360deg);
+    width: 30vw;
+    height: 15vw;
+  }
+}
+
+/* Animation de rotation */
+@keyframes rotatePlanet {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+
 @keyframes infinite_rotate {
   from {
     transform: rotate(0deg);
@@ -64,30 +149,80 @@
   }
 }
 
-
-
-@keyframes bouton_login {
+@keyframes bouton {
   0% {
-    top:65px;
-    right: 5px;
+ 
+  background-color: aquamarine;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
-
-    filter: blur(0.5px) hue-rotate(15deg);
+background-color: rgb(234, 107, 33);
+    filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-    right:50px;
-  top:65px;
-    filter: blur(0px) hue-rotate(0deg);
+   background-color: rgb(29, 234, 67);
+ 
+    filter: blur(0px) hue-rotate(360deg);
   }
 }
 
 
-@keyframes bouton_background {
+@keyframes bouton_login {
   0% {
-    top: 90px;
-    right: 10px;
+    top:5px;
+  
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+
+    filter: blur(0.5px) hue-rotate(360deg);
+  }
+  100% {
+    
+  top:300px;
+
+    filter: blur(0px) hue-rotate(360deg);
+  }
+}
+
+
+@keyframes boutonlogin_portrait {
+  0% {
+right:0px;
+  
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+
+    filter: blur(0.5px) hue-rotate(360deg);
+  }
+  100% {
+    top: 5px;
+    filter: blur(0px) hue-rotate(360deg);
+  }
+}
+@keyframes loginboutonhover {
+  0% {
+right:0px;
+  
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+
+    filter: blur(0.5px) hue-rotate(360deg);
+  }
+  100% {
+   
+    filter: blur(0px) hue-rotate(360deg);
+  }
+}
+
+
+
+@keyframes bouton_background_portrait {
+  0% {
+    top: 5px;
+    right: 0;
     filter: blur(0px) hue-rotate(0deg);
    
   }
@@ -96,16 +231,40 @@
     filter: blur(0.10px) hue-rotate(15deg);
   }
   100% {
-    top: 130px;
+    top: 5px;
+    right: 170px;
+    filter: blur(0px) hue-rotate(0deg);
+    
+  width: 4vw;
+  height: 4vw;
+  }
+}
+
+
+
+@keyframes bouton_background {
+  0% {
+    top: 5px;
+    right: 0;
+    filter: blur(0px) hue-rotate(0deg);
+   
+  }
+  50% {
+  right: 10px;
+    filter: blur(0.10px) hue-rotate(15deg);
+  }
+  100% {
+    top: 200px;
     right: 10px;
     filter: blur(0px) hue-rotate(0deg);
+    
   }
 }
 
 @keyframes bouton_title{
   0% {
-    top:65px;
-    right: 5px;
+    top:5px;
+    right: 8px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
@@ -114,12 +273,32 @@
   }
   100% {
   
-    right: 15px;
-    top: 2px;
+    right: 8px;
+    top: 100px;
     filter: blur(0px) hue-rotate(0deg);
   }
 }
 
+
+@keyframes bouton_portrait_title{
+  0% {
+    top:5px;
+    right: 8px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+
+    filter: blur(0.5px) hue-rotate(15deg);
+  }
+  100% {  
+    
+    width: 4vw;
+    height: 4vw;
+    top: 5px;
+    right: 114px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+}
 
 
 

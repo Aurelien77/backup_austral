@@ -1,0 +1,63 @@
+
+.loading-container {
+  position: absolute;
+  z-index: 9999;
+  top: 60%;
+  left: 46%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Planète centrale */
+.planet {
+  position: absolute;
+  width: 8.4vw;
+  height:  8.5vw;
+  background: radial-gradient(circle,
+
+
+  rgba(78, 141, 230, 0.7),
+ 
+  rgba(3, 3, 86, 0.7),
+  rgba(202, 11, 11, 0.7),
+  
+  );
+  
+
+border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  animation: rotateText 15s linear infinite;
+}
+
+/* Texte circulaire */
+.text-circle {
+
+ 
+  animation: rotateText 10s linear infinite;
+}
+
+.text-circle span {
+  position: absolute;
+ 
+
+
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Texte "Loading" centré au milieu */
+.loading {
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  z-index: 1000;
+  
+  animation: pulseplane 10s linear infinite;
+}

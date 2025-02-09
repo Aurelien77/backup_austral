@@ -10,6 +10,7 @@ import north from "../../../logos/north.png";
 import south from "../../../logos/terre.gif";
 import south2 from "../../../logos/south.png";
 import SetBackground from "../../../component/SetBackground";
+import LoadingPlanet from "../../../component/Loader/LoadingPlanet";
 
 function TurnLivre({
   number,
@@ -24,7 +25,7 @@ function TurnLivre({
   const bookRef = useRef();
   const [id, setId] = useState(1);
   const { authState } = useContext(AuthContext); 
-
+  const [loader, setloader] = useState(false);
   const [forbackgroundid, setforbackgroundid] = useState();
   const [fornumberbackground, setfornumberbackground] = useState();
  
@@ -89,9 +90,6 @@ useEffect(() => {
       const isMobilelandscape = window.matchMedia(
         "(max-width: 1000px) and (orientation: landscape)"
       ).matches;
-   /*  "745"  */
-  /*  "1165" */
-      
       const widtha = isMobilePortrait ? "9" : isMobilelandscape ? "7.2" :  "1755";
       const heighta = isMobilePortrait ? "12" : isMobilelandscape ? "8.85" :  "2400";
 
@@ -103,19 +101,15 @@ useEffect(() => {
         drawShadow: true,
         orientation: AuthContext,
       });
-   /*  "50"  */
-  /*  "39" */
-
       const widthstyle = isMobilePortrait ? "80vw" :  isMobilelandscape ? "56vw" : "63vw";
-      const heightstyle = isMobilePortrait ? "110vw" :  isMobilelandscape ? "30vw" : "39vw";
+      const heightstyle = isMobilePortrait ? "100%" :  isMobilelandscape ? "30vw" : "39vw";
 
       setFlipBookStyle({
         width: widthstyle,
         height: heightstyle,
       });
     };
-console.log(flipBookConfig, "console.log(flipBookConfig)");
-console.log(flipBookStyle ,"console.log(flipBookStyle )");
+
     updateFlipBookConfig();
     window.addEventListener("resize", updateFlipBookConfig);
 
@@ -226,12 +220,13 @@ console.log(flipBookStyle ,"console.log(flipBookStyle )");
             headers: { accessToken: localStorage.getItem("accessToken") },
           }),
         ]);
-  
+        setloader(false)
         setDeckstate2(backgroundResponse.data);
         setDeckstate3(dosResponse.data);
         setDeckstate4(presentationResponse.data);
         setThePages(deckResponse.data);
       } catch (error) {
+        setloader(true)
         console.error("Error fetching data:", error);
       }
     };
@@ -519,7 +514,14 @@ console.log(flipBookStyle ,"console.log(flipBookStyle )");
       </div>
      
 
-     
+   { loader && 
+    <><  LoadingPlanet/>
+    
+    <div className="noinformation">ERROR : NO INFORMATION FROM SITE </div> </>
+  
+    
+    
+    }
 
 <div className="setbackground">
         {menuVisibleBackground && <SetBackground number={fornumberbackground} id={forbackgroundid} />}

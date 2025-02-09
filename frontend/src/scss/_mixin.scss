@@ -1,21 +1,30 @@
 //devices
 $phone-max-width: 1000px;
 
+@mixin container-mobile {
+  @media only screen and (orientation: portrait) and (max-width: 1101px) {
+ margin-top: 20vw;
+  }
+}
+
+
+
+
+
 /* --------------------------------------TITLES */
 @mixin thetitlesportrait {
-  @media only screen and (orientation: portrait) and (max-width: 900px) {
+  @media only screen and (orientation: portrait) and (max-width: 1200px) {
     position: fixed;
     column-count: 2;
     left: 50%;
     bottom: 10px;
-
     column-rule: 2px solid #ccc;
     width: 80vw;
   }
 }
 
 @mixin thetitlesportrait-max {
-  @media only screen and (orientation: portrait) and (min-width: 1001px) {
+  @media only screen and (orientation: portrait) and (min-width: 1201px) {
     position: fixed;
     column-count: 4;
     left: 50%;
@@ -51,16 +60,6 @@ $phone-max-width: 1000px;
   @media only screen and (max-width: 1300px) and (orientation: landscape) {
     width: 12.5px;
     height: 12.5px;
-  }
-}
-
-@mixin south {
-  @media only screen and (max-width: 1000px) {
-    bottom: 10%;
-
-    & button {
-      font-size: 0.5rem;
-    }
   }
 }
 
@@ -127,32 +126,13 @@ $phone-max-width: 1000px;
   }
 }
 
-@mixin westlivre {
-  @media only screen and (max-width: 1500px) and (orientation: portrait) {
-    position: absolute;
-    left: 1vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.4rem;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: center;
-  }
-}
+
 
 /* FIN--------------------------------------OPTIONS DIRECTIONS  */
 
 /* --------------------------------------Audio */
 
-/* @mixin audio_mobile_portrait {
-  @media only screen and (max-width: 1000px) and (orientation: portrait) {
-  
-    margin-top: -28%;
-  }
-}
- */
+
 @mixin audio_mobile_portrait_width {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     width: 100%;
@@ -161,10 +141,20 @@ $phone-max-width: 1000px;
 /* FIN --------------------------------------Audio */
 
 /* -------------------------------------IMAGES ET PAGES  */
+
+@mixin  bouton_setbackground {
+  @media only screen and (max-width: 1200px) and (orientation:  portrait) {
+    top: 5px;
+    left: 5px;
+    animation:  bouton_portrait_title 1s forwards;
+    max-width: 5vw;
+  }
+}
 @mixin mobilepage {
   @media only screen and (max-width: $phone-max-width) and (orientation: portrait) {
     width: 40vw;
     height: 52.5vw;
+   
   }
 }
 
@@ -177,6 +167,40 @@ $phone-max-width: 1000px;
 
   }
 }
+
+@mixin homevisible  {
+  @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
+    width:6vw;
+    height: 6vw;
+   
+
+  }
+}
+
+@mixin loginbefore {
+  @media only screen and (max-width: 2200px) and (orientation: portrait) {
+    width: 4vw;
+    height: 4vw;
+   
+
+  }
+}
+
+@mixin north_orientation_portrait-mobile {
+  @media only screen and (max-width: 1200px) and (orientation:  portrait) {
+    top: 5px;
+    right: 155px;
+    animation:  bouton_portrait_title 1s forwards;
+   
+  }
+}
+@mixin south_orientation_portrait-mobile {
+  @media only screen and (max-width: 1200px) and (orientation:  portrait) {
+    animation-name: bouton_background_portrait;
+
+  }
+}
+
 
 @mixin south_orientation_landscape-mobile {
   @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
@@ -206,9 +230,16 @@ $phone-max-width: 1000px;
 //USERS
 
 @mixin login {
-  @media only screen and (min-width: 1000px) and (max-width: $phone-max-width) and (orientation: portrait) {
-    margin-top: -52.5vw;
-    height: 22%;
+  @media only screen  and (max-width: 1200px) and (orientation: portrait) {
+    top:45.5vw;
+    width: 90vw;
+    height: 63.5vw;
+  }
+}
+
+@mixin loginpaysage {
+  @media only screen  and (max-width: 1200px) and (orientation: landscape) {
+    top: 22.5vw;
   }
 }
 @mixin identifiant {
@@ -297,7 +328,7 @@ $phone-max-width: 1000px;
 
 @mixin menu_page_mobile_landscape {
   @media only screen and (max-width: 1300px) and (orientation: landscape) {
-    margin-top: 3.5%;
+    margin-top: 4%;
    
   }
 }
@@ -311,15 +342,19 @@ $phone-max-width: 1000px;
 
 // Mobile device /
 //Resize login bouton for mobile device ---------------------------------------------------
-@mixin boutonlogin {
-  @media only screen and (max-width: $phone-max-width) {
-    font-size: 2.5rem;
-    top: 15px;
-    margin-right: 10px;
+@mixin boutonlogin_portrait {
+  @media only screen and (max-width: 1300px) and (orientation: portrait)  {
+    animation-name: boutonlogin_portrait;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    right:60px;
+    top: 5px;
+ 
   }
 }
 
-@mixin bouton-horver {
+@mixin bouton-hover {
   @media only screen and (max-width: 1000px) {
     position: fixed;
     border: 1px solid green;
