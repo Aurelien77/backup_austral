@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
-
-
 import { apiUrl } from "../config";
 import LoadingPlanet from "../component/Loader/LoadingPlanet";
 
@@ -87,11 +85,17 @@ function Login() {
 
   return (
     <>    {isHovered && 
+
+
+
+
     
     <>
+   
     <div id="blackbackground"></div>
     
     <div id="blackground"></div>
+
     </>
     
     

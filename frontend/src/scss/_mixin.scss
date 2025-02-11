@@ -191,12 +191,15 @@ $phone-max-width: 1000px;
    
   }
 }
+
 @mixin south_orientation_portrait-mobile {
   @media only screen and (max-width: 1200px) and (orientation:  portrait) {
     animation-name: bouton_background_portrait;
 
   }
 }
+
+
 @mixin bookbackground {
   @media only screen and (max-width: 1200px) and (orientation:  portrait) {
 position: absolute;
@@ -374,12 +377,7 @@ border-radius: 20% 0% 20% 0%;
  
   }
 }
-@mixin pwdchange {
-  @media only screen and (max-width: 1300px)  {
 
- 
-  }
-}
 
 
 @mixin bouton-hover {

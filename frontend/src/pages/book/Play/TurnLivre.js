@@ -521,7 +521,9 @@ useEffect(() => {
    { loader && 
     <><  LoadingPlanet/>
     
-    <div className="noinformation">ERROR : NO INFORMATION FROM SITE </div> </>
+    <div className="noinformation">
+  <span>ERROR : NO INFORMATION FROM SITE</span>
+</div> </>
   
     
     

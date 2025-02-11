@@ -1,5 +1,39 @@
 
 
+
+@keyframes  changementcolorlogin {
+  0% {
+    background: radial-gradient(circle,
+    rgba(22, 22, 22, 0.9),
+    rgba(7, 43, 161, 0.5),
+    rgb(13, 93, 206),
+    rgb(6, 6, 168)),
+    url("") no-repeat center center;
+  }
+ 
+
+ 
+
+  25% {
+    background: radial-gradient(circle,
+    rgba(22, 22, 22, 0.9),
+    rgba(7, 43, 161, 0.5),
+    rgb(13, 93, 206),
+    rgb(2, 2, 53)),
+    url("") no-repeat center center;
+}
+
+
+  100% {
+    background: radial-gradient(circle,
+    rgba(22, 22, 22, 0.9),
+    rgba(7, 43, 161, 0.5),
+    rgb(4, 44, 100, 0.5),
+    rgb(2, 2, 53, 0.6)),
+    url("") no-repeat center center;
+  
+}
+}
 @keyframes pulseplanelogin {
   0% {
     background-size: 100vw; 
@@ -20,7 +54,7 @@ opacity: 1;
   }
 
   35% {
-    background-size: 100vw; 
+    background-size: 110vw; 
   
     opacity: 1;
    
@@ -29,20 +63,20 @@ opacity: 1;
 
 
   50% {
-    background-size: 110vw; 
+    background-size: 120vw; 
     background-color: #3030dd;
    
    
   }
 
   75% {
-    
+    background-size: 115vw; 
   
   
   }
   100% {
     background-size: 110vw; 
-   opacity: 0.5;
+   opacity: 0.7;
 }
 }
 @keyframes pulseplane {
@@ -86,55 +120,131 @@ color: #11b267;
     transform: scale(1);
   }
 }
-@keyframes rotate-earth {
-  from {
-    transform:  rotate(0deg);
+
+@-webkit-keyframes pageTurn {
+  0% {
+    -webkit-transform: rotateY( 0deg);
+    transform: rotateY( 0deg);
   }
-  to {
-    transform:  rotate(-360deg);
+  20% {
+    background: #4b1e77;
+  }
+  40% {
+    background: rebeccapurple;
+    -webkit-transform: rotateY( -180deg);
+    transform: rotateY( -180deg);
+  }
+  100% {
+    background: rebeccapurple;
+    -webkit-transform: rotateY( -180deg);
+    transform: rotateY( -180deg);
+  }
+}
+@keyframes shadowScan {
+  0% {
+      box-shadow: -10px 0px 20px rgba(255, 0, 0, 0.1);
+  }
+  50% {
+      box-shadow: 0px 0px 40px rgba(255, 0, 0, 0.7);
+  }
+  100% {
+      box-shadow: 10px 0px 20px rgba(255, 0, 0, 0.1);
+  }
+}
+@keyframes scanEffect {
+  0% {
+      left: -20%;
+      opacity: 0.1;
+  }
+  50% {
+      left: 20%;
+      opacity: 0.7;
+  }
+  100% {
+      left: -30%;
+      opacity: 0.1;
+  }
+}
+@keyframes pageTurn {
+  0% {
+    transform: rotateY( 0deg);
+  }
+  20% {
+    background: #4b1e77;
+  }
+  40% {
+    background: rebeccapurple;
+    transform: rotateY( -180deg);
+  }
+  100% {
+    background: rebeccapurple;
+    transform: rotateY( -180deg);
+  }
+}
+@keyframes scrollText {
+  0% {
+      transform: translateX(-120%);
+  }
+  50% {
+      transform: translateX(50%);
+  }
+  100% {
+      transform: translateX(50%);
   }
 }
 
-@keyframes rotatePlanet {
-  from {
-    transform: rotate(0deg);
+@keyframes waveText {
+  0%, 100% {
+      transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotateText {
-  from {
-    transform: rotate(0deg);
-    width: 15vw;
-    height: 15vw;
-  }
-  to {
-    transform: rotate(-360deg);
-    width: 30vw;
-    height: 15vw;
+  50% {
+      transform: rotate(5deg);
   }
 }
 
-/* Animation de rotation */
-@keyframes rotatePlanet {
-  from {
-    transform: rotate(0deg);
+@keyframes shakeText {
+  0%, 100% {
+      transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+      transform: translateY(-5px);
   }
 }
 
-@keyframes rotateText {
-  from {
-    transform: rotate(0deg);
+
+
+
+@-webkit-keyframes Dots {
+  0% {
+    content: "";
   }
-  to {
-    transform: rotate(-360deg);
+  33% {
+    content: ".";
+  }
+  66% {
+    content: "..";
+  }
+  100% {
+    content: "...";
   }
 }
+
+@keyframes Dots {
+  0% {
+    content: "";
+  }
+  33% {
+    content: ".";
+  }
+  66% {
+    content: "..";
+  }
+  100% {
+    content: "...";
+  }
+}
+
+
 
 
 @keyframes infinite_rotate {
@@ -224,19 +334,24 @@ right:0px;
 
 
 @keyframes bouton_background_portrait {
-  0% {
+  5% {
     top: 5px;
-    right: 0;
+    right: 1px;
     filter: blur(0px) hue-rotate(0deg);
    
   }
   50% {
-  right: 10px;
+  right: 100vw;
     filter: blur(0.10px) hue-rotate(15deg);
   }
+
+  95% {
+    left: 9px;
+      filter: blur(0.10px) hue-rotate(15deg);
+    }
   100% {
     top: 5px;
-    left: 10px;
+    left: 9px;
     filter: blur(0px) hue-rotate(0deg);
     width: 6vw;
     height: 6vw;
