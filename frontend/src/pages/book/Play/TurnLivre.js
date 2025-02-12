@@ -10,7 +10,7 @@ import north from "../../../logos/world.svg";
 import south from "../../../logos/terre.gif";
 import south2 from "../../../logos/south.png";
 import SetBackground from "../../../component/SetBackground";
-import Loading from "../../../component/Loader/Loading";
+
 
 function TurnLivre({
   number,
@@ -19,13 +19,12 @@ function TurnLivre({
   orientationPicture,
   menuVisibleHome,
   setmenuVisibleHome,
-  setLoad
 
 }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const bookRef = useRef();
   const [id, setId] = useState(1);
-  const { authState } = useContext(AuthContext); 
+const { authState, setAuthState } = useContext(AuthContext);
   const [loader, setloader] = useState(false);
   const [forbackgroundid, setforbackgroundid] = useState();
   const [fornumberbackground, setfornumberbackground] = useState();
@@ -221,13 +220,13 @@ useEffect(() => {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }),
         ]);
-        setLoad(false)
+        setAuthState((prevState) => ({ ...prevState, loading: false }));
         setDeckstate2(backgroundResponse.data);
         setDeckstate3(dosResponse.data);
         setDeckstate4(presentationResponse.data);
         setThePages(deckResponse.data);
       } catch (error) {
-        setLoad(true)
+        setAuthState((prevState) => ({ ...prevState, loading: true }));
         console.error("Error fetching data:", error);
       }
     };

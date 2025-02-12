@@ -121,6 +121,7 @@ if (listBackground) {
             accueil: true,
             create: true,
             urlcontextbackground: "",
+        
           });
         } else {
           setAuthState({
@@ -135,6 +136,7 @@ if (listBackground) {
             accueil: true,
             create: true,
             urlcontextbackground: "",
+            loading: true,
           });
         }
       });

@@ -20,6 +20,7 @@ function Login() {
 
 
   useEffect(() => {
+    
     if (loginButtonRef.current) {
       loginButtonRef.current.focus();
     }
@@ -52,10 +53,11 @@ function Login() {
             admin: response.data.admin,
             prof: response.data.prof,
             status: true,
+            loading: true,
           });
-          setAuthState((prevState) => ({ ...prevState, loading: false }));
+         
           history.push("/Livres");
-
+        
          
         }
       });

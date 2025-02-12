@@ -4,25 +4,29 @@ import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import { apiUrl } from "../config";
 
-
-function Cartes() {
+function Books() {
   const { authState, setAuthState } = useContext(AuthContext);
   const [livres, setCartes] = useState([]);
-  const [showHorizontal, setShowHorizontal] = useState(true); // État pour savoir quel mode afficher
+  const [showHorizontal, setShowHorizontal] = useState(true);
   const history = useHistory();
   const [orientationPicture, setorientationPicture] = useState("carte");
- 
   useEffect(() => {
-    // Rediriger l'utilisateur vers la page de connexion s'il n'est pas authentifié
+    setAuthState((prevState) => ({ ...prevState, loading: true }));
+  }, [setAuthState]);
+  
+  useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       history.push("/login");
     }
-  }, [history]);
+  
+  }, [history,setAuthState]);
 
   useEffect(() => {
-    const fetchCartes = async () => {
-      try {
-        setAuthState((prevState) => ({ ...prevState, loading: true }));
+  
+    const fetchBooks = async () => {
+     
+
+      try {   setAuthState((prevState) => ({ ...prevState, loading: true }));
         const fetchedCartes = [];
         const startNum = showHorizontal ? 1 : 101;
         const endNum = showHorizontal ? 100 : 200;
@@ -37,28 +41,25 @@ function Cartes() {
 
           if (response.data && response.data.length > 0) {
             fetchedCartes.push(response.data[0]);
-          
+            
           }
         }
-      
-        setCartes(fetchedCartes);
         setAuthState((prevState) => ({ ...prevState, loading: false }));
+        setCartes(fetchedCartes);
       } catch (err) {
-        setAuthState((prevState) => ({ ...prevState, loading: true }));
         console.error("Échec de la récupération des livres :", err);
+        setAuthState((prevState) => ({ ...prevState, loading: true }));
       }
     };
 
     if (authState.id) {
-      fetchCartes();
+      fetchBooks();
     }
-  }, [authState.id, showHorizontal]);
+  }, [authState.id, showHorizontal,setAuthState]);
 
   const handleCardClick = (number) => {
-    // Rediriger vers la page Monlivre avec le numéro de deck
     history.push("/Monlivre", { number, orientationPicture });
 
-    // Mettre à jour l'état de l'authentification pour l'affichage de la bibliothèque
     setAuthState((prevState) => ({
       ...prevState,
       bibli: true,
@@ -68,26 +69,20 @@ function Cartes() {
     }));
   };
 
-  // Basculer entre l'affichage horizontal et vertical
   const toggleDisplay = () => {
     setShowHorizontal((prev) => !prev);
   };
 
   useEffect(() => {
-    if (showHorizontal) {
-      setorientationPicture("carte");
-    } else {
-      setorientationPicture("cartehorizontale");
-    }
+    setorientationPicture(showHorizontal ? "carte" : "cartehorizontale");
   }, [showHorizontal]);
+
   return (
     <div className="calquesdeschoix">
-      {/* Bouton pour basculer entre l'affichage horizontal et vertical */}
       <button onClick={toggleDisplay} className="bouton-hover">
         {showHorizontal ? "Horizontal" : "Vertical"}
       </button>
 
-      {/* Affichage des livres */}
       {livres.map((carte, index) => (
         <div
           key={index}
@@ -96,7 +91,7 @@ function Cartes() {
         >
           {carte.lien ? (
             <>
-              <img src={carte.lien} alt={`Deck ${carte.numberofdeck}`} />
+              <img src={carte.lien} alt={carte.numberofdeck} />
               <p>{carte.title}</p>
             </>
           ) : (
@@ -111,4 +106,4 @@ function Cartes() {
   );
 }
 
-export default Cartes;
+export default Books;
