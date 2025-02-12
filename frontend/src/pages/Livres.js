@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import { apiUrl } from "../config";
-import LoadingPlanet from "../component/Loader/LoadingPlanet";
+
 
 function Cartes() {
   const { authState, setAuthState } = useContext(AuthContext);
@@ -11,7 +11,7 @@ function Cartes() {
   const [showHorizontal, setShowHorizontal] = useState(true); // État pour savoir quel mode afficher
   const history = useHistory();
   const [orientationPicture, setorientationPicture] = useState("carte");
-    const [loader, setloader] = useState(false);
+ 
   useEffect(() => {
     // Rediriger l'utilisateur vers la page de connexion s'il n'est pas authentifié
     if (!localStorage.getItem("accessToken")) {
@@ -22,7 +22,7 @@ function Cartes() {
   useEffect(() => {
     const fetchCartes = async () => {
       try {
-        setloader(true)
+        setAuthState((prevState) => ({ ...prevState, loading: true }));
         const fetchedCartes = [];
         const startNum = showHorizontal ? 1 : 101;
         const endNum = showHorizontal ? 100 : 200;
@@ -42,9 +42,9 @@ function Cartes() {
         }
       
         setCartes(fetchedCartes);
-        setloader(false)
+        setAuthState((prevState) => ({ ...prevState, loading: false }));
       } catch (err) {
-        setloader(true)
+        setAuthState((prevState) => ({ ...prevState, loading: true }));
         console.error("Échec de la récupération des livres :", err);
       }
     };
@@ -105,13 +105,6 @@ function Cartes() {
         </div>
       ))}
 
-     { loader && <>
-      <LoadingPlanet />
-      <div id="blackgroundload"></div>
-     </>
-     
-      
-      }
     </div>
 
 

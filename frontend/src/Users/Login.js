@@ -3,52 +3,48 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import { apiUrl } from "../config";
-import LoadingPlanet from "../component/Loader/LoadingPlanet";
+
+
+
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [Email, setEmail] = useState("");
   const [identifiants, setidentifiants] = useState(false);
-  const [Isloading, setIsloading] = useState(false);
   const [isHovered, setIsHovered] = useState(false); // <-- Ajout de l'état pour le survol
-
-  const { setAuthState } = useContext(AuthContext);
+  const { authState, setAuthState } = useContext(AuthContext);
+ 
   let history = useHistory();
-
   const loginButtonRef = useRef(null);
+
 
   useEffect(() => {
     if (loginButtonRef.current) {
       loginButtonRef.current.focus();
     }
-
     const handleKeyDown = (event) => {
       if (event.key === "Enter" && !identifiants) {
         loginButtonRef.current?.click();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [identifiants]);
 
   const login = async () => {
-    setIsloading(true);
+    setAuthState((prevState) => ({ ...prevState, loading: true }));
     const data = { username: username, password: password };
-
     try {
       axios.post(`${apiUrl}/auth/login`, data).then((response) => {
         if (response.data.error) {
-          setIsloading(false);
+          setAuthState((prevState) => ({ ...prevState, loading: false }));
           alert(response.data.error);
           return;
         } else {
           localStorage.setItem("accessToken", response.data.token);
-
           setAuthState({
             username: response.data.username,
             photo_profil: response.data.photo_profil,
@@ -57,13 +53,14 @@ function Login() {
             prof: response.data.prof,
             status: true,
           });
-
-          setIsloading(false);
+          setAuthState((prevState) => ({ ...prevState, loading: false }));
           history.push("/Livres");
+
+         
         }
       });
     } catch (error) {
-      setIsloading(false);
+      setAuthState((prevState) => ({ ...prevState, loading: false}));
       alert(error.response ? error.response.data : "Erreur de connexion");
     }
   };
@@ -75,7 +72,9 @@ function Login() {
       alert(`Un message a été envoyé à l'adresse ${Email}`);
       setidentifiants(!identifiants);
     } catch (error) {
-      alert(error.response ? error.response.data.message : "Erreur de connexion");
+      alert(
+        error.response ? error.response.data.message : "Erreur de connexion"
+      );
     }
   };
 
@@ -84,27 +83,15 @@ function Login() {
   };
 
   return (
-    <>    {isHovered && 
-
-
-
-
-    
     <>
-   
-    <div id="blackbackground"></div>
-    
-    <div id="blackground"></div>
+      {isHovered && (
+        <>
+          <div id="blackbackground"></div>
 
-    </>
-    
-    
-    
-    }
+          <div id="blackground"></div>
+        </>
+      )}
       <div className="containerlogin">
-    
-  
-
         <div>
           <input
             placeholder="Pseudo"
@@ -136,7 +123,9 @@ function Login() {
           )}
 
           <button onClick={resend} id="forgetid">
-            {!identifiants ? "J'ai oublié mes identifiants 🔑" : "Retour connexion"}
+            {!identifiants
+              ? "J'ai oublié mes identifiants 🔑"
+              : "Retour connexion"}
           </button>
         </div>
 
@@ -158,12 +147,12 @@ function Login() {
               }}
             />
 
-            <button onClick={send} id="envoyer">Envoyer</button>
+            <button onClick={send} id="envoyer">
+              Envoyer
+            </button>
           </div>
         )}
       </div>
-      {Isloading &&  <LoadingPlanet />}
-    
     </>
   );
 }

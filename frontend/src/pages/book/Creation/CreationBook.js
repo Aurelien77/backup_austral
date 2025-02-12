@@ -5,7 +5,6 @@ import Navbarre from "../../../component/Navbarre";
 import Pages from "./PagesCreationBook";
 import axios from "axios";
 import { apiUrl } from "../../../config";
-import LoadingPlanet from "../../../component/Loader/LoadingPlanet";
 
 function CreationBook() {
   const [selectedDeck, setSelectedDeck] = useState(1);
@@ -15,8 +14,8 @@ function CreationBook() {
   const [deckRange, setDeckRange] = useState([1, 100]);
   const [lastDecks, setLastDecks] = useState({ vertical: 0, horizontal: 0 });
   const [idactif, setIdactif] = useState(null); // State for active audio ID
-  const { authState } = useContext(AuthContext);
-  const [loader, setloader] = useState(false);
+   const { authState, setAuthState } = useContext(AuthContext);
+ 
   // Gérer le clic sur un deck
   const handleDeckClick = (deckNumber) => {
     setSelectedDeck(deckNumber);
@@ -45,73 +44,66 @@ function CreationBook() {
 
 
 
-  useEffect(() => {
-
-
-setloader(false)
-
-  }, [deckRange]);
-
 
 
 
   useEffect(() => {
-   
     const fetchTitle = async () => {
+      setAuthState((prevState) => ({ ...prevState, loading: true })); // ✅ Active le chargement
+  
       try {
-
-        setloader(true);
-
         const fetchedCartes = [];
         let verticalLast = 0;
         let horizontalLast = 0;
-
+  
         // Récupérer les titres verticaux
         for (let num = 1; num <= 100; num++) {
-          const response = await axios.get(`${apiUrl}/postimages/lireimagespresentation/${authState.id}/${num}`, {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          });
+          const response = await axios.get(
+            `${apiUrl}/postimages/lireimagespresentation/${authState.id}/${num}`,
+            { headers: { accessToken: localStorage.getItem("accessToken") } }
+          );
           if (response.data && response.data.length > 0) {
             fetchedCartes.push(response.data[0]);
-            verticalLast = num; 
+            verticalLast = num;
           } else {
             fetchedCartes.push(null);
           }
         }
-
+  
         // Récupérer les titres horizontaux
         for (let num = 101; num <= 200; num++) {
-          const response = await axios.get(`${apiUrl}/postimages/lireimagespresentation/${authState.id}/${num}`, {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          });
+          const response = await axios.get(
+            `${apiUrl}/postimages/lireimagespresentation/${authState.id}/${num}`,
+            { headers: { accessToken: localStorage.getItem("accessToken") } }
+          );
           if (response.data && response.data.length > 0) {
-            horizontalLast = num; 
+            horizontalLast = num;
           } else {
             break;
           }
         }
-
+  
         setTitle(fetchedCartes);
         setLastDecks({ vertical: verticalLast, horizontal: horizontalLast });
-
+  
         // Initialisation automatique sur l'état vertical
         if (verticalLast > 0) {
           setDeckRange([1, verticalLast]);
           setBaseButtonText("Horizontale");
           setSelectedDeck(1);
-       
         }
-
       } catch (err) {
-        setloader(true)
         console.error("Failed to fetch cartes:", err);
+      } finally {
+        setAuthState((prevState) => ({ ...prevState, loading: false })); // ✅ Désactive le chargement après
       }
     };
-
+  
     if (authState.id) {
       fetchTitle();
     }
   }, [authState.id]);
+  
 
   const filteredTitles = title.slice(deckRange[0] - 1, deckRange[1]);
 
@@ -163,12 +155,7 @@ setloader(false)
         />
       </div>
 
-    { loader && 
-    <>
-    <LoadingPlanet />
-    <div id="blackgroundload"></div>
-    </>
-    }
+
     </>
   );
 }

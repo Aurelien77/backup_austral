@@ -1,36 +1,51 @@
 
-.loader {
-  z-index: 99;
-  position: absolute;
-  transform: translate(-50% -50%);
- top: 0vw;
- left: 39%;
-background-color: rgb(198, 209, 209);
-& h1 {
-  color: #FFFFFF;
-  text-align: center;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  font-size: 20px;
-  position: absolute;
-  text-shadow: 2px 2px 5px rgb(18, 3, 103);
-  top: 30vw;
-  left: 2vw;
+.loader-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Noir transparent */
+  z-index: 104;
+ 
 }
 
-& h1:after {
-  position: absolute;
-  content: "";
-  -webkit-animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
-  animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
-}
+.loader {
+    z-index: 105;
+    position: fixed; 
+    top: 10vw;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  transform: translate(-50% -50%);
+  width: 0vw;
+  height: 0vh;
+background-color: #FFFFFF;
+
+  & h1 {
+    color: #FFFFFF;
+    text-align: center;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    position: absolute;
+    text-shadow: 2px 2px 5px rgb(18, 3, 103);
+    top: 30vw;
+    left: 6vw;
+  }
+
+  & h1:after {
+    position: absolute;
+    content: "";
+    -webkit-animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
+    animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
+  }
 }
 
 
 .book {
   border: 4px solid #FFFFFF;
   width: 400px;
-  height: 340px;
+  height: 260px;
   position: relative;
   perspective: 440px;
 
@@ -39,7 +54,7 @@ background-color: rgb(198, 209, 209);
 .page {
   display: block;
   width: 200px;
-  height: 338px;
+  height: 260px;
   border: 4px solid #FFFFFF;
   border-left: 1px solid #dbd8dd;
   margin: 0;
@@ -73,5 +88,5 @@ background-color: rgb(198, 209, 209);
   -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
   animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
 
- 
+
 }

@@ -10,7 +10,7 @@ import north from "../../../logos/world.svg";
 import south from "../../../logos/terre.gif";
 import south2 from "../../../logos/south.png";
 import SetBackground from "../../../component/SetBackground";
-import LoadingPlanet from "../../../component/Loader/LoadingPlanet";
+import Loading from "../../../component/Loader/Loading";
 
 function TurnLivre({
   number,
@@ -18,7 +18,8 @@ function TurnLivre({
   CurrentPageFlipAudio,
   orientationPicture,
   menuVisibleHome,
-  setmenuVisibleHome
+  setmenuVisibleHome,
+  setLoad
 
 }) {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -220,13 +221,13 @@ useEffect(() => {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }),
         ]);
-        setloader(false)
+        setLoad(false)
         setDeckstate2(backgroundResponse.data);
         setDeckstate3(dosResponse.data);
         setDeckstate4(presentationResponse.data);
         setThePages(deckResponse.data);
       } catch (error) {
-        setloader(true)
+        setLoad(true)
         console.error("Error fetching data:", error);
       }
     };
@@ -519,7 +520,7 @@ useEffect(() => {
      
 
    { loader && 
-    <><  LoadingPlanet/>
+    <>
     
     <div className="noinformation">
   <span>ERROR : NO INFORMATION FROM SITE</span>

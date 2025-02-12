@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const LoadingPlanet = () => {
+const Loading = () => {
 
 
   return (
@@ -10,7 +10,7 @@ const LoadingPlanet = () => {
     <figure class="page"></figure>
     <figure class="page"></figure>
     <figure class="page"></figure>
-    <h1>Ecriture du livre en cours</h1>
+    <h1>ECRITURE DU LIVRE..</h1>
   </div>
   
 
@@ -18,4 +18,4 @@ const LoadingPlanet = () => {
   );
 };
 
-export default LoadingPlanet;
+export default Loading;

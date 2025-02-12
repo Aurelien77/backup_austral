@@ -19,6 +19,7 @@ import MonLivre from "./pages/book/Play/MonLivre";
 import CreationBook from "./pages/book/Creation/CreationBook";
 
 import { apiUrl } from "./config";
+import Loading from "./component/Loader/Loading";
 
 
 const history = createBrowserHistory();
@@ -36,6 +37,7 @@ function App() {
     accueil: true,
     create: true,
     urlcontextbackground: "",
+    loading: false,
   });
 
   const [isHidden, setIsHidden] = useState(false);
@@ -234,6 +236,17 @@ if (listBackground) {
         padding: 0,
       }}
     >
+
+{authState.loading && (
+      <>
+        <div className="loader-background"></div>
+        <div className="loader">
+        <Loading />
+          
+        </div>
+      </>
+    )}
+    
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <>
