@@ -10,9 +10,9 @@ const Loading = () => {
     <figure class="page"></figure>
     <figure class="page"></figure>
     <figure class="page"></figure>
-    <h1>ECRITURE DES LIVRES..</h1>
+    
   </div>
-  
+  <h1>ECRITURE DES LIVRES..</h1>
 
   </>
   );

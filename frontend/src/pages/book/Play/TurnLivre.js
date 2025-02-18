@@ -362,7 +362,7 @@ useEffect(() => {
     <>
       <div className="pagecontaineraccueil">
         {/* Index / Menu */}
-        {menuVisible && (
+        {menuVisible &&  (
           <div className="thetitles">
             <button onClick={goToCoverPage} id="couverture">
               Couverture
@@ -370,8 +370,22 @@ useEffect(() => {
             {titleWithGrouping}
           </div>
         )}
+
+
+
+
    <div className="homevisible">
-            <button onClick={() => setmenuVisibleHome(!menuVisibleHome)}>
+            <button onClick={() => setAuthState((prevState) => ({
+      ...prevState,
+      visibility_nav_button: false,
+      menuvisiblebook: !prevState.menuvisiblebook,
+      visible_livre_by_menu_nav: false,
+    }))}>
+
+
+
+
+
               {menuVisibleHome ? (
                  "💧"
               ) : (
@@ -380,14 +394,14 @@ useEffect(() => {
             </button>
           </div>
        
-       { menuVisibleHome &&  <> 
+       {authState.menuvisiblebook  && <> 
        
        <div className="north">
             <button onClick={() => setMenuVisible(!menuVisible)}>
               {menuVisible ? (
                  <img src={north} className="northstar"  />
               ) : (
-                <div c><img src={northstar} /> <div className="fonds">Menu</div> </div>  
+                <div><img src={northstar} /> <div className="fonds">Menu</div> </div>  
               )}
             </button>
           </div>

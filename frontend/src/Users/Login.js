@@ -41,19 +41,38 @@ function Login() {
     try {
       axios.post(`${apiUrl}/auth/login`, data).then((response) => {
         if (response.data.error) {
-          setAuthState((prevState) => ({ ...prevState, loading: false }));
+          setAuthState((prevState) => ({ 
+            
+            
+            ...prevState, 
+            loading: false,
+   
+          
+          
+          }));
           alert(response.data.error);
           return;
         } else {
           localStorage.setItem("accessToken", response.data.token);
           setAuthState({
+            
             username: response.data.username,
-            photo_profil: response.data.photo_profil,
             id: response.data.id,
             admin: response.data.admin,
             prof: response.data.prof,
+            photo_profil: response.data.photo_profil,
             status: true,
+            bibli: false,
+            identity: true,
+            accueil: true,
+            create: true,
+            urlcontextbackground: "",
             loading: true,
+            visibility_nav_button: false,
+            menuvisiblebook : false,
+            visibility_login: false,
+            visible_livre_by_menu_nav : "",
+          
           });
          
           history.push("/Livres");
@@ -93,7 +112,8 @@ function Login() {
           <div id="blackground"></div>
         </>
       )}
-      <div className="containerlogin">
+
+     { authState.visibility_login && authState.visibility_nav_button && <div className="containerlogin">
         <div>
           <input
             placeholder="Pseudo"
@@ -154,7 +174,8 @@ function Login() {
             </button>
           </div>
         )}
-      </div>
+      </div>}
+
     </>
   );
 }

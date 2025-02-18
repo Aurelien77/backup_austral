@@ -1,5 +1,13 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Roboto:300");
+/* --------------------------------------TITLES */
+/* FIN --------------------------------------TITLES */
+/* --------------------------------------OPTIONS DIRECTIONS  */
+/* FIN--------------------------------------OPTIONS DIRECTIONS  */
+/* --------------------------------------Audio */
+/* FIN --------------------------------------Audio */
+/* -------------------------------------IMAGES ET PAGES  */
+/* FIN-------------------------------------IMAGES ET PAGES  */
 .loader-background {
   position: fixed;
   top: 0;
@@ -23,15 +31,26 @@
   background-color: #FFFFFF;
 }
 .loader h1 {
+  display: inline-block;
+  /* Adapte la largeur au texte */
   color: #FFFFFF;
   text-align: center;
   font-family: sans-serif;
-  text-transform: uppercase;
   font-size: 20px;
   position: absolute;
   text-shadow: 2px 2px 5px rgb(18, 3, 103);
   top: 30vw;
-  left: 4vw;
+  margin-left: -8vw;
+  transform: translate(-50%, -50%);
+  transform: translate(-50% -50%);
+  width: 0vw;
+  white-space: nowrap;
+  /* Empêche le retour à la ligne */
+}
+@media only screen and (max-width: 701px) {
+  .loader h1 {
+    margin-left: -30vw;
+  }
 }
 .loader h1:after {
   position: absolute;
@@ -46,6 +65,12 @@
   height: 260px;
   position: relative;
   perspective: 440px;
+}
+@media only screen and (max-width: 1101px) {
+  .book {
+    width: 14vw;
+    height: 10.5vw;
+  }
 }
 
 .page {
@@ -63,6 +88,12 @@
   transform-style: preserve-3d;
   -webkit-transform-origin: left center;
   transform-origin: left center;
+}
+@media only screen and (max-width: 1101px) {
+  .page {
+    width: 9vw;
+    height: 10.5vw;
+  }
 }
 
 .book .page:nth-child(1) {
@@ -85,28 +116,21 @@
 }
 
 html {
-  margin: 0px;
-  padding: 0px;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  overflow-x: none;
   border: none;
+  overflow-x: hidden;
 }
 
-html::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 20%, transparent 21%);
-  background-size: 2px 2px;
-  background-position: 0 0, 50px 50px, 100px 100px, 150px 150px, 200px 200px, 250px 250px, 300px 300px, 350px 350px, 400px 400px;
-  background-repeat: repeat;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: none;
+  border: none;
+  overflow-x: hidden;
 }
 
-/* Style pour les liens */
 a {
   text-decoration: none;
 }
@@ -367,15 +391,17 @@ li {
 @keyframes bouton_login {
   0% {
     top: 5px;
-    right: 5px;
+    left: 10px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
+    top: 5px;
+    left: 10px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-    top: 300px;
-    right: 5px;
+    left: 5vw;
+    top: 5px;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
@@ -613,7 +639,6 @@ section .ajust_image img {
   align-items: center;
   justify-content: center;
   justify-items: center;
-  margin-top: 6%;
 }
 @media only screen and (max-width: 1300px) and (orientation: landscape) {
   .pagecontaineraccueil {
@@ -629,6 +654,7 @@ section .ajust_image img {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5vw;
 }
 @media only screen and (orientation: portrait) and (max-width: 1101px) {
   .pagecontaineraccueil .flipbook-container-book {
@@ -682,6 +708,121 @@ section .ajust_image img {
     width: 37vw;
     height: 33vw;
   }
+}
+
+/* --------------------------------------TITLES */
+/* FIN --------------------------------------TITLES */
+/* --------------------------------------OPTIONS DIRECTIONS  */
+/* FIN--------------------------------------OPTIONS DIRECTIONS  */
+/* --------------------------------------Audio */
+/* FIN --------------------------------------Audio */
+/* -------------------------------------IMAGES ET PAGES  */
+/* FIN-------------------------------------IMAGES ET PAGES  */
+.loader-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  /* Noir transparent */
+  z-index: 104;
+}
+
+.loader {
+  z-index: 105;
+  position: fixed;
+  top: 10vw;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-50% -50%);
+  width: 0vw;
+  height: 0vh;
+  background-color: #FFFFFF;
+}
+.loader h1 {
+  display: inline-block;
+  /* Adapte la largeur au texte */
+  color: #FFFFFF;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  position: absolute;
+  text-shadow: 2px 2px 5px rgb(18, 3, 103);
+  top: 30vw;
+  margin-left: -8vw;
+  transform: translate(-50%, -50%);
+  transform: translate(-50% -50%);
+  width: 0vw;
+  white-space: nowrap;
+  /* Empêche le retour à la ligne */
+}
+@media only screen and (max-width: 701px) {
+  .loader h1 {
+    margin-left: -30vw;
+  }
+}
+.loader h1:after {
+  position: absolute;
+  content: "";
+  -webkit-animation: Dots 2s cubic-bezier(0, 0.39, 1, 0.68) infinite;
+  animation: Dots 2s cubic-bezier(0, 0.39, 1, 0.68) infinite;
+}
+
+.book {
+  border: 4px solid #FFFFFF;
+  width: 400px;
+  height: 260px;
+  position: relative;
+  perspective: 440px;
+}
+@media only screen and (max-width: 1101px) {
+  .book {
+    width: 14vw;
+    height: 10.5vw;
+  }
+}
+
+.page {
+  display: block;
+  width: 200px;
+  height: 260px;
+  border: 4px solid #FFFFFF;
+  border-left: 1px solid #dbd8dd;
+  margin: 0;
+  position: absolute;
+  right: -7px;
+  top: -4px;
+  overflow: hidden;
+  background: url("../logos/world.svg") no-repeat center center;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+}
+@media only screen and (max-width: 1101px) {
+  .page {
+    width: 9vw;
+    height: 10.5vw;
+  }
+}
+
+.book .page:nth-child(1) {
+  -webkit-animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.6s infinite;
+  animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.6s infinite;
+  background: url("../logos/south.png") no-repeat center center;
+  background-color: rgb(198, 209, 209);
+}
+
+.book .page:nth-child(2) {
+  -webkit-animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.45s infinite;
+  animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.45s infinite;
+  background: url("../logos/Star_icon-icons.com_75206.ico") no-repeat center center;
+  background-color: rgb(198, 209, 209);
+}
+
+.book .page:nth-child(3) {
+  -webkit-animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.2s infinite;
+  animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.2s infinite;
 }
 
 .fiche .createPostPage {
@@ -1177,89 +1318,6 @@ section .ajust_image img {
   width: 100%;
 }
 
-.fonds {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  color: #8bd2fb;
-  position: absolute;
-  margin-top: 5px;
-}
-
-.noinformation {
-  z-index: 101;
-  display: inline-block;
-  white-space: nowrap;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  border: 2px solid #122441;
-  border-radius: 10px 0px 10px 0px;
-  background-color: #000;
-  color: white;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 0.1px solid red;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  /* Effet d'ombre portée rouge animée */
-  animation: shadowScan 10s infinite alternate ease-in-out, scrollText 10s linear infinite alternate;
-}
-
-.noinformation span {
-  display: inline-block;
-  animation: waveText 1s ease-in-out infinite alternate, shakeText 5s ease-in-out infinite alternate;
-}
-
-/* Barre lumineuse rouge effet scanner */
-.noinformation::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -100%;
-  width: 120%;
-  height: 5px;
-  background: linear-gradient(to right, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.1));
-  box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5);
-  transform: translateY(-50%);
-  animation: scanEffect 4s linear infinite;
-}
-
-#blackground {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url("../logos/world.svg") no-repeat center center;
-  background-size: 110vw;
-  animation: pulseplanelogin 5s ease-in forwards;
-}
-
-#blackgroundload {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-  background-size: 110vw;
-  animation: pulseplanelogin 20s ease-in backwards;
-}
-
-#blackbackground {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
-  width: 100vw;
-  height: 100vh;
-}
-
 .homevisible button {
   z-index: 5;
   position: absolute;
@@ -1276,13 +1334,18 @@ section .ajust_image img {
   color: black;
   font-size: 1rem;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
-  /* Removed background-size and background-repeat */
   background-position: center;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
   .homevisible button {
-    width: 6vw;
-    height: 6vw;
+    width: 9vw;
+    height: 9vw;
+  }
+}
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+  .homevisible button {
+    width: 4.5vw;
+    height: 4.5vw;
   }
 }
 .homevisible button:hover {
@@ -1298,16 +1361,79 @@ section .ajust_image img {
   animation-fill-mode: backwards;
 }
 
+#bouton-cacher-log {
+  z-index: 200;
+  position: absolute;
+  width: 3vw;
+  height: 2vw;
+  z-index: 100;
+  border: 0;
+  top: 3px;
+  left: 5px;
+  margin-top: 0px;
+  text-shadow: 0.2px 0.2px 0.5px #000, 1px 1px 2.5px rgb(119, 119, 235);
+  background: none;
+}
+@media only screen and (max-width: 1000px) {
+  #bouton-cacher-log {
+    left: 2px;
+    top: 2px;
+    font-size: 2rem;
+  }
+}
+#bouton-cacher-log::before {
+  width: 3vw;
+  height: 3vw;
+  content: "";
+  font-size: 3rem;
+  cursor: pointer;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+  #bouton-cacher-log::before {
+    left: -1.5vw;
+    top: 0.5vw;
+    font-size: 2rem;
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  #bouton-cacher-log::before {
+    left: -1.5vw;
+    top: 0.5vw;
+    font-size: 2rem;
+    width: 8vw;
+    height: 8vw;
+  }
+}
+#bouton-cacher-log:hover {
+  transform: scale(1.1);
+  margin-top: 0.2vw;
+}
+
+/*  --------------------------------------------------- */
 .boutonlogin {
   width: 3vw;
   height: 3vw;
   position: absolute;
-  right: 10px;
-  top: 300px;
+  left: 5vw;
+  top: 5px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-timing-function: linear;
   opacity: 1;
   border-radius: 50%;
@@ -1387,30 +1513,6 @@ section .ajust_image img {
   transform: rotate(360deg);
 }
 
-.firstpage {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
-
-.deck {
-  font-size: 2rem;
-}
-.deck img {
-  border-radius: 20%;
-  height: 16rem;
-  width: 12rem;
-  /*    box-shadow: 2px 2px white, -0.1em -0.1em 0.9em black; */
-  border-left: 0.02px solid rgb(178, 175, 175);
-}
-.deck input {
-  width: 10rem;
-  margin: 0.4rem;
-}
-
 .bouton-hover {
   z-index: 2;
   position: absolute;
@@ -1456,66 +1558,6 @@ section .ajust_image img {
   text-shadow: 2px 2px 5px rgb(9, 9, 9);
 }
 
-.title_book {
-  z-index: 9999;
-  font-size: 2rem;
-  color: white;
-  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
-  -webkit-text-stroke: #0e72d5 0.5px 1px;
-}
-
-.selectbackground {
-  text-align: center;
-  box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
-  -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  padding: 20px;
-  border-radius: 20% 0% 20% 0%;
-  font-size: 25px;
-  background: radial-gradient(circle, rgba(121, 236, 244, 0.2), rgba(95, 219, 247, 0.5), rgba(23, 138, 204, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-@media only screen and (max-width: 1200px) and (orientation: portrait) {
-  .selectbackground {
-    position: absolute;
-    left: 10vw;
-    width: 80vw;
-    z-index: 100;
-    border-radius: 20% 0% 20% 0%;
-  }
-}
-
-.setbackground {
-  position: absolute;
-  right: 40%;
-  top: 2px;
-  margin-right: 10px;
-}
-@media only screen and (max-width: 1200px) and (orientation: portrait) {
-  .setbackground {
-    top: 5px;
-    left: 5px;
-    animation: bouton_portrait_title 1s forwards;
-    max-width: 5vw;
-  }
-}
-
-.container {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  opacity: 1;
-  background-color: #030356;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 #boutoncouv {
   position: absolute;
   top: 15.5vw;
@@ -1523,36 +1565,8 @@ section .ajust_image img {
   margin-top: 0%;
 }
 
-.backgroundblack {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #000;
-  opacity: 0.8;
-}
-
-.label_creation_book {
-  font-size: 1rem;
-}
-
 #annuler {
   background-color: rgb(40, 235, 40);
-}
-
-.page {
-  border-radius: 1%;
-  background-color: white;
-  border-radius: 1%;
-}
-.page iframe {
-  height: 100vw;
-}
-.page iframe img {
-  width: 100%;
-  height: auto;
 }
 
 .northstar {
@@ -1688,6 +1702,338 @@ section .ajust_image img {
   height: 100%;
 }
 
+#envoyer {
+  background-color: #03507d;
+  width: 40%;
+}
+#envoyer:hover {
+  transform: scale(1.02);
+  background-color: #1cda22;
+  cursor: pointer;
+}
+
+.oubliid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+.oubliid button {
+  z-index: 9999;
+  margin: 1vw;
+  color: black;
+}
+
+.logout {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6rem;
+}
+
+#decobutton {
+  width: 3vw;
+  height: 2vw;
+  z-index: 200;
+  position: absolute;
+  top: 5px;
+  right: 8.5vw;
+  background-color: #5c51d1;
+  border-radius: 20%;
+  animation-timing-function: linear;
+  animation-delay: 1.5s;
+  animation: deco 5s forwards;
+}
+@media only screen and (max-width: 1101px) {
+  #decobutton {
+    width: 12vw;
+    height: 8vw;
+    right: 17.5vw;
+  }
+}
+#decobutton:hover {
+  cursor: pointer;
+  background-color: #ff0617;
+  transform: scale(1.1);
+}
+
+.admin-button {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-button::before {
+  content: "🪐";
+  position: absolute;
+  font-size: 24px;
+  color: yellow;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  /* Positionnement initial centré */
+  transition: transform 0.3s ease;
+  /* Transition pour l'agrandissement de l'emoji */
+  opacity: 0.5;
+  z-index: 1;
+  /* Assure que l'emoji est au-dessus du texte */
+}
+
+.admin-button:hover {
+  background-color: #03507d;
+  transform: scale(1.1);
+}
+
+.admin-button:hover::before {
+  transform: translate(-50%, -50%) scale(1.8) rotate(0deg);
+}
+
+#identi {
+  z-index: 100;
+  position: absolute;
+  top: 0.2vw;
+  right: 30vw;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(175, 63, 10);
+  height: 1.7vh;
+  width: 1.7vh;
+  box-shadow: 1px 1px gold, -0.5em 0 0.4em black;
+  border-radius: 50%;
+  padding: 1vw;
+  cursor: pointer;
+  animation-timing-function: linear;
+  animation-delay: 1.5s;
+  animation: identiti 5s forwards;
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  #identi {
+    animation: deco 2s forwards;
+    left: 23vw;
+    height: 4vw;
+    width: 4vw;
+    top: 5px;
+  }
+}
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+  #identi {
+    animation: deco 2s forwards;
+    left: 10vw;
+    height: 4vw;
+    width: 4vw;
+    top: 5px;
+  }
+}
+#identi:hover {
+  transform: scale(1.1);
+  background-color: #03507d;
+}
+
+.fonds {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: #8bd2fb;
+  position: absolute;
+  margin-top: 5px;
+}
+
+.noinformation {
+  z-index: 101;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: 2px solid #122441;
+  border-radius: 10px 0px 10px 0px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1px solid red;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  /* Effet d'ombre portée rouge animée */
+  animation: shadowScan 10s infinite alternate ease-in-out, scrollText 10s linear infinite alternate;
+}
+
+.noinformation span {
+  display: inline-block;
+  animation: waveText 1s ease-in-out infinite alternate, shakeText 5s ease-in-out infinite alternate;
+}
+
+/* Barre lumineuse rouge effet scanner */
+.noinformation::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 120%;
+  height: 5px;
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.1));
+  box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5);
+  transform: translateY(-50%);
+  animation: scanEffect 4s linear infinite;
+}
+
+#blackground {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("../logos/world.svg") no-repeat center center;
+  background-size: 110vw;
+  animation: pulseplanelogin 5s ease-in forwards;
+}
+
+#blackgroundload {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-size: 110vw;
+  animation: pulseplanelogin 20s ease-in backwards;
+}
+
+#blackbackground {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
+  width: 100vw;
+  height: 100vh;
+}
+
+.firstpage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.deck {
+  font-size: 2rem;
+}
+.deck img {
+  border-radius: 20%;
+  height: 16rem;
+  width: 12rem;
+  /*    box-shadow: 2px 2px white, -0.1em -0.1em 0.9em black; */
+  border-left: 0.02px solid rgb(178, 175, 175);
+}
+.deck input {
+  width: 10rem;
+  margin: 0.4rem;
+}
+
+.title_book {
+  z-index: 9999;
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0.5px 0.5px 0.5px #000, 3px 3px 5px blue;
+  -webkit-text-stroke: #0e72d5 0.5px 1px;
+}
+
+.selectbackground {
+  text-align: center;
+  box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
+  -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  padding: 20px;
+  border-radius: 20% 0% 20% 0%;
+  font-size: 25px;
+  background: radial-gradient(circle, rgba(121, 236, 244, 0.2), rgba(95, 219, 247, 0.5), rgba(23, 138, 204, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
+  .selectbackground {
+    position: absolute;
+    left: 10vw;
+    width: 80vw;
+    z-index: 100;
+    border-radius: 20% 0% 20% 0%;
+  }
+}
+
+.setbackground {
+  position: absolute;
+  right: 40%;
+  top: 2px;
+  margin-right: 10px;
+}
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
+  .setbackground {
+    top: 5px;
+    left: 5px;
+    animation: bouton_portrait_title 1s forwards;
+    max-width: 5vw;
+  }
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+}
+
+.backgroundblack {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.8;
+}
+
+.label_creation_book {
+  font-size: 1rem;
+}
+
+.page {
+  border-radius: 1%;
+  background-color: white;
+  border-radius: 1%;
+}
+.page iframe {
+  height: 100vw;
+}
+.page iframe img {
+  width: 100%;
+  height: auto;
+}
+
 .imageaccueil {
   z-index: 5;
   animation: scaleBook;
@@ -1811,97 +2157,6 @@ section .ajust_image img {
   margin: 1%;
 }
 
-#envoyer {
-  background-color: #03507d;
-  width: 40%;
-}
-#envoyer:hover {
-  transform: scale(1.02);
-  background-color: #1cda22;
-  cursor: pointer;
-}
-
-.oubliid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-}
-.oubliid button {
-  z-index: 9999;
-  margin: 1vw;
-  color: black;
-}
-
-#bouton-cacher-log {
-  position: absolute;
-  width: 3vw;
-  height: 2vw;
-  z-index: 100;
-  border: 0;
-  top: 0;
-  right: 14vw;
-  margin-top: 0px;
-  text-shadow: 0.2px 0.2px 0.5px #000, 3px 3px 5px blue;
-  background: none;
-  /* Ajout du contenu avant le bouton */
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  #bouton-cacher-log {
-    left: 24vw;
-    top: -1.5vw;
-    width: 2vw;
-    height: 1vw;
-    font-size: 0.7rem;
-  }
-}
-#bouton-cacher-log::before {
-  width: 3vw;
-  height: 3vw;
-  content: "🌀";
-  /* Emoji de base */
-  font-size: 3rem;
-  cursor: pointer;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  #bouton-cacher-log::before {
-    left: -1.5vw;
-    top: 0.5vw;
-    font-size: 2rem;
-  }
-}
-#bouton-cacher-log:hover {
-  transform: scale(1.1);
-  margin-top: 0.2vw;
-}
-
-#decobutton {
-  z-index: 100;
-  position: absolute;
-  top: 1vw;
-  right: 1vw;
-  background-color: #d1515a;
-  border-radius: 20%;
-  animation-timing-function: linear;
-  animation-delay: 1.5s;
-  animation: deco 5s forwards;
-}
-#decobutton:hover {
-  background-color: #ff0617;
-}
-
 .animdiv {
   position: absolute;
   z-index: 1;
@@ -1942,28 +2197,39 @@ section .ajust_image img {
 }
 
 .calquesdeschoix {
-  margin-top: 4%;
+  margin-top: 10vw;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
+  flex: 1 1 46%;
   align-items: center;
   justify-content: center;
-  gap: 4%;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 3vw;
 }
 .calquesdeschoix .carte {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   box-shadow: 2px 2px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
   padding: 2%;
   font-family: "Times New Roman", Times, serif;
-  border-radius: 20% 0% 20% 20%;
-  background-color: white;
+  border-radius: 5%;
   font-size: 25px;
-  background: radial-gradient(circle, rgba(121, 236, 244, 0.2), rgba(95, 219, 247, 0.5), rgba(23, 138, 204, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  background: radial-gradient(circle, rgba(51, 207, 228, 0.2), rgba(95, 219, 247, 0.5), rgba(8, 107, 229, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("");
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .calquesdeschoix .carte {
+    max-width: 45vw;
+    height: 60vw;
+  }
+}
+.calquesdeschoix .carte p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: clamp(1rem, 1vw, 1.2rem);
 }
 .calquesdeschoix .carte:hover {
   transform: scale(1.02);
@@ -1973,11 +2239,16 @@ section .ajust_image img {
 .calquesdeschoix .carte img {
   width: 13rem;
   height: 16rem;
-  background-color: #121314;
   border-bottom: 5px solid rgb(201, 182, 182);
   border-right: 5px solid rgb(201, 182, 182);
   border-radius: 2%;
   box-shadow: 0px 3px 1px 1px rgb(128, 120, 120);
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .calquesdeschoix .carte img {
+    width: 8.5rem;
+    height: 10rem;
+  }
 }
 .calquesdeschoix .cartehorizontale {
   display: flex;
@@ -2081,6 +2352,11 @@ section .ajust_image img {
   background-repeat: no-repeat;
   background-position: center;
 }
+@media only screen and (max-width: 1000px) {
+  .containerlogin #pseudo {
+    font-size: 1rem;
+  }
+}
 .containerlogin #password {
   border-radius: 10%;
   z-index: 9999;
@@ -2106,6 +2382,11 @@ section .ajust_image img {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+@media only screen and (max-width: 1000px) {
+  .containerlogin #password {
+    font-size: 1rem;
+  }
 }
 .containerlogin button {
   width: 100%;
@@ -2266,18 +2547,13 @@ section .ajust_image img {
 
 .creationbook {
   display: flex;
-  overflow-x: auto;
   flex-direction: column;
   justify-content: top;
   align-items: center;
-  height: 100%;
-  width: 100%;
 }
 
 .fromdiv {
   display: flex;
-  background-color: #030356;
-  background-size: cover;
   flex-direction: column;
   align-items: center;
 }
@@ -2451,7 +2727,6 @@ section .ajust_image img {
 .nav #biblio {
   z-index: 200;
   transform: scale(1.1);
-  /* Agrandit le bouton au survol */
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
@@ -2472,31 +2747,24 @@ section .ajust_image img {
   color: black;
   font-size: 1.5rem;
   line-height: 1;
-  /* Styles pour le pseudo-élément before */
-  /* Styles pour le pseudo-élément after */
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   .nav #biblio {
     height: 3.5vh;
     width: 3.5vh;
-    left: 15vw;
-    top: 0.5vw;
+    left: 2px;
+    top: 2px;
   }
 }
 .nav #biblio::before {
   content: "📖";
-  /* Icône de livre */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  /* Centre l'icône */
   font-size: 1.5rem;
-  /* Taille de l'icône */
   transition: transform 0.3s ease, color 0.3s ease;
-  /* Transition pour l'agrandissement et la couleur */
   z-index: 1;
-  /* Assure que l'icône est au-dessus du bouton */
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   .nav #biblio::before {
@@ -2505,27 +2773,19 @@ section .ajust_image img {
 }
 .nav #biblio::after {
   content: "📖";
-  /* Contenu vide pour créer un effet */
   position: absolute;
   top: 0.5%;
   right: 50vw;
   transform: translate(-50%, -50%) scale(1.2);
-  /* Effet de lumière ou d'ombre */
   width: 120%;
-  /* Taille de l'effet */
   height: 120%;
-  /* Taille de l'effet */
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  /* Ombre portée */
   z-index: 0;
-  /* Derrière le contenu du bouton */
   transition: transform 0.3s ease;
-  /* Transition pour l'effet */
 }
 .nav #biblio:hover {
   transform: scale(1.1);
-  /* Agrandit le bouton au survol */
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -2535,10 +2795,9 @@ section .ajust_image img {
   position: absolute;
   top: 0.3%;
   left: 19vw;
-  height: 1.5vw;
+  height: 1%;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2549,61 +2808,50 @@ section .ajust_image img {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* Styles pour le pseudo-élément before */
-  /* Styles pour le pseudo-élément after */
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   .nav #create {
     position: absolute;
-    left: 3vw;
+    left: 2px;
+    width: 0.5vw;
+    height: 0.5vw;
     top: 1vw;
   }
 }
 .nav #create::before {
   content: "✒️";
-  /* Icône de livre */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  /* Centre l'icône */
   font-size: 1.5rem;
-  /* Taille de l'icône */
   transition: transform 0.3s ease, color 0.3s ease;
-  /* Transition pour l'agrandissement et la couleur */
   z-index: 1;
-  /* Assure que l'icône est au-dessus du bouton */
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .nav #create::before {
+    font-size: 1.2rem;
+  }
 }
 .nav #create::after {
   content: "✒️";
-  /* Contenu vide pour créer un effet */
   position: absolute;
   top: 0.5%;
   right: 50vw;
   transform: translate(-50%, -50%) scale(1.2);
-  /* Effet de lumière ou d'ombre */
-  width: 120%;
-  /* Taille de l'effet */
-  height: 120%;
-  /* Taille de l'effet */
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  /* Ombre portée */
   z-index: 0;
-  /* Derrière le contenu du bouton */
   transition: transform 0.3s ease;
-  /* Transition pour l'effet */
 }
 .nav #create:hover {
   transform: scale(1.1);
-  /* Agrandit le bouton au survol */
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.nav .thunder2-button {
-  padding: 15px 30px;
-  font-size: 18px;
+.nav .plume-button {
+  padding: 14px 18px;
   font-weight: bold;
   color: #fff;
   background-color: #333;
@@ -2615,7 +2863,7 @@ section .ajust_image img {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
 }
-.nav .thunder2-button:hover {
+.nav .plume-button:hover {
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   background-size: contain;
@@ -2655,83 +2903,6 @@ section .ajust_image img {
 .nav #accueilli:hover {
   scale: 1.1;
   background-color: #eae615;
-}
-.nav #identi {
-  z-index: 100;
-  /* Augmente si nécessaire */
-  position: absolute;
-  top: 0.2vw;
-  right: 20vw;
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgb(175, 63, 10);
-  height: 1.7vh;
-  /* Taille augmentée pour tester */
-  width: 1.7vh;
-  /* Taille augmentée pour tester */
-  box-shadow: 1px 1px gold, -0.5em 0 0.4em black;
-  border-radius: 50%;
-  padding: 1vw;
-  cursor: pointer;
-  animation-timing-function: linear;
-  animation-delay: 1.5s;
-  animation: identiti 5s forwards;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .nav #identi {
-    animation: deco 2s forwards;
-    right: 27vw;
-    top: 1vw;
-  }
-}
-.nav #identi:hover {
-  transform: scale(1.1);
-  /* Utilise transform pour le hover */
-  background-color: #03507d;
-}
-
-.thunder3-button {
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #333;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  overflow: hidden;
-  text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Ajout de la transition pour l'agrandissement */
-}
-
-.thunder3-button::before {
-  content: "🪐";
-  position: absolute;
-  /* Positionnement absolu pour que l'emoji se superpose au texte */
-  font-size: 24px;
-  /* Taille initiale de l'emoji */
-  color: yellow;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(0deg);
-  /* Positionnement initial centré */
-  transition: transform 0.3s ease;
-  /* Transition pour l'agrandissement de l'emoji */
-  opacity: 0.5;
-  z-index: 1;
-  /* Assure que l'emoji est au-dessus du texte */
-}
-
-.thunder3-button:hover {
-  background-color: #03507d;
-  transform: scale(1.1);
-}
-
-.thunder3-button:hover::before {
-  transform: translate(-50%, -50%) scale(1.8) rotate(0deg);
 }
 
 /*# sourceMappingURL=style.css.map */

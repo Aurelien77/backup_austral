@@ -21,7 +21,6 @@ import CreationBook from "./pages/book/Creation/CreationBook";
 import { apiUrl } from "./config";
 import Loading from "./component/Loader/Loading";
 
-
 const history = createBrowserHistory();
 
 function App() {
@@ -38,67 +37,59 @@ function App() {
     create: true,
     urlcontextbackground: "",
     loading: false,
+    visibility_nav_button: "",
+    menuvisiblebook : "",
+    visibility_login: "",
+    visible_livre_by_menu_nav : "",
   });
+/* Visibility_nav_button concerne les bouton de navigation et login */
+/* menu visible concerne la navigation des livres */
 
-  const [isHidden, setIsHidden] = useState(false);
-
-
- 
   const [backgroundImage, setBackgroundImage] = useState();
 
   const listBackground = localStorage.getItem("listbackground");
 
-// use effect pour recuperr le background 
-useEffect(() => {
-  if (!listBackground) {
+  // use effect pour recuperer le background
+  useEffect(() => {
+    if (!listBackground) {
+      let myBookData = localStorage.getItem("mybook");
+      let myIdData = localStorage.getItem("myid");
+      axios
+        .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        })
+        .then((response) => {
+          if (response.data && response.data[0]) {
+            setBackgroundImage(`url(${response.data[0].lien})`);
+            setAuthState((prevState) => ({
+              ...prevState,
+              urlcontextbackground: `${response.data[0].lien}`,
+            }));
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "Erreur lors de la récupération du fond 'Book':",
+            error
+          );
+        });
+    }
 
-    let myBookData = localStorage.getItem("mybook");
-    let myIdData = localStorage.getItem("myid");
-    axios
-      .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        if (response.data && response.data[0]) {
-          setBackgroundImage(`url(${response.data[0].lien})`);
-          setAuthState((prevState) => ({
-            ...prevState,
-            urlcontextbackground: `${response.data[0].lien}`,
-          }));
-          
-        }
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération du fond 'Book':", error);
-      });
-
-  }
-
-
-if (listBackground) {
-  setBackgroundImage(`url(${listBackground})`);
-}
-
-
-
-
-}, [listBackground, backgroundImage ]);
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if (listBackground) {
+      setBackgroundImage(`url(${listBackground})`);
+    }
+  }, [listBackground, backgroundImage]);
 
   function toggleVisibility() {
-    setIsHidden((prevState) => !prevState);
+    setAuthState((prevState) => ({
+      ...prevState,
+      visibility_nav_button: !prevState.visibility_nav_button,
+      visible_livre_by_menu_nav : !prevState.visible_livre_by_menu_nav,
+      menuvisiblebook : false,
+     
+    }));
+
+
   }
   useEffect(() => {
     axios
@@ -121,7 +112,6 @@ if (listBackground) {
             accueil: true,
             create: true,
             urlcontextbackground: "",
-        
           });
         } else {
           setAuthState({
@@ -137,11 +127,15 @@ if (listBackground) {
             create: true,
             urlcontextbackground: "",
             loading: true,
+            visibility_nav_button: "",
+            menuvisiblebook : false,
+            visibility_login: false,
+            visible_livre_by_menu_nav : "",
           });
         }
       });
-  }, [authState.id]);
- 
+  }, []);
+
   // Déterminer l'image de fond à utiliser
 
   useEffect(() => {
@@ -149,10 +143,7 @@ if (listBackground) {
     setBackgroundImage(`url(${backgroundUrl})`);
   }, [authState.urlcontextbackground]);
 
-
-
-
-    // -------------------Logout
+  // -------------------Logout
   const logout = () => {
     localStorage.removeItem("accessToken");
 
@@ -174,11 +165,6 @@ if (listBackground) {
 
     window.location.reload(true);
   };
-
-
-
-
-
 
   function biblio() {
     setAuthState((prevState) => ({
@@ -223,14 +209,12 @@ if (listBackground) {
     }));
   }
 
-  
-
   return (
     <section
       className="container"
       style={{
         backgroundImage: backgroundImage,
-         backgroundSize: " cover", 
+        backgroundSize: " cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
 
@@ -238,53 +222,57 @@ if (listBackground) {
         padding: 0,
       }}
     >
+      {authState.loading && (
+        <>
+          <div className="loader-background"></div>
+          <div className="loader">
+            <Loading />
+          </div>
+        </>
+      )}
 
-{authState.loading && (
-      <>
-        <div className="loader-background"></div>
-        <div className="loader">
-        <Loading />
-          
-        </div>
-      </>
-    )}
-    
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <>
             {
+
+
+/* Bouton pour cacher le menu de navigation */
               <button
                 id="bouton-cacher-log"
                 onClick={toggleVisibility}
-                className={` ${!isHidden ? "hidden" : ""}`}
+                className={""}
               ></button>
             }
-            {!isHidden && authState.status && (
+
+{/*---------------------------------------------------- */}
+
+            {authState.status && (
               <>
                 {authState.status && (
                   <>
-                    {" "}
+               
                     {
                       <button
                         id="bouton-cacher-log"
                         onClick={toggleVisibility}
-                        className={`${!isHidden ? "" : ""}`}
+                        className={""}
                       ></button>
                     }
-                    {authState.status && (
+                    {authState.status  && authState.visible_livre_by_menu_nav && (
                       <button onClick={logout} id="decobutton">
-                        ⚪ Logout
+                        <div className="logout">
+                          <span>❌</span>
+                          <span>Logout</span>
+                        </div>
                       </button>
                     )}
                     <div className="nav">
-                      {authState.status && authState.identity && (
-                        <Link
-                          to={`/FicheAdmin/${authState.id}`}
-                          className="thunder3-button-link"
-                        >
+                      {authState.status && authState.identity  && authState.visible_livre_by_menu_nav && (
+                        <Link to={`/FicheAdmin/${authState.id}`} className="">
                           <div
                             id="identi"
-                            className="thunder3-button"
+                            className="admin-button"
                             onClick={admin}
                           >
                             {authState.username}
@@ -292,13 +280,13 @@ if (listBackground) {
                         </Link>
                       )}
 
-                      {authState.status && authState.create && (
+                      {authState.status && authState.create && authState.visible_livre_by_menu_nav &&  (
                         <Link to="/CreationBook" onClick={create}>
-                          ​ <div id="create" className="thunder2-button"></div>
+                          ​ <div id="create" className="plume-button"></div>
                         </Link>
                       )}
 
-                      {authState.status && authState.bibli && (
+                      {authState.status && authState.bibli && authState.visible_livre_by_menu_nav && (
                         <Link to="/Livres" onClick={biblio}>
                           {" "}
                           <div id="biblio" className="thunder-button">
@@ -306,34 +294,11 @@ if (listBackground) {
                           </div>
                         </Link>
                       )}
-
-                      {authState.status && authState.accueil && (
-                        <Link to="/Accueil" onClick={accueil}>
-                          {" "}
-                          <div id="accueilli" className="thunder4-button">
-                            ​✈️
-                          </div>
-                        </Link>
-                      )}
                     </div>
                   </>
                 )}
 
-                {!authState.status && (
-                  <>
-                    {
-                      <button
-                        id="bouton-cacher-log"
-                        onClick={toggleVisibility}
-                        className={`transition ${!isHidden ? "" : ""}`}
-                      >
-                        ...
-                      </button>
-                    }
-                  </>
-                )}
-
-                
+         
               </>
             )}
           </>
