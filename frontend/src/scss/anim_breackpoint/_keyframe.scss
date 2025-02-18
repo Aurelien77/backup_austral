@@ -340,23 +340,39 @@ background-color: rgb(234, 107, 33);
 
 @keyframes boutonlogin_portrait {
   0% {
-right:0px;
+left:5px;
   
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
-
+    left:5px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-  
-    width: 6vw;
-    height: 6vw;
+    left:20vw;
+    width: 7.6vw;
+    height: 7.6vw;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
 
-
+@keyframes boutonlogin_landscape {
+  0% {
+left:5px;
+  
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+    left:5px;
+    filter: blur(0.5px) hue-rotate(360deg);
+  }
+  100% {
+    left:12vw;
+    width: 3.9vw;
+    height: 3.9vw;
+    filter: blur(0px) hue-rotate(360deg);
+  }
+}
 
 @keyframes loginboutonhover {
   0% {
@@ -379,29 +395,40 @@ right:0px;
 @keyframes bouton_background_portrait {
   5% {
     top: 5px;
-    right: 1px;
+    right: 10px;
     filter: blur(0px) hue-rotate(0deg);
    
   }
-  50% {
-  right: 100vw;
-    filter: blur(0.10px) hue-rotate(15deg);
-  }
+ 
 
-  95% {
-    left: 9px;
-      filter: blur(0.10px) hue-rotate(15deg);
-    }
+
   100% {
     top: 5px;
-    left: 9px;
+    right: 60vw;
     filter: blur(0px) hue-rotate(0deg);
-    width: 6vw;
-    height: 6vw;
+    width: 7.7vw;
+    height: 7.7vw;
   }
 }
 
+@keyframes bouton_background_landscape{
+  5% {
+    top: 5px;
+    right: 10px;
+    filter: blur(0px) hue-rotate(0deg);
+   
+  }
+ 
 
+
+  100% {
+    top: 25vw;
+    right: 1vw;
+    filter: blur(0px) hue-rotate(0deg);
+    width: 4.8vw;
+    height: 4.8vw;
+  }
+}
 
 @keyframes bouton_background {
   0% {
@@ -453,8 +480,8 @@ right:0px;
   }
   100% {  
     
-    width: 6vw;
-    height: 6vw;
+    width: 7.8vw;
+    height: 7.8vw;
     top: 5px;
     right: 114px;
     filter: blur(0px) hue-rotate(0deg);    

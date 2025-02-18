@@ -1103,64 +1103,7 @@
     }
   }
 
-  & #create {
-    @include create;
-    z-index: 200;
-    position: absolute;
-    top: 0.3%;
-    left: 19vw;
-    height: 1%;
-    box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-    border: #0d98e9 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: 1rem;
-    line-height: 1;
-    background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    );
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
 
-    &::before {
-      @include createfont;
-      content: "✒️";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      font-size: 1.5rem;
-      transition: transform 0.3s ease, color 0.3s ease;
-      z-index: 1;
-    }
-
-    &::after {
-      content: "✒️";
-      position: absolute;
-      top: 0.5%;
-      right: 50vw;
-      transform: translate(-50%, -50%) scale(1.2);
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      z-index: 0;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover {
-      transform: scale(1.1);
-      background-color: #03507d;
-      box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-  }
 
   .plume-button {
     padding: 14px 18px;
@@ -1192,7 +1135,7 @@
     }
   }
 
-  & #accueilli {
+  /* & #accueilli {
     @include accueil;
     z-index: 3;
     position: absolute;
@@ -1230,5 +1173,5 @@
       background-color: #eae615;
     }
   }
-
+ */
 }

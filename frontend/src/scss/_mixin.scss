@@ -55,8 +55,8 @@ $phone-max-width: 1000px;
 
 @mixin deco {
   @media only screen and (max-width: 1101px) {
-    width: 12vw;
-    height: 8vw;
+    width: 8vw;
+    height: 5vw;
     right: 17.5vw;
   }
 }
@@ -231,9 +231,10 @@ $phone-max-width: 1000px;
 
 @mixin north_orientation_landscape-mobile {
   @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
-    width: 4vw;
-    height: 4vw;
+    width: 4.5vw;
+    height: 4.5vw;
     top: 35%;
+  
   }
 }
 
@@ -242,7 +243,7 @@ $phone-max-width: 1000px;
 @mixin north_orientation_portrait-mobile {
   @media only screen and (max-width: 1200px) and (orientation: portrait) {
     top: 5px;
-    left: 30vw;
+  right:  30vw;
 
     animation: bouton_portrait_title 1s forwards;
   }
@@ -251,6 +252,14 @@ $phone-max-width: 1000px;
 @mixin south_orientation_portrait-mobile {
   @media only screen and (max-width: 1200px) and (orientation: portrait) {
     animation-name: bouton_background_portrait;
+    
+  }
+}
+
+@mixin south_orientation_landscape-mobile {
+  @media only screen and (max-width: 1200px) and (orientation: landscape) {
+    animation-name: bouton_background_landscape;
+
   }
 }
 
@@ -264,13 +273,6 @@ $phone-max-width: 1000px;
   }
 }
 
-@mixin south_orientation_landscape-mobile {
-  @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
-    top: 10%;
-    left: 90%;
-    top: 65%;
-  }
-}
 
 @mixin inputco {
   @media only screen and (max-width: 1000px) {
@@ -312,20 +314,19 @@ $phone-max-width: 1000px;
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     animation: deco 2s forwards;
 
-    left: 23vw;
-    height: 4vw;
-    width: 4vw;
+    left: 33vw;
+    height: 5vw;
+    width: 5vw;
     top: 5px;
   }
 }
 @mixin identifiantlandscape {
   @media only screen and (max-width: 1000px) and (orientation: landscape) {
-    animation: deco 2s forwards;
 
-    left: 10vw;
-    height: 4vw;
-    width: 4vw;
-    top: 5px;
+    left: 9vw;
+    height: 3.5vw;
+    width: 3.5vw;
+    top: 8px;
   }
 }
 
@@ -334,7 +335,7 @@ $phone-max-width: 1000px;
     height: 3.5vh;
     width: 3.5vh;
 
-    left: 2px;
+    left: 12vw;
 
     top: 2px;
   }
@@ -349,16 +350,29 @@ $phone-max-width: 1000px;
 @mixin create {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     position: absolute;
-    left: 2px;
+    left: 21.5vw;
     width: 0.5vw;
     height: 0.5vw;
     top: 1vw;
   }
 }
 
+@mixin create_landscape {
+  @media only screen and (max-width: 1200px) and (orientation: landscape) {
+ 
+    position: absolute;
+    left: 18.5vw;
+    width: 0.5vw;
+    height: 0.5vw;
+    top: 1vw;
+  }
+}
+
+
 @mixin createfont {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     font-size: 1.2rem;
+    
   }
 }
 
@@ -429,8 +443,22 @@ $phone-max-width: 1000px;
 
     animation-name: boutonlogin_portrait;
     animation-fill-mode: forwards;
-    left: 60vw;
+    left: 20vw;
     top: 5px;
+
+  }
+}
+
+
+@mixin boutonlogin_landscape-log {
+  @media only screen and (max-width: 1200px) and (orientation: landscape) {
+    // Attention derniere position donnée par BEFORE
+
+    animation-name: boutonlogin_landscape;
+    animation-fill-mode: forwards;
+    left: 12vw;
+    top: 5px;
+
   }
 }
 
@@ -451,7 +479,7 @@ $phone-max-width: 1000px;
     position: fixed;
     border: 1px solid green;
     border-radius: 10%;
-    left: 36%;
+    left: 43vw;
     font-size: 0.7rem;
     margin-top: 5px;
     background-color: #ccc;

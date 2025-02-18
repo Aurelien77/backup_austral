@@ -407,15 +407,33 @@ li {
 }
 @keyframes boutonlogin_portrait {
   0% {
-    right: 0px;
+    left: 5px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
+    left: 5px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-    width: 6vw;
-    height: 6vw;
+    left: 20vw;
+    width: 7.6vw;
+    height: 7.6vw;
+    filter: blur(0px) hue-rotate(360deg);
+  }
+}
+@keyframes boutonlogin_landscape {
+  0% {
+    left: 5px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  50% {
+    left: 5px;
+    filter: blur(0.5px) hue-rotate(360deg);
+  }
+  100% {
+    left: 12vw;
+    width: 3.9vw;
+    height: 3.9vw;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
@@ -434,23 +452,29 @@ li {
 @keyframes bouton_background_portrait {
   5% {
     top: 5px;
-    right: 1px;
+    right: 10px;
     filter: blur(0px) hue-rotate(0deg);
-  }
-  50% {
-    right: 100vw;
-    filter: blur(0.1px) hue-rotate(15deg);
-  }
-  95% {
-    left: 9px;
-    filter: blur(0.1px) hue-rotate(15deg);
   }
   100% {
     top: 5px;
-    left: 9px;
+    right: 60vw;
     filter: blur(0px) hue-rotate(0deg);
-    width: 6vw;
-    height: 6vw;
+    width: 7.7vw;
+    height: 7.7vw;
+  }
+}
+@keyframes bouton_background_landscape {
+  5% {
+    top: 5px;
+    right: 10px;
+    filter: blur(0px) hue-rotate(0deg);
+  }
+  100% {
+    top: 25vw;
+    right: 1vw;
+    filter: blur(0px) hue-rotate(0deg);
+    width: 4.8vw;
+    height: 4.8vw;
   }
 }
 @keyframes bouton_background {
@@ -494,8 +518,8 @@ li {
     filter: blur(0.5px) hue-rotate(15deg);
   }
   100% {
-    width: 6vw;
-    height: 6vw;
+    width: 7.8vw;
+    height: 7.8vw;
     top: 5px;
     right: 114px;
     filter: blur(0px) hue-rotate(0deg);
@@ -1433,16 +1457,25 @@ section .ajust_image img {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   opacity: 1;
   border-radius: 50%;
+  z-index: 201;
 }
 @media only screen and (max-width: 1200px) and (orientation: portrait) {
   .boutonlogin {
     animation-name: boutonlogin_portrait;
     animation-fill-mode: forwards;
-    left: 60vw;
+    left: 20vw;
+    top: 5px;
+  }
+}
+@media only screen and (max-width: 1200px) and (orientation: landscape) {
+  .boutonlogin {
+    animation-name: boutonlogin_landscape;
+    animation-fill-mode: forwards;
+    left: 12vw;
     top: 5px;
   }
 }
@@ -1464,7 +1497,15 @@ section .ajust_image img {
   .boutonlogin::before {
     animation-name: boutonlogin_portrait;
     animation-fill-mode: forwards;
-    left: 60vw;
+    left: 20vw;
+    top: 5px;
+  }
+}
+@media only screen and (max-width: 1200px) and (orientation: landscape) {
+  .boutonlogin::before {
+    animation-name: boutonlogin_landscape;
+    animation-fill-mode: forwards;
+    left: 12vw;
     top: 5px;
   }
 }
@@ -1541,7 +1582,7 @@ section .ajust_image img {
     position: fixed;
     border: 1px solid green;
     border-radius: 10%;
-    left: 36%;
+    left: 43vw;
     font-size: 0.7rem;
     margin-top: 5px;
     background-color: #ccc;
@@ -1597,26 +1638,26 @@ section .ajust_image img {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
 }
+@media only screen and (max-width: 1200px) and (orientation: portrait) {
+  .north {
+    top: 5px;
+    right: 30vw;
+    animation: bouton_portrait_title 1s forwards;
+  }
+}
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+  .north {
+    width: 4.5vw;
+    height: 4.5vw;
+    top: 35%;
+  }
+}
 .north button {
   all: unset;
 }
 .north button img {
   height: 2vw;
   width: 2.3vw;
-}
-@media only screen and (max-width: 1200px) and (orientation: portrait) {
-  .north {
-    top: 5px;
-    left: 30vw;
-    animation: bouton_portrait_title 1s forwards;
-  }
-}
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
-  .north {
-    width: 4vw;
-    height: 4vw;
-    top: 35%;
-  }
 }
 .north img {
   height: 2vw;
@@ -1636,7 +1677,6 @@ section .ajust_image img {
 .south {
   text-align: center;
   z-index: 1;
-  animation-name: content2;
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
@@ -1662,6 +1702,11 @@ section .ajust_image img {
 @media only screen and (max-width: 1200px) and (orientation: portrait) {
   .south {
     animation-name: bouton_background_portrait;
+  }
+}
+@media only screen and (max-width: 1200px) and (orientation: landscape) {
+  .south {
+    animation-name: bouton_background_landscape;
   }
 }
 .south:hover {
@@ -1745,8 +1790,8 @@ section .ajust_image img {
 }
 @media only screen and (max-width: 1101px) {
   #decobutton {
-    width: 12vw;
-    height: 8vw;
+    width: 8vw;
+    height: 5vw;
     right: 17.5vw;
   }
 }
@@ -1795,6 +1840,76 @@ section .ajust_image img {
   transform: translate(-50%, -50%) scale(1.8) rotate(0deg);
 }
 
+#create {
+  z-index: 200;
+  position: absolute;
+  top: 0.3%;
+  left: 19vw;
+  height: 1%;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  #create {
+    position: absolute;
+    left: 21.5vw;
+    width: 0.5vw;
+    height: 0.5vw;
+    top: 1vw;
+  }
+}
+@media only screen and (max-width: 1200px) and (orientation: landscape) {
+  #create {
+    position: absolute;
+    left: 18.5vw;
+    width: 0.5vw;
+    height: 0.5vw;
+    top: 1vw;
+  }
+}
+#create::before {
+  content: "✒️";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 1;
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  #create::before {
+    font-size: 1.2rem;
+  }
+}
+#create::after {
+  content: "✒️";
+  position: absolute;
+  top: 0.5%;
+  right: 50vw;
+  transform: translate(-50%, -50%) scale(1.2);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+#create:hover {
+  transform: scale(1.1);
+  background-color: #03507d;
+  box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 #identi {
   z-index: 100;
   position: absolute;
@@ -1818,19 +1933,18 @@ section .ajust_image img {
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   #identi {
     animation: deco 2s forwards;
-    left: 23vw;
-    height: 4vw;
-    width: 4vw;
+    left: 33vw;
+    height: 5vw;
+    width: 5vw;
     top: 5px;
   }
 }
 @media only screen and (max-width: 1000px) and (orientation: landscape) {
   #identi {
-    animation: deco 2s forwards;
-    left: 10vw;
-    height: 4vw;
-    width: 4vw;
-    top: 5px;
+    left: 9vw;
+    height: 3.5vw;
+    width: 3.5vw;
+    top: 8px;
   }
 }
 #identi:hover {
@@ -2723,6 +2837,45 @@ section .ajust_image img {
   top: 0;
   display: flex;
   width: 100%;
+  /* & #accueilli {
+     @include accueil;
+     z-index: 3;
+     position: absolute;
+     top: 0.5vw;
+     left: 2vw;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 1px 1px rgb(33, 13, 150), -0.5em 0 0.4em black;
+     border: 0px solid rgb(20, 66, 202);
+     border-radius: 50%;
+     height: 2.5vw;
+     width: 2.5vw;
+     font-size: 1rem;
+     animation-duration: 1s;
+     animation-timing-function: linear;
+
+     animation-delay: 3.5s;
+     animation: deco 5s forwards;
+     color-scheme: white;
+     background: radial-gradient(
+       circle,
+       rgba(108, 131, 233, 0.2),
+       rgba(178, 177, 206, 0.5),
+       rgba(24, 107, 184, 0.4),
+       rgba(26, 161, 224, 0.7),
+       rgba(3, 3, 86, 0.7)
+     );
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center;
+
+     &:hover {
+       scale: (1.1);
+       background-color: #eae615;
+     }
+   }
+  */
 }
 .nav #biblio {
   z-index: 200;
@@ -2752,7 +2905,7 @@ section .ajust_image img {
   .nav #biblio {
     height: 3.5vh;
     width: 3.5vh;
-    left: 2px;
+    left: 12vw;
     top: 2px;
   }
 }
@@ -2790,66 +2943,6 @@ section .ajust_image img {
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.nav #create {
-  z-index: 200;
-  position: absolute;
-  top: 0.3%;
-  left: 19vw;
-  height: 1%;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  line-height: 1;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .nav #create {
-    position: absolute;
-    left: 2px;
-    width: 0.5vw;
-    height: 0.5vw;
-    top: 1vw;
-  }
-}
-.nav #create::before {
-  content: "✒️";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  font-size: 1.5rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-  z-index: 1;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .nav #create::before {
-    font-size: 1.2rem;
-  }
-}
-.nav #create::after {
-  content: "✒️";
-  position: absolute;
-  top: 0.5%;
-  right: 50vw;
-  transform: translate(-50%, -50%) scale(1.2);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  z-index: 0;
-  transition: transform 0.3s ease;
-}
-.nav #create:hover {
-  transform: scale(1.1);
-  background-color: #03507d;
-  box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 .nav .plume-button {
   padding: 14px 18px;
   font-weight: bold;
@@ -2869,40 +2962,6 @@ section .ajust_image img {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-.nav #accueilli {
-  z-index: 3;
-  position: absolute;
-  top: 0.5vw;
-  left: 2vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 1px 1px rgb(33, 13, 150), -0.5em 0 0.4em black;
-  border: 0px solid rgb(20, 66, 202);
-  border-radius: 50%;
-  height: 2.5vw;
-  width: 2.5vw;
-  font-size: 1rem;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-delay: 3.5s;
-  animation: deco 5s forwards;
-  color-scheme: white;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(178, 177, 206, 0.5), rgba(24, 107, 184, 0.4), rgba(26, 161, 224, 0.7), rgba(3, 3, 86, 0.7));
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .nav #accueilli {
-    right: 0.5vw;
-    top: 10vw;
-  }
-}
-.nav #accueilli:hover {
-  scale: 1.1;
-  background-color: #eae615;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,10 +1,9 @@
 // Bouton visibilité des menus pour la navigation des livres
 
 .homevisible button {
-
   @include homevisible_portrait;
   @include homevisible_landscape;
-  
+
   z-index: 5;
   position: absolute;
   top: 5px;
@@ -47,8 +46,6 @@
 // Bouton cacher les menus de navigations
 
 #bouton-cacher-log {
-
-
   @include bouton-cacher;
   z-index: 200;
   position: absolute;
@@ -102,6 +99,7 @@
 /*  --------------------------------------------------- */
 .boutonlogin {
   @include boutonlogin_portrait-log;
+  @include boutonlogin_landscape-log;
   width: 3vw;
   height: 3vw;
   position: absolute;
@@ -111,22 +109,23 @@
     "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
-
   opacity: 1;
   border-radius: 50%;
-
+  z-index: 201;
   &:hover {
     cursor: pointer;
   }
 }
 
 .boutonlogin::before {
+  @include boutonlogin_portrait-log;
+  @include boutonlogin_landscape-log;
   content: "";
   width: 3vw;
   height: 3vw;
-  @include boutonlogin_portrait-log;
+
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
@@ -189,13 +188,12 @@
   }
 }
 .bouton-hover {
+  @include bouton-hover;
   z-index: 2;
   position: absolute;
   top: 0vw;
-  @include bouton-hover;
   color: white;
   -webkit-text-stroke: white 0.3px;
-
   text-shadow: 2px 2px 5px rgb(18, 3, 103);
   -webkit-text-stroke-color: 2px black;
   box-shadow: 1px 1px rgb(54, 160, 236), -0.5em 0 0.4em rgb(13, 13, 13);
@@ -254,6 +252,8 @@
 }
 
 .north {
+  @include north_orientation_portrait-mobile;
+  @include north_orientation_landscape-mobile;
   & button {
     all: unset;
 
@@ -262,7 +262,6 @@
       width: 2.3vw;
     }
   }
-
   display: flex;
   background-size: contain;
   background-repeat: no-repeat;
@@ -271,8 +270,6 @@
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
-  @include north_orientation_portrait-mobile;
-  @include north_orientation_landscape-mobile;
   top: 60px;
   right: 15px;
   position: absolute;
@@ -319,9 +316,10 @@
   }
 
   @include south_orientation_portrait-mobile;
+  @include south_orientation_landscape-mobile;
   text-align: center;
   z-index: 1;
-  animation-name: content2;
+
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
@@ -422,12 +420,12 @@
   font-size: 0.6rem;
 }
 #decobutton {
-    @include deco;
-    width: 3vw;
-    height: 2vw;
-    z-index: 200;
+  @include deco;
+  width: 3vw;
+  height: 2vw;
+  z-index: 200;
   position: absolute;
-  top:5px;
+  top: 5px;
   right: 8.5vw;
   background-color: #5c51d1;
   border-radius: 20%;
@@ -480,31 +478,90 @@
 .admin-button:hover::before {
   transform: translate(-50%, -50%) scale(1.8) rotate(0deg);
 }
-#identi {
-    @include identifiant;
-    @include identifiantlandscape;
-    z-index: 100;
+ #create {
+  @include create;
+  @include create_landscape;
+  z-index: 200;
+  position: absolute;
+  top: 0.3%;
+  left: 19vw;
+  height: 1%;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  line-height: 1;
+  background: radial-gradient(
+    circle,
+    rgba(108, 131, 233, 0.2),
+    rgba(95, 219, 247, 0.5),
+    rgba(24, 107, 184, 0.4),
+    rgba(78, 141, 230, 0.7),
+    rgba(3, 3, 86, 0.7)
+  );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &::before {
+    @include createfont;
+    content: "✒️";
     position: absolute;
-    top: 0.2vw;
-    right: 30vw;
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgb(175, 63, 10);
-    height: 1.7vh;
-    width: 1.7vh;
-    box-shadow: 1px 1px gold, -0.5em 0 0.4em black;
-    border-radius: 50%;
-    padding: 1vw;
-
-    cursor: pointer;
-    animation-timing-function: linear;
-    animation-delay: 1.5s;
-    animation: identiti 5s forwards;
-
-    &:hover {
-      transform: scale(1.1);
-      background-color: #03507d;
-    }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 1;
   }
+
+  &::after {
+    content: "✒️";
+    position: absolute;
+    top: 0.5%;
+    right: 50vw;
+    transform: translate(-50%, -50%) scale(1.2);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: #03507d;
+    box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
+#identi {
+  @include identifiant;
+  @include identifiantlandscape;
+  z-index: 100;
+  position: absolute;
+  top: 0.2vw;
+  right: 30vw;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(175, 63, 10);
+  height: 1.7vh;
+  width: 1.7vh;
+  box-shadow: 1px 1px gold, -0.5em 0 0.4em black;
+  border-radius: 50%;
+  padding: 1vw;
+
+  cursor: pointer;
+  animation-timing-function: linear;
+  animation-delay: 1.5s;
+  animation: identiti 5s forwards;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: #03507d;
+  }
+}
