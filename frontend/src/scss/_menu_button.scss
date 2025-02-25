@@ -72,13 +72,13 @@ width: 100%;
   @include boutonlogin_portrait-log;
   @include boutonlogin_landscape-log;
 position: relative;
-
+z-index:11;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
   animation-fill-mode: forwards;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   opacity: 1;
   border-radius: 50%;
@@ -222,7 +222,7 @@ width: 100%;
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
-
+margin-top: 5px;
   text-align: center;
   align-items: center;
   animation: bouton_title 1s forwards;
@@ -240,17 +240,18 @@ width: 100%;
     rgba(24, 107, 184, 0.4),
     rgba(78, 141, 230, 0.7),
     rgba(3, 3, 86, 0.7)
+    
   );
-
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
   & img {
     height: 2vw;
     width: 2vw;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
 
-    &:hover {
-      transform: scale(1.2);
-      cursor: pointer;
-    }
+
   }
 
   & button {
@@ -259,7 +260,14 @@ width: 100%;
     border: none;
   }
 }
+.backgroundfond {
 
+z-index: 501;
+  color: #fff;
+text-shadow: #000 2px 2px 2px;
+
+  
+}
 .south {
   & button {
     all: unset;
@@ -267,6 +275,7 @@ width: 100%;
   }
 
   & .fonds {
+    z-index: 501;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     color: #8bd2fb;
@@ -355,6 +364,7 @@ border-radius: 50%;
 
 
 #decobutton {
+  @include deco_bouton;
   position: absolute;
   right:18px;
   top: 105px;
@@ -388,7 +398,7 @@ border-radius: 50%;
   overflow: hidden;
   text-transform: uppercase;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+ /*  transition: background-color 0.3s ease, transform 0.3s ease; */
 }
 
 
@@ -402,10 +412,10 @@ border-radius: 50%;
   transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
   
   /* Ajoute une animation sur hover */
-  #identi:hover & {
+ /*  #identi:hover & {
     transform: rotate(360deg);
     filter: hue-rotate(180deg);
-  }
+  } */
 }
 
 
@@ -434,9 +444,9 @@ border-radius: 50%;
 
   &:hover {
     background-color: rgba(3, 80, 125, 0.2);
-    filter: contrast(1.5);
-    animation: bouton_login 3s infinite;
-    transition: transform 2s, opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+    /* filter: contrast(1.5); */
+   /*  animation: bouton_login 3s infinite; */
+   /*  transition: transform 2s, opacity 0.3s ease-in-out, filter 0.3s ease-in-out; */
     transform-origin: center;
   }
 }
@@ -496,7 +506,7 @@ text-align: center;
 
  #biblio {
   @include biblio;
-  z-index: 200;
+  z-index: 501;
   width: 2.5vw;
   height: 2.5vw;
   margin-top: 3px;

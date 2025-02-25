@@ -156,7 +156,7 @@ function TurnLivreOnboardingAudio({ pageNumber, setCurrentPageFlipAudio }) {
   return (
     <div className="containeraudio">
       {renderedDivs && (
-        <div className="flexaudioelement">
+     <>
           {ThePages && lengthdivs && (
             <HTMLFlipBook
               {...getFlipBookConfig()}
@@ -172,7 +172,7 @@ function TurnLivreOnboardingAudio({ pageNumber, setCurrentPageFlipAudio }) {
               <div></div>
             </HTMLFlipBook>
           )}
-        </div>
+        </>
       )}
     </div>
   );

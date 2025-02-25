@@ -1,24 +1,29 @@
 .containeraudio {
-  z-index: 2;
-  height: 20px;
+
 z-index: 11;
-  .flexaudioelement {
-    position: relative;
-    margin-top: 2.2vw;
-  }
+margin-top: 2.2vw;
+@include audio_mobile;
 
   .audiocenter {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    z-index: 2;
+    @include audio_mobile_center;
+  position: relative;
+    margin: 1px;
+ 
+  
+    width: 100%; 
+  
+    margin: 0px;
   }
-
   .audiocenter audio {
-    z-index: 2;
-    display: flex;
-    justify-items: center;
+    -webkit-appearance: none; 
+    appearance: none;
 
-    border-radius: 5%;
+    position: relative;
+    
   }
+  audio::-webkit-media-controls-panel {
+  
+    opacity: 1 !important;
+  }
+  
 }

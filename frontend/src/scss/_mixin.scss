@@ -7,7 +7,7 @@ $phone-max-width: 1000px;
 
 @mixin bouton-cacher {
   @media only screen and (max-width: 1000px) {
-    left: 2px;
+    left: 0px;
     top: 2px;
 
     font-size: 2rem;
@@ -299,7 +299,7 @@ transform: translateX(-50%);
     height: 3.5vh;
     width: 3.5vh;
 position: absolute;
-    left: 13vw;
+right: 13.5vw; 
 
     top: 5px;
   }
@@ -312,6 +312,19 @@ position: absolute;
 }
 
 
+@mixin audio_mobile_center {
+  @media only screen and (max-width: 1000px)  and (orientation: portrait) {
+    width: 50vw; 
+
+  }
+}
+@mixin audio_mobile {
+  @media only screen and (max-width: 1000px)  and (orientation: portrait) {
+ margin-left: 0px;
+ width: 100vw; 
+  }
+}
+
 @mixin administration {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     margin-top: 25vw;
@@ -322,13 +335,14 @@ position: absolute;
 @mixin biblio-before {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     font-size: 1rem;
+    
   }
 }
 
 @mixin create {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     position: absolute;
-    left: 20vw;
+    left: 15vw;
 
     top: 5px;
   }
@@ -391,6 +405,12 @@ position: absolute;
   }
 }
 
+@mixin deco_bouton {
+  @media only screen and (max-width: 1000px) and (orientation: portrait) {
+    top: 60px;
+
+  }
+}
 // Mobile device /
 //Resize login bouton for mobile device ---------------------------------------------------
 
@@ -400,7 +420,7 @@ position: absolute;
 
     animation-name: boutonlogin_portrait;
     animation-fill-mode: forwards;
-    left: 20vw;
+    left: 30vw;
     top: 5px;
 
   }

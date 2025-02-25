@@ -8,34 +8,24 @@ const Audio = forwardRef(({ audioname, onEnded, onPlay }, ref) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   const audioStyle = {
-    width: isMobile ? '100%' : '100%',
-    height: '30px',
+    width:  '100%', 
     appearance: 'none',
-  };
+    WebkitAppearance: 'none',
 
-  const handleClick = (e) => {
-    e.stopPropagation();
-  };
-
-  const handleEnded = () => {
-    if (onEnded) onEnded();
-  };
-
-  const handlePlay = () => {
-    if (onPlay) onPlay();
   };
 
   return (
-    <div className='audiocenter'>
+    <div className="audiocenter">
       <audio
         controls
+  controlsList="nodownload"
         ref={ref}
-        preload="auto"  // Charger les métadonnées et la durée avant la lecture
-        onClick={handleClick}
-        onEnded={handleEnded}
-        onPlay={handlePlay}
+        preload="auto"
         style={audioStyle}
+        onEnded={onEnded}
+        onPlay={onPlay}
       >
         <source src={audioname} type="audio/mpeg" />
         Your browser does not support the audio element.

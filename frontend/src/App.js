@@ -297,7 +297,7 @@ function App() {
                       ) : (
                         <div>
                           <img src={northstar} />{" "}
-                          <div className="fonds">Menu</div>{" "}
+                          <div className="backgroundfond">Menu</div>{" "}
                         </div>
                       )}
                     </button>
@@ -319,11 +319,11 @@ function App() {
                       {/*-------------------------MENU BACKGROUND BOUTON--------------------------- */}
 
                       {menuVisibleBackground ? (
-                        <img src={south} id="coeur" />
+                      <div className="backgroundfond">  <img src={south} id="coeur" /> </div>
                       ) : (
                         <div>
                           <img src={south2} />{" "}
-                          <div className="fonds">Fonds</div>{" "}
+                          <div className="backgroundfond">Fonds</div>{" "}
                         </div>
                       )}
                     </button>

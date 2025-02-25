@@ -1314,25 +1314,33 @@ section .ajust_image img {
 }
 
 .containeraudio {
-  z-index: 2;
-  height: 20px;
   z-index: 11;
-}
-.containeraudio .flexaudioelement {
-  position: relative;
   margin-top: 2.2vw;
 }
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .containeraudio {
+    margin-left: 0px;
+    width: 100vw;
+  }
+}
 .containeraudio .audiocenter {
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  z-index: 2;
+  position: relative;
+  margin: 1px;
+  width: 100%;
+  margin: 0px;
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .containeraudio .audiocenter {
+    width: 50vw;
+  }
 }
 .containeraudio .audiocenter audio {
-  z-index: 2;
-  display: flex;
-  justify-items: center;
-  border-radius: 5%;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+}
+.containeraudio audio::-webkit-media-controls-panel {
+  opacity: 1 !important;
 }
 
 @keyframes fadeIn {
@@ -1738,7 +1746,7 @@ section .ajust_image img {
 }
 @media only screen and (max-width: 1000px) {
   #bouton-cacher-log {
-    left: 2px;
+    left: 0px;
     top: 2px;
     font-size: 2rem;
   }
@@ -1798,11 +1806,12 @@ section .ajust_image img {
 /*  -----------------------LOGIN ---------------------------- */
 .boutonlogin {
   position: relative;
+  z-index: 11;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
   animation-fill-mode: forwards;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   opacity: 1;
   border-radius: 50%;
@@ -1812,7 +1821,7 @@ section .ajust_image img {
   .boutonlogin {
     animation-name: boutonlogin_portrait;
     animation-fill-mode: forwards;
-    left: 20vw;
+    left: 30vw;
     top: 5px;
   }
 }
@@ -1842,7 +1851,7 @@ section .ajust_image img {
   .boutonlogin::before {
     animation-name: boutonlogin_portrait;
     animation-fill-mode: forwards;
-    left: 20vw;
+    left: 30vw;
     top: 5px;
   }
 }
@@ -1959,6 +1968,7 @@ section .ajust_image img {
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
+  margin-top: 5px;
   text-align: center;
   align-items: center;
   animation: bouton_title 1s forwards;
@@ -1991,19 +2001,25 @@ section .ajust_image img {
   height: 2vw;
   width: 2.3vw;
 }
+.north:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 .north img {
   height: 2vw;
   width: 2vw;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
 }
-.north img:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-}
 .north button {
   width: 100%;
   background: none;
   border: none;
+}
+
+.backgroundfond {
+  z-index: 501;
+  color: #fff;
+  text-shadow: #000 2px 2px 2px;
 }
 
 .south {
@@ -2031,6 +2047,7 @@ section .ajust_image img {
   all: unset;
 }
 .south .fonds {
+  z-index: 501;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   text-shadow: #171819;
@@ -2096,6 +2113,11 @@ section .ajust_image img {
   animation-delay: 1.5s;
   animation: deco 5s forwards;
 }
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  #decobutton {
+    top: 60px;
+  }
+}
 #decobutton:hover {
   cursor: pointer;
   background-color: #ff0617;
@@ -2114,7 +2136,7 @@ section .ajust_image img {
   overflow: hidden;
   text-transform: uppercase;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  /*  transition: background-color 0.3s ease, transform 0.3s ease; */
 }
 
 #identi:before {
@@ -2123,10 +2145,10 @@ section .ajust_image img {
   color: yellow;
   transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
   /* Ajoute une animation sur hover */
-}
-#identi:hover #identi:before {
-  transform: rotate(360deg);
-  filter: hue-rotate(180deg);
+  /*  #identi:hover & {
+     transform: rotate(360deg);
+     filter: hue-rotate(180deg);
+   } */
 }
 
 #identi {
@@ -2152,9 +2174,9 @@ section .ajust_image img {
 }
 #identi:hover {
   background-color: rgba(3, 80, 125, 0.2);
-  filter: contrast(1.5);
-  animation: bouton_login 3s infinite;
-  transition: transform 2s, opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+  /* filter: contrast(1.5); */
+  /*  animation: bouton_login 3s infinite; */
+  /*  transition: transform 2s, opacity 0.3s ease-in-out, filter 0.3s ease-in-out; */
   transform-origin: center;
 }
 
@@ -2184,7 +2206,7 @@ section .ajust_image img {
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   #create {
     position: absolute;
-    left: 20vw;
+    left: 15vw;
     top: 5px;
   }
 }
@@ -2200,7 +2222,7 @@ section .ajust_image img {
 }
 
 #biblio {
-  z-index: 200;
+  z-index: 501;
   width: 2.5vw;
   height: 2.5vw;
   margin-top: 3px;
@@ -2226,7 +2248,7 @@ section .ajust_image img {
     height: 3.5vh;
     width: 3.5vh;
     position: absolute;
-    left: 13vw;
+    right: 13.5vw;
     top: 5px;
   }
 }
@@ -2280,7 +2302,7 @@ section .ajust_image img {
 }
 
 .setbackground {
-  z-index: 11;
+  z-index: 501;
   position: absolute;
   right: 0%;
   top: 5vw;
@@ -2655,7 +2677,7 @@ section .ajust_image img {
   z-index: 11;
   position: absolute;
   top: 100px;
-  width: 90%;
+  width: 100%;
   margin-left: 10px;
   margin-right: 10px;
   display: flex;
