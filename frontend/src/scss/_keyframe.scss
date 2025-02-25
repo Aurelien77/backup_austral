@@ -321,20 +321,28 @@ background-color: rgb(234, 107, 33);
 
 @keyframes bouton_login {
   0% {
-    top:5px;
+    top: 5px;
     left: 10px;
-    filter: blur(0px) hue-rotate(0deg);
+    filter: blur(0px) hue-rotate(0deg) saturate(1);
+    transform: rotate(0deg);
+  }
+  25% {
+    filter: blur(0.5px) hue-rotate(90deg) saturate(1.5);
   }
   50% {
-    top:5px;
-    left: 10px;
-    filter: blur(0.5px) hue-rotate(360deg);
+    top: 10px;
+    left: 20px;
+    filter: blur(1px) hue-rotate(180deg) saturate(2);
+    transform: rotate(180deg);
+  }
+  75% {
+    filter: blur(0.5px) hue-rotate(270deg) saturate(1.5);
   }
   100% {
-
-    left:5vw;
+    left: 5vw;
     top: 5px;
-    filter: blur(0px) hue-rotate(360deg);
+    filter: blur(0px) hue-rotate(360deg) saturate(1);
+    transform: rotate(360deg);
   }
 }
 

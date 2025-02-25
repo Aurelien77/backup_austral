@@ -6,7 +6,7 @@ function FicheAdmin () {
 
 const history = useHistory();
   return ( <>
-
+<div className="administration">
   <button
     className="passwordchange"
     onClick={() => {
@@ -17,7 +17,7 @@ const history = useHistory();
     Changer mon mots de passe
   </button>
            <div className="Booknumber"><Booknumber /></div> 
-
+           </div>
            </>
   );
 }

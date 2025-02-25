@@ -51,15 +51,6 @@ $phone-max-width: 1000px;
 }
 
 
-// Bouton de déconnecion
-
-@mixin deco {
-  @media only screen and (max-width: 1101px) {
-    width: 8vw;
-    height: 5vw;
-    right: 17.5vw;
-  }
-}
 
 //-------------------------------
 @mixin container-mobile {
@@ -289,12 +280,8 @@ transform: translateX(-50%);
 }
 @mixin identifiant {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    animation: deco 2s forwards;
-
-    left: 33vw;
-    height: 5vw;
-    width: 5vw;
-    top: 5px;
+   
+    margin-left: 0px;
   }
 }
 @mixin identifiantlandscape {
@@ -311,10 +298,24 @@ transform: translateX(-50%);
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     height: 3.5vh;
     width: 3.5vh;
+position: absolute;
+    left: 13vw;
 
-    left: 12vw;
+    top: 5px;
+  }
+}
 
-    top: 2px;
+@mixin administration_landscape {
+  @media only screen and (max-width: 1000px) and (orientation: landscape) {
+    margin-top: 7vw;
+  }
+}
+
+
+@mixin administration {
+  @media only screen and (max-width: 1000px) and (orientation: portrait) {
+    margin-top: 25vw;
+
   }
 }
 
@@ -327,31 +328,15 @@ transform: translateX(-50%);
 @mixin create {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     position: absolute;
-    left: 21.5vw;
-    width: 0.5vw;
-    height: 0.5vw;
-    top: 1vw;
-  }
-}
+    left: 20vw;
 
-@mixin create_landscape {
-  @media only screen and (max-width: 1200px) and (orientation: landscape) {
- 
-    position: absolute;
-    left: 18.5vw;
-    width: 0.5vw;
-    height: 0.5vw;
-    top: 1vw;
+    top: 5px;
   }
 }
 
 
-@mixin createfont {
-  @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    font-size: 1.2rem;
-    
-  }
-}
+
+
 
 @mixin bibliotheque {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {

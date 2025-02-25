@@ -73,11 +73,17 @@ background-color: #28ec6d;
 text-shadow: 2px 2px 5px rgb(10, 140, 88);
 cursor: pointer;
 }
+.administration {
+  @include administration_landscape;
+  @include administration;
+display: flex;
+flex-direction: column;
+margin-top: 7vw;
 
+
+}
 .passwordchange {
-  position: absolute;
-  top: 5vw;
-  left: 4vw;
+ height: 70px;
   border-radius: 10% 0% 10% 0%;
 background-color: red;
 border: 1px solid black;
@@ -114,15 +120,10 @@ text-align: center;
 }
 .Booknumber {
 
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  position: absolute;
-  flex-direction: column;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+
+
+
   margin-top: 2vw; 
 
   .livrenumber {

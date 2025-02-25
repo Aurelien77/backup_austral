@@ -9,9 +9,9 @@ const Audio = forwardRef(({ audioname, onEnded, onPlay }, ref) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   const audioStyle = {
-    width: isMobile ? '150px' : '100%',
+    width: isMobile ? '100%' : '100%',
     height: '30px',
-  /*   appearance: 'none', */
+    appearance: 'none',
   };
 
   const handleClick = (e) => {
