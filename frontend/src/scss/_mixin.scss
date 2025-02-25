@@ -90,12 +90,13 @@ $phone-max-width: 1000px;
 /* --------------------------------------TITLES */
 @mixin thetitlesportrait {
   @media only screen and (orientation: portrait) and (max-width: 1200px) {
-    position: fixed;
+   margin-top: 80vw;
     column-count: 2;
-    left: 50%;
     bottom: 10px;
-    column-rule: 2px solid #ccc;
-    width: 80vw;
+  /*   column-rule: 2px solid #ccc; */
+width: 80%;
+left: 50%;
+transform: translateX(-50%);
   }
 }
 
@@ -203,25 +204,10 @@ $phone-max-width: 1000px;
 
 /* FIN--------------------------------------OPTIONS DIRECTIONS  */
 
-/* --------------------------------------Audio */
-
-@mixin audio_mobile_portrait_width {
-  @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    width: 100%;
-  }
-}
-/* FIN --------------------------------------Audio */
 
 /* -------------------------------------IMAGES ET PAGES  */
 
-@mixin bouton_setbackground {
-  @media only screen and (max-width: 1200px) and (orientation: portrait) {
-    top: 5px;
-    left: 5px;
-    animation: bouton_portrait_title 1s forwards;
-    max-width: 5vw;
-  }
-}
+
 @mixin mobilepage {
   @media only screen and (max-width: $phone-max-width) and (orientation: portrait) {
     width: 40vw;
@@ -263,15 +249,6 @@ $phone-max-width: 1000px;
   }
 }
 
-@mixin bookbackground {
-  @media only screen and (max-width: 1200px) and (orientation: portrait) {
-    position: absolute;
-    left: 10vw;
-    width: 80vw;
-    z-index: 100;
-    border-radius: 20% 0% 20% 0%;
-  }
-}
 
 
 @mixin inputco {
@@ -411,15 +388,10 @@ $phone-max-width: 1000px;
 }
 @mixin menu_page_mobile_portrait {
   @media only screen and (max-width: 1300px) and (orientation: portrait) {
-    margin-top: 2%;
+    margin-top: 40px;
   }
 }
 
-@mixin audiocenter_mobile_landscape {
-  @media only screen and (max-width: 1300px) and (orientation: landscape) {
-    position: inherit;
-  }
-}
 
 @mixin menu_page_mobile_landscape {
   @media only screen and (max-width: 1300px) and (orientation: landscape) {

@@ -77,12 +77,31 @@ function Books() {
     setorientationPicture(showHorizontal ? "carte" : "cartehorizontale");
   }, [showHorizontal]);
 
-  return (
-    <div className="calquesdeschoix">
-      <button onClick={toggleDisplay} className="bouton-hover">
-        {showHorizontal ? "Horizontal" : "Vertical"}
-      </button>
+  return (    
+    
+    <>
+<button onClick={toggleDisplay} className="boutonchoix">
+  <div className="emoji-container">
+    <svg width="100%" height="100%" viewBox="0 0 100 100">
+      <defs>
+    
+        <path id="textCircle" d="M 10,50 A 40,40 0 1,1 90,50" />
+      </defs>
+      <text fill="white"  fontWeight="bold">
+        <textPath href="#textCircle" textAnchor="middle" startOffset="50%">
+          {showHorizontal ? "Horizontal" : "Vertical"}
+        </textPath>
+      </text>
+    </svg>
+    <span className="emoji">{showHorizontal ? "🌍" : "🌕"}</span>
+  </div>
+</button>
 
+
+
+
+    <div className="calquesdeschoix">
+ 
       {livres.map((carte, index) => (
         <div
           key={index}
@@ -101,7 +120,7 @@ function Books() {
       ))}
 
     </div>
-
+    </>
 
   );
 }

@@ -5,26 +5,17 @@ import { AuthContext } from "../../../helpers/AuthContext";
 import { apiUrl } from "../../../config";
 import ViewPageRead from "./ViewBookPageRead";
 import PictureBookPage from "../../../component/PictureBookPage";
-import SetBackground from "../../../component/SetBackground";
-
 
 function TurnLivre({
   number,
   onPageChange,
   CurrentPageFlipAudio,
   orientationPicture,
-  menuVisibleHome,
-  setmenuVisibleHome,
-
 }) {
-
   const bookRef = useRef();
   const [id, setId] = useState(1);
-const { authState, setAuthState } = useContext(AuthContext);
+  const { authState, setAuthState } = useContext(AuthContext);
   const [loader, setloader] = useState(false);
-  const [forbackgroundid, setforbackgroundid] = useState();
-  const [fornumberbackground, setfornumberbackground] = useState();
- 
   const [MAJ, setMaj] = useState(false);
   const [ThePages, setThePages] = useState([]);
   const [deckstate2, setDeckstate2] = useState([]);
@@ -40,80 +31,94 @@ const { authState, setAuthState } = useContext(AuthContext);
 
   const [flipBookStyle, setFlipBookStyle] = useState({});
   const [bookpaysage, setbookpaysage] = useState();
-useEffect(() => {
-  const defaultOrientation = "container"; // Orientation par défaut
-  const orientation = orientationPicture || defaultOrientation;
-// / ! \  Modificaiton si cartehorizontale
-  if (orientation === "cartehorizontale") {
-    // Gestion spécifique à carte horizontale
-    setcontainerclass("containerhorizontale");
+  useEffect(() => {
+    const defaultOrientation = "container"; // Orientation par défaut
+    const orientation = orientationPicture || defaultOrientation;
+    // / ! \  Modificaiton si cartehorizontale
+    if (orientation === "cartehorizontale") {
+      // Gestion spécifique à carte horizontale
+      setcontainerclass("containerhorizontale");
 
-    const updateFlipBookConfig = () => {
-      const isMobilePortrait = window.matchMedia(
-        "(max-width: 1000px) and (orientation: portrait)"
-      ).matches;
+      const updateFlipBookConfig = () => {
+        const isMobilePortrait = window.matchMedia(
+          "(max-width: 1000px) and (orientation: portrait)"
+        ).matches;
 
-      const widtha = isMobilePortrait ? "10" : "1430";
-      const heightb = isMobilePortrait ? "5" : "1250";
+        const widtha = isMobilePortrait ? "10" : "1430";
+        const heightb = isMobilePortrait ? "5" : "1250";
 
-      setFlipBookConfig({
-        size: "stretch",
-        width: widtha,
-        height: heightb,
-        drawShadow: true,
-      });
+        setFlipBookConfig({
+          size: "stretch",
+          width: widtha,
+          height: heightb,
+          drawShadow: true,
+        });
 
-      const widthstyle = isMobilePortrait ? "70vw" : "70vw";
-      const heightstyle = isMobilePortrait ? "35vw" : "35vw";
+        const widthstyle = isMobilePortrait ? "70vw" : "70vw";
+        const heightstyle = isMobilePortrait ? "35vw" : "35vw";
 
-      setFlipBookStyle({
-        width: widthstyle,
-        height: heightstyle,
-      });
-    };
+        setFlipBookStyle({
+          width: widthstyle,
+          height: heightstyle,
+        });
+      };
 
-    updateFlipBookConfig();
-    window.addEventListener("resize", updateFlipBookConfig);
+      updateFlipBookConfig();
+      window.addEventListener("resize", updateFlipBookConfig);
 
-    return () => window.removeEventListener("resize", updateFlipBookConfig);
-  } else {
-    // Configuration verticale par défaut
-    const updateFlipBookConfig = () => {
-      const isMobilePortrait = window.matchMedia(
-        "(max-width: 1000px) and (orientation: portrait)"
-      ).matches;
+      return () => window.removeEventListener("resize", updateFlipBookConfig);
+    } else {
+      // Configuration verticale par défaut
+      const updateFlipBookConfig = () => {
+        const isMobilePortrait = window.matchMedia(
+          "(max-width: 1000px) and (orientation: portrait)"
+        ).matches;
 
-      const isMobilelandscape = window.matchMedia(
-        "(max-width: 1000px) and (orientation: landscape)"
-      ).matches;
-      const widtha = isMobilePortrait ? "9" : isMobilelandscape ? "7.2" :  "1755";
-      const heighta = isMobilePortrait ? "12" : isMobilelandscape ? "8.85" :  "2400";
+        const isMobilelandscape = window.matchMedia(
+          "(max-width: 1000px) and (orientation: landscape)"
+        ).matches;
+        const widtha = isMobilePortrait
+          ? "9"
+          : isMobilelandscape
+          ? "7.2"
+          : "1755";
+        const heighta = isMobilePortrait
+          ? "12"
+          : isMobilelandscape
+          ? "8.85"
+          : "2400";
 
-      setFlipBookConfig({
-        size: "stretch",
-        autoSize: true,
-        width: widtha,
-        height: heighta,
-        drawShadow: true,
-        orientation: AuthContext,
-      });
-      const widthstyle = isMobilePortrait ? "80vw" :  isMobilelandscape ? "56vw" : "63vw";
-      const heightstyle = isMobilePortrait ? "100%" :  isMobilelandscape ? "30vw" : "39vw";
+        setFlipBookConfig({
+          size: "stretch",
+          autoSize: true,
+          width: widtha,
+          height: heighta,
+          drawShadow: true,
+          orientation: AuthContext,
+        });
+        const widthstyle = isMobilePortrait
+          ? "80vw"
+          : isMobilelandscape
+          ? "56vw"
+          : "63vw";
+        const heightstyle = isMobilePortrait
+          ? "100%"
+          : isMobilelandscape
+          ? "30vw"
+          : "39vw";
 
-      setFlipBookStyle({
-        width: widthstyle,
-        height: heightstyle,
-      });
-    };
+        setFlipBookStyle({
+          width: widthstyle,
+          height: heightstyle,
+        });
+      };
 
-    updateFlipBookConfig();
-    window.addEventListener("resize", updateFlipBookConfig);
+      updateFlipBookConfig();
+      window.addEventListener("resize", updateFlipBookConfig);
 
-    return () => window.removeEventListener("resize", updateFlipBookConfig);
-  }
-}, [orientationPicture, number, numberbook]);
-
-  
+      return () => window.removeEventListener("resize", updateFlipBookConfig);
+    }
+  }, [orientationPicture, number, numberbook]);
 
   /* -------------------------------------------------------------------------- */
   const openPageFromIndex = (index) => {
@@ -129,7 +134,6 @@ useEffect(() => {
       console.error("bookRef.current is not defined.");
     }
   };
-
 
   const openPageFromIndexforaudio = (index) => {
     setTimeout(() => {
@@ -172,44 +176,56 @@ useEffect(() => {
     if (number) {
       // Si la prop `number` est fournie
       numberbook = number;
-
-    
     } else {
       // Sinon, récupérer depuis le local storage
       const myBookData = localStorage.getItem("mybook");
 
       numberbook = myBookData ? parseInt(myBookData, 10) : 1; // Défaut à 1 si pas trouvé
-
-  
     }
 
     const myIdData = localStorage.getItem("myid");
-    //Explicitement un nombre decimal = base 10 
+    //Explicitement un nombre decimal = base 10
     const currentId = myIdData ? parseInt(myIdData, 10) : id;
 
-  
-   if(numberbook > 100){ setbookpaysage(true)}
-   else{
+    if (numberbook > 100) {
+      setbookpaysage(true);
+    } else {
+      setbookpaysage(false);
+    }
 
-    setbookpaysage(false)
-   }
-  
     // Effectuer les appels Axios
     const fetchData = async () => {
       try {
-        const [backgroundResponse, dosResponse, presentationResponse, deckResponse] = await Promise.all([
-          axios.get(`${apiUrl}/postimages/lirebackground/${currentId}/${numberbook}`, {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          }),
-          axios.get(`${apiUrl}/postimages/lireimagesdos/${currentId}/${numberbook}`, {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          }),
-          axios.get(`${apiUrl}/postimages/lireimagespresentation/${currentId}/${numberbook}`, {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          }),
-          axios.get(`${apiUrl}/postimages/liredeck/${currentId}/${numberbook}`, {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          }),
+        const [
+          backgroundResponse,
+          dosResponse,
+          presentationResponse,
+          deckResponse,
+        ] = await Promise.all([
+          axios.get(
+            `${apiUrl}/postimages/lirebackground/${currentId}/${numberbook}`,
+            {
+              headers: { accessToken: localStorage.getItem("accessToken") },
+            }
+          ),
+          axios.get(
+            `${apiUrl}/postimages/lireimagesdos/${currentId}/${numberbook}`,
+            {
+              headers: { accessToken: localStorage.getItem("accessToken") },
+            }
+          ),
+          axios.get(
+            `${apiUrl}/postimages/lireimagespresentation/${currentId}/${numberbook}`,
+            {
+              headers: { accessToken: localStorage.getItem("accessToken") },
+            }
+          ),
+          axios.get(
+            `${apiUrl}/postimages/liredeck/${currentId}/${numberbook}`,
+            {
+              headers: { accessToken: localStorage.getItem("accessToken") },
+            }
+          ),
         ]);
         setAuthState((prevState) => ({ ...prevState, loading: false }));
         setDeckstate2(backgroundResponse.data);
@@ -221,45 +237,44 @@ useEffect(() => {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
 
-/* _________________________________________________________=> */
+    /* _________________________________________________________=> */
 
-   // Si aucune prop n'est passée et que numberbook > 100
-   if (!number && numberbook > 100) {
-    setcontainerclass("containerhorizontale");
-  
+    // Si aucune prop n'est passée et que numberbook > 100
+    if (!number && numberbook > 100) {
+      setcontainerclass("containerhorizontale");
 
-    const updateFlipBookConfig = () => {
-      const isMobilePortrait = window.matchMedia(
-        "(max-width: 1000px) and (orientation: portrait)"
-      ).matches;
+      const updateFlipBookConfig = () => {
+        const isMobilePortrait = window.matchMedia(
+          "(max-width: 1000px) and (orientation: portrait)"
+        ).matches;
 
-      const widtha = isMobilePortrait ? "10" : "1430";
-      const heightb = isMobilePortrait ? "9" : "1250";
+        const widtha = isMobilePortrait ? "10" : "1430";
+        const heightb = isMobilePortrait ? "9" : "1250";
 
-      setFlipBookConfig({
-        size: "stretch",
-        width: widtha,
-        height: heightb,
-        drawShadow: true,
-      });
+        setFlipBookConfig({
+          size: "stretch",
+          width: widtha,
+          height: heightb,
+          drawShadow: true,
+        });
 
-      const widthstyle = isMobilePortrait ? "70vw" : "70vw";
-      const heightstyle = isMobilePortrait ? "35vw" : "35vw";
+        const widthstyle = isMobilePortrait ? "70vw" : "70vw";
+        const heightstyle = isMobilePortrait ? "35vw" : "35vw";
 
-      setFlipBookStyle({
-        width: widthstyle,
-        height: heightstyle,
-      });
-    };
+        setFlipBookStyle({
+          width: widthstyle,
+          height: heightstyle,
+        });
+      };
 
-    updateFlipBookConfig();
-    window.addEventListener("resize", updateFlipBookConfig);
+      updateFlipBookConfig();
+      window.addEventListener("resize", updateFlipBookConfig);
 
-    return () => window.removeEventListener("resize", updateFlipBookConfig);
-  } 
+      return () => window.removeEventListener("resize", updateFlipBookConfig);
+    }
     // Gestion des raccourcis clavier
     const handleKeyPress = (event) => {
       if (event.key === " " || event.key === "ArrowLeft") {
@@ -269,13 +284,13 @@ useEffect(() => {
       }
     };
     window.addEventListener("keydown", handleKeyPress);
-  
+
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, [id, number]); 
-  
-/* ------------------------------------------------------------ */
+  }, [id, number]);
+
+  /* ------------------------------------------------------------ */
   const titleToIndexMap = {};
 
   ThePages.forEach((page, index) => {
@@ -347,13 +362,10 @@ useEffect(() => {
     }
   }
 
-
-
   return (
     <>
       <div className="pagecontaineraccueil">
-   
-        {authState.menuVisible &&  (
+        {authState.menuVisible && (
           <div className="thetitles">
             <button onClick={goToCoverPage} id="couverture">
               Couverture
@@ -362,134 +374,104 @@ useEffect(() => {
           </div>
         )}
 
+        {renderedDivs && (
+          <div className={containerclass} style={flipBookStyle}>
+            {ThePages && lengthdivs && flipBookConfig && flipBookStyle && (
+              <HTMLFlipBook
+                {...flipBookConfig}
+                ref={bookRef}
+                onFlip={(e) => onPageChange(e.data)}
+              >
+                <div className="firstpage"></div>
 
+                <div className="shadow" data-density="hard">
+                  <ViewPageRead
+                    setMaj={setMaj}
+                    view={deckstate4}
+                    InputOnPlay={true}
+                    maj={MAJ}
+                    textonpage={"Couverture"}
+                    classNamepictureonpage={orientationPicture}
+                  />
+                </div>
 
+                <div className="shadow">
+                  <ViewPageRead
+                    setMaj={setMaj}
+                    view={deckstate3}
+                    InputOnPlay={true}
+                    maj={MAJ}
+                    textonpage={"Affichage dos"}
+                    classNamepictureonpage={orientationPicture}
+                  />
+                </div>
 
-   <div className="homevisible">
-            <button onClick={() => setAuthState((prevState) => ({
-      ...prevState,
-      visibility_nav_button: false,
-      menuvisiblebook: !prevState.menuvisiblebook,
-      visible_livre_by_menu_nav: false,
-    }))}>
+                <div className="shadow">
+                  <ViewPageRead
+                    setMaj={setMaj}
+                    view={deckstate3}
+                    InputOnPlay={true}
+                    maj={MAJ}
+                    textonpage={"page"}
+                    classNamepictureonpage={orientationPicture}
+                  />
+                </div>
 
+                {/*        Rendu des pages principales du livre  */}
 
+                {renderedDivs}
 
+                {/*        fin Rendu des pages principales  */}
 
+                <div className="shadow">
+                  <ViewPageRead
+                    setMaj={setMaj}
+                    view={deckstate3}
+                    InputOnPlay={true}
+                    maj={MAJ}
+                    textonpage={"page"}
+                    classNamepictureonpage={orientationPicture}
+                  />
+                </div>
 
-              {menuVisibleHome ? (
-                 "💧"
-              ) : (
-                "🫧"
-              )}
-            </button>
+                <div className="shadow">
+                  <ViewPageRead
+                    setMaj={setMaj}
+                    view={deckstate3}
+                    InputOnPlay={true}
+                    maj={MAJ}
+                    textonpage={"dos arriere"}
+                    classNamepictureonpage={orientationPicture}
+                  />
+                </div>
+
+                <div className="shadow">
+                  <ViewPageRead
+                    setMaj={setMaj}
+                    view={deckstate2}
+                    InputOnPlay={true}
+                    maj={MAJ}
+                    textonpage={"Arriere"}
+                    classNamepictureonpage={"Affichage Fond"}
+                  />
+                </div>
+              </HTMLFlipBook>
+            )}
           </div>
-  
-      
-          {renderedDivs && (
-            <div className={containerclass} style={flipBookStyle}>
-              {ThePages && lengthdivs && flipBookConfig && flipBookStyle && (
-                <HTMLFlipBook
-                  {...flipBookConfig}
-                  ref={bookRef}
-                  onFlip={(e) => onPageChange(e.data)}
-                >
-                  <div className="firstpage"></div>
+        )}
 
-                  <div className="shadow" data-density="hard">
-                    <ViewPageRead
-                      setMaj={setMaj}
-                      view={deckstate4}
-                      InputOnPlay={true}
-                      maj={MAJ}
-                      textonpage={"Couverture"}
-                      classNamepictureonpage={orientationPicture}
-                    />
-                  </div>
-
-                  <div className="shadow">
-                    <ViewPageRead
-                      setMaj={setMaj}
-                      view={deckstate3}
-                      InputOnPlay={true}
-                      maj={MAJ}
-                      textonpage={"Affichage dos"}
-                      classNamepictureonpage={orientationPicture}
-                    />
-                  </div>
-
-                  <div className="shadow">
-                    <ViewPageRead
-                      setMaj={setMaj}
-                      view={deckstate3}
-                      InputOnPlay={true}
-                      maj={MAJ}
-                      textonpage={"page"}
-                      classNamepictureonpage={orientationPicture}
-                    />
-                  </div>
-
-                  {/*        Rendu des pages principales du livre  */}
-
-                  {renderedDivs}
-
-                  {/*        fin Rendu des pages principales  */}
-
-                  <div className="shadow">
-                    <ViewPageRead
-                      setMaj={setMaj}
-                      view={deckstate3}
-                      InputOnPlay={true}
-                      maj={MAJ}
-                      textonpage={"page"}
-                      classNamepictureonpage={orientationPicture}
-                    />
-                  </div>
-
-                  <div className="shadow">
-                    <ViewPageRead
-                      setMaj={setMaj}
-                      view={deckstate3}
-                      InputOnPlay={true}
-                      maj={MAJ}
-                      textonpage={"dos arriere"}
-                      classNamepictureonpage={orientationPicture}
-                    />
-                  </div>
-
-                  <div className="shadow">
-                    <ViewPageRead
-                      setMaj={setMaj}
-                      view={deckstate2}
-                      InputOnPlay={true}
-                      maj={MAJ}
-                      textonpage={"Arriere"}
-                      classNamepictureonpage={"Affichage Fond"}
-                    />
-                  </div>
-                </HTMLFlipBook>
-              )}
-            </div>
-          )}
-      
- {/*        <button onClick={nextButtonClick} id="est">
+        {/*        <button onClick={nextButtonClick} id="est">
           <span>Est</span> <span>➡️</span>
         </button> */}
       </div>
-     
 
-   { loader && 
-    <>
-    
-    <div className="noinformation">
-  <span>ERROR : NO INFORMATION FROM SITE</span>
-</div> </>
-  
-    
-    
-    }
-
-
+      {loader && (
+        <>
+          <div className="noinformation">
+            <span>ERROR : NO INFORMATION FROM SITE</span>
+          </div>{" "}
+        </>
+      )}
     </>
   );
 }

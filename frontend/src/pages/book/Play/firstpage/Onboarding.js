@@ -19,7 +19,6 @@ const Onboarding = ({setmenuVisibleHome, menuVisibleHome}) => {
 
   return (
     <>
-      <div>
         <TurnLivre 
         setLoad={setLoad}
              onPageChange={handlePageChange}
@@ -27,15 +26,11 @@ const Onboarding = ({setmenuVisibleHome, menuVisibleHome}) => {
              orientationPicture={orientationPicture}
              setmenuVisibleHome={setmenuVisibleHome}
              menuVisibleHome={menuVisibleHome}
-
         />
-      
-
         <TurnLivreOnboardingAudio
           pageNumber={currentPage}
           setCurrentPageFlipAudio={setCurrentPageFlipAudio}
         />
-      </div>
     </>
   );
 };

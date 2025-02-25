@@ -6,12 +6,12 @@
   position: absolute;
 display: flex;
 width: 100%;
-border : 2px solid red;
+
 }
 #bouton-cacher-log {
   position: absolute;
   @include bouton-cacher;
-  z-index:9999;
+  z-index:10;
   border: 0;
   top: 3px;
   left: 5px;
@@ -20,8 +20,9 @@ border : 2px solid red;
   background: none;
 
   &::before {
-    width: 3vw;
-    height: 3vw;
+ 
+    width: 4vw;
+    height: 4vw;
     @include bouton-cacher-log-before_landscape;
     @include bouton-cacher-log-before_portrait;
     content: "";
@@ -59,73 +60,25 @@ border : 2px solid red;
 
 .General_buttons {
   position: absolute;
-  z-index:500;
+  z-index:2;
   top: 0;
     display: flex;
     width: 100%;
-    border: 2px solid red;
     justify-content: space-evenly; 
     align-items: center;
   }
-  
-
-// Bouton visibilité des menus pour la navigation des livres
-
-.homevisible button {
-  @include homevisible_portrait;
-  @include homevisible_landscape;
-
-  z-index: 5;
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  width: 3vw;
-  height: 3vw;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  background: radial-gradient(
-    circle,
-    rgba(108, 131, 233, 0.2),
-    rgba(95, 219, 247, 0.5),
-    rgba(24, 107, 184, 0.4),
-    rgba(78, 141, 230, 0.7),
-    rgba(3, 3, 86, 0.7)
-  );
-  background-position: center;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    background-color: #0d98e9;
-  }
-
-  &:active {
-    animation-duration: 1s;
-    animation: bouton;
-    animation-timing-function: linear;
-    animation-fill-mode: backwards;
-  }
-}
-
-
-/*  --------------------------------------------------- */
+  /*  -----------------------LOGIN ---------------------------- */
 .boutonlogin {
   @include boutonlogin_portrait-log;
   @include boutonlogin_landscape-log;
-
+position: relative;
 
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
-  animation-duration: 2;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
   animation-timing-function: linear;
   opacity: 1;
   border-radius: 50%;
@@ -181,6 +134,60 @@ border : 2px solid red;
     transform: rotate(360deg);
   }
 }
+
+// -------------------------Bouton visibilité des menus pour la navigation des livres
+
+.homevisible button {
+  @include homevisible_portrait;
+  @include homevisible_landscape;
+
+  z-index: 15;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(
+    circle,
+    rgba(108, 131, 233, 0.2),
+    rgba(95, 219, 247, 0.5),
+    rgba(24, 107, 184, 0.4),
+    rgba(78, 141, 230, 0.7),
+    rgba(3, 3, 86, 0.7)
+  );
+  background-position: center;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #0d98e9;
+  }
+
+  &:active {
+    animation-duration: 1s;
+    animation: bouton;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+  }
+}
+.bouton_book {
+position: absolute;
+width: 100%;
+  display: flex;
+ 
+  justify-content:space-evenly;
+}
+
+
 
 #boutoncouv {
   position: absolute;
@@ -256,24 +263,32 @@ border : 2px solid red;
 .south {
   & button {
     all: unset;
+
   }
 
+  & .fonds {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    color: #8bd2fb;
+  text-shadow: #171819;
+-webkit-text-stroke: #000 1px 1px 1px;
+  }
+width: 3vw;
+height: 3vw;
+margin: 0.1vw;
   @include south_orientation_portrait-mobile;
   @include south_orientation_landscape-mobile;
   text-align: center;
-  z-index: 1;
-
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
   box-shadow: 1px 1px rgb(68, 224, 235), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-
+border-radius: 50%;
   background: radial-gradient(
     circle,
     rgba(4, 223, 247, 0.5),
@@ -284,22 +299,27 @@ border : 2px solid red;
   &:hover {
     transform: scale(1.05);
     cursor: pointer;
+    background: radial-gradient(
+      circle,
+      rgba(24, 53, 218, 0.5),
+      rgba(6, 200, 161, 0.4),
+      rgba(53, 200, 9, 0.7)
+    );
+  
+    
   }
+& #coeur{
 
+  width: 80%;
+}
   & img {
-    width: 80%;
-    height: 80%;
-    border: 0.5px solid rgb(12, 39, 196);
+    width: 50%;
+  
+
     z-index: 1;
     border-radius: 50%;
 
-    box-shadow: 5px 2px 10px 1px black;
 
-    &:hover {
-      background-color: #1cda22;
-      transform: scale(0.98);
-      box-shadow: 2px 2px 3px 1px black;
-    }
   }
 
   animation: bouton_background 2s forwards;
@@ -309,27 +329,7 @@ border : 2px solid red;
   top: 130px;
 }
 
-.southpicture {
-  z-index: 1;
 
-
-
-  animation-name: content2;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
-
-  display: inline-block;
-  width: 5vw;
-  height: 5vw;
-  cursor: pointer;
-
-  & img {
-    width: 100%;
-    height: 100%;
-  }
-}
 #envoyer {
   background-color: #03507d;
   width: 40%;
@@ -393,54 +393,66 @@ border : 2px solid red;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.admin-button::before {
-  content: "🪐";
 
+
+
+
+#identi:before {
+
+  content: "🪐";
+  transition: transform 0.3s ease;
   font-size: 24px;
   color: yellow;
 
   transform: translate(-50%, -50%) rotate(0deg);
-  /* Positionnement initial centré */
+
+}
+
+
+#identi:before:hover {
+
+  content: "";
+  position: fixed;
   transition: transform 0.3s ease;
-  /* Transition pour l'agrandissement de l'emoji */
-  opacity: 0.5;
-  z-index: 1;
-  /* Assure que l'emoji est au-dessus du texte */
-}
+  font-size: 34px;
+  color: yellow;
 
-.admin-button:hover {
-  background-color: #03507d;
-  transform: scale(1.1);
-}
+  transform: translate(-50%, -50%) rotate(0deg);
 
-.admin-button:hover::before {
-  transform: translate(-50%, -50%) scale(1.8) rotate(0deg);
 }
 #identi {
   @include identifiant;
   @include identifiantlandscape;
   z-index: 100;
+  width: 100%;
+  height: 2.5vw;
+  margin-top: 3px;
   font-size: 0.7rem;
-  display: flex;
-  align-items: center;
   justify-content: center;
   border: 1px solid rgb(175, 63, 10);
-  height: 1.7vh;
-  width: 1.7vh;
   box-shadow: 1px 1px gold, -0.5em 0 0.4em black;
-  border-radius: 50%;
-  padding: 1vw;
-
+  border-radius: 20%;
+  padding: 0.1vw;
   cursor: pointer;
   animation-timing-function: linear;
   animation-delay: 1.5s;
   animation: identiti 5s forwards;
-
+  filter: contrast(1.2); 
+  background-color: rgba(3, 80, 125, 0);
+  padding-bottom: 1vw;
   &:hover {
-    transform: scale(1.1);
-    background-color: #03507d;
+    background-color: rgba(3, 80, 125, 0.2);
+    filter: contrast(-10.2);
+  animation: bouton_login 3s;
+
+    transition: transform 2s , opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+     
+  transform-origin: center;
   }
 }
+
+
+
 
 
 /* => ------------------------------------FIN  Admin  */
@@ -449,13 +461,13 @@ border : 2px solid red;
   @include create;
   @include create_landscape;
   z-index: 200;
-
-  height: 1%;
+width: 1.5vw;
+height: 1.5vw;
+margin-top: 3px;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   display: flex;
-  align-items: center;
-  justify-content: center;
+
   color: black;
   font-size: 1rem;
   line-height: 1;
@@ -467,6 +479,7 @@ border : 2px solid red;
     rgba(78, 141, 230, 0.7),
     rgba(3, 3, 86, 0.7)
   );
+  border-radius: 50%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -474,24 +487,14 @@ border : 2px solid red;
   &::before {
     @include createfont;
     content: "✒️";
-
-    transform: translate(-50%, -50%) scale(1);
     font-size: 1.5rem;
     transition: transform 0.3s ease, color 0.3s ease;
     z-index: 1;
   }
 
-  &::after {
-    content: "✒️";
-
-    transform: translate(-50%, -50%) scale(1.2);
-    border-radius: 50%;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    z-index: 0;
-    transition: transform 0.3s ease;
-  }
-
   &:hover {
+    position: relative;
+  
     transform: scale(1.1);
     background-color: #03507d;
     box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
@@ -504,6 +507,9 @@ border : 2px solid red;
  #biblio {
   @include biblio;
   z-index: 200;
+  width: 2.5vw;
+  height: 2.5vw;
+  margin-top: 3px;
   transform: scale(1.1);
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
@@ -519,8 +525,6 @@ border : 2px solid red;
   background-repeat: no-repeat;
   background-position: center;
 
-  top: 0.3%;
-  left: 28vw;
 
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
@@ -535,10 +539,8 @@ border : 2px solid red;
   &::before {
     @include biblio-before;
     content: "📖";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+
+    transform:scale(1);
     font-size: 1.5rem;
     transition: transform 0.3s ease, color 0.3s ease;
     z-index: 1;
@@ -546,19 +548,7 @@ border : 2px solid red;
   }
 
 
-  &::after {
-    content: "📖";
-    position: absolute;
-    top: 0.5%;
-    right: 50vw;
-    transform: translate(-50%, -50%) scale(1.2);
-    width: 120%;
-    height: 120%;
-    border-radius: 50%;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    z-index: 0;
-    transition: transform 0.3s ease;
-  }
+
 
   &:hover {
     transform: scale(1.1);

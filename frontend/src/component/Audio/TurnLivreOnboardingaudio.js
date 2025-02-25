@@ -19,7 +19,7 @@ function TurnLivreOnboardingAudio({ pageNumber, setCurrentPageFlipAudio }) {
   function getFlipBookConfig() {
     return {
       size: "stretch",
-      width: "40vw",
+      width: "100%",
       height: "4",
       clickEventForward: false,
       useMouseEvents: false,
@@ -79,9 +79,6 @@ function TurnLivreOnboardingAudio({ pageNumber, setCurrentPageFlipAudio }) {
     while (nextIndex < audioRefs.current.length && !audioRefs.current[nextIndex]) {
       missingAudios++;
       nextIndex++;
-      console.log("BOICLEWHILE")
-      console.log("BOICLEWHILE  missingAudios", missingAudios)
-      console.log("BOICLEWHILE nextIndex", nextIndex)
     }
   
     if (nextIndex < audioRefs.current.length && audioRefs.current[nextIndex]) {

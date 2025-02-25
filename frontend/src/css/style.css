@@ -4,8 +4,6 @@
 /* FIN --------------------------------------TITLES */
 /* --------------------------------------OPTIONS DIRECTIONS  */
 /* FIN--------------------------------------OPTIONS DIRECTIONS  */
-/* --------------------------------------Audio */
-/* FIN --------------------------------------Audio */
 /* -------------------------------------IMAGES ET PAGES  */
 /* FIN-------------------------------------IMAGES ET PAGES  */
 .loader-background {
@@ -391,7 +389,7 @@ li {
 @keyframes bouton_login {
   0% {
     top: 5px;
-    left: 0px;
+    left: 10px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
@@ -400,7 +398,7 @@ li {
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-    left: 1vw;
+    left: 5vw;
     top: 5px;
     filter: blur(0px) hue-rotate(360deg);
   }
@@ -653,11 +651,10 @@ section .ajust_image img {
 /* FIN --------------------------------------TITLES */
 /* --------------------------------------OPTIONS DIRECTIONS  */
 /* FIN--------------------------------------OPTIONS DIRECTIONS  */
-/* --------------------------------------Audio */
-/* FIN --------------------------------------Audio */
 /* -------------------------------------IMAGES ET PAGES  */
 /* FIN-------------------------------------IMAGES ET PAGES  */
 .pagecontaineraccueil {
+  margin-top: 0.8vw;
   display: flex;
   align-content: center;
   align-items: center;
@@ -671,10 +668,11 @@ section .ajust_image img {
 }
 @media only screen and (max-width: 1300px) and (orientation: portrait) {
   .pagecontaineraccueil {
-    margin-top: 2%;
+    margin-top: 40px;
   }
 }
 .pagecontaineraccueil .flipbook-container-book {
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -711,6 +709,8 @@ section .ajust_image img {
 .containerhorizontale {
   display: flex;
   align-items: center;
+  z-index: 10;
+  margin-top: 4vw;
 }
 @media only screen and (max-width: 1000px) and (orientation: landscape) {
   .containerhorizontale {
@@ -738,8 +738,6 @@ section .ajust_image img {
 /* FIN --------------------------------------TITLES */
 /* --------------------------------------OPTIONS DIRECTIONS  */
 /* FIN--------------------------------------OPTIONS DIRECTIONS  */
-/* --------------------------------------Audio */
-/* FIN --------------------------------------Audio */
 /* -------------------------------------IMAGES ET PAGES  */
 /* FIN-------------------------------------IMAGES ET PAGES  */
 .loader-background {
@@ -1302,44 +1300,24 @@ section .ajust_image img {
 }
 
 .containeraudio {
-  /*  @include audio_mobile_portrait; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  z-index: 2;
+  height: 20px;
 }
 .containeraudio .flexaudioelement {
-  display: flex;
-  /*   border: 2px solid red;  */
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  padding: 2px;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .containeraudio .flexaudioelement {
-    width: 100%;
-  }
+  position: relative;
+  margin-top: 2.2vw;
 }
 .containeraudio .audiocenter {
   display: flex;
-  flex-grow: 1;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 3vw;
-}
-@media only screen and (max-width: 1300px) and (orientation: landscape) {
-  .containeraudio .audiocenter {
-    position: inherit;
-  }
+  flex-grow: 1;
+  z-index: 2;
 }
 .containeraudio .audiocenter audio {
-  display: block;
+  z-index: 2;
+  display: flex;
+  justify-items: center;
   border-radius: 5%;
-  width: 100%;
 }
 
 @keyframes fadeIn {
@@ -1584,7 +1562,7 @@ section .ajust_image img {
 @keyframes bouton_login {
   0% {
     top: 5px;
-    left: 0px;
+    left: 10px;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
@@ -1593,7 +1571,7 @@ section .ajust_image img {
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
-    left: 1vw;
+    left: 5vw;
     top: 5px;
     filter: blur(0px) hue-rotate(360deg);
   }
@@ -1722,12 +1700,11 @@ section .ajust_image img {
   position: absolute;
   display: flex;
   width: 100%;
-  border: 2px solid red;
 }
 
 #bouton-cacher-log {
   position: absolute;
-  z-index: 9999;
+  z-index: 10;
   border: 0;
   top: 3px;
   left: 5px;
@@ -1743,8 +1720,8 @@ section .ajust_image img {
   }
 }
 #bouton-cacher-log::before {
-  width: 3vw;
-  height: 3vw;
+  width: 4vw;
+  height: 4vw;
   content: "";
   font-size: 3rem;
   cursor: pointer;
@@ -1786,64 +1763,22 @@ section .ajust_image img {
 
 .General_buttons {
   position: absolute;
-  z-index: 500;
+  z-index: 2;
   top: 0;
   display: flex;
   width: 100%;
-  border: 2px solid red;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.homevisible button {
-  z-index: 5;
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  width: 3vw;
-  height: 3vw;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
-  background-position: center;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .homevisible button {
-    width: 9vw;
-    height: 9vw;
-  }
-}
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
-  .homevisible button {
-    width: 4.5vw;
-    height: 4.5vw;
-  }
-}
-.homevisible button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  background-color: #0d98e9;
-}
-.homevisible button:active {
-  animation-duration: 1s;
-  animation: bouton;
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-}
-
-/*  --------------------------------------------------- */
+/*  -----------------------LOGIN ---------------------------- */
 .boutonlogin {
+  position: relative;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   animation-name: bouton_login;
-  animation-duration: 2;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
   animation-timing-function: linear;
   opacity: 1;
   border-radius: 50%;
@@ -1925,6 +1860,56 @@ section .ajust_image img {
   transform: rotate(360deg);
 }
 
+.homevisible button {
+  z-index: 15;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 3vw;
+  height: 3vw;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1rem;
+  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
+  background-position: center;
+}
+@media only screen and (max-width: 1000px) and (orientation: portrait) {
+  .homevisible button {
+    width: 9vw;
+    height: 9vw;
+  }
+}
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+  .homevisible button {
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+}
+.homevisible button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: #0d98e9;
+}
+.homevisible button:active {
+  animation-duration: 1s;
+  animation: bouton;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+}
+
+.bouton_book {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #boutoncouv {
   position: absolute;
   top: 15.5vw;
@@ -1998,18 +1983,20 @@ section .ajust_image img {
 }
 
 .south {
+  width: 3vw;
+  height: 3vw;
+  margin: 0.1vw;
   text-align: center;
-  z-index: 1;
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
   animation-delay: 0.5s;
   box-shadow: 1px 1px rgb(68, 224, 235), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
   background: radial-gradient(circle, rgba(4, 223, 247, 0.5), rgba(32, 221, 242, 0.4), rgba(26, 233, 247, 0.7));
   animation: bouton_background 2s forwards;
   z-index: 1;
@@ -2018,6 +2005,12 @@ section .ajust_image img {
 }
 .south button {
   all: unset;
+}
+.south .fonds {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: #8bd2fb;
+  text-shadow: #171819;
+  -webkit-text-stroke: #000 1px 1px 1px;
 }
 @media only screen and (max-width: 1200px) and (orientation: portrait) {
   .south {
@@ -2032,36 +2025,15 @@ section .ajust_image img {
 .south:hover {
   transform: scale(1.05);
   cursor: pointer;
+  background: radial-gradient(circle, rgba(24, 53, 218, 0.5), rgba(6, 200, 161, 0.4), rgba(53, 200, 9, 0.7));
+}
+.south #coeur {
+  width: 80%;
 }
 .south img {
-  width: 80%;
-  height: 80%;
-  border: 0.5px solid rgb(12, 39, 196);
+  width: 50%;
   z-index: 1;
   border-radius: 50%;
-  box-shadow: 5px 2px 10px 1px black;
-}
-.south img:hover {
-  background-color: #1cda22;
-  transform: scale(0.98);
-  box-shadow: 2px 2px 3px 1px black;
-}
-
-.southpicture {
-  z-index: 1;
-  animation-name: content2;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-fill-mode: backwards;
-  animation-delay: 0.5s;
-  display: inline-block;
-  width: 5vw;
-  height: 5vw;
-  cursor: pointer;
-}
-.southpicture img {
-  width: 100%;
-  height: 100%;
 }
 
 #envoyer {
@@ -2130,44 +2102,41 @@ section .ajust_image img {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.admin-button::before {
+#identi:before {
   content: "🪐";
+  transition: transform 0.3s ease;
   font-size: 24px;
   color: yellow;
   transform: translate(-50%, -50%) rotate(0deg);
-  /* Positionnement initial centré */
+}
+
+#identi:before:hover {
+  content: "";
+  position: fixed;
   transition: transform 0.3s ease;
-  /* Transition pour l'agrandissement de l'emoji */
-  opacity: 0.5;
-  z-index: 1;
-  /* Assure que l'emoji est au-dessus du texte */
-}
-
-.admin-button:hover {
-  background-color: #03507d;
-  transform: scale(1.1);
-}
-
-.admin-button:hover::before {
-  transform: translate(-50%, -50%) scale(1.8) rotate(0deg);
+  font-size: 34px;
+  color: yellow;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
 #identi {
   z-index: 100;
+  width: 100%;
+  height: 2.5vw;
+  margin-top: 3px;
   font-size: 0.7rem;
-  display: flex;
-  align-items: center;
   justify-content: center;
   border: 1px solid rgb(175, 63, 10);
-  height: 1.7vh;
-  width: 1.7vh;
   box-shadow: 1px 1px gold, -0.5em 0 0.4em black;
-  border-radius: 50%;
-  padding: 1vw;
+  border-radius: 20%;
+  padding: 0.1vw;
   cursor: pointer;
   animation-timing-function: linear;
   animation-delay: 1.5s;
   animation: identiti 5s forwards;
+  filter: contrast(1.2);
+  background-color: rgba(3, 80, 125, 0);
+  padding-bottom: 1vw;
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   #identi {
@@ -2187,23 +2156,27 @@ section .ajust_image img {
   }
 }
 #identi:hover {
-  transform: scale(1.1);
-  background-color: #03507d;
+  background-color: rgba(3, 80, 125, 0.2);
+  filter: contrast(-10.2);
+  animation: bouton_login 3s;
+  transition: transform 2s, opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+  transform-origin: center;
 }
 
 /* => ------------------------------------FIN  Admin  */
 #create {
   z-index: 200;
-  height: 1%;
+  width: 1.5vw;
+  height: 1.5vw;
+  margin-top: 3px;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   display: flex;
-  align-items: center;
-  justify-content: center;
   color: black;
   font-size: 1rem;
   line-height: 1;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
+  border-radius: 50%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2228,7 +2201,6 @@ section .ajust_image img {
 }
 #create::before {
   content: "✒️";
-  transform: translate(-50%, -50%) scale(1);
   font-size: 1.5rem;
   transition: transform 0.3s ease, color 0.3s ease;
   z-index: 1;
@@ -2238,15 +2210,8 @@ section .ajust_image img {
     font-size: 1.2rem;
   }
 }
-#create::after {
-  content: "✒️";
-  transform: translate(-50%, -50%) scale(1.2);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  z-index: 0;
-  transition: transform 0.3s ease;
-}
 #create:hover {
+  position: relative;
   transform: scale(1.1);
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
@@ -2255,6 +2220,9 @@ section .ajust_image img {
 
 #biblio {
   z-index: 200;
+  width: 2.5vw;
+  height: 2.5vw;
+  margin-top: 3px;
   transform: scale(1.1);
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
@@ -2262,8 +2230,6 @@ section .ajust_image img {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  top: 0.3%;
-  left: 28vw;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
@@ -2284,10 +2250,7 @@ section .ajust_image img {
 }
 #biblio::before {
   content: "📖";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: scale(1);
   font-size: 1.5rem;
   transition: transform 0.3s ease, color 0.3s ease;
   z-index: 1;
@@ -2296,19 +2259,6 @@ section .ajust_image img {
   #biblio::before {
     font-size: 1rem;
   }
-}
-#biblio::after {
-  content: "📖";
-  position: absolute;
-  top: 0.5%;
-  right: 50vw;
-  transform: translate(-50%, -50%) scale(1.2);
-  width: 120%;
-  height: 120%;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  z-index: 0;
-  transition: transform 0.3s ease;
 }
 #biblio:hover {
   transform: scale(1.1);
@@ -2338,20 +2288,28 @@ section .ajust_image img {
   background-position: center;
 }
 
+.accueil {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
 #choosebackground {
   font-weight: bold;
   text-shadow: #3131d4 1px 1px 1px;
 }
 
 .selectbackground {
+  position: absolute;
+  right: 10px;
+  top: 45px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
   -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
-  width: 5vw;
-  height: 5vw;
-  padding: 20px;
   border-radius: 50%;
   font-size: 0.8rem;
   background: radial-gradient(circle, rgba(121, 236, 244, 0.2), rgba(95, 219, 247, 0.5), rgba(23, 138, 204, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("");
@@ -2359,40 +2317,16 @@ section .ajust_image img {
   background-repeat: no-repeat;
   background-position: center;
 }
-@media only screen and (max-width: 1200px) and (orientation: portrait) {
-  .selectbackground {
-    position: absolute;
-    left: 10vw;
-    width: 80vw;
-    z-index: 100;
-    border-radius: 20% 0% 20% 0%;
-  }
-}
 
 .setbackground {
-  z-index: 9999;
+  z-index: 11;
   position: absolute;
   right: 0%;
-  top: 20vw;
+  top: 5vw;
   margin-right: 10px;
-}
-@media only screen and (max-width: 1200px) and (orientation: portrait) {
-  .setbackground {
-    top: 5px;
-    left: 5px;
-    animation: bouton_portrait_title 1s forwards;
-    max-width: 5vw;
-  }
 }
 .setbackground:hover {
   transform: scale(1.1);
-}
-
-.fonds {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  color: #8bd2fb;
-  position: absolute;
-  margin-top: 5px;
 }
 
 .noinformation {
@@ -2514,7 +2448,9 @@ section .ajust_image img {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  overflow: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .backgroundblack {
@@ -2570,41 +2506,26 @@ section .ajust_image img {
 }
 
 .thetitles {
+  position: absolute;
+  left: 0px;
+  top: 80px;
   overflow-y: auto;
+  overflow-x: hidden;
   z-index: 1000;
   flex-direction: column;
   padding: 1%;
   column-gap: 10px;
-  transform: translate(-50%, -50%);
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border-right: #0d98e9 1px solid;
-  border-bottom: #0d98e9 1px solid;
-  border-radius: 15%;
-  margin-left: 0.2%;
-  color: black;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: 100%;
 }
 @media only screen and (orientation: portrait) and (max-width: 1200px) {
   .thetitles {
-    position: fixed;
+    margin-top: 80vw;
     column-count: 2;
-    left: 50%;
     bottom: 10px;
-    column-rule: 2px solid #ccc;
-    width: 80vw;
-  }
-}
-@media only screen and (orientation: landscape) {
-  .thetitles {
-    position: absolute;
-    column-count: 1;
-    left: 0%;
-    bottom: 30%;
-    top: 0%;
-    transform: translate(0%, 0%);
+    /*   column-rule: 2px solid #ccc; */
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 @media only screen and (orientation: portrait) and (min-width: 1201px) {
@@ -2620,27 +2541,45 @@ section .ajust_image img {
 }
 .thetitles button {
   width: 100%;
-  background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
+  background: linear-gradient(110deg, rgba(98, 170, 237, 0.6), rgba(4, 86, 168, 0.4), rgba(4, 33, 196, 0.4), rgba(13, 40, 196, 0.4), rgba(4, 86, 168, 0.4), rgba(98, 170, 237, 0.6));
   background-color: rgba(0, 0, 0, 0);
-  background-position-x: 0%, 0%;
-  background-position-y: 0%, 0%;
-  background-repeat: repeat, repeat;
-  background-size: auto, auto;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
   border-radius: 20%;
   margin: 2.5px;
+  /* --- Effet de texte en verre --- */
+  text-shadow: 0px 4px 8px rgba(255, 255, 255, 0.3), 0px -2px 4px rgba(255, 255, 255, 0.2), 2px 2px 6px rgba(0, 0, 0, 0.5);
+  /* Ombre pour relief */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+  /* Contour léger pour un effet de verre */
+  text-shadow: #121314 4px 4px 4px;
+  position: relative;
+  font-size: 0.8rem;
+  /* --- Effet de brillance --- */
 }
 @media only screen and (max-width: 1000px) and (orientation: landscape) {
   .thetitles button {
     font-size: 0.5rem;
   }
 }
+.thetitles button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 120%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(243, 245, 250, 0.3), rgba(255, 255, 255, 0) 50%);
+  transform: rotate(25deg);
+  opacity: 0.5;
+}
 .thetitles button:hover {
-  background: linear-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
-  box-shadow: rgba(13, 13, 14, 0.7) 0px 7px 9px 0px;
+  background: linear-gradient(110deg, rgba(108, 131, 233, 0.4), rgba(95, 219, 247, 0.7), rgba(24, 107, 184, 0.6), rgba(78, 141, 230, 0.9), rgba(3, 3, 86, 0.8));
 }
 
 .TitleText {
@@ -2707,8 +2646,53 @@ section .ajust_image img {
   background-color: #0d11e9;
 }
 
+.boutonchoix {
+  z-index: 100;
+  position: absolute;
+  right: 15px;
+  top: 220px;
+  margin-top: 10px;
+  border: 1px solid rgb(175, 63, 10);
+  box-shadow: 1px 1px gold, -0.5em 0 0.4em black;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: rgba(3, 80, 125, 0.2);
+}
+
+.emoji-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.emoji-container:hover {
+  background-color: rgba(223, 228, 231, 0.2);
+}
+
+.emoji {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.6s ease-in-out;
+}
+.emoji:hover {
+  transform: scale(2.1);
+  margin-top: -22px;
+  margin-left: -18px;
+}
+
 .calquesdeschoix {
-  margin-top: 10vw;
+  position: absolute;
+  top: 100px;
+  width: 90%;
   margin-left: 10px;
   margin-right: 10px;
   display: flex;
@@ -2718,6 +2702,15 @@ section .ajust_image img {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 3vw;
+}
+.calquesdeschoixsvg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  /* Pour éviter que le SVG gêne les clics */
 }
 .calquesdeschoix .carte {
   display: flex;

@@ -1,12 +1,15 @@
 .pagecontaineraccueil {
   @include menu_page_mobile_landscape;
   @include menu_page_mobile_portrait;
+ 
+  margin-top: 0.8vw;
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: center;
   justify-items: center;
   & .flipbook-container-book {
+    z-index:10;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +35,8 @@ margin-top: 5vw;
 .containerhorizontale {
   display: flex;
   align-items: center;
-
+  z-index:10;
+  margin-top: 4vw;
   @include mobilepagehorizontalecontainerlandscape;
   @include mobilepagehorizontalecontainerportrait;
   & img {

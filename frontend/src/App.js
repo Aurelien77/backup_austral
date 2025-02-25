@@ -21,16 +21,13 @@ import CreationBook from "./pages/book/Creation/CreationBook";
 import { apiUrl } from "./config";
 import Loading from "./component/Loader/Loading";
 import Logincomposant from "./Users/Login.js";
-//import des images 
+//import des images
 
 import northstar from "./logos/Star_icon-icons.com_75206.ico";
 import north from "./logos/world.svg";
 import south from "./logos/terre.gif";
 import south2 from "./logos/south.png";
 import SetBackground from "./component/SetBackground";
-
-
-
 
 const history = createBrowserHistory();
 
@@ -49,19 +46,19 @@ function App() {
     urlcontextbackground: "",
     loading: false,
     visibility_nav_button: "",
-    menuvisiblebook : "",
+    menuvisiblebook: "",
     visibility_login: "",
-    visible_livre_by_menu_nav : "",
+    visible_livre_by_menu_nav: "",
     menuVisible: false,
   });
-/* Visibility_nav_button concerne les bouton de navigation et login */
-/* menu visible concerne la navigation des livres */
+  /* Visibility_nav_button concerne les bouton de navigation et login */
+  /* menu visible concerne la navigation des livres */
 
   const [backgroundImage, setBackgroundImage] = useState();
-   const [forbackgroundid, setforbackgroundid] = useState();
-   const [fornumberbackground, setfornumberbackground] = useState();
+  const [forbackgroundid, setforbackgroundid] = useState();
+  const [fornumberbackground, setfornumberbackground] = useState();
 
-   const [Isloading, setIsloading] = useState(false);
+  const [Isloading, setIsloading] = useState(false);
   const listBackground = localStorage.getItem("listbackground");
 
   const [menuVisibleBackground, setmenuVisibleBackground] = useState(false);
@@ -72,16 +69,10 @@ function App() {
     setAuthState((prevState) => ({
       ...prevState,
       visibility_nav_button: !prevState.visibility_nav_button,
-      visible_livre_by_menu_nav : !prevState.visible_livre_by_menu_nav,
-      menuvisiblebook : false,
-     
+      visible_livre_by_menu_nav: !prevState.visible_livre_by_menu_nav,
+      menuvisiblebook: false,
     }));
-
-
   }
-
-
-
 
   useEffect(() => {
     axios
@@ -120,9 +111,9 @@ function App() {
             urlcontextbackground: "",
             loading: true,
             visibility_nav_button: "",
-            menuvisiblebook : false,
+            menuvisiblebook: false,
             visibility_login: false,
-            visible_livre_by_menu_nav : "",
+            visible_livre_by_menu_nav: "",
           });
         }
       });
@@ -201,51 +192,48 @@ function App() {
     }));
   }
 
-
-  {/*-------------------------FONCTION GESTION BACKGROUND--------------------------- */}
+  {
+    /*-------------------------FONCTION GESTION BACKGROUND--------------------------- */
+  }
 
   //Composant background SET le Store et Store est récupéré pour afficher
-    useEffect(() => {
-      if (!listBackground) {
-        let myBookData = localStorage.getItem("mybook");
-        let myIdData = localStorage.getItem("myid");
-        axios
-          .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
-            headers: { accessToken: localStorage.getItem("accessToken") },
-          })
-          .then((response) => {
-            if (response.data && response.data[0]) {
-              setBackgroundImage(`url(${response.data[0].lien})`);
-              setAuthState((prevState) => ({
-                ...prevState,
-                urlcontextbackground: `${response.data[0].lien}`,
-              })
-            
-            
-            );
-            }
-          })
-          .catch((error) => {
-            console.error(
-              "Erreur lors de la récupération du fond 'Book':",
-              error
-            );
-          });
-      }
-  
-      if (listBackground) {
-        setBackgroundImage(`url(${listBackground})`);
-      }
-    }, [listBackground, backgroundImage, refreshbackground]);
+  useEffect(() => {
+    if (!listBackground) {
+      let myBookData = localStorage.getItem("mybook");
+      let myIdData = localStorage.getItem("myid");
+      axios
+        .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        })
+        .then((response) => {
+          if (response.data && response.data[0]) {
+            setBackgroundImage(`url(${response.data[0].lien})`);
+            setAuthState((prevState) => ({
+              ...prevState,
+              urlcontextbackground: `${response.data[0].lien}`,
+            }));
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "Erreur lors de la récupération du fond 'Book':",
+            error
+          );
+        });
+    }
 
-      /* Gestion de l'etat de NAvigation Livre */
+    if (listBackground) {
+      setBackgroundImage(`url(${listBackground})`);
+    }
+  }, [listBackground, backgroundImage, refreshbackground]);
+
+  /* Gestion de l'etat de NAvigation Livre */
   const handleClick = () => {
     setlogin((prevLogin) => !prevLogin);
     setenr(false);
     setAuthState((prevState) => ({
       ...prevState,
       visibility_login: !prevState.visibility_login,
-        
     }));
   };
 
@@ -274,171 +262,162 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <>
-            
-
-
-          <div id="arrange">
-
+            <div id="arrange">
               <button
                 id="bouton-cacher-log"
                 onClick={toggleVisibility}
                 className={""}
               ></button>
 
-
-            
-                 {!authState.status && authState.visibility_nav_button && (
-        <div onClick={handleClick}>
-          {authState.visibility_nav_button ? (
-            <span className="boutonlogin">Login</span>
-          ) : (
-            <span className="boutonlogin2">Login</span>
-          )}
-        </div>
-      )}
-</div>
-{/*----------------------MENU LIVRES ------------------------------ */}
-
-     
-{authState.menuvisiblebook  && <> 
-       
-       <div className="north">
-
-
-
-            <button onClick={() =>       setAuthState((prevState) => ({
-              ...prevState,
-             menuVisible:!prevState.menuVisible
-            }))}>
-
-
-
-              {authState.menuVisible ? (
-                 <img src={north} className="northstar"  />
-              ) : (
-                <div><img src={northstar} /> <div className="fonds">Menu</div> </div>  
+              {!authState.status && authState.visibility_nav_button && (
+                <div onClick={handleClick}>
+                  {authState.visibility_nav_button ? (
+                    <span className="boutonlogin">Login</span>
+                  ) : (
+                    <span className="boutonlogin2">Login</span>
+                  )}
+                </div>
               )}
-            </button>
-          </div>
-        <div className="south">  
-<button onClick={() => 
-  
-  
-{ 
- const back = localStorage.getItem("listbackground")
-  if(!back){
- 
-      localStorage.setItem("listbackground", authState.urlcontextbackground);
-    
-  }
+            </div>
+            {/*----------------------MENU LIVRES ------------------------------ */}
+            {authState.menuvisiblebook && (
+              <>
+                <div className="bouton_book">
+                  <div className="north">
+                    <button
+                      onClick={() =>
+                        setAuthState((prevState) => ({
+                          ...prevState,
+                          menuVisible: !prevState.menuVisible,
+                        }))
+                      }
+                    >
+                      {authState.menuVisible ? (
+                        <img src={north} className="northstar" />
+                      ) : (
+                        <div>
+                          <img src={northstar} />{" "}
+                          <div className="fonds">Menu</div>{" "}
+                        </div>
+                      )}
+                    </button>
+                  </div>
+                  <div className="south">
+                    <button
+                      onClick={() => {
+                        const back = localStorage.getItem("listbackground");
+                        if (!back) {
+                          localStorage.setItem(
+                            "listbackground",
+                            authState.urlcontextbackground
+                          );
+                        }
 
- 
-  
-  
-  setmenuVisibleBackground(!menuVisibleBackground)
+                        setmenuVisibleBackground(!menuVisibleBackground);
+                      }}
+                    >
+                      {/*-------------------------MENU BACKGROUND BOUTON--------------------------- */}
 
+                      {menuVisibleBackground ? (
+                        <img src={south} id="coeur" />
+                      ) : (
+                        <div>
+                          <img src={south2} />{" "}
+                          <div className="fonds">Fonds</div>{" "}
+                        </div>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
 
-}
-  
-  
-  
-  
-  }>
+            <div className="homevisible">
+              <button
+                onClick={() =>
+                  setAuthState((prevState) => ({
+                    ...prevState,
+                    visibility_nav_button: false,
+                    menuvisiblebook: !prevState.menuvisiblebook,
+                    visible_livre_by_menu_nav: false,
+                  }))
+                }
+              >
+                {authState.menuvisiblebook ? "💧" : "🫧"}
+              </button>
+            </div>
 
-{/*-------------------------MENU BACKGROUND BOUTON--------------------------- */}
-
-              {menuVisibleBackground ? (
-               <img src={south}  />
-              ) : (
-                
-
-                <div><img src={south2}  /> <div className="fonds">Fonds</div> </div> 
+            {/*-------------------------MENU BACKGTROUND --------------------------- */}
+            <div className="setbackground">
+              {menuVisibleBackground && (
+                <SetBackground
+                  number={fornumberbackground}
+                  id={forbackgroundid}
+                  setrefreshbackground={setrefreshbackground}
+                  refreshbackground={refreshbackground}
+                />
               )}
-            </button>
-          
-        </div> </> }
-
-{/*-------------------------MENU BACKGTROUND --------------------------- */}
-<div className="setbackground">
-        {menuVisibleBackground && 
-        <SetBackground 
-        number={fornumberbackground} 
-        id={forbackgroundid}
-        setrefreshbackground={setrefreshbackground} 
-        refreshbackground={refreshbackground}
-        />}
-      </div>
-{/*-------------------------BOUTON MENUS GENERAUX--------------------------- */}
+            </div>
+            {/*-------------------------BOUTON MENUS GENERAUX--------------------------- */}
 
             {authState.status && (
               <>
                 {authState.status && (
                   <>
-               <div className="General_buttons">
+                    <div className="General_buttons">
+                      {/* //Bouton pour afficher les menus une fois connecté */}
 
-{/* //Bouton pour afficher les menus une fois connecté */}
+                      {authState.status &&
+                        authState.visible_livre_by_menu_nav && (
+                          <button onClick={logout} id="decobutton">
+                            <div className="logout">
+                              <span>❌</span>
+                              <span>Logout</span>
+                            </div>
+                          </button>
+                        )}
 
-                    
-                      <button
-                        id=""
-                        onClick={toggleVisibility}
-                        className={""}> </button>
-                    
-                    {authState.status  && authState.visible_livre_by_menu_nav && (
-                      <button onClick={logout} id="decobutton">
-                        <div className="logout">
-                          <span>❌</span>
-                          <span>Logout</span>
-                        </div>
-                      </button>
-                    )}
-                 
-                      {authState.status && authState.identity  && authState.visible_livre_by_menu_nav && (
-                        <Link to={`/FicheAdmin/${authState.id}`} className="">
-                          <div
-                            id="identi"
-                            className="admin-button"
-                            onClick={admin}
-                          >
-                            {authState.username}
-                          </div>
-                        </Link>
-                      )}
+                      {authState.status &&
+                        authState.identity &&
+                        authState.visible_livre_by_menu_nav && (
+                          <Link to={`/FicheAdmin/${authState.id}`} className="">
+                            <div id="identi" onClick={admin}>
+                              {authState.username}
+                            </div>
+                          </Link>
+                        )}
 
-                      {authState.status && authState.create && authState.visible_livre_by_menu_nav &&  (
-                        <Link to="/CreationBook" onClick={create}>
-                          ​ <div id="create" className="plume-button"></div>
-                        </Link>
-                      )}
+                      {authState.status &&
+                        authState.create &&
+                        authState.visible_livre_by_menu_nav && (
+                          <Link to="/CreationBook" onClick={create}>
+                            <div id="create" className="plume-button"></div>
+                          </Link>
+                        )}
 
-                      {authState.status && authState.bibli && authState.visible_livre_by_menu_nav && (
-                        <Link to="/Livres" onClick={biblio}>
-                          {" "}
-                          <div id="biblio" className="thunder-button">
-                            ​
-                          </div>
-                        </Link>
-                      )}
-                  
-
-
+                      {authState.status &&
+                        authState.bibli &&
+                        authState.visible_livre_by_menu_nav && (
+                          <Link to="/Livres" onClick={biblio}>
+                            {" "}
+                            <div id="biblio" className="thunder-button"></div>
+                          </Link>
+                        )}
                     </div>
                   </>
                 )}
-
-         
               </>
             )}
           </>
 
           <>
-        {login && (
-          <div>
-            <Logincomposant setIsloading={setIsloading} />
-          </div>
-        )}
-      </>
-{/*-------------------------ROUTE FRONTEND--------------------------- */}
+            {login && (
+              <div>
+                <Logincomposant setIsloading={setIsloading} />
+              </div>
+            )}
+          </>
+          {/*-------------------------ROUTE FRONTEND--------------------------- */}
 
           <Switch>
             {/* Vers Livres  */}
