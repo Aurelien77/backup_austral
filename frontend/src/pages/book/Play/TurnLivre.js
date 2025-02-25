@@ -5,10 +5,6 @@ import { AuthContext } from "../../../helpers/AuthContext";
 import { apiUrl } from "../../../config";
 import ViewPageRead from "./ViewBookPageRead";
 import PictureBookPage from "../../../component/PictureBookPage";
-import northstar from "../../../logos/Star_icon-icons.com_75206.ico";
-import north from "../../../logos/world.svg";
-import south from "../../../logos/terre.gif";
-import south2 from "../../../logos/south.png";
 import SetBackground from "../../../component/SetBackground";
 
 
@@ -21,7 +17,7 @@ function TurnLivre({
   setmenuVisibleHome,
 
 }) {
-  const [menuVisible, setMenuVisible] = useState(false);
+
   const bookRef = useRef();
   const [id, setId] = useState(1);
 const { authState, setAuthState } = useContext(AuthContext);
@@ -35,7 +31,7 @@ const { authState, setAuthState } = useContext(AuthContext);
   const [deckstate3, setDeckstate3] = useState([]);
   const [deckstate4, setDeckstate4] = useState([]);
   const [numberbook, setnumberbook] = useState();
-  const [menuVisibleBackground, setmenuVisibleBackground] = useState(false);
+
   const [containerclass, setcontainerclass] = useState(
     "flipbook-container-book"
   );
@@ -177,25 +173,20 @@ useEffect(() => {
       // Si la prop `number` est fournie
       numberbook = number;
 
-      setfornumberbackground(numberbook)
+    
     } else {
       // Sinon, récupérer depuis le local storage
       const myBookData = localStorage.getItem("mybook");
 
       numberbook = myBookData ? parseInt(myBookData, 10) : 1; // Défaut à 1 si pas trouvé
 
-      setfornumberbackground(numberbook)
+  
     }
 
     const myIdData = localStorage.getItem("myid");
     //Explicitement un nombre decimal = base 10 
     const currentId = myIdData ? parseInt(myIdData, 10) : id;
 
-    if(currentId === myIdData ){
-      setforbackgroundid(currentId)
-
-    }
-    else(     setforbackgroundid(id)   )
   
    if(numberbook > 100){ setbookpaysage(true)}
    else{
@@ -361,8 +352,8 @@ useEffect(() => {
   return (
     <>
       <div className="pagecontaineraccueil">
-        {/* Index / Menu */}
-        {menuVisible &&  (
+   
+        {authState.menuVisible &&  (
           <div className="thetitles">
             <button onClick={goToCoverPage} id="couverture">
               Couverture
@@ -393,52 +384,7 @@ useEffect(() => {
               )}
             </button>
           </div>
-       
-       {authState.menuvisiblebook  && <> 
-       
-       <div className="north">
-            <button onClick={() => setMenuVisible(!menuVisible)}>
-              {menuVisible ? (
-                 <img src={north} className="northstar"  />
-              ) : (
-                <div><img src={northstar} /> <div className="fonds">Menu</div> </div>  
-              )}
-            </button>
-          </div>
-        <div className="south">  
-<button onClick={() => 
   
-  
-{ 
- const back = localStorage.getItem("listbackground")
-  if(!back){
- 
-      localStorage.setItem("listbackground", authState.urlcontextbackground);
-    
-  }
-
- 
-  
-  
-  setmenuVisibleBackground(!menuVisibleBackground)
-
-
-}
-  
-  
-  
-  
-  }>
-              {menuVisibleBackground ? (
-               <img src={south}  />
-              ) : (
-                
-
-                <div><img src={south2}  /> <div className="fonds">Fonds</div> </div> 
-              )}
-            </button>
-          
-        </div> </> }
       
           {renderedDivs && (
             <div className={containerclass} style={flipBookStyle}>
@@ -543,9 +489,7 @@ useEffect(() => {
     
     }
 
-<div className="setbackground">
-        {menuVisibleBackground && <SetBackground number={fornumberbackground} id={forbackgroundid} />}
-      </div>
+
     </>
   );
 }

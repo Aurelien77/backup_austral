@@ -8,6 +8,52 @@
 @import "./Fiche";
 @import "./audio";
 @import "./_menu_button";
+#choosebackground {
+
+font-weight: bold;
+
+text-shadow: #3131d4 1px 1px 1px;
+}
+.selectbackground {
+  @include bookbackground;
+  text-align: center;
+  box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
+  -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  width: 5vw;
+  height: 5vw;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  background: radial-gradient(
+      circle,
+      rgba(121, 236, 244, 0.2),
+      rgba(95, 219, 247, 0.5),
+      rgba(23, 138, 204, 0.4),
+      rgba(78, 141, 230, 0.7),
+      rgba(161, 227, 235, 0.7)
+    ),
+    url("");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.setbackground {
+  
+  z-index: 9999;
+  position: absolute;
+  right: 0%;
+  top: 20vw;
+  margin-right: 10px;
+  @include bouton_setbackground;
+
+  &:hover {
+transform: scale(1.1);
+
+  }
+}
 
 .fonds {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -155,37 +201,6 @@
   -webkit-text-stroke: #0e72d5 0.5px 1px;
 }
 
-.selectbackground {
-  @include bookbackground;
-  text-align: center;
-  box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
-  -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  padding: 20px;
-  border-radius: 20% 0% 20% 0%;
-  font-size: 25px;
-  background: radial-gradient(
-      circle,
-      rgba(121, 236, 244, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(23, 138, 204, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(161, 227, 235, 0.7)
-    ),
-    url("");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.setbackground {
-  position: absolute;
-  right: 40%;
-  top: 2px;
-  margin-right: 10px;
-  @include bouton_setbackground;
-}
 
 .container {
   margin: 0;
@@ -1018,160 +1033,5 @@
   }
 }
 
-.navbarre {
-  margin-top: 10vw;
-}
-
-.barredenavigation {
-  position: absolute;
-  color: white;
-  text-shadow: #000;
-}
-
-.nav {
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  display: flex;
-  width: 100%;
-
-  & #biblio {
-    @include biblio;
-    z-index: 200;
-    transform: scale(1.1);
-    background-color: #03507d;
-    box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-    background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(95, 219, 247, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(78, 141, 230, 0.7),
-      rgba(3, 3, 86, 0.7)
-    );
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
-    top: 0.3%;
-    left: 28vw;
-    height: 4vh;
-    width: 4vh;
-    box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-    border: #0d98e9 1px solid;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: 1.5rem;
-    line-height: 1;
-
-    &::before {
-      @include biblio-before;
-      content: "📖";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      font-size: 1.5rem;
-      transition: transform 0.3s ease, color 0.3s ease;
-      z-index: 1;
-  
-    }
 
 
-    &::after {
-      content: "📖";
-      position: absolute;
-      top: 0.5%;
-      right: 50vw;
-      transform: translate(-50%, -50%) scale(1.2);
-      width: 120%;
-      height: 120%;
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      z-index: 0;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover {
-      transform: scale(1.1);
-      background-color: #03507d;
-      box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-  }
-
-
-
-  .plume-button {
-    padding: 14px 18px;
-
-    font-weight: bold;
-    color: #fff;
-    background-color: #333;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    overflow: hidden;
-    text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-      background: radial-gradient(
-        circle,
-        rgba(108, 131, 233, 0.2),
-        rgba(95, 219, 247, 0.5),
-        rgba(24, 107, 184, 0.4),
-        rgba(78, 141, 230, 0.7),
-        rgba(3, 3, 86, 0.7)
-      );
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-  }
-
-  /* & #accueilli {
-    @include accueil;
-    z-index: 3;
-    position: absolute;
-    top: 0.5vw;
-    left: 2vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 1px 1px rgb(33, 13, 150), -0.5em 0 0.4em black;
-    border: 0px solid rgb(20, 66, 202);
-    border-radius: 50%;
-    height: 2.5vw;
-    width: 2.5vw;
-    font-size: 1rem;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-
-    animation-delay: 3.5s;
-    animation: deco 5s forwards;
-    color-scheme: white;
-    background: radial-gradient(
-      circle,
-      rgba(108, 131, 233, 0.2),
-      rgba(178, 177, 206, 0.5),
-      rgba(24, 107, 184, 0.4),
-      rgba(26, 161, 224, 0.7),
-      rgba(3, 3, 86, 0.7)
-    );
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    &:hover {
-      scale: (1.1);
-      background-color: #eae615;
-    }
-  }
- */
-}

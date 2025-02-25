@@ -1,21 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import backgroundbase from "../logos/world.svg";
 import background2 from "../logos/space.jpg"; // Fond "Night"
-import { apiUrl } from "../config.js";
 
-function SetBackground({ id, number }) {
+
+function SetBackground({ id, number, setrefreshbackground, refreshbackground}) {
   const [selectedOptionlist, setSelectedOptionlist] = useState(""); // Option sélectionnée de la liste
   const [customUrl, setCustomUrl] = useState(""); // Valeur de l'URL personnalisée
   const [storedUrls, setStoredUrls] = useState([]);
   
- 
+
+  
   // Liste des URL sauvegardées
   const [urlbackground, setUrlBackground] = useState(backgroundbase); // Arrière-plan actuel
   const { setAuthState } = useContext(AuthContext);
 
-  const [back] = useState(urlbackground);
+
   // Récupérer l'option sélectionnée depuis le changement de liste
   const handleSelectChange = (event) => {
     const newValue = event.target.value;
@@ -42,19 +42,10 @@ function SetBackground({ id, number }) {
 
         // Gérer l'option 2 (Book) de manière asynchrone
         if (selectedOptionlist === "option1") {
-          const response = await axios.get(
-            `${apiUrl}/postimages/lirefond/${id}/${number}`,
-            {
-              headers: { accessToken: localStorage.getItem("accessToken") },
-            }
-          );
-
-          if (response.data && response.data[0]) {
-            const apiUrl = response.data[0].lien;
-            setUrlBackground(apiUrl);
-            localStorage.setItem("listbackground", apiUrl); // Mise à jour du fond d'écran
-          }
+          localStorage.removeItem("listbackground");
+          setrefreshbackground(!refreshbackground)
         }
+        
 
         // Gérer l'option 3 (Night)
         if (selectedOptionlist === "option3") {
@@ -65,7 +56,7 @@ function SetBackground({ id, number }) {
         if (selectedOptionlist.startsWith("http")) {
           setUrlBackground(selectedOptionlist);
           localStorage.setItem("listbackground",selectedOptionlist);
-          
+          setrefreshbackground(!refreshbackground);
         }
       } catch (error) {
         console.error("Erreur lors de la récupération du fond 'Book':", error);
@@ -130,6 +121,7 @@ function SetBackground({ id, number }) {
         value={selectedOptionlist} // Utiliser selectedOptionlist pour gérer l'affichage
         onChange={handleSelectChange}
       >
+           <option value="option0" className="school" id="choosebackground">BG</option>
         <option value="option1" className="school">Book</option>
         <option value="option2" className="book">Plan</option>
         <option value="option3" className="night">Night</option>

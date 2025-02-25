@@ -20,6 +20,17 @@ import CreationBook from "./pages/book/Creation/CreationBook";
 
 import { apiUrl } from "./config";
 import Loading from "./component/Loader/Loading";
+import Logincomposant from "./Users/Login.js";
+//import des images 
+
+import northstar from "./logos/Star_icon-icons.com_75206.ico";
+import north from "./logos/world.svg";
+import south from "./logos/terre.gif";
+import south2 from "./logos/south.png";
+import SetBackground from "./component/SetBackground";
+
+
+
 
 const history = createBrowserHistory();
 
@@ -41,45 +52,22 @@ function App() {
     menuvisiblebook : "",
     visibility_login: "",
     visible_livre_by_menu_nav : "",
+    menuVisible: false,
   });
 /* Visibility_nav_button concerne les bouton de navigation et login */
 /* menu visible concerne la navigation des livres */
 
   const [backgroundImage, setBackgroundImage] = useState();
+   const [forbackgroundid, setforbackgroundid] = useState();
+   const [fornumberbackground, setfornumberbackground] = useState();
 
+   const [Isloading, setIsloading] = useState(false);
   const listBackground = localStorage.getItem("listbackground");
 
-  // use effect pour recuperer le background
-  useEffect(() => {
-    if (!listBackground) {
-      let myBookData = localStorage.getItem("mybook");
-      let myIdData = localStorage.getItem("myid");
-      axios
-        .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        })
-        .then((response) => {
-          if (response.data && response.data[0]) {
-            setBackgroundImage(`url(${response.data[0].lien})`);
-            setAuthState((prevState) => ({
-              ...prevState,
-              urlcontextbackground: `${response.data[0].lien}`,
-            }));
-          }
-        })
-        .catch((error) => {
-          console.error(
-            "Erreur lors de la récupération du fond 'Book':",
-            error
-          );
-        });
-    }
-
-    if (listBackground) {
-      setBackgroundImage(`url(${listBackground})`);
-    }
-  }, [listBackground, backgroundImage]);
-
+  const [menuVisibleBackground, setmenuVisibleBackground] = useState(false);
+  const [refreshbackground, setrefreshbackground] = useState(false);
+  const [login, setlogin] = useState(false);
+  const [enr, setenr] = useState(false);
   function toggleVisibility() {
     setAuthState((prevState) => ({
       ...prevState,
@@ -91,6 +79,10 @@ function App() {
 
 
   }
+
+
+
+
   useEffect(() => {
     axios
       .get(`${apiUrl}/auth/auth`, {
@@ -209,6 +201,54 @@ function App() {
     }));
   }
 
+
+  {/*-------------------------FONCTION GESTION BACKGROUND--------------------------- */}
+
+  //Composant background SET le Store et Store est récupéré pour afficher
+    useEffect(() => {
+      if (!listBackground) {
+        let myBookData = localStorage.getItem("mybook");
+        let myIdData = localStorage.getItem("myid");
+        axios
+          .get(`${apiUrl}/postimages/lirefond/${myIdData}/${myBookData}`, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          })
+          .then((response) => {
+            if (response.data && response.data[0]) {
+              setBackgroundImage(`url(${response.data[0].lien})`);
+              setAuthState((prevState) => ({
+                ...prevState,
+                urlcontextbackground: `${response.data[0].lien}`,
+              })
+            
+            
+            );
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "Erreur lors de la récupération du fond 'Book':",
+              error
+            );
+          });
+      }
+  
+      if (listBackground) {
+        setBackgroundImage(`url(${listBackground})`);
+      }
+    }, [listBackground, backgroundImage, refreshbackground]);
+
+      /* Gestion de l'etat de NAvigation Livre */
+  const handleClick = () => {
+    setlogin((prevLogin) => !prevLogin);
+    setenr(false);
+    setAuthState((prevState) => ({
+      ...prevState,
+      visibility_login: !prevState.visibility_login,
+        
+    }));
+  };
+
   return (
     <section
       className="container"
@@ -234,31 +274,116 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           <>
-            {
+            
 
 
-/* Bouton pour cacher le menu de navigation */
+          <div id="arrange">
+
               <button
                 id="bouton-cacher-log"
                 onClick={toggleVisibility}
                 className={""}
               ></button>
-            }
 
-{/*---------------------------------------------------- */}
+
+            
+                 {!authState.status && authState.visibility_nav_button && (
+        <div onClick={handleClick}>
+          {authState.visibility_nav_button ? (
+            <span className="boutonlogin">Login</span>
+          ) : (
+            <span className="boutonlogin2">Login</span>
+          )}
+        </div>
+      )}
+</div>
+{/*----------------------MENU LIVRES ------------------------------ */}
+
+     
+{authState.menuvisiblebook  && <> 
+       
+       <div className="north">
+
+
+
+            <button onClick={() =>       setAuthState((prevState) => ({
+              ...prevState,
+             menuVisible:!prevState.menuVisible
+            }))}>
+
+
+
+              {authState.menuVisible ? (
+                 <img src={north} className="northstar"  />
+              ) : (
+                <div><img src={northstar} /> <div className="fonds">Menu</div> </div>  
+              )}
+            </button>
+          </div>
+        <div className="south">  
+<button onClick={() => 
+  
+  
+{ 
+ const back = localStorage.getItem("listbackground")
+  if(!back){
+ 
+      localStorage.setItem("listbackground", authState.urlcontextbackground);
+    
+  }
+
+ 
+  
+  
+  setmenuVisibleBackground(!menuVisibleBackground)
+
+
+}
+  
+  
+  
+  
+  }>
+
+{/*-------------------------MENU BACKGROUND BOUTON--------------------------- */}
+
+              {menuVisibleBackground ? (
+               <img src={south}  />
+              ) : (
+                
+
+                <div><img src={south2}  /> <div className="fonds">Fonds</div> </div> 
+              )}
+            </button>
+          
+        </div> </> }
+
+{/*-------------------------MENU BACKGTROUND --------------------------- */}
+<div className="setbackground">
+        {menuVisibleBackground && 
+        <SetBackground 
+        number={fornumberbackground} 
+        id={forbackgroundid}
+        setrefreshbackground={setrefreshbackground} 
+        refreshbackground={refreshbackground}
+        />}
+      </div>
+{/*-------------------------BOUTON MENUS GENERAUX--------------------------- */}
 
             {authState.status && (
               <>
                 {authState.status && (
                   <>
-               
-                    {
+               <div className="General_buttons">
+
+{/* //Bouton pour afficher les menus une fois connecté */}
+
+                    
                       <button
-                        id="bouton-cacher-log"
+                        id=""
                         onClick={toggleVisibility}
-                        className={""}
-                      ></button>
-                    }
+                        className={""}> </button>
+                    
                     {authState.status  && authState.visible_livre_by_menu_nav && (
                       <button onClick={logout} id="decobutton">
                         <div className="logout">
@@ -267,7 +392,7 @@ function App() {
                         </div>
                       </button>
                     )}
-                    <div className="nav">
+                 
                       {authState.status && authState.identity  && authState.visible_livre_by_menu_nav && (
                         <Link to={`/FicheAdmin/${authState.id}`} className="">
                           <div
@@ -294,6 +419,9 @@ function App() {
                           </div>
                         </Link>
                       )}
+                  
+
+
                     </div>
                   </>
                 )}
@@ -302,6 +430,16 @@ function App() {
               </>
             )}
           </>
+
+          <>
+        {login && (
+          <div>
+            <Logincomposant setIsloading={setIsloading} />
+          </div>
+        )}
+      </>
+{/*-------------------------ROUTE FRONTEND--------------------------- */}
+
           <Switch>
             {/* Vers Livres  */}
             <Route path="/Monlivre" exact component={MonLivre} />
