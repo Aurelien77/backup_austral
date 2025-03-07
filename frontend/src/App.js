@@ -365,25 +365,34 @@ function App() {
                 {authState.status && (
                   <>
                     <div className="General_buttons">
-                      {/* //Bouton pour afficher les menus une fois connecté */}
+                    
 
-                      {authState.status &&
-                        authState.visible_livre_by_menu_nav && (
-                          <button onClick={logout} id="decobutton">
-                            <div className="logout">
-                              <span>❌</span>
-                            </div>
-                          </button>
-                        )}
+               
 
                       {authState.status &&
                         authState.identity &&
-                        authState.visible_livre_by_menu_nav && (
+                        authState.visible_livre_by_menu_nav && (    
+                        
+                        <div className="admin_deco">
                           <Link to={`/FicheAdmin/${authState.id}`} className="">
+                           
+                        
                             <div id="identi" onClick={admin}>
                               {authState.username}
+
+                     
                             </div>
+
+                       
+                      
                           </Link>
+         
+                          <button onClick={logout} id="decobutton">
+                        
+                        <span>❌</span>
+                
+                    </button>
+                          </div>
                         )}
 
 

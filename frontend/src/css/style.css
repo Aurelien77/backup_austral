@@ -415,32 +415,40 @@ li {
 @keyframes boutonlogin_portrait {
   0% {
     left: 5px;
+    width: 1vw;
+    height: 1vw;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
     left: 5px;
+    width: 5px;
+    height: 5px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
     left: 20vw;
-    width: 7.6vw;
-    height: 7.6vw;
+    width: 50px;
+    height: 50px;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
 @keyframes boutonlogin_landscape {
   0% {
     left: 5px;
+    width: 1vw;
+    height: 1vw;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
     left: 5px;
+    width: 5px;
+    height: 5px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
     left: 12vw;
-    width: 3.9vw;
-    height: 3.9vw;
+    width: 50px;
+    height: 50px;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
@@ -457,17 +465,24 @@ li {
   }
 }
 @keyframes bouton_background_portrait {
-  5% {
+  0% {
     top: 5px;
     right: 10px;
     filter: blur(0px) hue-rotate(0deg);
+    height: 0px;
+    width: 0px;
+  }
+  75% {
+    top: 5px;
+    right: 10px;
+    filter: blur(0px) hue-rotate(100deg);
   }
   100% {
     top: 5px;
     right: 60vw;
     filter: blur(0px) hue-rotate(0deg);
-    width: 7.7vw;
-    height: 7.7vw;
+    height: 50px;
+    width: 50px;
   }
 }
 @keyframes bouton_background_landscape {
@@ -520,13 +535,12 @@ li {
     top: 5px;
     right: 8px;
     filter: blur(0px) hue-rotate(0deg);
-  }
-  50% {
-    filter: blur(0.5px) hue-rotate(15deg);
+    height: 0px;
+    width: 0px;
   }
   100% {
-    width: 7.8vw;
-    height: 7.8vw;
+    height: 50px;
+    width: 50px;
     top: 5px;
     right: 114px;
     filter: blur(0px) hue-rotate(0deg);
@@ -681,7 +695,7 @@ section .ajust_image img {
   }
 }
 .pagecontaineraccueil .flipbook-container-book {
-  z-index: 10;
+  /*   z-index:10; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1314,7 +1328,7 @@ section .ajust_image img {
 }
 
 .containeraudio {
-  z-index: 11;
+  z-index: 501;
   margin-top: 2.2vw;
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
@@ -1611,32 +1625,40 @@ section .ajust_image img {
 @keyframes boutonlogin_portrait {
   0% {
     left: 5px;
+    width: 1vw;
+    height: 1vw;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
     left: 5px;
+    width: 5px;
+    height: 5px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
     left: 20vw;
-    width: 7.6vw;
-    height: 7.6vw;
+    width: 50px;
+    height: 50px;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
 @keyframes boutonlogin_landscape {
   0% {
     left: 5px;
+    width: 1vw;
+    height: 1vw;
     filter: blur(0px) hue-rotate(0deg);
   }
   50% {
     left: 5px;
+    width: 5px;
+    height: 5px;
     filter: blur(0.5px) hue-rotate(360deg);
   }
   100% {
     left: 12vw;
-    width: 3.9vw;
-    height: 3.9vw;
+    width: 50px;
+    height: 50px;
     filter: blur(0px) hue-rotate(360deg);
   }
 }
@@ -1653,17 +1675,24 @@ section .ajust_image img {
   }
 }
 @keyframes bouton_background_portrait {
-  5% {
+  0% {
     top: 5px;
     right: 10px;
     filter: blur(0px) hue-rotate(0deg);
+    height: 0px;
+    width: 0px;
+  }
+  75% {
+    top: 5px;
+    right: 10px;
+    filter: blur(0px) hue-rotate(100deg);
   }
   100% {
     top: 5px;
     right: 60vw;
     filter: blur(0px) hue-rotate(0deg);
-    width: 7.7vw;
-    height: 7.7vw;
+    height: 50px;
+    width: 50px;
   }
 }
 @keyframes bouton_background_landscape {
@@ -1716,13 +1745,12 @@ section .ajust_image img {
     top: 5px;
     right: 8px;
     filter: blur(0px) hue-rotate(0deg);
-  }
-  50% {
-    filter: blur(0.5px) hue-rotate(15deg);
+    height: 0px;
+    width: 0px;
   }
   100% {
-    width: 7.8vw;
-    height: 7.8vw;
+    height: 50px;
+    width: 50px;
     top: 5px;
     right: 114px;
     filter: blur(0px) hue-rotate(0deg);
@@ -1735,25 +1763,17 @@ section .ajust_image img {
 }
 
 #bouton-cacher-log {
-  position: absolute;
   z-index: 10;
   border: 0;
   top: 3px;
-  left: 5px;
+  left: 0px;
   margin-top: 0px;
   text-shadow: 0.2px 0.2px 0.5px #000, 1px 1px 2.5px rgb(119, 119, 235);
   background: none;
 }
-@media only screen and (max-width: 1000px) {
-  #bouton-cacher-log {
-    left: 0px;
-    top: 2px;
-    font-size: 2rem;
-  }
-}
 #bouton-cacher-log::before {
-  width: 4vw;
-  height: 4vw;
+  width: 50px;
+  height: 50px;
   content: "";
   font-size: 3rem;
   cursor: pointer;
@@ -1775,8 +1795,6 @@ section .ajust_image img {
     left: -1.5vw;
     top: 0.5vw;
     font-size: 2rem;
-    width: 4.5vw;
-    height: 4.5vw;
   }
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
@@ -1784,8 +1802,6 @@ section .ajust_image img {
     left: -1.5vw;
     top: 0.5vw;
     font-size: 2rem;
-    width: 8vw;
-    height: 8vw;
   }
 }
 #bouton-cacher-log:hover {
@@ -1796,11 +1812,9 @@ section .ajust_image img {
 .General_buttons {
   position: absolute;
   z-index: 2;
-  top: 0;
   display: flex;
   width: 100%;
   justify-content: space-evenly;
-  align-items: center;
 }
 
 /*  -----------------------LOGIN ---------------------------- */
@@ -1833,35 +1847,21 @@ section .ajust_image img {
     top: 5px;
   }
 }
-.boutonlogin:hover {
-  cursor: pointer;
-}
 
 .boutonlogin::before {
   content: "";
-  width: 3vw;
-  height: 3vw;
+  width: 50px;
+  height: 50px;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
   display: flex;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
 }
-@media only screen and (max-width: 1200px) and (orientation: portrait) {
-  .boutonlogin::before {
-    animation-name: boutonlogin_portrait;
-    animation-fill-mode: forwards;
-    left: 30vw;
-    top: 5px;
-  }
-}
-@media only screen and (max-width: 1200px) and (orientation: landscape) {
-  .boutonlogin::before {
-    animation-name: boutonlogin_landscape;
-    animation-fill-mode: forwards;
-    left: 12vw;
-    top: 5px;
-  }
+
+.boutonlogin:hover::before {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .boutonlogin2::before {
@@ -1898,8 +1898,8 @@ section .ajust_image img {
   position: absolute;
   top: 5px;
   right: 10px;
-  width: 3vw;
-  height: 3vw;
+  width: 60px;
+  height: 60px;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
@@ -1910,18 +1910,6 @@ section .ajust_image img {
   font-size: 1rem;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   background-position: center;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  .homevisible button {
-    width: 9vw;
-    height: 9vw;
-  }
-}
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
-  .homevisible button {
-    width: 4.5vw;
-    height: 4.5vw;
-  }
 }
 .homevisible button:hover {
   cursor: pointer;
@@ -1960,6 +1948,9 @@ section .ajust_image img {
 }
 
 .north {
+  width: 50px;
+  height: 50px;
+  z-index: 1;
   display: flex;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1968,12 +1959,9 @@ section .ajust_image img {
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
-  margin-top: 5px;
   text-align: center;
   align-items: center;
   animation: bouton_title 1s forwards;
-  width: 3vw;
-  height: 3vw;
   border-radius: 15%;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
@@ -1985,13 +1973,6 @@ section .ajust_image img {
     top: 5px;
     right: 30vw;
     animation: bouton_portrait_title 1s forwards;
-  }
-}
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
-  .north {
-    width: 4.5vw;
-    height: 4.5vw;
-    top: 35%;
   }
 }
 .north button {
@@ -2023,14 +2004,14 @@ section .ajust_image img {
 }
 
 .south {
-  width: 3vw;
-  height: 3vw;
-  margin: 0.1vw;
+  z-index: 1;
+  height: 50px;
+  width: 50px;
+  animation-name: bouton_background_landscape;
   text-align: center;
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
-  animation-delay: 0.5s;
   box-shadow: 1px 1px rgb(68, 224, 235), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   display: flex;
@@ -2047,7 +2028,6 @@ section .ajust_image img {
   all: unset;
 }
 .south .fonds {
-  z-index: 501;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   color: #8bd2fb;
   text-shadow: #171819;
@@ -2056,11 +2036,6 @@ section .ajust_image img {
 @media only screen and (max-width: 1200px) and (orientation: portrait) {
   .south {
     animation-name: bouton_background_portrait;
-  }
-}
-@media only screen and (max-width: 1200px) and (orientation: landscape) {
-  .south {
-    animation-name: bouton_background_landscape;
   }
 }
 .south:hover {
@@ -2100,23 +2075,14 @@ section .ajust_image img {
 }
 
 #decobutton {
-  position: absolute;
-  right: 18px;
-  top: 105px;
+  margin-top: 5px;
   width: 45px;
-  height: 30px;
   z-index: 200;
-  padding: 5px;
   background-color: #5c51d1;
   border-radius: 20%;
   animation-timing-function: linear;
   animation-delay: 1.5s;
   animation: deco 5s forwards;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  #decobutton {
-    top: 60px;
-  }
 }
 #decobutton:hover {
   cursor: pointer;
@@ -2139,22 +2105,20 @@ section .ajust_image img {
   /*  transition: background-color 0.3s ease, transform 0.3s ease; */
 }
 
+.admin_deco {
+  position: absolute;
+  right: 75px;
+  top: 5px;
+}
+
 #identi:before {
   content: "🪐";
   font-size: 24px;
   color: yellow;
   transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-  /* Ajoute une animation sur hover */
-  /*  #identi:hover & {
-     transform: rotate(360deg);
-     filter: hue-rotate(180deg);
-   } */
 }
 
 #identi {
-  position: absolute;
-  right: 90px;
-  top: 5px;
   text-align: center;
   z-index: 501;
   width: 40px;
@@ -2174,40 +2138,33 @@ section .ajust_image img {
 }
 #identi:hover {
   background-color: rgba(3, 80, 125, 0.2);
-  /* filter: contrast(1.5); */
-  /*  animation: bouton_login 3s infinite; */
-  /*  transition: transform 2s, opacity 0.3s ease-in-out, filter 0.3s ease-in-out; */
   transform-origin: center;
 }
 
 /* => ------------------------------------FIN  Admin  */
 #create {
+  position: absolute;
+  left: 25%;
+  margin-top: 5px;
   z-index: 501;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
-  width: 70px;
-  height: 70px;
-  margin-top: 5px;
-  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
-  border: #0d98e9 1px solid;
   display: flex;
   text-align: center;
+  width: 50px;
+  height: 50px;
+  font-size: 0.8rem;
+  box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
+  border: #0d98e9 1px solid;
   color: black;
   border-radius: 50%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
+@media only screen and (max-width: 1000px) {
   #create {
     position: absolute;
-    left: 15vw;
-    top: 5px;
+    left: 70px;
   }
 }
 #create span {
@@ -2215,7 +2172,7 @@ section .ajust_image img {
 }
 #create:hover {
   position: relative;
-  transform: scale(1.1);
+  /*    transform: scale(1.1); */
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -2223,9 +2180,9 @@ section .ajust_image img {
 
 #biblio {
   z-index: 501;
-  width: 2.5vw;
-  height: 2.5vw;
-  margin-top: 3px;
+  width: 45px;
+  height: 45px;
+  margin-top: 4px;
   transform: scale(1.1);
   background-color: #03507d;
   box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
@@ -2245,24 +2202,14 @@ section .ajust_image img {
 }
 @media only screen and (max-width: 1000px) and (orientation: portrait) {
   #biblio {
-    height: 3.5vh;
-    width: 3.5vh;
-    position: absolute;
-    right: 13.5vw;
-    top: 5px;
+    margin-left: -110px;
   }
 }
 #biblio::before {
   content: "📖";
   transform: scale(1);
-  font-size: 1.5rem;
   transition: transform 0.3s ease, color 0.3s ease;
   z-index: 1;
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  #biblio::before {
-    font-size: 1rem;
-  }
 }
 #biblio:hover {
   transform: scale(1.1);
@@ -2285,7 +2232,7 @@ section .ajust_image img {
 .selectbackground {
   position: absolute;
   right: 10px;
-  top: 45px;
+  top: 70px;
   width: 50px;
   height: 50px;
   text-align: center;
@@ -3039,7 +2986,7 @@ section .ajust_image img {
   flex-direction: column;
   justify-content: top;
   align-items: center;
-  margin-top: 15vw;
+  margin-top: 100px;
 }
 
 .fromdiv {

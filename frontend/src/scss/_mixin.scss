@@ -5,22 +5,13 @@ $phone-max-width: 1000px;
 
 
 
-@mixin bouton-cacher {
-  @media only screen and (max-width: 1000px) {
-    left: 0px;
-    top: 2px;
-
-    font-size: 2rem;
-  }
-}
 
 @mixin bouton-cacher-log-before_landscape {
   @media only screen and (max-width: 1000px) and (orientation: landscape)  {
     left: -1.5vw;
     top: 0.5vw;
     font-size: 2rem;
-    width: 4.5vw;
-    height: 4.5vw;
+
   }
 }
 
@@ -29,26 +20,11 @@ $phone-max-width: 1000px;
     left: -1.5vw;
     top: 0.5vw;
     font-size: 2rem;
-    width: 8vw;
-    height: 8vw;
+
   }
 }
 
-// Bouton visibilité des menus pour la navigation des livres
 
-@mixin homevisible_portrait {
-  @media only screen and (max-width: $phone-max-width) and (orientation: portrait) {
-    width: 9vw;
-    height:9vw;
-  }
-}
-
-@mixin homevisible_landscape {
-  @media only screen and (max-width: $phone-max-width) and (orientation: landscape) {
-    width: 4.5vw;
-    height:4.5vw;
-  }
-}
 
 
 
@@ -229,7 +205,7 @@ transform: translateX(-50%);
 @mixin south_orientation_portrait-mobile {
   @media only screen and (max-width: 1200px) and (orientation: portrait) {
     animation-name: bouton_background_portrait;
-    
+   
   }
 }
 
@@ -294,14 +270,18 @@ transform: translateX(-50%);
   }
 }
 
+@mixin create {
+  @media only screen and (max-width: 1000px) {
+position: absolute;
+ left: 70px;
+  }
+}
+
+
 @mixin biblio {
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    height: 3.5vh;
-    width: 3.5vh;
-position: absolute;
-right: 13.5vw; 
 
-    top: 5px;
+margin-left: -110px;
   }
 }
 
@@ -329,22 +309,6 @@ right: 13.5vw;
   @media only screen and (max-width: 1000px) and (orientation: portrait) {
     margin-top: 25vw;
 
-  }
-}
-
-@mixin biblio-before {
-  @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    font-size: 1rem;
-    
-  }
-}
-
-@mixin create {
-  @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    position: absolute;
-    left: 15vw;
-
-    top: 5px;
   }
 }
 
@@ -405,12 +369,7 @@ right: 13.5vw;
   }
 }
 
-@mixin deco_bouton {
-  @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    top: 60px;
 
-  }
-}
 // Mobile device /
 //Resize login bouton for mobile device ---------------------------------------------------
 
