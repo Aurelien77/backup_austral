@@ -6,44 +6,42 @@ import { AuthContext } from "../helpers/AuthContext";
 function Booknumber() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [books, setBooks] = useState([]);
-  const { authState } = useContext(AuthContext); 
+  const { authState } = useContext(AuthContext);
 
   useEffect(() => {
-    // Récupérer les données des livres depuis l'API
+    // Récupérer la liste des livres
     axios.get(`${apiUrl}/postimages/lireAllimagespresentation/${authState.id}`, {
       headers: { accessToken: localStorage.getItem("accessToken") },
     })
     .then((response) => {
-      setBooks(response.data); // Mettre à jour la liste des livres
+      setBooks(response.data);
+
+      // Vérifier s'il y a un livre précédemment sélectionné
+      const storedBookId = localStorage.getItem('mybook');
+      if (storedBookId) {
+        const foundBook = response.data.find(book => book.numberofdeck === parseInt(storedBookId));
+        if (foundBook) {
+          setSelectedBook(foundBook.id);
+        }
+      }
     })
     .catch((error) => {
       console.error('Erreur lors du chargement des livres : ', error);
     });
-
-    const displayedBook = localStorage.getItem('mybook');
-    if (displayedBook) {
-      setSelectedBook(displayedBook);
-    }
   }, [authState.id]);
 
+  // Fonction pour récupérer le titre du livre sélectionné
   const getSelectedBookTitle = () => {
     if (selectedBook && books.length > 0) {
-      const bookIndex = parseInt(selectedBook) - 1;
-      const book = books[bookIndex];
-  
+      const book = books.find(book => book.id === selectedBook);
       if (book) {
-        const bookTitle = book.title ? book.title : "Sans titre";
         return (
           <>
-             <br />
-        
-            {bookTitle} 
-            
+            <br />
+            {book.title ? book.title : "Sans titre"}
             <br />
             <br />
-          Livre n° {selectedBook}
-         
-          {/*   - id n° {book.numberofdeck} */}
+            Livre n° {selectedBook}
           </>
         );
       }
@@ -51,39 +49,33 @@ function Booknumber() {
     return "Pas de livre choisi";
   };
 
-  
-  // Fonction de sélection du livre
+  // Fonction appelée lorsqu'un livre est sélectionné
   const handleBookSelection = (event) => {
-    const bookIndex = parseInt(event.target.value) - 1;
+    const bookId = parseInt(event.target.value);
+    const selected = books.find(book => book.id === bookId);
     
-    // Vérifier que l'index est valide
-    if (books[bookIndex]) {
-      const selectedBook = books[bookIndex];
-      const deckid = selectedBook.numberofdeck;
-      const bookId = parseInt(event.target.value);
-    
+    if (selected) {
       setSelectedBook(bookId);
-      localStorage.setItem('mybook', deckid ); // Enregistrer l'ID du livre sélectionné
+      localStorage.setItem('mybook', selected.numberofdeck); // Enregistrer le numéro de deck
       localStorage.setItem('myid', authState.id); // Enregistrer l'ID de l'utilisateur
     }
   };
 
   return (
-    <> 
-    
-    
-  
-      <div className="livrenumber"> {/* Afficher le livre sélectionné */}
-        <p><span className='bookfiche'>-Le livre de la page d'accueil- </span>
-        <div className='description'>{getSelectedBookTitle()}</div></p>
+    <>
+      <div className="livrenumber">
+        <p>
+          <span className='bookfiche'>-Le livre de la page d'accueil- </span>
+          <div className='description'>{getSelectedBookTitle()}</div>
+        </p>
       </div>
 
-      {/* Liste déroulante pour choisir le livre */}
-      <select onChange={handleBookSelection}>
-       
-        {books.map((book, index) => (
-          <option key={book.id} value={index + 1}>
-            {book.title ? book.title : "Sans titre"} 
+      {/* Liste déroulante pour choisir un livre */}
+      <select onChange={handleBookSelection} value={selectedBook || ''}>
+        <option value="" disabled>-- Sélectionnez un livre --</option>
+        {books.map((book) => (
+          <option key={book.id} value={book.id}>
+            {book.title ? book.title : "Sans titre"}
           </option>
         ))}
       </select>

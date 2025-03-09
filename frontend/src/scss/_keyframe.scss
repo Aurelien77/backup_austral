@@ -1,4 +1,65 @@
 
+@keyframes rotateArrow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotateArrowBack {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.selectbackground {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  width: 150px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  border: 2px solid #0d98e9;
+  background-color: white;
+  cursor: pointer;
+  
+  /* Position et affichage de l'image */
+  background-image: url("../logos/fleche_bas.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+
+}
+
+/* Quand l'utilisateur ouvre le select */
+.selectbackground:focus {
+  animation: none; /* Pour éviter des conflits */
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 95, 163, 0.5);
+}
+
+/* Flèche qui tourne à l'ouverture */
+.selectbackground:focus {
+  background-image: url("../logos/fleche_bas.svg");
+  background-size: 16px;
+  animation: rotateArrow 0.3s forwards;
+}
+
+/* Quand l'utilisateur ferme le select */
+.selectbackground:not(:focus) {
+  animation: rotateArrowBack 0.3s forwards;
+}
+
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;

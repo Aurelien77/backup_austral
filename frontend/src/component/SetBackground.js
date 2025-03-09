@@ -15,12 +15,17 @@ function SetBackground({ id, number, setrefreshbackground, refreshbackground}) {
   const [urlbackground, setUrlBackground] = useState(backgroundbase); // Arrière-plan actuel
   const { setAuthState } = useContext(AuthContext);
 
+  useEffect(() => {
+    // Vérifier et charger l'option de fond depuis le localStorage au chargement de la page
+    const storedOption = localStorage.getItem("listbackground");
+    if (storedOption) {
+      setUrlBackground(storedOption);
+      setSelectedOptionlist(storedOption); // Initialiser avec le fond actuel
+    } else {
+      setSelectedOptionlist("option0"); // Si aucun fond n'est sélectionné, on met "option0"
+    }
+  }, []);
 
-  // Récupérer l'option sélectionnée depuis le changement de liste
-  const handleSelectChange = (event) => {
-    const newValue = event.target.value;
-    setSelectedOptionlist(newValue); // Mettre à jour l'option de la liste
-  };
 
   useEffect(() => {
     // Vérifier et charger l'option de fond depuis le localStorage au chargement de la page
@@ -114,14 +119,28 @@ function SetBackground({ id, number, setrefreshbackground, refreshbackground}) {
     localStorage.setItem("storedUrls", JSON.stringify(newStoredUrls));
   };
 
+  
+    const handleSelectChange = (event) => {
+      const newValue = event.target.value;
+      setSelectedOptionlist(newValue);
+    }; 
+  
+    useEffect(() => {
+    
+      document.body.classList.remove('active');
+    }, [selectedOptionlist]); 
   return (
     <>
       <select
-        className="selectbackground"
-        value={selectedOptionlist} // Utiliser selectedOptionlist pour gérer l'affichage
         onChange={handleSelectChange}
+        className="selectbackground"
+        value={selectedOptionlist} //
+   
       >
-           <option value="option0" className="school" id="choosebackground">BG</option>
+           <option value="option0" className="">
+
+
+           </option>
         <option value="option1" className="school">Book</option>
         <option value="option2" className="book">Plan</option>
         <option value="option3" className="night">Night</option>

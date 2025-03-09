@@ -50,6 +50,7 @@ function App() {
     visibility_login: "",
     visible_livre_by_menu_nav: "",
     menuVisible: false,
+    menuVisibleBackground: false,
   });
   /* Visibility_nav_button concerne les bouton de navigation et login */
   /* menu visible concerne la navigation des livres */
@@ -61,7 +62,7 @@ function App() {
   const [Isloading, setIsloading] = useState(false);
   const listBackground = localStorage.getItem("listbackground");
 
-  const [menuVisibleBackground, setmenuVisibleBackground] = useState(false);
+ 
   const [refreshbackground, setrefreshbackground] = useState(false);
   const [login, setlogin] = useState(false);
   const [enr, setenr] = useState(false);
@@ -312,13 +313,16 @@ function App() {
                             authState.urlcontextbackground
                           );
                         }
-
-                        setmenuVisibleBackground(!menuVisibleBackground);
+                        setAuthState((prevState) => ({
+                          ...prevState,
+                          menuVisibleBackground: !prevState.menuVisibleBackground, 
+                        }));
+                        
                       }}
                     >
                       {/*-------------------------MENU BACKGROUND BOUTON--------------------------- */}
 
-                      {menuVisibleBackground ? (
+                      {authState.menuVisibleBackground ? (
                       <div className="backgroundfond">  <img src={south} id="coeur" /> </div>
                       ) : (
                         <div>
@@ -349,7 +353,7 @@ function App() {
 
             {/*-------------------------MENU BACKGTROUND --------------------------- */}
             <div className="setbackground">
-              {menuVisibleBackground && (
+              {authState.menuVisibleBackground && (
                 <SetBackground
                   number={fornumberbackground}
                   id={forbackgroundid}

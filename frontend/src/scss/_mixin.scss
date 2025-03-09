@@ -1,29 +1,6 @@
 //devices
 $phone-max-width: 1000px;
 
-// Bouton cacher les menus de navigations
-
-
-
-
-@mixin bouton-cacher-log-before_landscape {
-  @media only screen and (max-width: 1000px) and (orientation: landscape)  {
-    left: -1.5vw;
-    top: 0.5vw;
-    font-size: 2rem;
-
-  }
-}
-
-@mixin bouton-cacher-log-before_portrait {
-  @media only screen and (max-width: 1000px) and (orientation: portrait) {
-    left: -1.5vw;
-    top: 0.5vw;
-    font-size: 2rem;
-
-  }
-}
-
 
 
 
@@ -272,7 +249,7 @@ transform: translateX(-50%);
 
 @mixin create {
   @media only screen and (max-width: 1000px) {
-position: absolute;
+
  left: 70px;
   }
 }

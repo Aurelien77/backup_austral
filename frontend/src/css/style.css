@@ -147,6 +147,61 @@ li {
   list-style: none;
 }
 
+@keyframes rotateArrow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+@keyframes rotateArrowBack {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.selectbackground {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 150px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  border: 2px solid #0d98e9;
+  background-color: white;
+  cursor: pointer;
+  /* Position et affichage de l'image */
+  background-image: url("../logos/fleche_bas.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* Quand l'utilisateur ouvre le select */
+.selectbackground:focus {
+  animation: none;
+  /* Pour éviter des conflits */
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 95, 163, 0.5);
+}
+
+/* Flèche qui tourne à l'ouverture */
+.selectbackground:focus {
+  background-image: url("../logos/fleche_bas.svg");
+  background-size: 16px;
+  animation: rotateArrow 0.3s forwards;
+}
+
+/* Quand l'utilisateur ferme le select */
+.selectbackground:not(:focus) {
+  animation: rotateArrowBack 0.3s forwards;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -695,7 +750,7 @@ section .ajust_image img {
   }
 }
 .pagecontaineraccueil .flipbook-container-book {
-  /*   z-index:10; */
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1357,6 +1412,61 @@ section .ajust_image img {
   opacity: 1 !important;
 }
 
+@keyframes rotateArrow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+@keyframes rotateArrowBack {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.selectbackground {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 150px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  border: 2px solid #0d98e9;
+  background-color: white;
+  cursor: pointer;
+  /* Position et affichage de l'image */
+  background-image: url("../logos/fleche_bas.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* Quand l'utilisateur ouvre le select */
+.selectbackground:focus {
+  animation: none;
+  /* Pour éviter des conflits */
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 95, 163, 0.5);
+}
+
+/* Flèche qui tourne à l'ouverture */
+.selectbackground:focus {
+  background-image: url("../logos/fleche_bas.svg");
+  background-size: 16px;
+  animation: rotateArrow 0.3s forwards;
+}
+
+/* Quand l'utilisateur ferme le select */
+.selectbackground:not(:focus) {
+  animation: rotateArrowBack 0.3s forwards;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1758,51 +1868,32 @@ section .ajust_image img {
 }
 #arrange {
   position: absolute;
-  display: flex;
   width: 100%;
 }
 
 #bouton-cacher-log {
-  z-index: 10;
-  border: 0;
-  top: 3px;
+  position: absolute;
+  z-index: 502;
+  border: 0px;
+  padding: 5px;
   left: 0px;
   margin-top: 0px;
   text-shadow: 0.2px 0.2px 0.5px #000, 1px 1px 2.5px rgb(119, 119, 235);
   background: none;
 }
 #bouton-cacher-log::before {
+  display: flex;
   width: 50px;
   height: 50px;
   content: "";
-  font-size: 3rem;
   cursor: pointer;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 1rem;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7)), url("../logos/world.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-@media only screen and (max-width: 1000px) and (orientation: landscape) {
-  #bouton-cacher-log::before {
-    left: -1.5vw;
-    top: 0.5vw;
-    font-size: 2rem;
-  }
-}
-@media only screen and (max-width: 1000px) and (orientation: portrait) {
-  #bouton-cacher-log::before {
-    left: -1.5vw;
-    top: 0.5vw;
-    font-size: 2rem;
-  }
 }
 #bouton-cacher-log:hover {
   transform: scale(1.1);
@@ -1898,8 +1989,8 @@ section .ajust_image img {
   position: absolute;
   top: 5px;
   right: 10px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   box-shadow: 1px 1px rgb(9, 196, 58), -0.5em 0 0.4em rgb(13, 13, 13);
   border: #0d98e9 1px solid;
   border-radius: 50%;
@@ -2109,6 +2200,10 @@ section .ajust_image img {
   position: absolute;
   right: 75px;
   top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5px;
 }
 
 #identi:before {
@@ -2121,7 +2216,7 @@ section .ajust_image img {
 #identi {
   text-align: center;
   z-index: 501;
-  width: 40px;
+  padding: 5px;
   height: 40px;
   font-size: 0.7rem;
   justify-content: center;
@@ -2131,22 +2226,22 @@ section .ajust_image img {
   cursor: pointer;
   filter: contrast(1.2);
   background-color: rgba(3, 80, 125, 0);
-  padding-bottom: 1vw;
   animation: identiti 5s forwards;
   animation-timing-function: linear;
   animation-delay: 1.5s;
 }
 #identi:hover {
-  background-color: rgba(3, 80, 125, 0.2);
+  background-color: rgba(43, 168, 240, 0.2);
   transform-origin: center;
 }
 
 /* => ------------------------------------FIN  Admin  */
 #create {
   position: absolute;
-  left: 25%;
+  left: 400px;
   margin-top: 5px;
   z-index: 501;
+  width: 100%;
   background: radial-gradient(circle, rgba(108, 131, 233, 0.2), rgba(95, 219, 247, 0.5), rgba(24, 107, 184, 0.4), rgba(78, 141, 230, 0.7), rgba(3, 3, 86, 0.7));
   display: flex;
   text-align: center;
@@ -2163,19 +2258,15 @@ section .ajust_image img {
 }
 @media only screen and (max-width: 1000px) {
   #create {
-    position: absolute;
     left: 70px;
   }
 }
+#create:hover {
+  background-color: rgba(44, 164, 234, 0.2);
+  transform-origin: center;
+}
 #create span {
   font-size: 1.3rem;
-}
-#create:hover {
-  position: relative;
-  /*    transform: scale(1.1); */
-  background-color: #03507d;
-  box-shadow: 0 4px 15px 5px rgba(196, 193, 193, 0.2);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #biblio {
@@ -2224,28 +2315,43 @@ section .ajust_image img {
   flex-direction: column;
 }
 
-#choosebackground {
-  font-weight: bold;
-  text-shadow: #3131d4 1px 1px 1px;
-}
-
 .selectbackground {
-  position: absolute;
-  right: 10px;
-  top: 70px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-top: 5vw;
+  background-image: url("../logos/fleche_bas.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
   width: 50px;
   height: 50px;
   text-align: center;
-  box-shadow: 1px 1px rgb(188, 236, 239), -0.2em -0.2em 0.9em black;
-  -webkit-text-stroke: rgb(7, 10, 208) 0.3px;
+  box-shadow: 1px 1px rgb(27, 27, 27), -0.2em -0.2em 0.9em black;
+  -webkit-text-stroke: rgb(59, 59, 218) 0.3px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
+  font-size: 1rem;
   border-radius: 50%;
-  font-size: 0.8rem;
-  background: radial-gradient(circle, rgba(121, 236, 244, 0.2), rgba(95, 219, 247, 0.5), rgba(23, 138, 204, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  background: radial-gradient(circle, rgba(121, 236, 244, 0.2), rgba(95, 219, 247, 0.5), rgba(23, 138, 204, 0.4), rgba(78, 141, 230, 0.7), rgba(161, 227, 235, 0.7)), url("../logos/fleche_bas.svg");
+  /* Correction ici */
+  background-size: contain, 16px;
+  /* Applique différentes tailles */
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, right 10px center;
+}
+.selectbackground option {
+  background-color: #0077cc;
+}
+.selectbackground:focus {
+  animation: none;
+  /* Pour éviter des conflits */
+  border-color: #0077cc;
+  box-shadow: 0 5px 15px rgba(0, 95, 163, 0.5);
+  background-image: url("../logos/fleche_bas.svg");
+  background-size: 16px;
+  border: 0.5px solid red;
 }
 
 .setbackground {
