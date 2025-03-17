@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../helpers/AuthContext";
-import backgroundbase from "../logos/world.svg";
+import backgroundbase from "../logos/world.gif";
 import background2 from "../logos/space.jpg"; // Fond "Night"
 
 

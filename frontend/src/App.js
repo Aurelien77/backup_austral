@@ -72,7 +72,18 @@ function App() {
       visibility_nav_button: !prevState.visibility_nav_button,
       visible_livre_by_menu_nav: !prevState.visible_livre_by_menu_nav,
       menuvisiblebook: false,
-    }));
+      visibility_login: !prevState.visibility_login,
+      
+    }),
+    setlogin((prevLogin) => !prevLogin),
+    
+    setenr(false),
+  console.log("ttttttttttttttttttttttt")
+  
+  
+  );
+
+    
   }
 
   useEffect(() => {
@@ -229,14 +240,14 @@ function App() {
   }, [listBackground, backgroundImage, refreshbackground]);
 
   /* Gestion de l'etat de NAvigation Livre */
-  const handleClick = () => {
+/*   const handleClick = () => {
     setlogin((prevLogin) => !prevLogin);
     setenr(false);
     setAuthState((prevState) => ({
       ...prevState,
       visibility_login: !prevState.visibility_login,
     }));
-  };
+  }; */
 
   return (
     <section
@@ -269,7 +280,7 @@ function App() {
                 onClick={toggleVisibility}
                 className={""}
               ></button>
-
+{/* 
               {!authState.status && authState.visibility_nav_button && (
                 <div onClick={handleClick}>
                   {authState.visibility_nav_button ? (
@@ -278,7 +289,7 @@ function App() {
                     <span className="boutonlogin2">Login</span>
                   )}
                 </div>
-              )}
+              )} */}
             </div>
             {/*----------------------MENU LIVRES ------------------------------ */}
             {authState.menuvisiblebook && (
@@ -339,12 +350,22 @@ function App() {
             <div className="homevisible">
               <button
                 onClick={() =>
+
+              
                   setAuthState((prevState) => ({
                     ...prevState,
                     visibility_nav_button: false,
                     menuvisiblebook: !prevState.menuvisiblebook,
                     visible_livre_by_menu_nav: false,
-                  }))
+                    visibility_login: false,
+                    
+                  }),
+                  setlogin(false),
+                  
+               
+                )
+
+                
                 }
               >
                 {authState.menuvisiblebook ? "💧" : "🫧"}
@@ -444,7 +465,7 @@ function App() {
           </>
 
           <>
-            {login && (
+            {login && !authState.status && (
               <div>
                 <Logincomposant setIsloading={setIsloading} />
               </div>

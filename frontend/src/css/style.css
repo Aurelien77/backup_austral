@@ -2319,7 +2319,7 @@ section .ajust_image img {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  margin-top: 5vw;
+  margin-top: 11vw;
   background-image: url("../logos/fleche_bas.svg");
   background-repeat: no-repeat;
   background-position: right 10px center;
@@ -2343,6 +2343,9 @@ section .ajust_image img {
 }
 .selectbackground option {
   background-color: #0077cc;
+}
+.selectbackground select {
+  cursor: pointer;
 }
 .selectbackground:focus {
   animation: none;

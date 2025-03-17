@@ -21,7 +21,7 @@ border: 2px solid red;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-margin-top: 5vw;
+margin-top: 11vw;
 
   background-image: url("../logos/fleche_bas.svg");
   background-repeat: no-repeat;
@@ -45,7 +45,15 @@ color: white;
 
 
   background-color: #0077cc;
+
 }
+
+& select {
+
+  cursor: pointer;
+}
+
+
   background: radial-gradient(
       circle,
       rgba(121, 236, 244, 0.2),
